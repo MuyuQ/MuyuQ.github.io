@@ -53,6 +53,81 @@
     </entry>
     
     
+    
+    <entry>
+      <title>youtube-dl 下载</title>
+      <link href="/2017/06/16/Mac/title:%20youtube%E4%B8%8B%E8%BD%BD/"/>
+      <url>/2017/06/16/Mac/title:%20youtube%E4%B8%8B%E8%BD%BD/</url>
+      
+        <content type="html"><![CDATA[<p>youtube 上有很多不错的视频,奈何超清画质不能下载,所以琢磨了琢磨 youtube-dl, 用来下载 youtube 的视频.</p><p>据说也可以下载优酷,土豆之类的.</p><a id="more"></a><p>使用 youtube-dl 进行下载, youtube-dl 自动调用 FFmpeg 进行音频和视频的合并.</p><p>在 zsh 内部写了别名,</p><p>所以直接在终端中使用 youtube +要下载视频的 URL, 就能下载到 影片文件夹.</p><p>默认下载分辨率最高的资源.</p><p><img src="http://ojho2g8px.bkt.clouddn.com/2017-06-16-064954.jpg" alt="Jietu20170616-144832"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Mac </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Mac 下的一些软件推荐</title>
+      <link href="/2017/06/09/Mac/title:%20Mac%20%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
+      <url>/2017/06/09/Mac/title:%20Mac%20%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</url>
+      
+        <content type="html"><![CDATA[<p>先挖坑</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Mac </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Mac 的一些技巧</title>
+      <link href="/2017/05/16/Mac/title:%20Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+      <url>/2017/05/16/Mac/title:%20Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+      
+        <content type="html"><![CDATA[<p>在使用 Mac 过程中的一些小技巧和快捷键.</p><a id="more"></a><ul><li><p>通过Command+点击在新窗口中打开Finder侧边栏上的项目</p></li><li><p>Command+鼠标拖拽可以移动后方的窗口，同时不影响前端窗口</p></li><li><p>Command+点击Dock上的图标可以打开应用在Finder中的位置</p></li><li><p>Command+回车Spotlight中的搜索结果可以直接在Finder中查看</p></li><li><p>Command+回车Spotlight中的搜索结果可以直接在Finder中查看</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Mac </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
 </search>

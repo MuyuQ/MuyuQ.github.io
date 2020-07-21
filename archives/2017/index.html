@@ -5,6 +5,8 @@
   <!-- SEO相关 -->
   
     
+      <meta name="robots" content="noindex,follow">
+    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -16,13 +18,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>Nginx 进阶模块 - Mcode</title>
-  
-    <meta name="keywords" content="server">
+  <title>Archive: 2017 - Mcode</title>
   
 
-  
-    <meta name="description" content="简介  ">
   
 
   <!-- feed -->
@@ -70,7 +68,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover post' style="display: none;">
+    <cover class='cover ' style="display: none;">
       <div class='cover-body'>
   <div class='a'>
     
@@ -406,7 +404,7 @@
   </div>
   
 
-  <div class="l_body nocover">
+  <div class="l_body">
     <div class='body-wrapper' id="pjax-container">
       
         <!--此文件用来存放一些不方便取值的变量-->
@@ -415,12 +413,9 @@
 
 
 <div id="pjax-data" style="display: none">
-  <div id="pjax-ispage">true</div>
-  <div id="pjax-pageTitle">Nginx 进阶模块</div>
+  <div id="pjax-ispage">false</div>
+  <div id="pjax-pageTitle"></div>
   <div id="pjax-enable-cover">true</div>
-  
-  <div id="valine-path">none</div>
-  <div id="valine-placeholder">none</div>
   
   
 </div>
@@ -428,16 +423,16 @@
 
 <script>
   // 处理封面 此时 jquery 还没加载
-  if ("none" == "none") { // 移除封面
+  if ("blog" == "none") { // 移除封面
     document.getElementsByClassName('cover')[0].style.display = "none";
     document.getElementsByClassName('l_body')[0].classList.add("nocover");
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
   } else {
-    if ("none" == "blog") { // 半屏
+    if ("blog" == "blog") { // 半屏
       document.getElementsByClassName('cover')[0].classList.remove("full");
       document.getElementsByClassName('cover')[0].classList.add("half");
       document.getElementsByClassName('scroll-down')[0].style.display = "none";
-    } else if ("none" == "docs") { // 全屏
+    } else if ("blog" == "docs") { // 全屏
       document.getElementsByClassName('cover')[0].classList.remove("half");
       document.getElementsByClassName('cover')[0].classList.add("full");
       document.getElementsByClassName('scroll-down')[0].style.display = "";
@@ -452,11 +447,26 @@
       
 
 <div class='l_main'>
-  
-
-  
-    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+	
+		
+  <section class="post-list ">
+    
       
+        
+          
+        
+          
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
 
 
   <section class='meta'>
@@ -466,11 +476,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h1 class="title">
-    <a href="/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/">
-      Nginx 进阶模块
+  <h2 class="title">
+    <a href="/2017/06/16/Mac/title:%20youtube%E4%B8%8B%E8%BD%BD/">
+      youtube-dl 下载
     </a>
-  </h1>
+  </h2>
 
 
         
@@ -493,9 +503,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/Nginx/' rel="nofollow">
+    <a href='/categories/Mac/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Nginx</p>
+      <p>Mac</p>
     </a>
   </div>
 
@@ -506,9 +516,45 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Mar 13, 2018</p>
+    <p>发布于：Jun 16, 2017</p>
   </a>
 </div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2017/06/16/Mac/title:%20youtube%E4%B8%8B%E8%BD%BD/" class="leancloud_visitors" data-flag-title="youtube-dl 下载">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2017/06/16/Mac/title:%20youtube%E4%B8%8B%E8%BD%BD/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2017/06/16/Mac/title:%20youtube%E4%B8%8B%E8%BD%BD/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
 
             
           
@@ -526,360 +572,432 @@
   </section>
 
 
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
-          
-          
-          <p>简介  </p>
-<a id="more"></a>  
-
-<p>##静态资源配置</p>
-<p>配置语法- sendfile</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax: sendfile on | off;</span><br><span class="line">Default: sendfile off;</span><br><span class="line">Context: server,location,if in location</span><br></pre></td></tr></table></figure>
-
-
-
-<p>配置语法- tcp-nopush</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Syntax: tcp_nopush on | off</span><br><span class="line">Default: tcp_push off;</span><br><span class="line">Context: http,server,location</span><br><span class="line"><span class="meta">#</span><span class="bash">在 sendfile 开启的情况下, 提高网络包的传递效率</span></span><br></pre></td></tr></table></figure>
-
-<p>不着急推送,而是将多个 tcp 打包进行集中发送,以提升效率.适合大文件</p>
-<p>配置语法- tcp-nodelay</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Syntax: tcp_nodelay on | off</span><br><span class="line">Default: tcp_nodelay on;</span><br><span class="line">Context: http,server,location</span><br><span class="line"><span class="meta">#</span><span class="bash">在 keepalive 连接下,提高网络包的传递实时性</span></span><br></pre></td></tr></table></figure>
-
-<p>配置语法-压缩</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">压缩等级设置</span></span><br><span class="line">Syntax: gzip_comp_level level;</span><br><span class="line">Default: gzip_comp_level 1;</span><br><span class="line">Context: http,server,location</span><br></pre></td></tr></table></figure>
-
-<p>扩展 Nginx 压缩模块</p>
-<p><strong><code>http_gzip_static_module</code></strong>-预读 gzip 功能. </p>
-<p><strong><code>http_gunzip_module</code></strong>-应用支持 gunzip 的压缩功能. (很少用到)</p>
-<p>gzip 对文本的压缩很好,对图片的压缩一般.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h2><p>HTTP 协议定义的缓存机制(如 Expires,Cache-control等)</p>
-<p>校验过期机制</p>
-<table>
-<thead>
-<tr>
-<th>校验是否过期</th>
-<th>Expires(http1.0),Cache-Control(http1.1) (max-age定义一个周期)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>如果 max-age 显示已经过期,则会检查后面两个校验</td>
-<td></td>
-</tr>
-<tr>
-<td>协议中 Etag头信息校验</td>
-<td>Etag(保存一个字符串,来识别缓存,类似”别名”)</td>
-</tr>
-<tr>
-<td>Last-Modified 头信息校验</td>
-<td>Last-Modified(保存一个时间,精确到秒,如果两个时间不一致,则服务器会传递一份新的)</td>
-</tr>
-</tbody></table>
-<p>Max-age&lt;=0时,就要求每次请求都会要求服务器检查是否过期.即使服务器端设置了 max-age, 但是浏览器为了实时更新,会将 request里 max-age 设置为0.</p>
-<p><img src="http://ojho2g8px.bkt.clouddn.com/WX20180312-121814@2x.png" alt=""></p>
-<p>静态资源配置场景设置</p>
-<p>配置语法-expires</p>
-<p>location / {</p>
-<p>expires  24h;</p>
-<p>}</p>
-<h2 id="跨域访问"><a href="#跨域访问" class="headerlink" title="跨域访问"></a>跨域访问</h2><p>为什么浏览器禁止跨域访问?</p>
-<p>不安全,容易出现 CSRF 攻击.</p>
-<p>nginx 怎么做?</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax: add_header name value [always];</span><br><span class="line">Default: - </span><br><span class="line">Context: http,server,location,if in location</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器允许跨域访问,则浏览器不会禁止. 通过检查Access-Control-Allow-Origin 头来确定是否允许.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location ~ .*\.(htm|html)$ &#123;</span><br><span class="line">    add_header Access-Control-Allow-Origin http://www.qq.com;</span><br><span class="line">    add_header Access-Control-Allow-Methods GET,POST,PUT,DELETE,OPTIONS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果将 域名替换成*,则会对 CSRF 攻击完全开放.</p>
-<p>##防盗链</p>
-<p>简单防盗链实现.</p>
-<p>防盗链设置思路.</p>
-<p>首要方式:区别哪些请求是非正常的用户请求</p>
-<p>基于 http_refer 防盗链配置模块</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> valid_referers表示允许哪些referer信息访问 </span></span><br><span class="line"><span class="meta">#</span><span class="bash">none表示允许没有带referer的信息过来    </span></span><br><span class="line"><span class="meta">#</span><span class="bash">blocked表示</span></span><br><span class="line"><span class="meta">#</span><span class="bash">ip 只允许这个ip的referer过来访问.</span></span><br><span class="line">valid_referers none blocked ip ;</span><br><span class="line"><span class="meta">if($</span><span class="bash">invalid_referer)&#123;</span></span><br><span class="line">    return 403;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>‘referer’</strong>是告诉服务器这个请求是从哪个页面链接过来的.</p>
-<p>如果直接访问页面,则在 access.log 里面为 “-“.</p>
-<p>进阶解决方案:</p>
-<p>后期补充</p>
-<h2 id="代理服务"><a href="#代理服务" class="headerlink" title="代理服务"></a>代理服务</h2><p>正向代理</p>
-<blockquote>
-<p>客户端—代理—|— 服务端</p>
-</blockquote>
-<p>反向代理</p>
-<blockquote>
-<p>客户端—|—代理—服务端</p>
-</blockquote>
-<p>区别在于代理的对象不一样.</p>
-<p>正向代理代理的对象是客户端.</p>
-<p>反向代理代理的对象是服务端.</p>
-<h4 id="配置语法"><a href="#配置语法" class="headerlink" title="配置语法"></a>配置语法</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Syntax: proxy_pass URL;</span><br><span class="line">Default: -</span><br><span class="line">Context: location,if in location,limit_except</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">http://ip:80/url/</span></span><br></pre></td></tr></table></figure>
-
-<p>服务器 A (10.211.55.15)  服务器 B(10.211.55.16)</p>
-<p>服务器A,</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    if($http_x_forwarded_for !~*"^10\.211\.55\.16")&#123;</span><br><span class="line">        return 403;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样设置后,所有不是来自服务器 B 的访问,都会被返回403.</p>
-<p>服务器 B,</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /&#123;</span><br><span class="line">    proxy_pass $http_host$request_uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意 uri 和 url 是不同的.</p>
-<p>uri 统一资源标志符, url 统一资源定位符.</p>
-<p>一个用于解析,一个用于直接传递路径.</p>
-<p>其他语法配置</p>
-<p><strong><code>proxy_buffering</code></strong>缓冲区</p>
-<p><strong><code>proxy_redirect</code></strong>跳转重定向</p>
-<p><strong><code>proxy_set_header</code></strong> 头信息 ,扩展 proxy_hide_header,proxy_set_body</p>
-<p><strong><code>proxy_connect_timeout</code></strong>  超时 ,扩展 proxy_read_timeout,proxy_send_timeout</p>
-<h3 id="proxy-常用配置"><a href="#proxy-常用配置" class="headerlink" title="proxy 常用配置"></a>proxy 常用配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">proxy_pass http://127.0.0.1:8080;</span><br><span class="line">proxy_redirect default;</span><br><span class="line"></span><br><span class="line">proxy_set_header Host $http_host;</span><br><span class="line">proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line"></span><br><span class="line">proxy_connect_timeout 30;</span><br><span class="line">proxy_send_timeout 60;</span><br><span class="line">proxy_read_timeout 60;</span><br><span class="line"></span><br><span class="line">proxy_buffer_size 32k;</span><br><span class="line">proxy_buffering on;</span><br><span class="line">proxy_buffers 4 128k;</span><br><span class="line">proxy_busy_buffers_size 256k;</span><br><span class="line">proxy_max_temp_file_size 256k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果有多个 proxy 方案,则可以使用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    include proxy_params;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后把配置放在文件里.</p>
-
-          
-            <div class='article_footer'>
-              
-                
-  
-    
-    
-
-
-
-  
-
-  
-    
-    
-
-
-
-  
-
-  
-    
-    
-
-<section class="widget copyright  desktop mobile">
-  <div class='content'>
-    
-      <blockquote>
-        
-          
-            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-          
-        
-          
-            <p>本文永久链接是：<a href=http://mcode.tech/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/>http://mcode.tech/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/</a></p>
-          
-        
-      </blockquote>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget qrcode  desktop mobile">
-  
-
-  <div class='content article-entry'>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>youtube 上有很多不错的视频,奈何超清画质不能下载,所以琢磨了琢磨 youtube-dl, 用来下载 youtube 的视频.</p>
+<p>据说也可以下载优酷,土豆之类的.</p>
+      
+    </div>
     
       
-        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
-        
-          height='64px'
-        ></div>
-      
-    
-      
-        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
-        
-          height='64px'
-        ></div>
-      
-    
-  </div>
-</section>
-
-  
-
-
-              
-            </div>
-          
+        <div class="button readmore">
+          <a href="/2017/06/16/Mac/title:%20youtube%E4%B8%8B%E8%BD%BD/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
         </div>
+      
+    
+  </section>
+</article>
+
+          </div>
         
-          
-
-
-  <section class='meta' id="footer-meta">
-    <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2018-03-13T12:13:29+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 13, 2018</p>
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/2017/06/09/Mac/title:%20Mac%20%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">
+      Mac 下的一些软件推荐
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="mcode.tech" rel="nofollow">
+    <img no-lazy src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/20200307155807_spowv.jpg">
+    <p>Mcode</p>
   </a>
 </div>
 
-        
-      
-        
+            
           
+            
+              
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/server/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>server</p></a></div>
-
-
-        
-      
-        
-          
-
-        
-      
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    
-      
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
-          
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://mcode.tech/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/&title=Nginx 进阶模块 - Mcode&summary=简介  "
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
-          
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://mcode.tech/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/&title=Nginx 进阶模块 - Mcode&summary=简介  "
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
-          
-          href="http://service.weibo.com/share/share.php?url=http://mcode.tech/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/&title=Nginx 进阶模块 - Mcode&summary=简介  "
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
-          
-        </a>
-      
-    
+  <div class='new-meta-item category'>
+    <a href='/categories/Mac/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>Mac</p>
+    </a>
   </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jun 9, 2017</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2017/06/09/Mac/title:%20Mac%20%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/" class="leancloud_visitors" data-flag-title="Mac 下的一些软件推荐">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2017/06/09/Mac/title:%20Mac%20%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2017/06/09/Mac/title:%20Mac%20%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
 </div>
 
 
+            
+          
+            
+              
 
+            
+          
+        </div>
         
-      
-    </div>
+          <hr>
+        
+      </div>
+    
   </section>
 
 
-        
-        
-          <div class="prev-next">
-            
-              <a class='prev' href='/2020/07/21/hello-world/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Hello World</p>
-                <p class='content'>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any ...</p>
-              </a>
-            
-            
-              <a class='next' href='/2017/06/16/Mac/title:%20youtube%E4%B8%8B%E8%BD%BD/'>
-                <p class='title'>youtube-dl 下载<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>youtube 上有很多不错的视频,奈何超清画质不能下载,所以琢磨了琢磨 youtube-dl, 用来下载 youtube 的视频.
-据说也可以下载优酷,土豆之类的.
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先挖坑</p>
 
+      
+    </div>
+    
+      
+    
+  </section>
+</article>
 
-使用 youtube-...</p>
-              </a>
-            
           </div>
         
-      </section>
-    </article>
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
   
 
-  
+
+  <section class='meta'>
     
-  <article class="post white-box reveal comments shadow">
-    <section class="article typo">
-      <p ct><i class='fas fa-comments'></i> 评论</p>
       
-      <section id="comments">
-        <div id="valine_container" class="valine_thread">
-  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/2017/05/16/Mac/title:%20Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+      Mac 的一些技巧
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="mcode.tech" rel="nofollow">
+    <img no-lazy src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/20200307155807_spowv.jpg">
+    <p>Mcode</p>
+  </a>
 </div>
 
-      </section>
-    </section>
-  </article>
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Mac/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>Mac</p>
+    </a>
+  </div>
 
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：May 16, 2017</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2017/05/16/Mac/title:%20Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="leancloud_visitors" data-flag-title="Mac 的一些技巧">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2017/05/16/Mac/title:%20Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2017/05/16/Mac/title:%20Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在使用 Mac 过程中的一些小技巧和快捷键.</p>
+      
+    </div>
+    
+      
+        <div class="button readmore">
+          <a href="/2017/05/16/Mac/title:%20Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+    
+  </section>
+  
+    
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+    
+    
 
   
 
 
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-
+	
 </div>
 <aside class='l_side'>
   
   
+    
+    
+
+<section class="widget blogger shadow desktop mobile">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img no-lazy src='https://mcode-1253212768.cos.ap-beijing.myqcloud.com/20200307155807_spowv.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">Mcode</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:me@xaoxuu.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/xaoxuu"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=63035382"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
 
   
     
     
+  
 
-
-
-  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+  <section class="widget category shadow desktop">
     
   <header>
     
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
     
   </header>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器缓存"><span class="toc-text">浏览器缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跨域访问"><span class="toc-text">跨域访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代理服务"><span class="toc-text">代理服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置语法"><span class="toc-text">配置语法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proxy-常用配置"><span class="toc-text">proxy 常用配置</span></a></li></ol></li></ol>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/Mac/" href="/categories/Mac/"
+            id="categoriesMac"
+            ><div class='name'>Mac</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Nginx/" href="/categories/Nginx/"
+            id="categoriesNginx"
+            ><div class='name'>Nginx</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
     </div>
   </section>
 
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget tagcloud shadow desktop mobile">
+    
+  <header>
+    
+      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <a href="/tags/Mac/" style="font-size: 24px; color: #555">Mac</a> <a href="/tags/server/" style="font-size: 14px; color: #999">server</a>
+    </div>
+  </section>
+
+
+  
 
   
 
 
 </aside>
 
+
+
+
+
+	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+	
+
+	
 
 
     </div>
