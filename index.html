@@ -412,6 +412,46 @@
     
       
         
+          
+        
+          
+        
+          
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
         
           
         
@@ -688,6 +728,182 @@
         
           
   <h2 class="title">
+    <a href="/2018/03/16/mysql%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/">
+      MySQL语法基础
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="mcode.tech" rel="nofollow">
+    <img no-lazy src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/20200307155807_spowv.jpg">
+    <p>Mcode</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/MySQL/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>MySQL</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 16, 2018</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2018/03/16/mysql%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" class="leancloud_visitors" data-flag-title="MySQL语法基础">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2018/03/16/mysql%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2018/03/16/mysql%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>MySQL基础语法知识</p>
+<!--more—>  mysql 的知识点
+
+显示表结构
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc + 表名;  或者 explain + 表名</span><br></pre></td></tr></table></figure>
+
+<h2 id="语法基础"><a href="#语法基础" class="headerlink" title="语法基础"></a>语法基础</h2><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE &#96;mydatabase&#96;;</span><br><span class="line">USE &#96;mydatabase&#96;;</span><br><span class="line">反引号并不是必须的, 但这是一种规范,防止在创建数据库或表的时候用到了 MySQL 的关键字.</span><br></pre></td></tr></table></figure>
+
+<p>MySQL 关键字,最好全部用大写, 这是一种规范,最好遵守.</p>
+<p>mysql 权限分离, 对于一个数据库,最好建立一个只读账户,防止失误.</p>
+<p>mysql 中的注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--注释</span><br></pre></td></tr></table></figure>
+
+<h3 id="建表语句"><a href="#建表语句" class="headerlink" title="建表语句"></a>建表语句</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;student&#96;(</span><br><span class="line">&#96;id&#96; INT NOT NULL AUTO_INCREMENT</span><br><span class="line"> &#96;name&#96; VARCHAR(200) NOT NULL</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>常见类型</p>
+<p>int char varchar datetime</p>
+<p> char 长度固定,存储速度快</p>
+<p> Varchar 长度可变,节省空间</p>
+<h2 id="建表方案"><a href="#建表方案" class="headerlink" title="建表方案"></a>建表方案</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;students&#96;(</span><br><span class="line"> &#96;id&#96; INT NOT NULL AUTO_INCREMENT,</span><br><span class="line"> &#96;name&#96; VARCHAR(20) NOT NULL,</span><br><span class="line"> &#96;nackname&#96; VARCHAR(20) NOT NULL,</span><br><span class="line"> &#96;sex&#96; SMALLINT NOT NUll;</span><br><span class="line"> &#96;in_time&#96; DATETIME NULL,</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>1.必须设置一个主键</p>
+<p>2.必须用<code>,</code> 而不是<code>;</code></p>
+<p>3.没有最后一行的<code>,</code></p>
+<p><strong>4.需要设置默认的编码方式以支持中文.</strong></p>
+<p>正确版</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;students&#96;(</span><br><span class="line"> &#96;id&#96; INT NOT NULL AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line"> &#96;name&#96; VARCHAR(20) NOT NULL,</span><br><span class="line"> &#96;nackname&#96; VARCHAR(20) NOT NULL,</span><br><span class="line"> &#96;sex&#96; SMALLINT NOT NUll,</span><br><span class="line"> &#96;in_time&#96; DATETIME NULL</span><br><span class="line">)DEFAULT CHARSET &#39;UTF8&#39;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="插入语句"><a href="#插入语句" class="headerlink" title="插入语句"></a>插入语句</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO &#96;students&#96; VALUE(1,&#39;张三&#39;,&#39;三哥&#39;,&#39;男&#39;,now());</span><br></pre></td></tr></table></figure>
+
+<p>序号自增长插入</p>
+<p>指定需要插入的字段名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO &#96;students&#96;(&#96;name&#96;,&#96;nickname&#96;,&#96;sex&#96;,&#96;in_time&#96;) VALUE(&#39;张三2&#39;,&#39;三哥2&#39;,&#39;男&#39;,now());</span><br></pre></td></tr></table></figure>
+
+<p>如果有可以允许为空项,则可以放空.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO &#96;students&#96;(&#96;name&#96;,&#96;nickname&#96;,&#96;sex&#96;) VALUE(&#39;张三3&#39;,&#39;三哥3&#39;,&#39;男&#39;);</span><br></pre></td></tr></table></figure>
+
+<p>插入多条</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO &#96;students&#96;(&#96;name&#96;,&#96;nickname&#96;,&#96;sex&#96;) VALUES</span><br><span class="line">(&#39;张三4&#39;,&#39;三哥4&#39;,&#39;男&#39;),</span><br><span class="line">(&#39;张三5&#39;,&#39;三哥3&#39;,&#39;男&#39;),</span><br><span class="line">(&#39;张三6&#39;,&#39;三哥3&#39;,&#39;男&#39;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ojho2g8px.bkt.clouddn.com/WX20180313-182104@2x.png" alt=""></p>
+<p><strong><code>插一条,用 VALUE, 插多条用 VALUES.</code></strong></p>
+<h2 id="查询语句"><a href="#查询语句" class="headerlink" title="查询语句"></a>查询语句</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT &#96;name&#96;,&#96;nickname&#96; FROM &#96;students&#96; WHERE &#96;sex&#96;&#x3D;&#39;男&#39; ORDER BY &#96;id&#96; DESC LIMIT 1,2;</span><br></pre></td></tr></table></figure>
+
+<p>排序中有正序和倒序, 默认为正序ASC,倒序需要添加参数 DESC, </p>
+<p>分页运用 LIMIT 0,2;</p>
+<h2 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE &#96;students&#96; SET &#96;nickname&#96;&#x3D;&#39;没有昵称&#39; WHERE &#96;sex&#96;&#x3D;&#39;女&#39;</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM &#96;students&#96; where &#96;sex&#96;&#x3D;&#39;男&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>如果没有注明 where, 则会清空该表.</p>
+
+      
+    </div>
+    
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
     <a href="/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/">
       Nginx 进阶模块
     </a>
@@ -818,8 +1034,8 @@
         
           
   <h2 class="title">
-    <a href="/2017/06/16/Mac/title:%20youtube%E4%B8%8B%E8%BD%BD/">
-      youtube-dl 下载
+    <a href="/2018/03/13/Python/Nginx%E5%9F%BA%E7%A1%80&%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/">
+      Nginx基础&常用模块
     </a>
   </h2>
 
@@ -844,9 +1060,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/Mac/' rel="nofollow">
+    <a href='/categories/Python/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Mac</p>
+      <p>Python</p>
     </a>
   </div>
 
@@ -857,7 +1073,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jun 16, 2017</p>
+    <p>发布于：Mar 13, 2018</p>
   </a>
 </div>
 
@@ -874,7 +1090,7 @@
     <a class='notlink'>
       <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
       
-      <span id="/2017/06/16/Mac/title:%20youtube%E4%B8%8B%E8%BD%BD/" class="leancloud_visitors" data-flag-title="youtube-dl 下载">
+      <span id="/2018/03/13/Python/Nginx%E5%9F%BA%E7%A1%80&%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" class="leancloud_visitors" data-flag-title="Nginx基础&常用模块">
       <p>
         <span class="leancloud-visitors-count"></span>
       </p>
@@ -889,9 +1105,9 @@
               
 <div class="new-meta-item comments-count">
   
-  <a href="/2017/06/16/Mac/title:%20youtube%E4%B8%8B%E8%BD%BD/#comments">
+  <a href="/2018/03/13/Python/Nginx%E5%9F%BA%E7%A1%80&%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/#comments">
     <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/2017/06/16/Mac/title:%20youtube%E4%B8%8B%E8%BD%BD/">0</span>
+    <span class="valine-comment-count" data-xid="/2018/03/13/Python/Nginx%E5%9F%BA%E7%A1%80&%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/">0</span>
     <span class="leancloud-comments-count">&nbsp;</span>
   </a>
 </div>
@@ -916,14 +1132,13 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>youtube 上有很多不错的视频,奈何超清画质不能下载,所以琢磨了琢磨 youtube-dl, 用来下载 youtube 的视频.</p>
-<p>据说也可以下载优酷,土豆之类的.</p>
+        <p>简介  </p>
       
     </div>
     
       
         <div class="button readmore">
-          <a href="/2017/06/16/Mac/title:%20youtube%E4%B8%8B%E8%BD%BD/">
+          <a href="/2018/03/13/Python/Nginx%E5%9F%BA%E7%A1%80&%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/">
             阅读全文 <i class="fas fa-chevron-right"></i>
           </a>
         </div>
@@ -949,8 +1164,8 @@
         
           
   <h2 class="title">
-    <a href="/2017/06/09/Mac/title:%20Mac%20%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">
-      Mac 下的一些软件推荐
+    <a href="/2018/03/09/Python/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/">
+      列表推导式
     </a>
   </h2>
 
@@ -975,9 +1190,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/Mac/' rel="nofollow">
+    <a href='/categories/Python/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Mac</p>
+      <p>Python</p>
     </a>
   </div>
 
@@ -988,7 +1203,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jun 9, 2017</p>
+    <p>发布于：Mar 9, 2018</p>
   </a>
 </div>
 
@@ -1005,7 +1220,7 @@
     <a class='notlink'>
       <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
       
-      <span id="/2017/06/09/Mac/title:%20Mac%20%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/" class="leancloud_visitors" data-flag-title="Mac 下的一些软件推荐">
+      <span id="/2018/03/09/Python/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="leancloud_visitors" data-flag-title="列表推导式">
       <p>
         <span class="leancloud-visitors-count"></span>
       </p>
@@ -1020,9 +1235,9 @@
               
 <div class="new-meta-item comments-count">
   
-  <a href="/2017/06/09/Mac/title:%20Mac%20%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/#comments">
+  <a href="/2018/03/09/Python/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/#comments">
     <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/2017/06/09/Mac/title:%20Mac%20%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">0</span>
+    <span class="valine-comment-count" data-xid="/2018/03/09/Python/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/">0</span>
     <span class="leancloud-comments-count">&nbsp;</span>
   </a>
 </div>
@@ -1047,11 +1262,16 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>先挖坑</p>
-
+        <p>Python 推导式</p>
       
     </div>
     
+      
+        <div class="button readmore">
+          <a href="/2018/03/09/Python/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
       
     
   </section>
@@ -1074,8 +1294,8 @@
         
           
   <h2 class="title">
-    <a href="/2017/05/16/Mac/title:%20Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">
-      Mac 的一些技巧
+    <a href="/2018/03/09/Python/Python%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6%E8%AE%AD%E7%BB%83/">
+      Python 进阶-数据结构与算法进阶训练 
     </a>
   </h2>
 
@@ -1100,9 +1320,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/Mac/' rel="nofollow">
+    <a href='/categories/Python/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Mac</p>
+      <p>Python  </p>
     </a>
   </div>
 
@@ -1113,7 +1333,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：May 16, 2017</p>
+    <p>发布于：Mar 9, 2018</p>
   </a>
 </div>
 
@@ -1130,7 +1350,7 @@
     <a class='notlink'>
       <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
       
-      <span id="/2017/05/16/Mac/title:%20Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="leancloud_visitors" data-flag-title="Mac 的一些技巧">
+      <span id="/2018/03/09/Python/Python%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6%E8%AE%AD%E7%BB%83/" class="leancloud_visitors" data-flag-title="Python 进阶-数据结构与算法进阶训练 ">
       <p>
         <span class="leancloud-visitors-count"></span>
       </p>
@@ -1145,9 +1365,9 @@
               
 <div class="new-meta-item comments-count">
   
-  <a href="/2017/05/16/Mac/title:%20Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/#comments">
+  <a href="/2018/03/09/Python/Python%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6%E8%AE%AD%E7%BB%83/#comments">
     <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/2017/05/16/Mac/title:%20Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">0</span>
+    <span class="valine-comment-count" data-xid="/2018/03/09/Python/Python%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6%E8%AE%AD%E7%BB%83/">0</span>
     <span class="leancloud-comments-count">&nbsp;</span>
   </a>
 </div>
@@ -1172,13 +1392,403 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在使用 Mac 过程中的一些小技巧和快捷键.</p>
+        <p>训练数据筛选,排序,查找,统计,记录等方面的处理能力.</p>
       
     </div>
     
       
         <div class="button readmore">
-          <a href="/2017/05/16/Mac/title:%20Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+          <a href="/2018/03/09/Python/Python%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6%E8%AE%AD%E7%BB%83/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/2018/03/08/Python/%E8%A3%85%E9%A5%B0%E5%99%A8/">
+      装饰器
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="mcode.tech" rel="nofollow">
+    <img no-lazy src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/20200307155807_spowv.jpg">
+    <p>Mcode</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Python/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>Python</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 8, 2018</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2018/03/08/Python/%E8%A3%85%E9%A5%B0%E5%99%A8/" class="leancloud_visitors" data-flag-title="装饰器">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2018/03/08/Python/%E8%A3%85%E9%A5%B0%E5%99%A8/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2018/03/08/Python/%E8%A3%85%E9%A5%B0%E5%99%A8/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对装饰器的理解</p>
+      
+    </div>
+    
+      
+        <div class="button readmore">
+          <a href="/2018/03/08/Python/%E8%A3%85%E9%A5%B0%E5%99%A8/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/2018/03/07/Python/None,%E5%B8%83%E5%B0%94,%E7%A9%BA/">
+      None,布尔,空
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="mcode.tech" rel="nofollow">
+    <img no-lazy src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/20200307155807_spowv.jpg">
+    <p>Mcode</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Python/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>Python</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 7, 2018</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2018/03/07/Python/None,%E5%B8%83%E5%B0%94,%E7%A9%BA/" class="leancloud_visitors" data-flag-title="None,布尔,空">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2018/03/07/Python/None,%E5%B8%83%E5%B0%94,%E7%A9%BA/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2018/03/07/Python/None,%E5%B8%83%E5%B0%94,%E7%A9%BA/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>None,布尔,空的对应关系,还有对象和布尔的对应关系</p>
+      
+    </div>
+    
+      
+        <div class="button readmore">
+          <a href="/2018/03/07/Python/None,%E5%B8%83%E5%B0%94,%E7%A9%BA/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/2018/03/07/Python/python%E7%88%AC%E8%99%AB%E9%97%AE%E9%A2%98,%20SSL%E9%AA%8C%E8%AF%81%E9%97%AE%E9%A2%98/">
+      Python爬虫问题, SSL 验证出错
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="mcode.tech" rel="nofollow">
+    <img no-lazy src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/20200307155807_spowv.jpg">
+    <p>Mcode</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Python/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>Python</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 7, 2018</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2018/03/07/Python/python%E7%88%AC%E8%99%AB%E9%97%AE%E9%A2%98,%20SSL%E9%AA%8C%E8%AF%81%E9%97%AE%E9%A2%98/" class="leancloud_visitors" data-flag-title="Python爬虫问题, SSL 验证出错">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2018/03/07/Python/python%E7%88%AC%E8%99%AB%E9%97%AE%E9%A2%98,%20SSL%E9%AA%8C%E8%AF%81%E9%97%AE%E9%A2%98/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2018/03/07/Python/python%E7%88%AC%E8%99%AB%E9%97%AE%E9%A2%98,%20SSL%E9%AA%8C%E8%AF%81%E9%97%AE%E9%A2%98/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在使用 Python爬虫时,会遇到 urlopen 出错</p>
+      
+    </div>
+    
+      
+        <div class="button readmore">
+          <a href="/2018/03/07/Python/python%E7%88%AC%E8%99%AB%E9%97%AE%E9%A2%98,%20SSL%E9%AA%8C%E8%AF%81%E9%97%AE%E9%A2%98/">
             阅读全文 <i class="fas fa-chevron-right"></i>
           </a>
         </div>
@@ -1193,6 +1803,21 @@
     
   </section>
   
+    
+      <br>
+      <div class="prev-next">
+        
+        <p class="current">
+          1 / 3
+        </p>
+        
+          <a class="next" rel="next" href="/page/2/">
+            <section class="post next white-box shadow">
+              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
+        
+      </div>
     
     <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
     
@@ -1279,14 +1904,64 @@
       <ul class="entry navigation">
         
           <li><a class="flat-box"
+            title="/categories/App/" href="/categories/App/"
+            id="categoriesApp"
+            ><div class='name'>App</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/DB/" href="/categories/DB/"
+            id="categoriesDB"
+            ><div class='name'>DB</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Diary/" href="/categories/Diary/"
+            id="categoriesDiary"
+            ><div class='name'>Diary</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/Mac/" href="/categories/Mac/"
             id="categoriesMac"
             ><div class='name'>Mac</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
+            title="/categories/MySQL/" href="/categories/MySQL/"
+            id="categoriesMySQL"
+            ><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/Nginx/" href="/categories/Nginx/"
             id="categoriesNginx"
             ><div class='name'>Nginx</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Python/" href="/categories/Python/"
+            id="categoriesPython"
+            ><div class='name'>Python</div><div class='badge'>(9)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Python/" href="/categories/Python/"
+            id="categoriesPython"
+            ><div class='name'>Python  </div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E7%94%9F%E6%B4%BB/" href="/categories/%E7%94%9F%E6%B4%BB/"
+            id="categoriesE7949FE6B4BB"
+            ><div class='name'>生活</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E7%94%9F%E6%B4%BB/%E7%8C%AB/" href="/categories/%E7%94%9F%E6%B4%BB/%E7%8C%AB/"
+            id="categoriesE7949FE6B4BBE78CAB"
+            ><div class='name'>猫</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E7%AE%97%E6%B3%95/" href="/categories/%E7%AE%97%E6%B3%95/"
+            id="categoriesE7AE97E6B395"
+            ><div class='name'>算法</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E7%AE%97%E6%B3%95/Python/" href="/categories/%E7%AE%97%E6%B3%95/Python/"
+            id="categoriesE7AE97E6B395Python"
+            ><div class='name'>Python</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>
@@ -1310,7 +1985,7 @@
 
 
     <div class='content'>
-      <a href="/tags/Mac/" style="font-size: 24px; color: #555">Mac</a> <a href="/tags/server/" style="font-size: 14px; color: #999">server</a>
+      <a href="/tags/App/" style="font-size: 14px; color: #999">App</a> <a href="/tags/DB/" style="font-size: 14px; color: #999">DB</a> <a href="/tags/Games/" style="font-size: 14px; color: #999">Games</a> <a href="/tags/Mac/" style="font-size: 19px; color: #777">Mac</a> <a href="/tags/MySQL/" style="font-size: 14px; color: #999">MySQL</a> <a href="/tags/PS3/" style="font-size: 14px; color: #999">PS3</a> <a href="/tags/Python/" style="font-size: 24px; color: #555">Python</a> <a href="/tags/server/" style="font-size: 14px; color: #999">server</a> <a href="/tags/%E7%8C%AB/" style="font-size: 14px; color: #999">猫</a> <a href="/tags/%E7%AE%97%E6%B3%95%E6%8E%A2%E7%B4%A2/" style="font-size: 14px; color: #999">算法探索</a>
     </div>
   </section>
 
@@ -1386,16 +2061,16 @@
       
     
       
-        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+        <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
 </div>
       
     
       
-        本站使用
+        Use
         <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
-        作为主题，总访问量为
+        as theme, total visits
           <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-          次
+          times
         
       
     
