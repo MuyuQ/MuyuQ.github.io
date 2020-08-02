@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,7 +16,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档 - Mcode</title>
+  <title>Flaks配置文件相关 - Mcode</title>
   
 
   
@@ -68,7 +66,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover ' style="display: none;">
+    <cover class='cover post' style="display: none;">
       <div class='cover-body'>
   <div class='a'>
     
@@ -360,7 +358,7 @@
   </div>
   
 
-  <div class="l_body">
+  <div class="l_body nocover">
     <div class='body-wrapper' id="pjax-container">
       
         <!--此文件用来存放一些不方便取值的变量-->
@@ -369,9 +367,12 @@
 
 
 <div id="pjax-data" style="display: none">
-  <div id="pjax-ispage">false</div>
-  <div id="pjax-pageTitle"></div>
+  <div id="pjax-ispage">true</div>
+  <div id="pjax-pageTitle">Flaks配置文件相关</div>
   <div id="pjax-enable-cover">true</div>
+  
+  <div id="valine-path">none</div>
+  <div id="valine-placeholder">none</div>
   
   
 </div>
@@ -379,16 +380,16 @@
 
 <script>
   // 处理封面 此时 jquery 还没加载
-  if ("blog" == "none") { // 移除封面
+  if ("none" == "none") { // 移除封面
     document.getElementsByClassName('cover')[0].style.display = "none";
     document.getElementsByClassName('l_body')[0].classList.add("nocover");
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
   } else {
-    if ("blog" == "blog") { // 半屏
+    if ("none" == "blog") { // 半屏
       document.getElementsByClassName('cover')[0].classList.remove("full");
       document.getElementsByClassName('cover')[0].classList.add("half");
       document.getElementsByClassName('scroll-down')[0].style.display = "none";
-    } else if ("blog" == "docs") { // 全屏
+    } else if ("none" == "docs") { // 全屏
       document.getElementsByClassName('cover')[0].classList.remove("half");
       document.getElementsByClassName('cover')[0].classList.add("full");
       document.getElementsByClassName('scroll-down')[0].style.display = "";
@@ -403,109 +404,134 @@
       
 
 <div class='l_main'>
-	
-	  <article id="archive-page" class="post article white-box reveal shadow">
-	    <section class="archive">
-	      
-	        
-	          
-						
-							
-		            
-			          <div class="archive-item archive-year mark">
-			            <h2>2020</h2>
-			          </div>
-		      		
-		          <div class="archive-item archive-post mark">
-		            <a href="/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/">
-		              <time>07-28</time>
-		              <span class="title">
-		                
-		                  Flaks配置文件相关
-		                
-		                
-										
-										
-		              </span>
-		            </a>
-		          </div>
-						
-	      
-	          
-						
-							
-		          <div class="archive-item archive-post mark">
-		            <a href="/2020/07/21/hello-world/">
-		              <time>07-21</time>
-		              <span class="title">
-		                
-		                  Hello World
-		                
-		                
-										
-										
-		              </span>
-		            </a>
-		          </div>
-						
-	      
-	    </section>
-	  </article>
-	
-</div>
-<aside class='l_side'>
   
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/">
+      Flaks配置文件相关
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="mcode.tech" rel="nofollow">
+    <img no-lazy src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/20200307155807_spowv.jpg">
+    <p>Mcode</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jul 28, 2020</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>Flask的配置文件实际上是字典的一个子类,且能够像字典一样被修改.</p>
+<p>一般使用config.py文件进行配置管理.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_object(<span class="string">'app.sercure'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>当需要使用多个配置文件时,可以进行多次导入.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_object(<span class="string">'app.sercure'</span>)</span><br><span class="line">app.config.from_object(<span class="string">'app.setting'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>也可以使用py文件保存配置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.config.from_pyfile(<span class="string">'config.py'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>有一种有趣的模式,可以为配置使用类和继承:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span><span class="params">(object)</span>:</span></span><br><span class="line">    DEBUG = <span class="literal">False</span></span><br><span class="line">    TESTING = <span class="literal">False</span></span><br><span class="line">    DATABASE_URI = <span class="string">'sqlite://:memory:'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductionConfig</span><span class="params">(Config)</span>:</span></span><br><span class="line">    DATABASE_URI = <span class="string">'mysql://user@localhost/foo'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DevelopmentConfig</span><span class="params">(Config)</span>:</span></span><br><span class="line">    DEBUG = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestingConfig</span><span class="params">(Config)</span>:</span></span><br><span class="line">    TESTING = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>在调用时使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.config.from_object(<span class="string">'configmodule.ProductionConfig'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+          
+            <div class='article_footer'>
+              
+                
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://mcode-1253212768.cos.ap-beijing.myqcloud.com/20200307155807_spowv.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Mcode</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
+      <blockquote>
         
           
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
           
         
           
-            <a href="mailto:546536968@qq.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是：<a href=http://mcode.tech/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/>http://mcode.tech/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/</a></p>
           
         
-          
-            <a href="https://github.com/MuyuQ"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
+      </blockquote>
     
   </div>
 </section>
@@ -516,27 +542,171 @@
     
     
 
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-28T13:34:43+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jul 28, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://mcode.tech/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/&title=Flaks配置文件相关 - Mcode&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://mcode.tech/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/&title=Flaks配置文件相关 - Mcode&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://mcode.tech/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/&title=Flaks配置文件相关 - Mcode&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/07/21/hello-world/'>
+                <p class='title'>Hello World<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any ...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
   
 
   
     
     
 
-  
+
+
 
   
 
 
 </aside>
 
-
-
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
 
 
     </div>

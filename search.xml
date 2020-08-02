@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Flaks配置文件相关</title>
+      <link href="/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/"/>
+      <url>/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/</url>
+      
+        <content type="html"><![CDATA[<p>Flask的配置文件实际上是字典的一个子类,且能够像字典一样被修改.</p><p>一般使用config.py文件进行配置管理.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_object(<span class="string">'app.sercure'</span>)</span><br></pre></td></tr></table></figure><p>当需要使用多个配置文件时,可以进行多次导入.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_object(<span class="string">'app.sercure'</span>)</span><br><span class="line">app.config.from_object(<span class="string">'app.setting'</span>)</span><br></pre></td></tr></table></figure><p>也可以使用py文件保存配置</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.config.from_pyfile(<span class="string">'config.py'</span>)</span><br></pre></td></tr></table></figure><p>有一种有趣的模式,可以为配置使用类和继承:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span><span class="params">(object)</span>:</span></span><br><span class="line">    DEBUG = <span class="literal">False</span></span><br><span class="line">    TESTING = <span class="literal">False</span></span><br><span class="line">    DATABASE_URI = <span class="string">'sqlite://:memory:'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductionConfig</span><span class="params">(Config)</span>:</span></span><br><span class="line">    DATABASE_URI = <span class="string">'mysql://user@localhost/foo'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DevelopmentConfig</span><span class="params">(Config)</span>:</span></span><br><span class="line">    DEBUG = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestingConfig</span><span class="params">(Config)</span>:</span></span><br><span class="line">    TESTING = <span class="literal">True</span></span><br></pre></td></tr></table></figure><p>在调用时使用</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.config.from_object(<span class="string">'configmodule.ProductionConfig'</span>)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2020/07/21/hello-world/"/>
       <url>/2020/07/21/hello-world/</url>
