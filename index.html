@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mcode</title><meta name="author" content="Muyu"><meta name="copyright" content="Muyu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="简单，快乐">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mcode">
+<meta property="og:url" content="http://mcode.tech/index.html">
+<meta property="og:site_name" content="Mcode">
+<meta property="og:description" content="简单，快乐">
+<meta property="og:image" content="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/timg.jpeg">
+<meta property="article:author" content="Muyu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/timg.jpeg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://mcode.tech/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '4.2.1',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-10-07 19:27:41'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/timg.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">23</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">10</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">Categories</div><div class="length_num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://mcode-1253212768.cos.ap-beijing.myqcloud.com/thumb-1920-1106131.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mcode</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site-title">Mcode</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/" title="Flaks配置文件相关">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Flaks配置文件相关"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/" title="Flaks配置文件相关">Flaks配置文件相关</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-07-28T05:24:56.000Z" title="Created 2020-07-28 13:24:56">2020-07-28</time></span></div><div class="content">Flask的配置文件实际上是字典的一个子类,且能够像字典一样被修改.
+一般使用config.py文件进行配置管理.
+12app = Flask(__name__)app.config.from_object('app.sercure')
+
+当需要使用多个配置文件时,可以进行多次导入.
+123app = Flask(__name__)app.config.from_object('app.sercure')app.config.from_object('app.setting')
+
+也可以使用py文件保存配置
+1app.config.from_pyfile('config.py')
+
+有一种有趣的模式,可以为配置使用类和继承:
+12345678910111213class Config(object):    DEBUG = False    TESTING = False    DATABASE_URI = 'sqlite://:memory:'class ProductionConfig(Config):    DATABASE_URI = 'mysql://user@localho ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/07/21/hello-world/" title="Hello World">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/07/21/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-07-21T06:05:55.794Z" title="Created 2020-07-21 14:05:55">2020-07-21</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new "My New Post"
+
+More info: Writing
+Run server1$ hexo server
+
+More info: Server
+Generate static files1$ hexo generate
+
+More info: Generating
+Deploy to remote sites1$ hexo deploy
+
+More info: Deployment
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2018/03/16/mysql%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" title="MySQL语法基础">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL语法基础"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/03/16/mysql%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" title="MySQL语法基础">MySQL语法基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2018-03-16T09:14:14.000Z" title="Created 2018-03-16 17:14:14">2018-03-16</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/MySQL/">MySQL</a></span></div><div class="content">MySQL基础语法知识
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/" title="Nginx 进阶模块">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nginx 进阶模块"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/" title="Nginx 进阶模块">Nginx 进阶模块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2018-03-13T04:12:59.000Z" title="Created 2018-03-13 12:12:59">2018-03-13</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Nginx/">Nginx</a></span></div><div class="content">简介  
+  
+
+##静态资源配置
+配置语法- sendfile
+123Syntax: sendfile on | off;Default: sendfile off;Context: server,location,if in location
+
+
+
+配置语法- tcp-nopush
+1234Syntax: tcp_nopush on | offDefault: tcp_push off;Context: http,server,location#在 sendfile 开启的情况下, 提高网络包的传递效率
+
+不着急推送,而是将多个 tcp 打包进行集中发送,以提升效率.适合大文件
+配置语法- tcp-nodelay
+1234Syntax: tcp_nodelay on | offDefault: tcp_nodelay on;Context: http,server,location#在 keepalive 连接下,提高网络包的传递实时性
+
+配置语法-压缩
+1234#压缩等级设置Syntax: gzip_comp_level level;Default: gzip_comp_leve ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2018/03/13/Python/Nginx%E5%9F%BA%E7%A1%80&amp;%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" title="Nginx基础&amp;常用模块">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nginx基础&amp;常用模块"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/03/13/Python/Nginx%E5%9F%BA%E7%A1%80&amp;%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" title="Nginx基础&amp;常用模块">Nginx基础&amp;常用模块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2018-03-12T16:25:22.000Z" title="Created 2018-03-13 00:25:22">2018-03-13</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Python/">Python</a></span></div><div class="content">简介  
+  
+1234567nginx -v #查看 nginx 编译参数nginx -V#检查 nginx 配置文件语法是否正确nginx -t -c /etc/nginx/nginx.conf  #重新载入配置文件nginx -s reload
+
+Nginx 的中间件架构Nginx 是一个开源且高性能可靠的 HTTP 中间件,代理服务.
+##为什么选择 Nginx?
+原因1,IO 多路复用 epoll.
+
+IO 复用就是将多个 IO 流使用一个 socket 来传递.
+
+原因2,轻量级
+原因3,CPU 亲和(affinity)
+CPU 亲和是一种把 CPU 核心和 Nginx 工作进程绑定方式,把每个 worker 进程固定在一个 CPU 上执行,减少切换 CPU 的 cache miss, 获得更好的性能.
+原因4,sendfile
+Nginx 目录讲解
+
+
+路径
+类型
+作用
+
+
+
+/etc/logrotate.d/nginx
+配置文件
+Nginx 日志轮转,用于 logrotate 服务的日志切割
+
+
+
+
+
+
+
+/ etc/nginx
+目录,配置文件
+Nginx 主配置文件
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2018/03/09/Python/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/" title="列表推导式">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="列表推导式"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/03/09/Python/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/" title="列表推导式">列表推导式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2018-03-09T04:57:13.000Z" title="Created 2018-03-09 12:57:13">2018-03-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Python/">Python</a></span></div><div class="content">Python 推导式
+  
+
+在数学中有一个集合推导式
+用 map 函数123a = [1,2,3,4,5,6,7,8]r = list(map(lambda x : x*x*x,a))print(r)
+
+##用列表推导式
+123a = [1,2,3,4,5,6,7,8]b = [i**3 for i in a]print(b)
+
+可以看到,列表推导式更为简洁.
+如果有条件判断的话1​
+如果只选择大于等于5的部分​```a = [1,2,3,4,5,6,7,8]b = [i**3 for i in a if i &gt;=5]print(b)
+123456789101112131415161718如果用 map 函数的话,还需要结合 filter 来过滤.__tips:__ _set ,字典和元组也可以_&#96;&#96;&#96;pythonstudents &#x3D; &#123;    &#39;m&#39;:18,    &#39;y&#39;:20,    &#39;t&#39;:15&#125;b &#x3D; [key for key,value in student ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2018/03/09/Python/Python%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6%E8%AE%AD%E7%BB%83/" title="Python 进阶-数据结构与算法进阶训练 ">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python 进阶-数据结构与算法进阶训练 "></a></div><div class="recent-post-info"><a class="article-title" href="/2018/03/09/Python/Python%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6%E8%AE%AD%E7%BB%83/" title="Python 进阶-数据结构与算法进阶训练 ">Python 进阶-数据结构与算法进阶训练 </a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2018-03-08T19:53:27.000Z" title="Created 2018-03-09 03:53:27">2018-03-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Python/">Python  </a></span></div><div class="content">训练数据筛选,排序,查找,统计,记录等方面的处理能力.
+ 
+
+2.1如何在列表,字典,集合中根据条件筛选数据123456789101112131415161718192021from random import randinta = [1,2,3,4,5,-6,6,7,8,-2,-4]#用过滤器b = list(filter(lambda x:x&gt;0,a))print(b)#用列表推导式c = [i for i in a if i&gt;0 ]print(c)#字典推导式d = &#123;x:randint(60,100) for x in range(1,5)&#125;print(d)e = &#123; k:v for k,v in d.items() if v&gt;90&#125;print(e)#集合推导式f = set(a)g = (x for x in f if a%3==0)print(g)
+
+
+
+用函数,或者用推导式来根据条件进行筛选.
+推导式耗费的时间更少.
+2.2如何为元组中的每个元素命名,提高程序可读性
+实际案例,在学生信息系统中数据为固定格式:(名字 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2018/03/08/Python/%E8%A3%85%E9%A5%B0%E5%99%A8/" title="装饰器">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="装饰器"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/03/08/Python/%E8%A3%85%E9%A5%B0%E5%99%A8/" title="装饰器">装饰器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2018-03-08T15:18:49.000Z" title="Created 2018-03-08 23:18:49">2018-03-08</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Python/">Python</a></span></div><div class="content">对装饰器的理解
+
+
+
+装饰器实现的例子12345678910import timedef decorator(func):    def wrapper():        print(time.time())        func()    return wrapper@decoratordef f1():    print('This is a func')
+
+使用装饰器的原因 对修改是封闭的,对扩展是开放的.
+装饰器将核心业务代码和其他”装饰性”的代码进行分离,这样不仅提高了代码复用,而且也方便了代码管理.
+@就像是一个装饰一样,为函数增加了新的功能.
+带有一个参数的装饰器12345678910import timedef decorator(func):    def wrapper(func_name):        print(time.time())        func()    return wrapper@decoratordef f1(func_name):    print('This is a func'+func_name)
+
+不同数量参数的装饰器装饰 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2018/03/07/Python/None,%E5%B8%83%E5%B0%94,%E7%A9%BA/" title="None,布尔,空">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="None,布尔,空"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/03/07/Python/None,%E5%B8%83%E5%B0%94,%E7%A9%BA/" title="None,布尔,空">None,布尔,空</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2018-03-07T12:43:51.000Z" title="Created 2018-03-07 20:43:51">2018-03-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Python/">Python</a></span></div><div class="content">None,布尔,空的对应关系,还有对象和布尔的对应关系
+
+
+None 的定义空就是空, 不等于空字符串,不等于空列表,不等于0,不等于 False
+1234567891011121314151617a = 0b = ''c = []print(a==None)print(b==None)print(c==None)print(a is None)print(type(None))=&gt;FalseFalseFalseFalse&lt;class 'NoneType'&gt;
+
+__None 本身是一个对象,是一个类型__
+12345678910111213141516def fun():    return Nonea = fun()if not a:    print('S')else:    print('F')if a is None:    print('S')else:    print('F')    =&gt;SS
+
+12345678910111213141516def fun():    return Nonea =[]if not a:    print('S')e ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2018/03/07/Python/python%E7%88%AC%E8%99%AB%E9%97%AE%E9%A2%98,%20SSL%E9%AA%8C%E8%AF%81%E9%97%AE%E9%A2%98/" title="Python爬虫问题, SSL 验证出错">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python爬虫问题, SSL 验证出错"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/03/07/Python/python%E7%88%AC%E8%99%AB%E9%97%AE%E9%A2%98,%20SSL%E9%AA%8C%E8%AF%81%E9%97%AE%E9%A2%98/" title="Python爬虫问题, SSL 验证出错">Python爬虫问题, SSL 验证出错</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2018-03-07T07:50:31.000Z" title="Created 2018-03-07 15:50:31">2018-03-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Python/">Python</a></span></div><div class="content">在使用 Python爬虫时,会遇到 urlopen 出错
+
+
+#python爬虫问题, SSL验证问题
+问题调试时报错
+1urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed
+
+原因Python 升级到2.7.9以后映入到一个新特性,当使用 urllib.urlopen 打开一个 https 链接时,会验证一次 SSL 证书.
+当目标网站使用的而是一个自签名的证书时,就会抛出一个
+1URLError: &lt;urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed
+
+解决方案1.使用 ssl 创建未经验证的上下文,在 urlopen 中传入上下文参数
+12345import sslimport urllib2context = ssl._create_unverified_context()print urllib2.urlopen("https://www.panda.tv/cate/lol", cont ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/timg.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Muyu</div><div class="author-info__description">简单，快乐</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">23</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length_num">12</div></a></div></div><a class="button--animated" id="card-info-btn" href="https://github.com/xxxxxx" target="_blank" rel="noopener"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="sticky_layout"><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/" title="Flaks配置文件相关"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Flaks配置文件相关"/></a><div class="content"><a class="title" href="/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/" title="Flaks配置文件相关">Flaks配置文件相关</a><time datetime="2020-07-28T05:24:56.000Z" title="Created 2020-07-28 13:24:56">2020-07-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/21/hello-world/" title="Hello World"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2020/07/21/hello-world/" title="Hello World">Hello World</a><time datetime="2020-07-21T06:05:55.794Z" title="Created 2020-07-21 14:05:55">2020-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2018/03/16/mysql%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" title="MySQL语法基础"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL语法基础"/></a><div class="content"><a class="title" href="/2018/03/16/mysql%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" title="MySQL语法基础">MySQL语法基础</a><time datetime="2018-03-16T09:14:14.000Z" title="Created 2018-03-16 17:14:14">2018-03-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/" title="Nginx 进阶模块"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nginx 进阶模块"/></a><div class="content"><a class="title" href="/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/" title="Nginx 进阶模块">Nginx 进阶模块</a><time datetime="2018-03-13T04:12:59.000Z" title="Created 2018-03-13 12:12:59">2018-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2018/03/13/Python/Nginx%E5%9F%BA%E7%A1%80&amp;%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" title="Nginx基础&amp;常用模块"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nginx基础&amp;常用模块"/></a><div class="content"><a class="title" href="/2018/03/13/Python/Nginx%E5%9F%BA%E7%A1%80&amp;%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" title="Nginx基础&amp;常用模块">Nginx基础&amp;常用模块</a><time datetime="2018-03-12T16:25:22.000Z" title="Created 2018-03-13 00:25:22">2018-03-13</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>Categories</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/App/"><span class="card-category-list-name">App</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/DB/"><span class="card-category-list-name">DB</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Diary/"><span class="card-category-list-name">Diary</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Mac/"><span class="card-category-list-name">Mac</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MySQL/"><span class="card-category-list-name">MySQL</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Nginx/"><span class="card-category-list-name">Nginx</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Python/"><span class="card-category-list-name">Python</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Python/"><span class="card-category-list-name">Python  </span><span class="card-category-list-count">1</span></a></li>
+            <li class="card-category-list-item more is-center"><a class="card-category-list-link-more" href="/categories/">
+                <span>More</span><i class="fas fa-angle-right"></i></a></li>
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/App/" style="font-size: 1.1em; color: #999">App</a> <a href="/tags/DB/" style="font-size: 1.1em; color: #999">DB</a> <a href="/tags/Games/" style="font-size: 1.1em; color: #999">Games</a> <a href="/tags/Mac/" style="font-size: 1.3em; color: #99a1ac">Mac</a> <a href="/tags/MySQL/" style="font-size: 1.1em; color: #999">MySQL</a> <a href="/tags/PS3/" style="font-size: 1.1em; color: #999">PS3</a> <a href="/tags/Python/" style="font-size: 1.5em; color: #99a9bf">Python</a> <a href="/tags/server/" style="font-size: 1.1em; color: #999">server</a> <a href="/tags/%E7%8C%AB/" style="font-size: 1.1em; color: #999">猫</a> <a href="/tags/%E7%AE%97%E6%B3%95%E6%8E%A2%E7%B4%A2/" style="font-size: 1.1em; color: #999">算法探索</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">July 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/03/"><span class="card-archive-list-date">March 2018</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/01/"><span class="card-archive-list-date">January 2018</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2017/06/"><span class="card-archive-list-date">June 2017</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2017/05/"><span class="card-archive-list-date">May 2017</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2017/04/"><span class="card-archive-list-date">April 2017</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2017/03/"><span class="card-archive-list-date">March 2017</span><span class="card-archive-list-count">1</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">23</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2020-10-07T11:27:40.818Z"></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Muyu</div><div class="framework-info"><span>Framework </span><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
