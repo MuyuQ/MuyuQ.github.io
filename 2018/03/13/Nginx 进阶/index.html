@@ -1,31 +1,253 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nginx 进阶模块 | Mcode</title><meta name="keywords" content="server"><meta name="author" content="Muyu"><meta name="copyright" content="Muyu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="简介">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx 进阶模块">
+<meta property="og:url" content="http://mcode.tech/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/index.html">
+<meta property="og:site_name" content="Mcode">
+<meta property="og:description" content="简介">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2018-03-13T04:12:59.000Z">
+<meta property="article:modified_time" content="2018-03-13T04:13:29.000Z">
+<meta property="article:author" content="Muyu">
+<meta property="article:tag" content="server">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://mcode.tech/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '4.2.1',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
 
-block content
-  article#post(class="")
-    if top_img === false
-      include includes/header/post-info.pug
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
 
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2018-03-13 12:13:29'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache:theme.fragment_cache})
-      
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/timg.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">23</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">10</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">Categories</div><div class="length_num">12</div></a></div></div></div><hr/></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器缓存"><span class="toc-number">1.</span> <span class="toc-text">浏览器缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跨域访问"><span class="toc-number">2.</span> <span class="toc-text">跨域访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代理服务"><span class="toc-number">3.</span> <span class="toc-text">代理服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置语法"><span class="toc-number">3.0.1.</span> <span class="toc-text">配置语法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proxy-常用配置"><span class="toc-number">3.1.</span> <span class="toc-text">proxy 常用配置</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mcode</a></span><span id="menus"><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Nginx 进阶模块</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2018-03-13T04:12:59.000Z" title="Created 2018-03-13 12:12:59">2018-03-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2018-03-13T04:13:29.000Z" title="Updated 2018-03-13 12:13:29">2018-03-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Nginx/">Nginx</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>简介  </p>
+<a id="more"></a>  
+
+<p>##静态资源配置</p>
+<p>配置语法- sendfile</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax: sendfile on | off;</span><br><span class="line">Default: sendfile off;</span><br><span class="line">Context: server,location,if in location</span><br></pre></td></tr></table></figure>
+
+
+
+<p>配置语法- tcp-nopush</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Syntax: tcp_nopush on | off</span><br><span class="line">Default: tcp_push off;</span><br><span class="line">Context: http,server,location</span><br><span class="line"><span class="meta">#</span><span class="bash">在 sendfile 开启的情况下, 提高网络包的传递效率</span></span><br></pre></td></tr></table></figure>
+
+<p>不着急推送,而是将多个 tcp 打包进行集中发送,以提升效率.适合大文件</p>
+<p>配置语法- tcp-nodelay</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Syntax: tcp_nodelay on | off</span><br><span class="line">Default: tcp_nodelay on;</span><br><span class="line">Context: http,server,location</span><br><span class="line"><span class="meta">#</span><span class="bash">在 keepalive 连接下,提高网络包的传递实时性</span></span><br></pre></td></tr></table></figure>
+
+<p>配置语法-压缩</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">压缩等级设置</span></span><br><span class="line">Syntax: gzip_comp_level level;</span><br><span class="line">Default: gzip_comp_level 1;</span><br><span class="line">Context: http,server,location</span><br></pre></td></tr></table></figure>
+
+<p>扩展 Nginx 压缩模块</p>
+<p><strong><code>http_gzip_static_module</code></strong>-预读 gzip 功能. </p>
+<p><strong><code>http_gunzip_module</code></strong>-应用支持 gunzip 的压缩功能. (很少用到)</p>
+<p>gzip 对文本的压缩很好,对图片的压缩一般.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h2><p>HTTP 协议定义的缓存机制(如 Expires,Cache-control等)</p>
+<p>校验过期机制</p>
+<table>
+<thead>
+<tr>
+<th>校验是否过期</th>
+<th>Expires(http1.0),Cache-Control(http1.1) (max-age定义一个周期)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>如果 max-age 显示已经过期,则会检查后面两个校验</td>
+<td></td>
+</tr>
+<tr>
+<td>协议中 Etag头信息校验</td>
+<td>Etag(保存一个字符串,来识别缓存,类似”别名”)</td>
+</tr>
+<tr>
+<td>Last-Modified 头信息校验</td>
+<td>Last-Modified(保存一个时间,精确到秒,如果两个时间不一致,则服务器会传递一份新的)</td>
+</tr>
+</tbody></table>
+<p>Max-age&lt;=0时,就要求每次请求都会要求服务器检查是否过期.即使服务器端设置了 max-age, 但是浏览器为了实时更新,会将 request里 max-age 设置为0.</p>
+<p><img src="http://ojho2g8px.bkt.clouddn.com/WX20180312-121814@2x.png" alt=""></p>
+<p>静态资源配置场景设置</p>
+<p>配置语法-expires</p>
+<p>location / {</p>
+<p>expires  24h;</p>
+<p>}</p>
+<h2 id="跨域访问"><a href="#跨域访问" class="headerlink" title="跨域访问"></a>跨域访问</h2><p>为什么浏览器禁止跨域访问?</p>
+<p>不安全,容易出现 CSRF 攻击.</p>
+<p>nginx 怎么做?</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax: add_header name value [always];</span><br><span class="line">Default: - </span><br><span class="line">Context: http,server,location,if in location</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器允许跨域访问,则浏览器不会禁止. 通过检查Access-Control-Allow-Origin 头来确定是否允许.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location ~ .*\.(htm|html)$ &#123;</span><br><span class="line">    add_header Access-Control-Allow-Origin http://www.qq.com;</span><br><span class="line">    add_header Access-Control-Allow-Methods GET,POST,PUT,DELETE,OPTIONS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果将 域名替换成*,则会对 CSRF 攻击完全开放.</p>
+<p>##防盗链</p>
+<p>简单防盗链实现.</p>
+<p>防盗链设置思路.</p>
+<p>首要方式:区别哪些请求是非正常的用户请求</p>
+<p>基于 http_refer 防盗链配置模块</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> valid_referers表示允许哪些referer信息访问 </span></span><br><span class="line"><span class="meta">#</span><span class="bash">none表示允许没有带referer的信息过来    </span></span><br><span class="line"><span class="meta">#</span><span class="bash">blocked表示</span></span><br><span class="line"><span class="meta">#</span><span class="bash">ip 只允许这个ip的referer过来访问.</span></span><br><span class="line">valid_referers none blocked ip ;</span><br><span class="line"><span class="meta">if($</span><span class="bash">invalid_referer)&#123;</span></span><br><span class="line">    return 403;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>‘referer’</strong>是告诉服务器这个请求是从哪个页面链接过来的.</p>
+<p>如果直接访问页面,则在 access.log 里面为 “-“.</p>
+<p>进阶解决方案:</p>
+<p>后期补充</p>
+<h2 id="代理服务"><a href="#代理服务" class="headerlink" title="代理服务"></a>代理服务</h2><p>正向代理</p>
+<blockquote>
+<p>客户端—代理—|— 服务端</p>
+</blockquote>
+<p>反向代理</p>
+<blockquote>
+<p>客户端—|—代理—服务端</p>
+</blockquote>
+<p>区别在于代理的对象不一样.</p>
+<p>正向代理代理的对象是客户端.</p>
+<p>反向代理代理的对象是服务端.</p>
+<h4 id="配置语法"><a href="#配置语法" class="headerlink" title="配置语法"></a>配置语法</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Syntax: proxy_pass URL;</span><br><span class="line">Default: -</span><br><span class="line">Context: location,if in location,limit_except</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">http://ip:80/url/</span></span><br></pre></td></tr></table></figure>
+
+<p>服务器 A (10.211.55.15)  服务器 B(10.211.55.16)</p>
+<p>服务器A,</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    if($http_x_forwarded_for !~*"^10\.211\.55\.16")&#123;</span><br><span class="line">        return 403;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样设置后,所有不是来自服务器 B 的访问,都会被返回403.</p>
+<p>服务器 B,</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /&#123;</span><br><span class="line">    proxy_pass $http_host$request_uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意 uri 和 url 是不同的.</p>
+<p>uri 统一资源标志符, url 统一资源定位符.</p>
+<p>一个用于解析,一个用于直接传递路径.</p>
+<p>其他语法配置</p>
+<p><strong><code>proxy_buffering</code></strong>缓冲区</p>
+<p><strong><code>proxy_redirect</code></strong>跳转重定向</p>
+<p><strong><code>proxy_set_header</code></strong> 头信息 ,扩展 proxy_hide_header,proxy_set_body</p>
+<p><strong><code>proxy_connect_timeout</code></strong>  超时 ,扩展 proxy_read_timeout,proxy_send_timeout</p>
+<h3 id="proxy-常用配置"><a href="#proxy-常用配置" class="headerlink" title="proxy 常用配置"></a>proxy 常用配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">proxy_pass http://127.0.0.1:8080;</span><br><span class="line">proxy_redirect default;</span><br><span class="line"></span><br><span class="line">proxy_set_header Host $http_host;</span><br><span class="line">proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line"></span><br><span class="line">proxy_connect_timeout 30;</span><br><span class="line">proxy_send_timeout 60;</span><br><span class="line">proxy_read_timeout 60;</span><br><span class="line"></span><br><span class="line">proxy_buffer_size 32k;</span><br><span class="line">proxy_buffering on;</span><br><span class="line">proxy_buffers 4 128k;</span><br><span class="line">proxy_busy_buffers_size 256k;</span><br><span class="line">proxy_max_temp_file_size 256k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果有多个 proxy 方案,则可以使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    include proxy_params;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后把配置放在文件里.</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Muyu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://mcode.tech/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/">http://mcode.tech/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/server/">server</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2018/03/16/mysql%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">MySQL语法基础</div></div></a></div><div class="next-post pull-right"><a href="/2018/03/13/Python/Nginx%E5%9F%BA%E7%A1%80&amp;%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Nginx基础&amp;常用模块</div></div></a></div></nav></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Muyu</div><div class="framework-info"><span>Framework </span><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
