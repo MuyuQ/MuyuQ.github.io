@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>char和varchar区别</title>
+      <link href="/2020/10/14/DB/title%20char%E5%92%8Cvarchar%E5%8C%BA%E5%88%AB/"/>
+      <url>/2020/10/14/DB/title%20char%E5%92%8Cvarchar%E5%8C%BA%E5%88%AB/</url>
+      
+        <content type="html"><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><ol><li><p>char固定长度, varchar可变长度</p></li><li><p>如果实际存入数据长度小于指定长度,char会填充空格到指定长度,varhcar会缩短到实际长度.</p></li><li><p>如果实际存入数据长度大于指定长度,两者低版本会截取,高版本会报错</p></li><li><p>char效率比varchar高,但是相对而言费存储空间. 因为varchar会多一个字节记录长度.每次修改完数据后都会重新计算一次,导致效率变慢.</p></li><li><p>char在内存和硬盘上都会按照最大的指定长度分配空间,而varchar在硬盘上会按照实际长度分配空间,在内存上按照指定长度分配空间.这导致两个问题</p><p>5.1 如果将varchar指定长度非常大,会导致内存占用很高,反而不利.</p><p>5.2 如果定义varchar(30),更改前字符长度为10,系统分配了10个存储单位.但更改后字符长度变为20,还在最大长度范围内,但是原存储位置无法满足其存储需求.系统需要进行额外的操作,比如拆分和分页.</p></li><li><p>MyISAM表推荐使用char,缺点是占用磁盘</p><p>InnoDB表,推荐使用varchar.</p><p>如果存储的信息很短,那么推荐使用char,  因为varchar还有额外的开销.</p><p>如果是长度固定的数据,比如说uid,char更适合.</p><p>如果是频繁改动的column,推荐使用char,因为varchar每次都有额外的长度计算工作.</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python中一些小知识点</title>
       <link href="/2020/09/21/Python/%E4%B8%80%E4%BA%9B%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9/"/>
       <url>/2020/09/21/Python/%E4%B8%80%E4%BA%9B%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9/</url>
