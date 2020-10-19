@@ -1,0 +1,286 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mcode</title><meta name="author" content="Muyu"><meta name="copyright" content="Muyu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="简单，快乐">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mcode">
+<meta property="og:url" content="http://mcode.tech/index.html">
+<meta property="og:site_name" content="Mcode">
+<meta property="og:description" content="简单，快乐">
+<meta property="og:image" content="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/timg.jpeg">
+<meta property="article:author" content="Muyu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/timg.jpeg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://mcode.tech/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '4.2.1',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-10-19 20:07:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/timg.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">24</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">11</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">Categories</div><div class="length_num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://mcode-1253212768.cos.ap-beijing.myqcloud.com/thumb-1920-1106131.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mcode</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site-title">Mcode</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/10/19/%E5%AD%97%E5%85%B8%E7%9A%84%E5%B8%B8%E8%A7%84%E7%94%A8%E6%B3%95/" title="字典,默认值字典,有序字典">字典,默认值字典,有序字典</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-10-19T12:05:28.111Z" title="Created 2020-10-19 20:05:28">2020-10-19</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Python/">Python</a></span></div><div class="content">dict的常规用法,defaultdict和OrderDict的特点
+
+
+字典的常规用法Python中字典的基础就是哈希表.
+123456789101112131415161718192021222324252627282930313233# 字典的基本操作# 1.访问dic['key']dic.get('key')# 2.删除dic.pop['key']# 3.增加dic['key']= value# 4.遍历相关#   4.1 遍历keyfor key in dic.keys()#   4.2 遍历valuefor value in dic.values()#   4.3 遍历项for item in dic.items()#   4.4 遍历key和valuefor key, value in dic.items()# in判断'key' in dic'value' in dic.values()# 更新dic.update('key')# 浅拷贝, dic2 = dic.copy()# 设置默认值dic.setdefault(key,default=None)# setdefa ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/10/19/%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/" title="哈希和字典">哈希和字典</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-10-19T07:01:30.458Z" title="Created 2020-10-19 15:01:30">2020-10-19</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">Python中的字典底层依靠哈希表实现,使用开放寻址法解决冲突.
+哈希表是key-value类型的数据结构,一个键值需要按照一定规则存放.哈希函数就是这个规则.
+Python种要求1/3的数组是空的.增加元素可能会导致扩容,引发新的哈希冲突,导致新的哈希表种的键的次序发生变化,所以在字典遍历时不能添加和删除元素.
+因为字典要求总有空白元素的数组,所以字典在内存中的开销很大,实际是以空间换时间.
+哈希冲突因为数据是无限的,而提前准备的映射空间是有限的,所以总存在不同的数据经过哈希函数计算后的值相同,这就是哈希冲突.
+哈希冲突的解决方法1.开放寻址法从发生冲突的那个单元开始,按照一定个规则,从哈希表中找到一个空闲的单元,把发生冲突的元素存入到该单元中.
+比如:线性探查法,平方探查法,双散列函数探查法.
+缺点在于 不能真正的删除元素,只能做特殊标记为删除.不然会导致索引出错.只有到下一个元素需要插入时进行覆盖.
+比如 1,2,3,4 . 需要删除3,但是直接删除3会导致后续的索引错误. 只能在写入5时覆盖掉3.
+1,2,5,4.
+2.拉链法将相同哈希值的元素构成一个同义词链表,并将单链表的头 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/10/14/DB/title%20char%E5%92%8Cvarchar%E5%8C%BA%E5%88%AB/" title="char和varchar区别">char和varchar区别</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-10-14T09:24:40.925Z" title="Created 2020-10-14 17:24:40">2020-10-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/MySQL/">MySQL</a></span></div><div class="content">
+char固定长度, varchar可变长度
+
+如果实际存入数据长度小于指定长度,char会填充空格到指定长度,varhcar会缩短到实际长度.
+
+如果实际存入数据长度大于指定长度,两者低版本会截取,高版本会报错
+
+char效率比varchar高,但是相对而言费存储空间. 因为varchar会多一个字节记录长度.每次修改完数据后都会重新计算一次,导致效率变慢.
+
+char在内存和硬盘上都会按照最大的指定长度分配空间,而varchar在硬盘上会按照实际长度分配空间,在内存上按照指定长度分配空间.这导致两个问题
+5.1 如果将varchar指定长度非常大,会导致内存占用很高,反而不利.
+5.2 如果定义varchar(30),更改前字符长度为10,系统分配了10个存储单位.但更改后字符长度变为20,还在最大长度范围内,但是原存储位置无法满足其存储需求.系统需要进行额外的操作,比如拆分和分页.
+
+MyISAM表推荐使用char,缺点是占用磁盘
+InnoDB表,推荐使用varchar.
+如果存储的信息很短,那么推荐使用char,  因为varchar还有额外的开销.
+如果是长度固定的数据,比如 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/09/21/Python/%E4%B8%80%E4%BA%9B%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9/" title="Python中一些小知识点">Python中一些小知识点</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-09-21T06:15:36.138Z" title="Created 2020-09-21 14:15:36">2020-09-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Python/">Python</a></span></div><div class="content">一些需要注意的地方1.sqlalchemy中的filter(),filter_by()有什么区别123db.session.query.filter(Wish.launched == False)db.session.query.filter_by(uid=uid, launched=False)# 一个是关键字参数, 一个是条件表达式
+
+
+2. 继承第三方库的某个类12345678910class Query(BaseQuery):    def filter_by(self, **kwargs):      # kwargs是字典        if 'status' not in kwargs.keys():            kwargs['status'] = 1            # 重写完成后,继承基类        return super(Query,self).filter_by(**kwargs)# 在SQLAlchemy中留了继承基类的接口  db = SQLAlchemy(query_class=Query)
+
+
+3.链式调用触发sql严格模式(sql ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/" title="Flaks配置文件相关">Flaks配置文件相关</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-07-28T05:24:56.000Z" title="Created 2020-07-28 13:24:56">2020-07-28</time></span></div><div class="content">Flask的配置文件实际上是字典的一个子类,且能够像字典一样被修改.
+一般使用config.py文件进行配置管理.
+12app = Flask(__name__)app.config.from_object('app.sercure')
+
+当需要使用多个配置文件时,可以进行多次导入.
+123app = Flask(__name__)app.config.from_object('app.sercure')app.config.from_object('app.setting')
+
+也可以使用py文件保存配置
+1app.config.from_pyfile('config.py')
+
+有一种有趣的模式,可以为配置使用类和继承:
+12345678910111213class Config(object):    DEBUG = False    TESTING = False    DATABASE_URI = 'sqlite://:memory:'class ProductionConfig(Config):    DATABASE_URI = 'mysql://user@localho ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2018/03/16/mysql%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" title="MySQL语法基础">MySQL语法基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2018-03-16T09:14:14.000Z" title="Created 2018-03-16 17:14:14">2018-03-16</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/MySQL/">MySQL</a></span></div><div class="content">MySQL基础语法知识
+  mysql 的知识点
+
+显示表结构
+1desc + 表名;  或者 explain + 表名
+
+语法基础创建数据库123CREATE DATABASE &#96;mydatabase&#96;;USE &#96;mydatabase&#96;;反引号并不是必须的, 但这是一种规范,防止在创建数据库或表的时候用到了 MySQL 的关键字.
+
+MySQL 关键字,最好全部用大写, 这是一种规范,最好遵守.
+mysql 权限分离, 对于一个数据库,最好建立一个只读账户,防止失误.
+mysql 中的注释
+1--注释
+
+建表语句1234CREATE TABLE &#96;student&#96;(&#96;id&#96; INT NOT NULL AUTO_INCREMENT &#96;name&#96; VARCHAR(200) NOT NULL);
+
+常见类型
+int char varchar datetime
+ char 长度固定,存储速度快
+ Varchar 长度可变,节省空间
+建表方案1234567CREATE TABLE &#96;students&#96 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2018/03/13/Nginx%20%E8%BF%9B%E9%98%B6/" title="Nginx 进阶模块">Nginx 进阶模块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2018-03-13T04:12:59.000Z" title="Created 2018-03-13 12:12:59">2018-03-13</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Nginx/">Nginx</a></span></div><div class="content">简介  
+  
+
+##静态资源配置
+配置语法- sendfile
+123Syntax: sendfile on | off;Default: sendfile off;Context: server,location,if in location
+
+
+
+配置语法- tcp-nopush
+1234Syntax: tcp_nopush on | offDefault: tcp_push off;Context: http,server,location#在 sendfile 开启的情况下, 提高网络包的传递效率
+
+不着急推送,而是将多个 tcp 打包进行集中发送,以提升效率.适合大文件
+配置语法- tcp-nodelay
+1234Syntax: tcp_nodelay on | offDefault: tcp_nodelay on;Context: http,server,location#在 keepalive 连接下,提高网络包的传递实时性
+
+配置语法-压缩
+1234#压缩等级设置Syntax: gzip_comp_level level;Default: gzip_comp_leve ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2018/03/13/Python/Nginx%E5%9F%BA%E7%A1%80&amp;%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" title="Nginx基础&amp;常用模块">Nginx基础&amp;常用模块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2018-03-12T16:25:22.000Z" title="Created 2018-03-13 00:25:22">2018-03-13</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Python/">Python</a></span></div><div class="content">简介  
+  
+1234567nginx -v #查看 nginx 编译参数nginx -V#检查 nginx 配置文件语法是否正确nginx -t -c /etc/nginx/nginx.conf  #重新载入配置文件nginx -s reload
+
+Nginx 的中间件架构Nginx 是一个开源且高性能可靠的 HTTP 中间件,代理服务.
+##为什么选择 Nginx?
+原因1,IO 多路复用 epoll.
+
+IO 复用就是将多个 IO 流使用一个 socket 来传递.
+
+原因2,轻量级
+原因3,CPU 亲和(affinity)
+CPU 亲和是一种把 CPU 核心和 Nginx 工作进程绑定方式,把每个 worker 进程固定在一个 CPU 上执行,减少切换 CPU 的 cache miss, 获得更好的性能.
+原因4,sendfile
+Nginx 目录讲解
+
+
+路径
+类型
+作用
+
+
+
+/etc/logrotate.d/nginx
+配置文件
+Nginx 日志轮转,用于 logrotate 服务的日志切割
+
+
+
+
+
+
+
+/ etc/nginx
+目录,配置文件
+Nginx 主配置文件
+ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2018/03/09/Python/%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/" title="列表推导式">列表推导式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2018-03-09T04:57:13.000Z" title="Created 2018-03-09 12:57:13">2018-03-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Python/">Python</a></span></div><div class="content">Python 推导式
+  
+
+在数学中有一个集合推导式
+用 map 函数123a = [1,2,3,4,5,6,7,8]r = list(map(lambda x : x*x*x,a))print(r)
+
+##用列表推导式
+123a = [1,2,3,4,5,6,7,8]b = [i**3 for i in a]print(b)
+
+可以看到,列表推导式更为简洁.
+如果有条件判断的话1​
+如果只选择大于等于5的部分​```a = [1,2,3,4,5,6,7,8]b = [i**3 for i in a if i &gt;=5]print(b)
+123456789101112131415161718如果用 map 函数的话,还需要结合 filter 来过滤.__tips:__ _set ,字典和元组也可以_&#96;&#96;&#96;pythonstudents &#x3D; &#123;    &#39;m&#39;:18,    &#39;y&#39;:20,    &#39;t&#39;:15&#125;b &#x3D; [key for key,value in student ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2018/03/09/Python/Python%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E8%BF%9B%E9%98%B6%E8%AE%AD%E7%BB%83/" title="Python 进阶-数据结构与算法进阶训练 ">Python 进阶-数据结构与算法进阶训练 </a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2018-03-08T19:53:27.000Z" title="Created 2018-03-09 03:53:27">2018-03-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Python/">Python</a></span></div><div class="content">训练数据筛选,排序,查找,统计,记录等方面的处理能力.
+ 
+
+2.1如何在列表,字典,集合中根据条件筛选数据123456789101112131415161718192021from random import randinta = [1,2,3,4,5,-6,6,7,8,-2,-4]#用过滤器b = list(filter(lambda x:x&gt;0,a))print(b)#用列表推导式c = [i for i in a if i&gt;0 ]print(c)#字典推导式d = &#123;x:randint(60,100) for x in range(1,5)&#125;print(d)e = &#123; k:v for k,v in d.items() if v&gt;90&#125;print(e)#集合推导式f = set(a)g = (x for x in f if a%3==0)print(g)
+
+
+
+用函数,或者用推导式来根据条件进行筛选.
+推导式耗费的时间更少.
+2.2如何为元组中的每个元素命名,提高程序可读性
+实际案例,在学生信息系统中数据为固定格式:(名字 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="sticky_layout"><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">随便写写,简单记录</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/10/19/%E5%AD%97%E5%85%B8%E7%9A%84%E5%B8%B8%E8%A7%84%E7%94%A8%E6%B3%95/" title="字典,默认值字典,有序字典"><img src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/b0c093dcb681708cc181ba8c3da545440d242345.jpg@1320w_1148h.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="字典,默认值字典,有序字典"/></a><div class="content"><a class="title" href="/2020/10/19/%E5%AD%97%E5%85%B8%E7%9A%84%E5%B8%B8%E8%A7%84%E7%94%A8%E6%B3%95/" title="字典,默认值字典,有序字典">字典,默认值字典,有序字典</a><time datetime="2020-10-19T12:05:28.111Z" title="Created 2020-10-19 20:05:28">2020-10-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/10/19/%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/" title="哈希和字典"><img src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/b0c093dcb681708cc181ba8c3da545440d242345.jpg@1320w_1148h.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="哈希和字典"/></a><div class="content"><a class="title" href="/2020/10/19/%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/" title="哈希和字典">哈希和字典</a><time datetime="2020-10-19T07:01:30.458Z" title="Created 2020-10-19 15:01:30">2020-10-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/10/14/DB/title%20char%E5%92%8Cvarchar%E5%8C%BA%E5%88%AB/" title="char和varchar区别"><img src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/b0c093dcb681708cc181ba8c3da545440d242345.jpg@1320w_1148h.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="char和varchar区别"/></a><div class="content"><a class="title" href="/2020/10/14/DB/title%20char%E5%92%8Cvarchar%E5%8C%BA%E5%88%AB/" title="char和varchar区别">char和varchar区别</a><time datetime="2020-10-14T09:24:40.925Z" title="Created 2020-10-14 17:24:40">2020-10-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/09/21/Python/%E4%B8%80%E4%BA%9B%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9/" title="Python中一些小知识点"><img src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/b0c093dcb681708cc181ba8c3da545440d242345.jpg@1320w_1148h.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python中一些小知识点"/></a><div class="content"><a class="title" href="/2020/09/21/Python/%E4%B8%80%E4%BA%9B%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9/" title="Python中一些小知识点">Python中一些小知识点</a><time datetime="2020-09-21T06:15:36.138Z" title="Created 2020-09-21 14:15:36">2020-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/" title="Flaks配置文件相关"><img src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/b0c093dcb681708cc181ba8c3da545440d242345.jpg@1320w_1148h.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Flaks配置文件相关"/></a><div class="content"><a class="title" href="/2020/07/28/Flaks%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/" title="Flaks配置文件相关">Flaks配置文件相关</a><time datetime="2020-07-28T05:24:56.000Z" title="Created 2020-07-28 13:24:56">2020-07-28</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>Categories</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/App/"><span class="card-category-list-name">App</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/DB/"><span class="card-category-list-name">DB</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Diary/"><span class="card-category-list-name">Diary</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Mac/"><span class="card-category-list-name">Mac</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/MySQL/"><span class="card-category-list-name">MySQL</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Nginx/"><span class="card-category-list-name">Nginx</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Python/"><span class="card-category-list-name">Python</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="card-category-list-name">数据结构</span><span class="card-category-list-count">1</span></a></li>
+            <li class="card-category-list-item more is-center"><a class="card-category-list-link-more" href="/categories/">
+                <span>More</span><i class="fas fa-angle-right"></i></a></li>
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/App/" style="font-size: 1.1em; color: #999">App</a> <a href="/tags/DB/" style="font-size: 1.1em; color: #999">DB</a> <a href="/tags/Games/" style="font-size: 1.1em; color: #999">Games</a> <a href="/tags/Mac/" style="font-size: 1.3em; color: #99a1ac">Mac</a> <a href="/tags/MySQL/" style="font-size: 1.3em; color: #99a1ac">MySQL</a> <a href="/tags/PS3/" style="font-size: 1.1em; color: #999">PS3</a> <a href="/tags/Python/" style="font-size: 1.5em; color: #99a9bf">Python</a> <a href="/tags/server/" style="font-size: 1.1em; color: #999">server</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.1em; color: #999">数据结构</a> <a href="/tags/%E7%8C%AB/" style="font-size: 1.1em; color: #999">猫</a> <a href="/tags/%E7%AE%97%E6%B3%95%E6%8E%A2%E7%B4%A2/" style="font-size: 1.1em; color: #999">算法探索</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">October 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">September 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">July 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/03/"><span class="card-archive-list-date">March 2018</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2017/06/"><span class="card-archive-list-date">June 2017</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2017/05/"><span class="card-archive-list-date">May 2017</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2017/04/"><span class="card-archive-list-date">April 2017</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2017/03/"><span class="card-archive-list-date">March 2017</span><span class="card-archive-list-count">1</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">24</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2020-10-19T12:07:41.802Z"></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Muyu</div><div class="framework-info"><span>Framework </span><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
