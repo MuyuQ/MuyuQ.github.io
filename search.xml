@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Python的依赖管理,requirements.txt</title>
+      <link href="2020/11/06/%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/"/>
+      <url>2020/11/06/%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h1><p>在项目开发时会需要搭建和部署环境,如果没有使用pipenv提供的虚拟环境,一帮情况下会使用到requirement.txt来记录依赖列表.</p><h3 id="pip-freeze"><a href="#pip-freeze" class="headerlink" title="pip freeze"></a>pip freeze</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure><ul><li>方法虽然简单,但是会将全局环境内的所有依赖库全部统计,而项目只使用到其中的一部分.</li></ul><p>(在项目专有的虚拟环境中可以使用,但还是可能包含无关的依赖库)</p><ul><li>只会统计pip install方式安装的库.</li></ul><h3 id="pipreqs"><a href="#pipreqs" class="headerlink" title="pipreqs"></a>pipreqs</h3><p>推荐的方法.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install pipreqs</span><br><span class="line">pipres . --encoding=utf<span class="number">-8</span> --force</span><br></pre></td></tr></table></figure><ul><li>基于目录的方式进行统计.</li><li>根据代码中的import进行搜索</li></ul><h3 id="pipenv虚拟环境中的pipfile-lock"><a href="#pipenv虚拟环境中的pipfile-lock" class="headerlink" title="pipenv虚拟环境中的pipfile.lock"></a>pipenv虚拟环境中的pipfile.lock</h3><p>最推荐的方式,因为pipenv会记录子依赖,防止出现子依赖版本错误的情况.</p><p>但是lock时间略长,期待pipenv进一步完善.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Flask中的请求钩子</title>
       <link href="2020/11/05/%E8%AF%B7%E6%B1%82%E9%92%A9%E5%AD%90/"/>
       <url>2020/11/05/%E8%AF%B7%E6%B1%82%E9%92%A9%E5%AD%90/</url>
