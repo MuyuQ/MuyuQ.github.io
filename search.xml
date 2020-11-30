@@ -4,6 +4,69 @@
   
     
     <entry>
+      <title>Flask装饰器顺序问题</title>
+      <link href="2020/11/30/Flask%E8%A3%85%E9%A5%B0%E5%99%A8%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/"/>
+      <url>2020/11/30/Flask%E8%A3%85%E9%A5%B0%E5%99%A8%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/</url>
+      
+        <content type="html"><![CDATA[<p>当一个函数被多个装饰器修饰时,需要注意顺序问题.</p><p>装饰顺序由内向外,执行顺序由外向内.(因为函数和函数调用)</p><h2 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h2><p>例子:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator_a</span>(<span class="params">func</span>):</span></span><br><span class="line">  print(<span class="string">&#x27;Get in decorator_a&#x27;</span>)</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">inner_a</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">    print(<span class="string">&#x27;Get in inner_a&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">  <span class="keyword">return</span> inner_a</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator_b</span>(<span class="params">func</span>):</span></span><br><span class="line">  print(<span class="string">&#x27;Get in decorator_b&#x27;</span>)</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">inner_b</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">    print(<span class="string">&#x27;Get in inner_b&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">  <span class="keyword">return</span> inner_b</span><br><span class="line"> </span><br><span class="line"><span class="meta">@decorator_b</span></span><br><span class="line"><span class="meta">@decorator_a</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">  print(<span class="string">&#x27;Get in f&#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> x * <span class="number">2</span></span><br><span class="line"></span><br><span class="line">f(<span class="number">1</span>)</span><br></pre></td></tr></table></figure><p>如果按照一般思维会认为先执行decotator_a,再执行decotator_b,执行结果应该如下:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Get <span class="keyword">in</span> decotator_a</span><br><span class="line">Get <span class="keyword">in</span> inner_a</span><br><span class="line">Get <span class="keyword">in</span> decotator_b</span><br><span class="line">Get <span class="keyword">in</span> inner_b</span><br><span class="line">Get <span class="keyword">in</span> f</span><br></pre></td></tr></table></figure><p>但实际执行结果如下:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Get <span class="keyword">in</span> decorator_a</span><br><span class="line">Get <span class="keyword">in</span> decorator_b</span><br><span class="line">Get <span class="keyword">in</span> inner_b</span><br><span class="line">Get <span class="keyword">in</span> inner_a</span><br><span class="line">Get <span class="keyword">in</span> f</span><br></pre></td></tr></table></figure><h2 id="函数和函数调用的区别"><a href="#函数和函数调用的区别" class="headerlink" title="函数和函数调用的区别"></a>函数和函数调用的区别</h2><p>在解释上面的问题之前,删掉代码中的f(1),再次运行代码.得到结果如下:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Get <span class="keyword">in</span> decorator_a</span><br><span class="line">Get <span class="keyword">in</span> decorator_b</span><br></pre></td></tr></table></figure><p>这引出两个概念:函数和函数调用.</p><p>在上面的代码中,f称为函数,f(1)称为函数调用,后者是对前者传入参数进行计算后的结果.</p><p>f是指一个函数对象,它并没有运行.f(1)是对函数的调用,实际上运行了这个函数对象.</p><p>具体到decorator_b函数,它返回的是函数对象<code>inner_a</code>.</p><h2 id="装饰器函数在被装饰函数定义好后立即执行"><a href="#装饰器函数在被装饰函数定义好后立即执行" class="headerlink" title="装饰器函数在被装饰函数定义好后立即执行"></a>装饰器函数在被装饰函数定义好后立即执行</h2><p>当解释器执行到如下代码时,装饰器函数decorator_a已经被调用了,它以函数f为参数,返回了一个它内部生成的一个函数 inner_a:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@decorator_a</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">  <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 相当于</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">  <span class="keyword">pass</span></span><br><span class="line">f = decorator_a(f)</span><br></pre></td></tr></table></figure><p>传给f的参数会传递给inner_a.在调用inner_a时会把收到的参数传递给inner_a里的func,即经过修饰后的f.</p><h2 id="例子解释"><a href="#例子解释" class="headerlink" title="例子解释"></a>例子解释</h2><p>那么在最开始的代码中,初始化时就已经依次调用了decorator_a和decorator_b,输出Get in decorator_a和Get in decorator_b.这个时候f在decorator_b里的inner_b.因为f被没有被调用,所以inner_b没有执行.</p><p>当执行f(1)时.会导致inner_b被调用,输出Get in inner_b,然后在inner_b内部执行<code>return func</code>,此处的func实际上是被decorator_a修饰过的func,所以会调用inner_a,输出Get in inner_a返回原来的f.</p><p>因为这种嵌套修饰的机制,在实际应用场景中会先验证又没有登陆@login_required,再验证权限够不够@permision_allowed.</p><h2 id="route装饰器必须在最外层"><a href="#route装饰器必须在最外层" class="headerlink" title="route装饰器必须在最外层"></a>route装饰器必须在最外层</h2><p>正确写法如下:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(&#x27;/index&#x27;,method=[&#x27;POST&#x27;])</span></span><br><span class="line"><span class="meta">@login_required</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">  <span class="keyword">pass</span></span><br></pre></td></tr></table></figure><p>在Flask文档中描述如下:</p><ul><li>To use the decorator, apply it as innermost decorator to a view function. When applying further decorators, always remember that the <a href="https://flask.palletsprojects.com/en/1.0.x/api/#flask.Flask.route"><code>route()</code></a> decorator is the outermost.</li></ul><p>这是因为如果route装饰器在内层,那么就会被原始的view函数传递给add_url_rule.跳过登陆验证,直接指向最原始的视图函数.</p><p>上述装饰器用法等同于:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">  <span class="keyword">pass</span></span><br><span class="line">index = login_required(index)</span><br><span class="line">add_rule = app.add_url_rule(<span class="string">&#x27;/index&#x27;</span>,index)</span><br></pre></td></tr></table></figure><p>将route装饰器写在最外层,才能正常使用登陆验证,权限设置等</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SQL:多表查询</title>
+      <link href="2020/11/27/title%20SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/"/>
+      <url>2020/11/27/title%20SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/</url>
+      
+        <content type="html"><![CDATA[<p>多表查询分为inner join,outer join. outer join包括left join,right join,full join.根据具体需要进行选择.</p><ol><li>左联结(left join),联结结果保留左边的全部数据</li><li>右联结(right join),联结结果保留右边的全部数据</li><li>内联结(inner join),取两表的公共数据</li><li>完全联结(full join),只要其中某个表存在匹配，FULL JOIN 关键字就会返回行.</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> SQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="2020/11/20/SELECT%20DISTINCT%20%E8%AF%AD%E5%8F%A5/"/>
+      <url>2020/11/20/SELECT%20DISTINCT%20%E8%AF%AD%E5%8F%A5/</url>
+      
+        <content type="html"><![CDATA[<p>SQL 学习</p><p>INNER JOIN关键字</p><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Websites.name, access_log.count,access_log.date</span><br><span class="line"><span class="keyword">FROM</span> Websites</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> access_log</span><br><span class="line"><span class="keyword">ON</span> Websites.id = access_log.id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> access_log.count</span><br></pre></td></tr></table></figure><p>on 和where的区别:on在生成临时表时就会对比, where需要在临时表生成后再进行过滤</p><p>HAVING 关键字</p><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Websites.name, <span class="keyword">SUM</span>(access_log.count)<span class="keyword">as</span> <span class="keyword">sum</span> <span class="keyword">FROM</span>(accesslog</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> Websites</span><br><span class="line"><span class="keyword">ON</span> access_log.site_id = Websites.id)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> Websites.name</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">SUM</span>(access_log.count)&gt;<span class="number">200</span></span><br></pre></td></tr></table></figure><h2 id="SELECT-DISTINCT-语句"><a href="#SELECT-DISTINCT-语句" class="headerlink" title="SELECT DISTINCT 语句"></a>SELECT DISTINCT 语句</h2><p>在表中，一个列可能会包含多个重复值，有时您也许希望仅仅列出不同（distinct）的值。</p><p>DISTINCT 关键词用于返回唯一不同的值。</p><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> adep,<span class="keyword">SUM</span>(score) <span class="keyword">from</span> (ATHLETE</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> SCORE</span><br><span class="line"><span class="keyword">ON</span> ATHLETE.Aneo = SCORE.Aneo)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> adep</span><br></pre></td></tr></table></figure><p>100,0000</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python的依赖管理,requirements.txt</title>
       <link href="2020/11/06/%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/"/>
       <url>2020/11/06/%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/</url>
