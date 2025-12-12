@@ -1,0 +1,154 @@
+title: Python 一些数据类型辨析
+
+date: 2017/05/22 15:37:47
+
+tags: Python
+
+categories: Python
+
+---
+list,tuple,dict,set 四种数据类型的定义和异同.
+<!-- more -->
+# list
+
+list 是一种有序的集合,可以随时添加和删除其中的元素.
+
+```python
+	#声明
+    classmates = ['Mi','Bo','Tr']
+    #长度
+    len(classmates)
+    #索引
+    classmates[0]
+    ##倒数第一个索引
+    classmates[-1]
+    #追加
+    classmates.append('Ad')
+    #插入
+    classmates.insert(1,'Ja')
+    #删除末尾
+    classmates.pop()
+    ##删除指定位置
+    classmates.pop(1)
+    ##list的元素可以为其他的数据结构
+    L=['Ad',123,['ad','ds']]
+```
+
+# tuple
+
+tuple是**不可修改**的 list.一旦初始化后,就不能修改.
+
+因为**不可修改**,所以代码更为安全.
+
+```python
+#声明
+classmates = ('Mi','Bo','Tr')
+#因为括号()既可以表示 tuple, 又可以表示数学公式中的小括号.
+#故 Python 规定.只有1个元素的tuple 定义时必须加一个**,**,来消除歧义
+t=(1)
+t=(1,)
+```
+
+另外,因为特殊的结构,还存在一种"可变"的tuple.
+
+```python
+#"可变"的 tuple
+t = ("Ad",123,['sad','asda'])
+```
+
+因为, tuple 内含的 list 是可变的,而 tuple 本身的指向和结构并没有发生改变.
+
+# dict
+
+dict即为 dictionary, 在其他语言中也称为 map. 使用键-值(key-value)存储,查找速度极快.
+
+```python
+#声明
+d = {'Mi':95,'Bo':85,'Tr':75}	
+```
+
+## dict 和 list 查找速度对比
+
+list:
+
+把字典从第一页向后翻,直到查找到.
+
+所以 list 中查找元素, list 越大,查找越慢
+
+dict:
+
+给定一个 key 值,来计算出 value 的存放位置.
+
+比如" Mi",dict 在内部进行计算出 Mi对应存放 value 的"页码",即可直接取出 value.
+
+```python
+#初始化后赋值
+d['Mi']=97
+#Key 不存在会报错
+##判断 key 是否存在
+'Mi'in d
+##通过 get 方法,如果 key 不存在,返回指定 value
+d.get('Mi',-1)
+#删除一个 key
+d.pop('Bo')
+```
+
+**dict 是一种空间换时间的方法.**
+
+**dict 的 key 值是不可变对象**
+
+因为 key 值决定了 value 的存储位置,如果 key 值变化,则整个 dict 就陷入了混乱.
+
+list 是可变的,故 list 不能为 key.
+
+# set
+
+set 是无序无重复的元素集合
+
+**创建一个 set, 需要提供一个 list 作为输入集合**
+
+```python
+#声明
+>>>s = set([1,2,3,3])
+#重复元素会被自动过滤
+>>>s
+{1,2,3}
+#添加元素
+s.add(4)
+#删除元素
+s.remove(3)
+#可以做 交集,并集等操作
+>>> s1 = set([1, 2, 3])
+>>> s2 = set([2, 3, 4])
+>>> s1 & s2
+{2, 3}
+>>> s1 | s2
+{1, 2, 3, 4}
+```
+
+# 小结
+
+list是有序可变,中括号
+
+```Python
+list = ['ad',123,False]
+```
+
+tuple 是有序不可变,小括号
+
+```Python
+tuple = ('ada',1231,list,['dsa','dasda'])
+```
+
+dict 是无序, key-value ,中括号
+
+```python
+dict = {'Ad':96,'Mi':97}
+```
+
+set 是无序,无重复,set(list)
+
+```python
+s = set(['ads','dasd',123])
+```
+
