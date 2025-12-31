@@ -1,3 +1,4 @@
+# Flask端点与蓝图详解
 ## 端点(endpoint)
 
 端点(<font color=red>**Endpoint**</font>)是<font color=blue>**URL规则**</font>(rule)和<font color=blue>**视图函数**</font>(view_func)的中间媒介。它是Flask路由系统的核心概念，用于解耦URL与视图函数之间的直接绑定关系，提供更大的灵活性和可扩展性。

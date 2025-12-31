@@ -1,4 +1,4 @@
-# MySQL mysqldump --skip-add-drop-table 参数完全指南
+# MySQL mysqldump --skip-add-drop-table 参数
 
 ## 问题描述
 

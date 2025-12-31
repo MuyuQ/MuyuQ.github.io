@@ -1,4 +1,5 @@
-理一理可迭代对象,迭代器,生成器之间的联系.
+# 容器可迭代对象迭代器与生成器详解
+处理一理可迭代对象,迭代器,生成器之间的联系.
 
 ![在这里插入图片描述](https://mcode-1253212768.cos.ap-beijing.myqcloud.com/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NMX1dvcmxk,size_16,color_FFFFFF,t_70.png)
 

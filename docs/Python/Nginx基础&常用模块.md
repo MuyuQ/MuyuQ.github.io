@@ -1,3 +1,5 @@
+# Nginx 基础&常用模块
+## Nginx 的中间件架构
 
 简介  
 ```shell
@@ -9,8 +11,6 @@ nginx -t -c /etc/nginx/nginx.conf
 #重新载入配置文件
 nginx -s reload
 ```
-
-## Nginx 的中间件架构
 
 Nginx 是一个开源且高性能可靠的 HTTP 中间件,代理服务.
 

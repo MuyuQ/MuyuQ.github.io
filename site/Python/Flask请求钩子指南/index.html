@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../Python%E5%AE%B9%E5%99%A8%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8%E8%AF%A6%E8%A7%A3/">
+        <link rel="prev" href="../Flask%E8%A3%85%E9%A5%B0%E5%99%A8%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/">
       
       
-        <link rel="next" href="../Python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%BC%94%E8%BF%9B%E5%8E%86%E7%A8%8B/">
+        <link rel="next" href="../Nginx%E5%9F%BA%E7%A1%80&%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Python生成器详解与应用 - Mcode</title>
+        <title>Flask请求钩子 - Mcode</title>
       
     
     
@@ -111,6 +111,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#flask" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -141,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Python生成器详解与应用
+              Flask请求钩子
             
           </span>
         </div>
@@ -658,7 +663,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL mysqldump --skip-add-drop-table 参数完全指南
+    MySQL mysqldump --skip-add-drop-table 参数
   
 
     
@@ -943,10 +948,6 @@
       
         
       
-        
-      
-        
-      
     
     
     
@@ -1009,7 +1010,7 @@
   <span class="md-ellipsis">
     
   
-    list
+    list,tuple,dict,set 四种数据类型的定义和异同.
   
 
     
@@ -1037,7 +1038,7 @@
   <span class="md-ellipsis">
     
   
-    Flaks配置文件相关
+    Flask配置管理基础
   
 
     
@@ -1111,17 +1112,44 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Flask%E8%AF%B7%E6%B1%82%E9%92%A9%E5%AD%90%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flask请求钩子
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Flask请求钩子完全指南
+    Flask请求钩子
   
 
     
@@ -1130,6 +1158,77 @@
   
 
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        APP层的请求钩子
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="APP层的请求钩子">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flask_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flask请求钩子执行流程图
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        蓝图层的请求钩子
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心要点总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1149,7 +1248,7 @@
   <span class="md-ellipsis">
     
   
-    Nginx基础&常用模块
+    Nginx 基础&amp;常用模块
   
 
     
@@ -1170,14 +1269,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../None,%E5%B8%83%E5%B0%94,%E7%A9%BA/" class="md-nav__link">
+      <a href="../Python%20%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    None 的定义与特性
+    Python 列表推导式详解
   
 
     
@@ -1205,7 +1304,7 @@
   <span class="md-ellipsis">
     
   
-    Python 拷贝机制详解：直接赋值、浅拷贝与深拷贝的原理与应用Python 拷贝机制详解：直接赋值、浅拷贝与深拷贝的原理与应用
+    Python 拷贝机制详解：直接赋值、浅拷贝与深拷贝的原理与应用
   
 
     
@@ -1233,7 +1332,7 @@
   <span class="md-ellipsis">
     
   
-    Python future模块详解 实现新旧版本兼容的关键技术
+    Python __future__模块详解：实现新旧版本兼容的关键技术
   
 
     
@@ -1254,14 +1353,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../Python%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3%EF%BC%9A%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E3%80%81%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E4%B8%8E%E5%85%B3%E9%94%AE%E5%AD%97%E5%8F%82%E6%95%B0%E7%9A%84%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/" class="md-nav__link">
+      <a href="../Python%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3%EF%BC%9A%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E3%80%81%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E4%B8%8E%E5%85%B3%E9%94%AE%E5%AD%97%E5%8F%82%E6%95%B0/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    默认参数
+    函数参数详解：默认参数、可变参数与关键字参数
   
 
     
@@ -1289,7 +1388,7 @@
   <span class="md-ellipsis">
     
   
-    Python协程详解：从yield到yield from
+    协程详解：从yield到yield from
   
 
     
@@ -1338,14 +1437,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../Python%E5%AE%B9%E5%99%A8%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
+      <a href="../Python%E5%AE%B9%E5%99%A8%E3%80%81%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python容器可迭代对象迭代器与生成器详解
+    Python容器、可迭代对象、迭代器与生成器
   
 
     
@@ -1363,24 +1462,17 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Python%E5%AE%B9%E5%99%A8%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python生成器详解与应用
+    容器可迭代对象迭代器与生成器详解
   
 
     
@@ -1389,7 +1481,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1438,6 +1529,34 @@
     
   
     Python进阶-数据结构与算法进阶训练
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLAlchemy一对多关系完整指南：模型定义、关系建立与数据操作
   
 
     
@@ -1514,62 +1633,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E4%B8%80%E5%AF%B9%E5%A4%9A/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQLAlchemy一对多关系完整指南：模型定义、关系建立与数据操作
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Python 列表推导式详解
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/" class="md-nav__link">
         
   
@@ -1578,34 +1641,6 @@
     
   
     哈希冲突
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../%E5%AE%B9%E5%99%A8Container/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Python容器、可迭代对象、迭代器与生成器详解
   
 
     
@@ -1682,14 +1717,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+      <a href="../%E7%90%86%E8%A7%A3Python%E4%B8%ADNone%E3%80%81%E5%B8%83%E5%B0%94%E5%80%BC%E5%92%8C%E7%A9%BA%E5%80%BC%E7%9A%84%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    创建 generator
+    理解Python中None、布尔值和空值的对应关系
   
 
     
@@ -1991,7 +2026,7 @@
   <span class="md-ellipsis">
     
   
-    琥珀的猫粮选定 - 2023年最新猫粮评测与选择指南
+    琥珀的猫粮选定
   
 
     
@@ -2030,6 +2065,66 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        APP层的请求钩子
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="APP层的请求钩子">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flask_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flask请求钩子执行流程图
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        蓝图层的请求钩子
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心要点总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2092,9 +2187,171 @@
                 
                   
 
-  <h1>Python生成器详解与应用</h1>
+<h1 id="flask">Flask请求钩子<a class="headerlink" href="#flask" title="Permanent link">&para;</a></h1>
+<p>所谓<strong>请求钩子</strong>,就是在客户端与服务器交互的过程中统一处理<code>准备工作</code>或者<code>扫尾工作</code>.</p>
+<h3 id="app">APP层的请求钩子<a class="headerlink" href="#app" title="Permanent link">&para;</a></h3>
+<p>常见的请求钩子</p>
+<ul>
+<li><font color=red>before_first_request</font>：在处理第一个请求前运行。</li>
+<li><font color=red>before_request</font>：在每次请求前运行。</li>
+<li><font color=red>after_request</font>：<sub>~如果没有未处理的异常抛出，</sub>~在每次请求后运行。</li>
+<li><font color=red>teardown_request</font>：在每次请求后运行，即使有未处理的异常抛出。</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 从flask框架导入Flask类、url_for函数和redirect函数</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># Flask是主要的应用类，用于创建Web应用实例</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># url_for用于生成URL，redirect用于重定向</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">redirect</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># 创建Flask应用实例，__name__表示当前模块名称</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># __name__作为参数传递给Flask构造函数，用于确定应用的根路径和调试模式等</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># 定义路由/index，当访问该路径时会触发index函数</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/index&#39;</span><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">():</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="c1"># 故意制造除零异常，用于测试异常处理</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="c1"># 返回响应内容</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="k">return</span> <span class="s1">&#39;run index&#39;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="c1"># 定义路由/hello，当访问该路径时会触发hello函数</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/hello&#39;</span><span class="p">)</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="c1"># 返回简单的问候语</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="k">return</span> <span class="s1">&#39;hello&#39;</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="c1"># 注册before_first_request钩子，在处理第一个请求前运行</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="c1"># 该钩子函数只会在应用启动后接收到的第一个请求前执行一次</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="c1"># 通常用于初始化操作，如加载配置、建立数据库连接等</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="nd">@app</span><span class="o">.</span><span class="n">before_first_request</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="k">def</span><span class="w"> </span><span class="nf">b_f_r</span><span class="p">():</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="c1"># 打印提示信息，表示第一个请求前的准备工作</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    <span class="c1"># 这里只是简单打印信息，实际应用中可能会进行更复杂的初始化</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;before_first_request&#39;</span><span class="p">)</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="c1"># 注册before_request钩子，在每次请求前运行</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="nd">@app</span><span class="o">.</span><span class="n">before_request</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="k">def</span><span class="w"> </span><span class="nf">b_r</span><span class="p">():</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="c1"># 打印提示信息，表示每次请求前的准备工作</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;before_request&#39;</span><span class="p">)</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="c1"># 定义路由/handel_request，当访问该路径时会触发handel_request函数</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/handel_request&#39;</span><span class="p">)</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="k">def</span><span class="w"> </span><span class="nf">handel_request</span><span class="p">():</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>    <span class="c1"># 打印处理请求的信息</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;处理请求&#39;</span><span class="p">)</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>    <span class="c1"># 打印重定向信息</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;重定向到/h路径,测试404界面&#39;</span><span class="p">)</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>    <span class="c1"># 重定向到不存在的/h路径，用于测试404页面</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/h&#39;</span><span class="p">)</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="c1"># 注册after_request钩子，在每次请求后运行（除非有未处理的异常）</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="c1"># 接收response参数，表示HTTP响应对象</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="c1"># 该钩子用于在视图函数处理完请求后，返回响应给客户端前进行最后的处理</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="nd">@app</span><span class="o">.</span><span class="n">after_request</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="k">def</span><span class="w"> </span><span class="nf">a_r</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>    <span class="c1"># 打印提示信息，表示请求后的处理工作</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;after_request&#39;</span><span class="p">)</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>    <span class="c1"># 必须返回response对象，可以是原始响应或修改后的响应</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>    <span class="c1"># 可以在此处修改响应头、压缩响应内容等</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>    <span class="k">return</span> <span class="n">response</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="c1"># 注册teardown_request钩子，在每次请求后运行，即使有未处理的异常也会执行</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="c1"># 接收exception参数，记录请求处理过程中的异常信息</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="c1"># 无论请求处理成功与否，该钩子都会执行，用于资源清理工作</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="nd">@app</span><span class="o">.</span><span class="n">teardown_request</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="k">def</span><span class="w"> </span><span class="nf">t_r</span><span class="p">(</span><span class="n">exception</span><span class="p">):</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>    <span class="c1"># 打印提示信息，表示请求结束后的清理工作</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;teardown_request&#39;</span><span class="p">)</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>    <span class="c1"># 打印分隔线，标识请求处理流程结束</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;======请求结束=======&#39;</span><span class="p">)</span>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>    <span class="c1"># 可以选择返回响应对象，通常不需要</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>    <span class="c1"># 实际应用中，这里常用于关闭数据库连接、释放文件锁等资源清理操作</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>    <span class="k">return</span> <span class="n">exception</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="c1"># 程序入口点，当直接运行此脚本时执行</span>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>    <span class="c1"># 启动Flask开发服务器，监听本地5006端口</span>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5006</span><span class="p">)</span>
+</span></code></pre></div>
+<p>输出如下</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">before_first_request</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">before_request</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">处理请求</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">重定向到</span><span class="o">/</span><span class="n">h路径</span><span class="p">,</span><span class="n">测试404界面</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">after_request</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">teardown_request</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="o">======</span><span class="n">请求结束</span><span class="o">======</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="mf">127.0.0.1</span> <span class="o">-</span> <span class="o">-</span> <span class="p">[</span><span class="mi">05</span><span class="o">/</span><span class="n">Nov</span><span class="o">/</span><span class="mi">2020</span> <span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">05</span><span class="p">]</span> <span class="s2">&quot;GET /handel_request HTTP/1.1&quot;</span> <span class="mi">302</span> <span class="o">-</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="mf">127.0.0.1</span> <span class="o">-</span> <span class="o">-</span> <span class="p">[</span><span class="mi">05</span><span class="o">/</span><span class="n">Nov</span><span class="o">/</span><span class="mi">2020</span> <span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">05</span><span class="p">]</span> <span class="s2">&quot;GET /h HTTP/1.1&quot;</span> <span class="mi">404</span> <span class="o">-</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">before_request</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">after_request</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="n">teardown_request</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="o">======</span><span class="n">请求结束</span><span class="o">======</span>
+</span></code></pre></div>
+<h4 id="flask_1">Flask请求钩子执行流程图<a class="headerlink" href="#flask_1" title="Permanent link">&para;</a></h4>
+<p>下面的流程图展示了Flask请求钩子的执行顺序和条件：</p>
+<pre class="mermaid"><code>graph LR
+    A[客户端发起请求] --&gt; B[before_first_request]
+    B --&gt; C[before_request]
+    C --&gt; D[视图函数处理请求]
+    D --&gt; E{是否有未处理异常?}
+    E --&gt;|否| F[after_request]
+    E --&gt;|是| G[跳过after_request]
+    F --&gt; H[teardown_request]
+    G --&gt; H
+    H --&gt; I[返回响应给客户端]
 
-
+    style A fill:#FFE4C4,stroke:#333
+    style B fill:#87CEEB,stroke:#333
+    style C fill:#87CEEB,stroke:#333
+    style D fill:#98FB98,stroke:#333
+    style E fill:#FFD700,stroke:#333
+    style F fill:#87CEEB,stroke:#333
+    style G fill:#D3D3D3,stroke:#333
+    style H fill:#87CEEB,stroke:#333
+    style I fill:#FFE4C4,stroke:#333</code></pre>
+<p>值得注意的是<strong>after_request</strong>在<strong>Flask 0.7</strong>版本以下会因为bug导致遇到未处理的异常时不会运行.</p>
+<p>网上很多文章指出这个问题但没有标注版本.</p>
+<p>这个bug在0.7版本中已经修复.<a href="https://github.com/pallets/flask/issues/174">isseu</a></p>
+<p>下面是文档介绍:</p>
+<blockquote>
+<p>after_request(<strong>args*, *</strong>kwargs*)</p>
+<p>Register a function to be run after each request. Your function must take one parameter, a <a href="http://docs.jinkan.org/docs/flask/api.html#flask.Flask.response_class"><code>response_class</code></a> object and return a new response object or the same (see <a href="http://docs.jinkan.org/docs/flask/api.html#flask.Flask.process_response"><code>process_response()</code></a>).</p>
+<p>As of Flask 0.7 this function might not be executed at the end of the request in case an unhandled exception occurred.</p>
+</blockquote>
+<hr />
+<p>Note:可能是as of Flask 0.7 这里让大家理解出错. as of 既有截止的意思,也有从...时开始的意思.</p>
+<p>通过在handel_request函数中加入<code>4/0</code>错误,发现after_request依旧正常执行,可以确认as of在这里是截止的意思.</p>
+<hr />
+<p>既然after_request和teardown_request都是在请求结束后扫尾,那他们有什么不同呢?</p>
+<p>根据文档可知:</p>
+<ol>
+<li><strong>after_request</strong>必须传入一个<strong>response对象</strong>,必须返回一个<strong>response对象</strong>.</li>
+<li><strong>after_request</strong>一般用来统一修改响应的内容，比如<strong>修改响应头</strong>.</li>
+<li><strong>teardown_request</strong>需要传入一个参数记录异常,如果需要可以将这个异常返回.</li>
+<li><strong>teardown_request</strong>一般用来<strong>释放程序占用的资源</strong>,比如释放数据库连接.</li>
+</ol>
+<hr />
+<h3 id="_1">蓝图层的请求钩子<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>和app层类似,蓝图层的常用钩子如下:</p>
+<p>before_app_request,</p>
+<p>after_app_request,</p>
+<p>teardown_app_request.</p>
+<blockquote>
+<p>Such a function is executed after each request, even if outside of the blueprint.</p>
+</blockquote>
+<h2 id="_2">核心要点总结<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>请求钩子</strong>是在客户端与服务器交互过程中处理准备工作或扫尾工作的机制</li>
+<li><strong>before_first_request</strong>仅在处理第一个请求前运行一次，常用于初始化操作</li>
+<li><strong>before_request</strong>在每次请求前都会运行，可用于权限检查、日志记录等</li>
+<li><strong>after_request</strong>在每次请求后运行（除非有未处理的异常），主要用于修改响应内容</li>
+<li><strong>teardown_request</strong>在每次请求后运行，即使出现未处理的异常，用于资源清理</li>
+<li><strong>after_request</strong>与<strong>teardown_request</strong>的主要区别在于用途：前者用于修改响应内容，后者用于释放资源</li>
+<li>在<strong>Flask 0.7</strong>版本以下，<strong>after_request</strong>遇到未处理异常时可能不会执行</li>
+<li>蓝图层也提供了类似的钩子函数：<strong>before_app_request</strong>、<strong>after_app_request</strong>、<strong>teardown_app_request</strong></li>
+</ol>
 
 
 
@@ -2134,7 +2391,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../Python%E5%AE%B9%E5%99%A8%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8%E8%AF%A6%E8%A7%A3/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Python容器可迭代对象迭代器与生成器详解">
+          <a href="../Flask%E8%A3%85%E9%A5%B0%E5%99%A8%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Flask装饰器执行顺序">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
@@ -2144,20 +2401,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Python容器可迭代对象迭代器与生成器详解
+                Flask装饰器执行顺序
               </div>
             </div>
           </a>
         
         
           
-          <a href="../Python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%BC%94%E8%BF%9B%E5%8E%86%E7%A8%8B/" class="md-footer__link md-footer__link--next" aria-label="Next: Python虚拟环境演进历程">
+          <a href="../Nginx%E5%9F%BA%E7%A1%80&%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" class="md-footer__link md-footer__link--next" aria-label="Next: Nginx 基础&amp;amp;常用模块">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Python虚拟环境演进历程
+                Nginx 基础&amp;常用模块
               </div>
             </div>
             <div class="md-footer__button md-icon">
