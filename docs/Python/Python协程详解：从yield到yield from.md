@@ -1,13 +1,3 @@
-title: Python协程详解：从yield到yield from
-
-Date: 2020/10/20 14:15
-
-tags: Python
-
-categories: Python
-
----
-
 ## 协程是什么猫?
 
 **协程**(coroutinr),微线程.一个线程执行.

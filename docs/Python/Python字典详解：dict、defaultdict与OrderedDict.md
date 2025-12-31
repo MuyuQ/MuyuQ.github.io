@@ -1,10 +1,3 @@
----
-title: Python字典详解：dict、defaultdict与OrderedDict
-date: 2020-10-19 15:56
-tags: Python
-categories: Python
----
-
 # Python字典详解：dict、defaultdict与OrderedDict
 
 Python中字典的基础就是**哈希表**。

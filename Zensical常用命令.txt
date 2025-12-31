@@ -1,0 +1,13 @@
+启动服务
+uv run zensical serve
+
+构建
+uv run zensical build
+
+升级版本
+With an existing lock file, uv will stick to previous versions until you explicitly upgrade them. Run the following, replacing <version> with the version you want to upgrade to.
+uv lock --upgrade-package zensical
+
+To show the currently installed version, use:
+uv pip show zensical
+

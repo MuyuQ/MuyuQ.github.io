@@ -1,17 +1,3 @@
-title: Nginx 高级配置与性能优化完全指南
-
-date: 2018/03/13  12:12:59
-
-tags: server
-
-categories: Nginx
-
----
-
-简介  
-
-<!--more-->  
-
 ## **静态资源配置**
 
 配置语法- **sendfile**
