@@ -1,13 +1,13 @@
-youtube 上有很多不错的视频,奈何超清画质不能下载,所以琢磨了琢磨 youtube-dl, 用来下载 youtube 的视频.
+# YouTube 视频下载
 
-据说也可以下载优酷,土豆之类的.
+YouTube 上有许多优质视频，但超清画质无法直接下载，因此研究了一下 youtube-dl 工具来下载 YouTube 视频。
 
-使用 youtube-dl 进行下载, youtube-dl 自动调用 FFmpeg 进行音频和视频的合并.
+据称 youtube-dl 也支持优酷、土豆等国内视频平台的下载。
 
-在 zsh 内部写了别名,
+## 使用方法
 
-所以直接在终端中使用 youtube +要下载视频的 URL, 就能下载到 影片文件夹.
+使用 youtube-dl 进行下载，它会自动调用 FFmpeg 完成音视频的合并。
 
-默认下载分辨率最高的资源.
+在 zsh 中配置了别名后，只需在终端输入 `youtube` 加上目标视频的 URL，即可将视频下载到影片文件夹，默认下载最高分辨率的资源。
 
 ![Jietu20170616-144832](http://ojho2g8px.bkt.clouddn.com/2017-06-16-064954.jpg)

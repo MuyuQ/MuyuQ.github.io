@@ -10,7 +10,7 @@
 
 ## 本文约定
 
-如果有写 `效果如下：`， 在 MWeb 编辑状态下只有用 `CMD + 4` 或 `CMD + R` 预览才可以看效果。
+如果有写 `效果如下：`，在 MWeb 编辑模式下需使用 `CMD + 4` 或 `CMD + R` 预览才能看到效果。
 
 ## 标题
 
@@ -35,26 +35,27 @@ Markdown 语法：
 Markdown 语法：
 
 ```
-*这些文字会生成`<em>`*
-_这些文字会生成`<u>`_
+*这些文字会生成 `<em>`*
+_这些文字在 MWeb 中会生成 `<u>`（下划线）_
 
 **这些文字会生成`<strong>`**
 __这些文字会生成`<strong>`__
 ```
 
-在 MWeb 中的快捷键为： `CMD + U`、`CMD + I`、`CMD + B`
+在 MWeb 中的快捷键为：`CMD + U`、`CMD + I`、`CMD + B`
+
 效果如下：
 
-*这些文字会生成`<em>`*
-_这些文字会生成`<u>`_
+*这些文字会生成 `<em>`*
+_这些文字在 MWeb 中会生成 `<u>`（下划线）_
 
 **这些文字会生成`<strong>`**
 __这些文字会生成`<strong>`__
 
 ## 换行
 
-四个及以上空格加回车。
-如果不想打这么多空格，只要回车就为换行，请勾选：`Preferences` - `Themes` - `Translate newlines to <br> tags`
+在行尾输入四个及以上空格后回车即可换行。
+如果不想输入这么多空格，希望直接回车即可换行，请在设置中勾选：`Preferences` - `Themes` - `Translate newlines to <br> tags`
 
 ## 列表
 
@@ -69,7 +70,8 @@ Markdown 语法：
 * 项目二的子项目二
 ```
 
-在 MWeb 中的快捷键为： `Option + U`
+在 MWeb 中的快捷键为：`Option + U`
+
 效果如下：
 
 * 项目一 无序列表 `* + 空格键`
@@ -120,13 +122,14 @@ Markdown 语法：
 格式: ![Alt Text](url)
 ```
 
-`Control + Shift + I` 可插入Markdown语法。
-如果是 MWeb 的文档库中的文档，还可以用拖放图片、`CMD + V` 粘贴、`CMD + Option + I` 导入这三种方式来增加图片。
+`Control + Shift + I` 可插入 Markdown 语法。
+如果是 MWeb 的文档库中的文档，还可以用拖放图片、`CMD + V` 粘贴、`CMD + Option + I` 导入这三种方式来添加图片。
+
 效果如下：
 
 ![GitHub set up](http://zh.mweb.im/asset/img/set-up-git.gif)
 
-MWeb 引入的特别的语法来设置图片宽度，方法是在图片描述后加 `-w + 图片宽度` 即可，比如说要设置上面的图片的宽度为 140，语法如下：
+MWeb 引入了特别的语法来设置图片宽度，方法是在图片描述后加 `-w + 图片宽度` 即可。比如说要设置上面的图片宽度为 140，语法如下：
 
 ![GitHub set up-w140](http://zh.mweb.im/asset/img/set-up-git.gif)
 
@@ -137,16 +140,17 @@ Markdown 语法：
 ```
 email <example@example.com>
 [GitHub](http://github.com)
-自动生成连接  <http://www.github.com/>
+自动生成链接 <http://www.github.com/>
 ```
 
-`Control + Shift + L` 可插入Markdown语法。
-如果是 MWeb 的文档库中的文档，拖放或`CMD + Option + I` 导入非图片时，会生成连接。
+`Control + Shift + L` 可插入 Markdown 语法。
+如果是 MWeb 的文档库中的文档，拖放或使用 `CMD + Option + I` 导入非图片文件时，会生成链接。
+
 效果如下：
 
-Email 连接： <example@example.com>
-[连接标题Github网站](http://github.com)
-自动生成连接像： <http://www.github.com/> 这样
+Email 链接：<example@example.com>
+[链接标题 Github 网站](http://github.com)
+自动生成链接像 <http://www.github.com/> 这样
 
 ## 区块引用
 
@@ -155,15 +159,16 @@ Markdown 语法：
 ```
 某某说:
 > 第一行引用
-> 第二行费用文字
+> 第二行引用文字
 ```
 
-`CMD + Shift + B` 可插入Markdown语法。
+`CMD + Shift + B` 可插入 Markdown 语法。
+
 效果如下：
 
 某某说:
 > 第一行引用
-> 第二行费用文字
+> 第二行引用文字
 
 ## 行内代码
 
@@ -173,25 +178,28 @@ Markdown 语法：
 像这样即可：`<addr>` `code`
 ```
 
-`CMD + K` 可插入Markdown语法。
+`CMD + K` 可插入 Markdown 语法。
+
 效果如下：
 
 像这样即可：`<addr>` `code`
 
-## 多行或者一段代码
+## 多行代码块
 
 Markdown 语法：
 
+````
     ```js
     function fancyAlert(arg) {
         if(arg) {
-        $.facebox({div:'#foo'})
+            $.facebox({div:'#foo'})
         }
-    
     }
     ```
+````
 
-`CMD + Shift + K` 可插入Markdown语法。
+`CMD + Shift + K` 可插入 Markdown 语法。
+
 效果如下：
 
 ```js
@@ -203,7 +211,7 @@ function fancyAlert(arg) {
 }
 ```
 
-## 顺序图或流程图
+## 时序图与流程图
 
 Markdown 语法：
 
@@ -224,7 +232,7 @@ Markdown 语法：
     cond(no)->op
     ```
 
-效果如下（ `Preferences` - `Themes` - `Enable sequence & flow chart` 才会看到效果 ）：
+效果如下（需在 `Preferences` - `Themes` 中勾选 `Enable sequence & flow chart` 才会看到效果）：
 
 ```sequence
 张三->李四: 嘿，小四儿, 写博客了没?
@@ -243,7 +251,7 @@ cond(yes)->e
 cond(no)->op
 ```
 
-更多请参考：<http://bramp.github.io/js-sequence-diagrams/>, <http://adrai.github.io/flowchart.js/>
+更多请参考：<http://bramp.github.io/js-sequence-diagrams/>、<http://adrai.github.io/flowchart.js/>
 
 ## 表格
 
@@ -268,15 +276,15 @@ Markdown 语法：
 
 Markdown 语法：
 
-加删除线像这样用： ~~删除这些~~
+使用双波浪号包裹文字即可添加删除线：`~~删除这些~~`
 
 效果如下：
 
-加删除线像这样用： ~~删除这些~~
+~~删除这些~~
 
 ## 分隔线
 
-以下三种方式都可以生成分隔线：
+以下三种写法均可生成分隔线：
 
 
 ```
@@ -312,7 +320,7 @@ $$	x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
 行内公式： $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$
 ```
 
-效果如下（`Preferences` - `Themes` - `Enable MathJax` 才会看到效果）：
+效果如下（需在 `Preferences` - `Themes` 中勾选 `Enable MathJax` 才会看到效果）：
 
 块级公式：
 $$	x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
@@ -345,8 +353,9 @@ Markdown 语法：
 <!-- comment -->
 <!-- more -->
 
-Actions->Insert Read More Comment *或者* `Command + .`
-**注** 阅读更多的功能只用在生成网站或博客时，插入时注意要后空一行。
+通过 `Actions -> Insert Read More Comment` 或快捷键 `Command + .` 插入。
+
+**注意**："阅读更多"功能仅用于生成网站或博客时，插入后需空一行。
 
 ## TOC
 
@@ -359,5 +368,3 @@ Markdown 语法：
 效果如下：
 
 [TOC]
-
-

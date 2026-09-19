@@ -1,15 +1,15 @@
 # Flask请求钩子
 
-所谓**请求钩子**,就是在客户端与服务器交互的过程中统一处理`准备工作`或者`扫尾工作`.
+**请求钩子**（Request Hook）是在客户端与服务器交互过程中，统一处理`准备工作`或`扫尾工作`的机制。
 
-### APP层的请求钩子
+## APP层的请求钩子
 
-常见的请求钩子
+常见的请求钩子：
 
 - <font color=red>before_first_request</font>：在处理第一个请求前运行。
 - <font color=red>before_request</font>：在每次请求前运行。
-- <font color=red>after_request</font>：~~如果没有未处理的异常抛出，~~在每次请求后运行。
-- <font color=red>teardown_request</font>：在每次请求后运行，即使有未处理的异常抛出。
+- <font color=red>after_request</font>：在每次请求完成后运行（除非有未捕获的异常）。
+- <font color=red>teardown_request</font>：在每次请求结束后运行，即使存在未捕获的异常也会执行。
 
 ```python
 # 从flask框架导入Flask类、url_for函数和redirect函数
@@ -56,7 +56,7 @@ def handel_request():
     # 打印处理请求的信息
     print('处理请求')
     # 打印重定向信息
-    print('重定向到/h路径,测试404界面')
+    print('重定向到/h路径，测试404界面')
     # 重定向到不存在的/h路径，用于测试404页面
     return redirect('/h')
 
@@ -90,13 +90,13 @@ if __name__ == '__main__':
     app.run(host='localhost', port=5006)
 ```
 
-输出如下
+输出如下：
 
-```python
+```text
 before_first_request
 before_request
 处理请求
-重定向到/h路径,测试404界面
+重定向到/h路径，测试404界面
 after_request
 teardown_request
 ======请求结束======
@@ -108,7 +108,7 @@ teardown_request
 ======请求结束======
 ```
 
-#### Flask请求钩子执行流程图
+### Flask请求钩子执行流程图
 
 下面的流程图展示了Flask请求钩子的执行顺序和条件：
 
@@ -135,59 +135,54 @@ graph LR
     style I fill:#FFE4C4,stroke:#333
 ```
 
-值得注意的是**after_request**在**Flask 0.7**版本以下会因为bug导致遇到未处理的异常时不会运行.
+值得注意的是，在 **Flask 0.7** 之前的版本中，**after_request** 在遇到未捕获的异常时不会被执行。
 
-网上很多文章指出这个问题但没有标注版本.
+不少文章提到了这个行为，但往往没有注明适用的版本范围。
 
-这个bug在0.7版本中已经修复.[isseu](https://github.com/pallets/flask/issues/174)
+该问题已在 Flask 0.7 中修复。[相关 issue](https://github.com/pallets/flask/issues/174)
 
-下面是文档介绍:
+下面是文档介绍：
 
->after_request(**args*, ***kwargs*)
+> after_request(**args*, ***kwargs*)
 >
->Register a function to be run after each request. Your function must take one parameter, a [`response_class`](http://docs.jinkan.org/docs/flask/api.html#flask.Flask.response_class) object and return a new response object or the same (see [`process_response()`](http://docs.jinkan.org/docs/flask/api.html#flask.Flask.process_response)).
+> Register a function to be run after each request. Your function must take one parameter, a [`response_class`](http://docs.jinkan.org/docs/flask/api.html#flask.Flask.response_class) object and return a new response object or the same (see [`process_response()`](http://docs.jinkan.org/docs/flask/api.html#flask.Flask.process_response)).
 >
->As of Flask 0.7 this function might not be executed at the end of the request in case an unhandled exception occurred.
+> As of Flask 0.7 this function might not be executed at the end of the request in case an unhandled exception occurred.
 
 ---
 
-Note:可能是as of Flask 0.7 这里让大家理解出错. as of 既有截止的意思,也有从...时开始的意思.
+> 这里的 "as of" 容易引起理解偏差——它既有"截止"的含义，也有"从……起"的含义。
 
-通过在handel_request函数中加入`4/0`错误,发现after_request依旧正常执行,可以确认as of在这里是截止的意思.
+经测试验证，在请求处理函数中人为触发异常后，`after_request` 仍然正常执行。由此可以确认，此处 "as of" 应理解为"截止"，即在 Flask 0.7 版本中该行为已被修正（未捕获异常时 `after_request` 不再执行）。
 
----
+既然 `after_request` 和 `teardown_request` 都在请求结束后执行，它们的区别是什么呢？
 
-既然after_request和teardown_request都是在请求结束后扫尾,那他们有什么不同呢?
+根据官方文档，两者的主要区别如下：
 
-根据文档可知:
-
-1. **after_request**必须传入一个**response对象**,必须返回一个**response对象**.
-2. **after_request**一般用来统一修改响应的内容，比如**修改响应头**.
-3. **teardown_request**需要传入一个参数记录异常,如果需要可以将这个异常返回.
-4. **teardown_request**一般用来**释放程序占用的资源**,比如释放数据库连接.
+1. **after_request** 必须接收一个 **response 对象**作为参数，并且必须返回一个 **response 对象**。
+2. **after_request** 通常用于统一修改响应内容，例如**修改响应头**。
+3. **teardown_request** 接收一个异常参数，用于记录请求处理过程中的异常信息。
+4. **teardown_request** 通常用于**释放程序占用的资源**，例如关闭数据库连接。
 
 ---
 
-### 蓝图层的请求钩子
+## 蓝图层的请求钩子
 
-和app层类似,蓝图层的常用钩子如下:
+和APP层类似，蓝图层的常用钩子如下：
 
-before_app_request,
-
-after_app_request,
-
-teardown_app_request.
+- `before_app_request`
+- `after_app_request`
+- `teardown_app_request`
 
 > Such a function is executed after each request, even if outside of the blueprint.
 
 ## 核心要点总结
 
 1. **请求钩子**是在客户端与服务器交互过程中处理准备工作或扫尾工作的机制
-2. **before_first_request**仅在处理第一个请求前运行一次，常用于初始化操作
-3. **before_request**在每次请求前都会运行，可用于权限检查、日志记录等
-4. **after_request**在每次请求后运行（除非有未处理的异常），主要用于修改响应内容
-5. **teardown_request**在每次请求后运行，即使出现未处理的异常，用于资源清理
-6. **after_request**与**teardown_request**的主要区别在于用途：前者用于修改响应内容，后者用于释放资源
-7. 在**Flask 0.7**版本以下，**after_request**遇到未处理异常时可能不会执行
+2. **before_first_request** 仅在处理第一个请求前运行一次，常用于初始化操作
+3. **before_request** 在每次请求前都会运行，可用于权限检查、日志记录等
+4. **after_request** 在每次请求后运行（除非有未处理的异常），主要用于修改响应内容
+5. **teardown_request** 在每次请求后运行，即使出现未处理的异常，用于资源清理
+6. **after_request** 与 **teardown_request** 的主要区别在于用途：前者用于修改响应内容，后者用于释放资源
+7. 在 **Flask 0.7** 版本以下，**after_request** 遇到未处理异常时可能不会执行
 8. 蓝图层也提供了类似的钩子函数：**before_app_request**、**after_app_request**、**teardown_app_request**
-

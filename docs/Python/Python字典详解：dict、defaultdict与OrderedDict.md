@@ -1,6 +1,6 @@
 # Python字典详解：dict、defaultdict与OrderedDict
 
-Python中字典的基础就是**哈希表**。
+Python 中的字典（dict）是基于**哈希表**（Hash Table）实现的数据结构，提供了高效的键值对存储与查找能力。
 
 下面的图表展示了三种字典类型的特性和使用场景：
 
@@ -11,7 +11,7 @@ graph LR
     A --> D(OrderedDict)
     
     B --> B1[基本字典类型]
-    B --> B2[无序存储]
+    B --> B2[基于哈希表存储]
     B --> B3[访问不存在键抛出KeyError]
     
     C --> C1[带默认值的字典]
@@ -28,23 +28,27 @@ graph LR
 ## 字典的基本操作
 
 ### 1. 访问字典元素
+
 ```python
 dic['key']        # 直接通过键访问字典元素，如果键不存在会抛出KeyError异常
 dic.get('key')    # 通过get方法访问字典元素，即使键不存在也不会抛出异常，而是返回None
 ```
 
 ### 2. 删除字典元素
+
 ```python
-dic.pop('key')  # 修复语法错误：原为 dic.pop['key']
+dic.pop('key')
 # 使用pop方法删除指定键的元素，并返回该键对应的值
 ```
 
 ### 3. 增加字典元素
+
 ```python
 dic['key'] = value  # 通过赋值的方式向字典中添加新的键值对
 ```
 
 ### 4. 遍历字典
+
 ```python
 # 遍历key
 for key in dic.keys():  # 获取字典的所有键并遍历
@@ -64,13 +68,14 @@ for key, value in dic.items():  # 同时获取字典的键和值进行遍历
 ```
 
 ### 5. 其他常用操作
+
 ```python
 # in判断
 'key' in dic           # 判断指定键是否存在于字典中
 'value' in dic.values()  # 判断指定值是否存在于字典的值中
 
 # 更新字典
-dic.update({'key': 'value'})  # 修复：原为 dic.update('key')
+dic.update({'key': 'value'})
 # 使用update方法将另一个字典的键值对添加到当前字典中
 
 # 浅拷贝
@@ -78,8 +83,8 @@ dic2 = dic.copy()  # 创建字典的一个浅拷贝副本
 
 # 设置默认值
 dic.setdefault('key', default=None)
-# **setdefault方法**虽然可以设置默认值,但一次只能设置一个key的默认value,
-# 更好的解决方案是**defaultdict**
+# setdefault方法可以设置默认值，但每次只能为一个键设置默认值，
+# 对于需要频繁设置默认值的场景，defaultdict 是更好的选择
 strings = ('puppy', 'kitten', 'puppy', 'puppy',
            'weasel', 'puppy', 'kitten', 'puppy')
 counts = {}
@@ -87,6 +92,7 @@ for kw in strings:
     # 如果键kw不存在，则设置默认值0，然后加1；如果存在则直接加1
     counts[kw] = counts.setdefault(kw, 0) + 1
 ```
+
 ## 字典合并
 
 在实际开发中，我们经常需要将两个或多个字典合并。以下是几种常见的字典合并方法：
@@ -129,11 +135,12 @@ dict3 = dict(zip(list1, list2))  # 使用zip函数将两个列表组合成字典
 # 方法4：使用已有字典和关键字参数
 dict4 = dict({'one': 1, 'three': 3}, two=2)  # 基于现有字典并添加新的键值对
 ```
+
 ## 默认值字典（defaultdict）
 
 在使用普通字典时，如果访问一个不存在的键，会抛出 **KeyError** 异常。为了避免这种情况，我们可以使用 **defaultdict**。
 
-**defaultdict** 的作用在于，当字典里的键不存在但被查找时，不是返回 KeyError，而是返回一个默认值。
+**defaultdict** 的作用在于，当字典里的键不存在但被查找时，不是抛出 `KeyError`，而是返回一个默认值。
 
 ```python
 from collections import defaultdict
@@ -152,7 +159,7 @@ print(d[3])  # 访问不存在的键3，返回默认值空集合set()
 
 从上面的例子可以看出，defaultdict 会对所有不存在的键返回相应的默认值。
 
-1. 使用 list 参数创建列表字典
+### 1. 使用 list 参数创建列表字典
 
 ```python
 from collections import defaultdict
@@ -166,11 +173,12 @@ print(a)
 ```
 
 输出：
-```
+
+```text
 defaultdict(<class 'list'>, {'a': [1, 3], 'v': [3]})
 ```
 
-2. 使用 int 参数创建计数器
+### 2. 使用 int 参数创建计数器
 
 ```python
 from collections import defaultdict
@@ -184,11 +192,12 @@ print(a)
 ```
 
 输出：
-```
+
+```text
 defaultdict(<class 'int'>, {'a': 1, 'p': 2, 'l': 1, 'e': 1})
 ```
 
-3. 使用 set 参数创建集合字典
+### 3. 使用 set 参数创建集合字典
 
 ```python
 from collections import defaultdict
@@ -205,14 +214,15 @@ print(a)
 ```
 
 输出：
-```
+
+```text
 defaultdict(<class 'set'>, {'red': {1, 3}, 'blue': {2, 4}})
 [('blue', {2, 4}), ('red', {1, 3})]
 ```
 
-4. 使用自定义函数作为默认值工厂
+### 4. 使用自定义函数作为默认值工厂
 
-我们可以使用不带参数的可调用对象，它会返回该函数的返回结果作为默认值。
+我们可以使用不带参数的可调用对象，它会返回该函数的返回值作为默认值。
 
 ```python
 from collections import defaultdict
@@ -229,17 +239,15 @@ print(df['32'])  # 访问不存在的键'32'，将调用default_func函数返回
 ```python
 from collections import defaultdict
 
-df = defaultdict(lambda: 0)      # 使用lambda函数定义默认值为0
+df = defaultdict(lambda: 0)        # 使用lambda函数定义默认值为0
 ds = defaultdict(lambda: 'apple')  # 使用lambda函数定义默认值为'apple'
 print(df['32'])  # 输出：0，访问不存在的键'32'，返回默认值0
 print(ds['2'])   # 输出：apple，访问不存在的键'2'，返回默认值'apple'
 ```
 
-
-
 ## 有序字典（OrderedDict）
 
-**dict** 和 **defaultdict** 都是无序的，而 **OrderedDict** 是有序的。
+**dict** 和 **defaultdict** 在 Python 3.6 之前是无序的，而 **OrderedDict** 始终保持插入顺序。需要注意的是，从 Python 3.7 开始，普通 `dict` 也保证了插入顺序，但 `OrderedDict` 仍然有其独特的方法（如 `move_to_end`）和语义上的优势。
 
 在 **OrderedDict** 内部维护着一个根据键插入顺序排列的双向链表，每当有新元素插入时，会被放到链表的尾部。
 
@@ -266,18 +274,16 @@ sorted_items = sorted(d.items(), key=lambda i: i[0])  # 按键进行排序
 sorted_items = sorted(d.items(), key=lambda i: i[1])  # 按值进行排序
 ```
 
-
-
 ## dict、defaultdict、OrderedDict 比较
 
 | 功能/方法 | dict | defaultdict | OrderedDict | 作用说明 |
 |----------|------|-------------|-------------|----------|
-| d.__copy__ |  | √ |  | 用于支持 copy.copy |
-| d.default_factory |  | √ |  | 在 __missing__ 函数中被调用的函数，用来给未找到的元素初始化 |
-| d.__missing__ |  | √ |  | 当 __getitem__ 找不到对应键的时候，该方法会被调用 |
-| d.move_to_end(k, last=True) |  |  | √ | 把键为 k 的元素移动到最后或最前 |
-| d.__reversed__() |  |  | √ | 返回倒序的键的迭代器 |
-| d.popitem() | √ | √ | √ | dict 和 defaultdict 是随机移除，而 OrderedDict 是移除最先插入的元素 |
+| `d.__copy__` | | √ | | 用于支持 `copy.copy` |
+| `d.default_factory` | | √ | | 在 `__missing__` 函数中被调用，用来给未找到的元素初始化默认值 |
+| `d.__missing__` | | √ | | 当 `__getitem__` 找不到对应键时，该方法会被调用 |
+| `d.move_to_end(k, last=True)` | | | √ | 把键为 k 的元素移动到最后或最前 |
+| `d.__reversed__()` | | | √ | 返回倒序的键的迭代器 |
+| `d.popitem()` | √ | √ | √ | dict 和 defaultdict 移除最后插入的元素（LIFO），OrderedDict 可指定从头部或尾部移除 |
 
 ## 核心要点总结
 
@@ -287,13 +293,14 @@ sorted_items = sorted(d.items(), key=lambda i: i[1])  # 按值进行排序
 
 3. **OrderedDict特性**：OrderedDict保持了键值对的插入顺序，在需要维护元素顺序的场景下非常有用，但内存消耗是普通字典的两倍。
 
-4. **字典操作方法**：掌握字典的基本操作如访问、增删、遍历、更新等方法，以及setdefault等高级用法，能有效提高代码效率。
+4. **字典操作方法**：掌握字典的基本操作如访问、增删、遍历、更新等方法，以及`setdefault`等高级用法，能有效提高代码效率。
 
 5. **字典合并技巧**：了解多种字典合并方法，包括dict构造函数、update方法和循环添加等方式，可以根据具体需求选择最适合的方法。
 
 6. **字典创建方式**：熟悉多种字典创建方式，包括直接定义、构造函数、zip函数组合等，能够灵活应对不同的创建需求。
 
 参考资料：
-[理解 Python 语言中的 defaultdict-团子的小窝](https://kodango.com/understand-defaultdict-in-python)
 
-[三种字典的比较-biu嘟](https://www.cnblogs.com/lyq-biu/p/10756957.html)
+[理解 Python 语言中的 defaultdict - 团子的小窝](https://kodango.com/understand-defaultdict-in-python)
+
+[三种字典的比较 - biu嘟](https://www.cnblogs.com/lyq-biu/p/10756957.html)

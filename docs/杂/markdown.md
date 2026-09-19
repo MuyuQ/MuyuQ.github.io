@@ -2,9 +2,11 @@
 icon: simple/markdown
 ---
 
-# Markdown in 5min
+# Markdown 五分钟入门
 
-## Headers
+> 一份简明的 Markdown 语法速查手册，帮助你快速掌握常用语法。
+
+## 标题（Headers）
 ```
 # H1 Header
 ## H2 Header
@@ -14,7 +16,7 @@ icon: simple/markdown
 ###### H6 Header
 ```
 
-## Text formatting
+## 文本格式（Text formatting）
 ```
 **bold text**
 *italic text*
@@ -23,7 +25,7 @@ icon: simple/markdown
 `inline code`
 ```
 
-## Links and images
+## 链接和图片（Links and images）
 ```
 [Link text](https://example.com)
 [Link with title](https://example.com "Hover title")
@@ -31,7 +33,7 @@ icon: simple/markdown
 ![Image with title](image.jpg "Image title")
 ```
 
-## Lists
+## 列表（Lists）
 ```
 Unordered:
 - Item 1
@@ -44,14 +46,14 @@ Ordered:
 3. Third item
 ```
 
-## Blockquotes
+## 引用（Blockquotes）
 ```
 > This is a blockquote
 > Multiple lines
 >> Nested quote
 ```
 
-## Code blocks
+## 代码块（Code blocks）
 ````
 ```javascript
 function hello() {
@@ -60,7 +62,7 @@ function hello() {
 ```
 ````
 
-## Tables
+## 表格（Tables）
 ```
 | Header 1 | Header 2 | Header 3 |
 |----------|----------|----------|
@@ -68,7 +70,7 @@ function hello() {
 | Row 2    | Data     | Data     |
 ```
 
-## Horizontal rule
+## 分隔线（Horizontal rule）
 ```
 ---
 or
@@ -77,19 +79,19 @@ or
 ___
 ```
 
-## Task lists
+## 任务列表（Task lists）
 ```
 - [x] Completed task
 - [ ] Incomplete task
 - [ ] Another task
 ```
 
-## Escaping characters
+## 转义字符（Escaping characters）
 ```
 Use backslash to escape: \* \_ \# \`
 ```
 
-## Line breaks
+## 换行（Line breaks）
 ```
 End a line with two spaces  
 to create a line break.

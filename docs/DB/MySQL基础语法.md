@@ -1,11 +1,11 @@
-# **MySQL基础语法**
+# MySQL基础语法
 
 MySQL是最流行的开源关系型数据库管理系统之一，广泛应用于Web开发、数据分析等领域。掌握MySQL的基础语法是每个开发者必备的技能。
 
 本文将带你系统学习MySQL的基础语法，从核心概念到实际操作，帮助你建立起完整的知识体系。
 
 
-## **目录**
+## 目录
 - [MySQL核心概念](#mysql核心概念)
 - [数据库与表的操作](#数据库与表的操作)
 - [数据操作（CRUD）](#数据操作crud)
@@ -14,7 +14,7 @@ MySQL是最流行的开源关系型数据库管理系统之一，广泛应用于
 - [最佳实践与规范](#最佳实践与规范)
 - [总结](#总结)
 
-## **MySQL核心概念**
+## MySQL核心概念
 
 在学习MySQL之前，我们需要了解一些基本概念：
 
@@ -22,20 +22,20 @@ MySQL是最流行的开源关系型数据库管理系统之一，广泛应用于
 2. **表（Table）**：数据库中的具体数据结构，类似于Excel表格，由行和列组成
 3. **字段（Field/Column）**：表中的列，定义了数据的类型和约束
 4. **记录（Record/Row）**：表中的行，代表一条具体的数据
-5. **主键（Primary Key）**：**唯一标识表中每一行记录的字段，是数据库设计的核心要素**
+5. **主键（Primary Key）**：唯一标识表中每一行记录的字段，是数据库设计的核心要素
 
 > **扩展说明**：在实际开发中，除了主键外，还有其他重要的键概念：
 > - **外键（Foreign Key）**：用于建立和加强两个表数据之间的链接
 > - **候选键（Candidate Key）**：表中可以唯一标识记录的属性或属性组
 > - **复合键（Composite Key）**：由多个字段组成的主键
 
-## **数据库与表的操作**
+## 数据库与表的操作
 
-### **创建和使用数据库**
+### 创建和使用数据库
 
-创建数据库是使用 MySQL 的第一步，以下是创建数据库的基本语法：
+创建数据库是使用MySQL的第一步，以下是创建数据库的基本语法：
 
-```MySQL
+```sql
 -- 创建数据库
 CREATE DATABASE `mydatabase`;
 
@@ -43,8 +43,8 @@ CREATE DATABASE `mydatabase`;
 USE `mydatabase`;
 ```
 
-> **实例讲解**：假设我们要创建一个学校管理系统数据库，可以这样操作：
-> ```MySQL
+> **实例讲解**：假设我们要创建一个学校管理系统数据库，操作如下：
+> ```sql
 > -- 创建学校管理系统数据库
 > CREATE DATABASE `school_management`;
 > 
@@ -52,10 +52,10 @@ USE `mydatabase`;
 > USE `school_management`;
 > ```
 
-> **重要提醒**：**反引号并不是必须的，但强烈建议使用，它可以防止在创建数据库或表时使用到 MySQL 的关键字而产生冲突。**
+> **重要提示**：反引号并不是必须的，但强烈建议使用。它可以防止在创建数据库或表时使用到MySQL的关键字而产生冲突。
 
 > **扩展说明**：创建数据库时还可以指定字符集和排序规则：
-> ```MySQL
+> ```sql
 > -- 创建数据库并指定字符集和排序规则
 > CREATE DATABASE `school_management` 
 > CHARACTER SET utf8mb4 
@@ -63,11 +63,11 @@ USE `mydatabase`;
 > ```
 > 这样可以确保数据库正确处理中文和其他特殊字符。
 
-### **创建数据表**
+### 创建数据表
 
 创建表是数据库设计的重要环节，以下是创建表的基本语法：
 
-```MySQL
+```sql
 -- 创建学生表，包含ID和姓名字段
 CREATE TABLE `student`(
   `id` INT NOT NULL AUTO_INCREMENT,      -- 学生ID，整数类型，非空，自动递增
@@ -76,7 +76,7 @@ CREATE TABLE `student`(
 );
 ```
 
-#### **常见数据类型说明**
+#### 常见数据类型说明
 
 | 类型 | 说明 | 适用场景 |
 |------|------|---------|
@@ -87,12 +87,12 @@ CREATE TABLE `student`(
 | TEXT | 长文本类型 | 文章内容、描述信息等 |
 | DECIMAL | 精确小数类型 | 金额、价格等需要精确计算的数值 |
 
-> **扩展说明**：MySQL提供了丰富的数据类型，根据实际需求选择合适的类型非常重要：
+> **扩展说明**：MySQL 提供了丰富的数据类型，根据实际需求选择合适的类型非常重要：
 > - **数值类型**：TINYINT、SMALLINT、MEDIUMINT、INT、BIGINT、FLOAT、DOUBLE、DECIMAL
 > - **字符串类型**：CHAR、VARCHAR、TINYTEXT、TEXT、MEDIUMTEXT、LONGTEXT
-> - **日期时间类型**：DATE、TIME、DATETIME、TIMESTAMP、YEAR
+> - **日期时间类型**：DATE、TIME、DATETIME、TIMESTAMP、YEAR 等
 
-#### **字段约束说明**
+#### 字段约束说明
 
 在创建表时，可以为字段添加约束来保证数据的完整性：
 
@@ -105,8 +105,8 @@ CREATE TABLE `student`(
 | DEFAULT | 默认值 | `status VARCHAR(20) DEFAULT 'active'` |
 | CHECK | 检查约束 | `age INT CHECK (age >= 0 AND age <= 150)` |
 
-> **实例讲解**：我们为学校管理系统创建一个更完整的学生表：
-> ```MySQL
+> **实例讲解**：为学校管理系统创建一个更完整的学生表：
+> ```sql
 > -- 创建学生信息表，包含完整的字段定义和约束
 > CREATE TABLE `students`(
 >   `id` INT NOT NULL AUTO_INCREMENT,                    -- 学生ID，主键且自动递增
@@ -122,20 +122,20 @@ CREATE TABLE `student`(
 > );
 > ```
 
-> **重要提示**：**CHAR 类型适合存储长度固定的字符串，如手机号、身份证号等；VARCHAR 类型适合存储长度不固定的字符串，如姓名、地址等。选择合适的数据类型对数据库性能至关重要。**
+> **重要提示**：CHAR类型适合存储长度固定的字符串，如手机号、身份证号等；VARCHAR类型适合存储长度不固定的字符串，如姓名、地址等。选择合适的数据类型对数据库性能至关重要。
 
-### **查看表结构**
+### 查看表结构
 
-在 MySQL 中，可以使用以下命令来查看表的结构信息：
+在MySQL中，可以使用以下命令来查看表的结构信息：
 
-```mysql
+```sql
 -- 查看表结构的两种方式
 DESCRIBE 表名;    -- 方式一：使用DESCRIBE命令
 EXPLAIN 表名;     -- 方式二：使用EXPLAIN命令
 ```
 
 > **扩展说明**：还可以使用以下命令获取更多表信息：
-> ```mysql
+> ```sql
 > -- 查看创建表的完整SQL语句
 > SHOW CREATE TABLE students;
 > 
@@ -144,7 +144,7 @@ EXPLAIN 表名;     -- 方式二：使用EXPLAIN命令
 > ```
 
 > **实例讲解**：查看我们刚创建的学生表结构：
-> ```mysql
+> ```sql
 > -- 查看学生表结构
 > DESCRIBE students;
 > 
@@ -152,44 +152,44 @@ EXPLAIN 表名;     -- 方式二：使用EXPLAIN命令
 > EXPLAIN students;
 > ```
 
-## **数据操作（CRUD）**
+## 数据操作（CRUD）
 
 CRUD是数据库操作的核心，分别代表Create（创建）、Read（读取）、Update（更新）和Delete（删除）。
 
-### **1. 插入数据（Create）**
+### 1. 插入数据（Create）
 
-向表中插入数据是数据库操作的基本需求之一，MySQL 提供了多种插入数据的方式。
+向表中插入数据是数据库操作的基本需求之一，MySQL提供了多种插入数据的方式。
 
-#### **插入完整记录**
+#### 插入完整记录
 
-```mysql
+```sql
 -- 插入完整记录（需要为所有字段提供值）
 INSERT INTO `students` VALUES(1,'张三','三哥','男',now());
 ```
 
-#### **指定字段插入**
+#### 指定字段插入
 
 当只需要插入部分字段的数据时，可以指定字段名：
 
-```mysql
+```sql
 -- 指定字段插入（只需为指定字段提供值）
 INSERT INTO `students`(`name`,`nickname`,`sex`,`in_time`) VALUES('张三2','三哥2','男',now());
 ```
 
-#### **插入部分字段**
+#### 插入部分字段
 
 对于允许为空的字段，可以省略不插入：
 
-```mysql
+```sql
 -- 插入部分字段（未指定的字段将使用默认值或NULL）
 INSERT INTO `students`(`name`,`nickname`,`sex`) VALUES('张三3','三哥3','男');
 ```
 
-#### **批量插入**
+#### 批量插入
 
 当需要插入多条记录时，可以使用批量插入以提高效率：
 
-```mysql
+```sql
 -- 批量插入多条记录（一次性插入多行数据，提高效率）
 INSERT INTO `students`(`name`,`nickname`,`sex`) VALUES
 ('张三4','三哥4','男'),
@@ -198,7 +198,7 @@ INSERT INTO `students`(`name`,`nickname`,`sex`) VALUES
 ```
 
 > **实例讲解**：向学生表中插入几条记录：
-> ```mysql
+> ```sql
 > -- 插入单条学生记录（指定所有必要字段）
 > INSERT INTO `students`(`student_id`, `name`, `age`, `gender`, `birth_date`, `enrollment_date`) 
 > VALUES('2023001', '张小明', 18, 'M', '2005-03-15', NOW());
@@ -210,13 +210,13 @@ INSERT INTO `students`(`name`,`nickname`,`sex`) VALUES
 > ('2023004', '赵小丽', 18, 'F', '2005-01-30', NOW());
 > ```
 
-> **重要注意**：**虽然 MySQL 中 `VALUE` 和 `VALUES` 在语法上都可以使用，但为了规范和一致性，建议统一使用 `VALUES`。**
+> **重要提示**：虽然 MySQL 中 `VALUE` 和 `VALUES` 在语法上均可使用，但为了规范和一致性，建议统一使用 `VALUES`。
 
-### **2. 查询数据（Read）**
+### 2. 查询数据（Read）
 
 查询是数据库中最常用的操作之一，可以通过各种条件筛选出需要的数据：
 
-```mysql
+```sql
 -- 基本查询语句示例
 SELECT `name`,`nickname`            -- 选择要查询的字段
 FROM `students`                     -- 指定数据来源表
@@ -225,11 +225,11 @@ ORDER BY `id` DESC                  -- 按ID倒序排列
 LIMIT 1,2;                          -- 限制返回结果数量
 ```
 
-### **3. 更新数据（Update）**
+### 3. 更新数据（Update）
 
 修改表中的数据使用 `UPDATE` 语句，可以根据条件更新指定的记录：
 
-```mysql
+```sql
 -- 更新满足条件的记录
 UPDATE `students` 
 SET `nickname`='没有昵称'     -- 设置要更新的字段和值
@@ -237,7 +237,7 @@ WHERE `sex`='女';              -- 设置更新条件
 ```
 
 > **实例讲解**：更新学生信息：
-> ```mysql
+> ```sql
 > -- 将所有女学生的昵称设置为"女同学"
 > UPDATE students 
 > SET nickname='女同学' 
@@ -254,33 +254,33 @@ WHERE `sex`='女';              -- 设置更新条件
 > WHERE enrollment_date < '2020-01-01';
 > ```
 
-> **危险警告**：**务必在 `UPDATE` 语句中使用 `WHERE` 条件，否则将更新表中的所有记录！这可能导致灾难性后果。**
+> **危险警告**：务必在 `UPDATE` 语句中使用 `WHERE` 条件，否则将更新表中的所有记录！这可能导致严重的数据事故。
 
-#### **UPDATE 语法规则**
+#### UPDATE 语法规则
 
 1. 使用 `SET` 关键字指定要更新的字段和值
 2. 使用 `WHERE` 设置更新条件
 3. 可以同时更新多个字段：
 
-```mysql
+```sql
 -- 同时更新多个字段
 UPDATE `students` 
 SET `nickname`='新昵称', `in_time`=NOW() 
 WHERE `id`=1;
 ```
 
-### **4. 删除数据（Delete）**
+### 4. 删除数据（Delete）
 
 删除表中的数据使用 `DELETE` 语句：
 
-```mysql
+```sql
 -- 删除满足条件的记录
 DELETE FROM `students`       -- 指定要删除数据的表
 WHERE `sex`='男';            -- 设置删除条件
 ```
 
 > **实例讲解**：删除学生记录：
-> ```mysql
+> ```sql
 > -- 删除所有男学生记录
 > DELETE FROM students WHERE gender='M';
 > 
@@ -292,31 +292,31 @@ WHERE `sex`='男';            -- 设置删除条件
 > WHERE status='graduate' AND enrollment_date < DATE_SUB(NOW(), INTERVAL 5 YEAR);
 > ```
 
-> **危险警告**：**务必在 `DELETE` 语句中使用 `WHERE` 条件，否则将删除表中的所有记录！这是极其危险的操作。**
+> **危险警告**：务必在 `DELETE` 语句中使用 `WHERE` 条件，否则将删除表中的所有记录！这是极其危险的操作。
 
-#### **DELETE 语法规则**
+#### DELETE 语法规则
 
 1. 使用 `WHERE` 设置删除条件
 2. 如果需要清空整个表，建议使用 `TRUNCATE` 语句（效率更高）：
 
-```mysql
+```sql
 -- 清空整个表的数据（比DELETE更快，且重置自增ID）
 TRUNCATE TABLE `students`;
 ```
 
-#### **DELETE 与 TRUNCATE 的区别**
+#### DELETE 与 TRUNCATE 的区别
 
 | 特性 | DELETE | TRUNCATE |
 |------|--------|----------|
 | 性能 | 较慢（逐行删除） | 快速（重置表） |
-| 条件 | 支持 WHERE 条件 | 不支持条件 |
+| 条件 | 支持WHERE条件 | 不支持条件 |
 | 事务 | 可回滚 | 不可回滚 |
 | 计数器 | 不重置自增ID | 重置自增ID |
 | 触发器 | 会触发DELETE触发器 | 不会触发DELETE触发器 |
 
-## **查询进阶**
+## 查询进阶
 
-### **常用WHERE条件**
+### 常用WHERE条件
 
 | 操作符 | 说明 | 示例 |
 |-------|------|-----|
@@ -329,7 +329,7 @@ TRUNCATE TABLE `students`;
 | IS NULL | 为空 | `WHERE email IS NULL` |
 | IS NOT NULL | 不为空 | `WHERE email IS NOT NULL` |
 
-### **聚合函数**
+### 聚合函数
 
 | 函数 | 说明 | 示例 |
 |-----|------|-----|
@@ -339,11 +339,11 @@ TRUNCATE TABLE `students`;
 | MAX() | 最大值 | `SELECT MAX(age) FROM students` |
 | MIN() | 最小值 | `SELECT MIN(age) FROM students` |
 
-### **分组查询**
+### 分组查询
 
 使用 `GROUP BY` 可以按指定字段分组统计：
 
-```mysql
+```sql
 -- 统计每个性别的学生人数
 SELECT gender, COUNT(*) as count 
 FROM students 
@@ -355,11 +355,11 @@ FROM students
 GROUP BY gender;
 ```
 
-### **连接查询**
+### 连接查询
 
 当需要从多个表中获取数据时，可以使用连接查询：
 
-```mysql
+```sql
 -- 内连接：查询学生及其课程信息
 SELECT s.name, c.course_name 
 FROM students s 
@@ -367,16 +367,16 @@ INNER JOIN enrollments e ON s.id = e.student_id
 INNER JOIN courses c ON e.course_id = c.id;
 ```
 
-### **排序规则**
+### 排序规则
 
 - 默认情况下，排序是正序（升序），使用 `ASC` 关键字
 - 倒序（降序）需要显式指定 `DESC` 关键字
 
-### **分页查询**
+### 分页查询
 
 使用 `LIMIT` 可以实现分页功能：
 
-```mysql
+```sql
 -- 查询前10条记录
 SELECT * FROM `students` LIMIT 10;
 
@@ -388,7 +388,7 @@ SELECT * FROM `students` LIMIT 10 OFFSET 10;
 ```
 
 > **实例讲解**：对学生表进行各种查询操作：
-> ```mysql
+> ```sql
 > -- 查询所有学生信息
 > SELECT * FROM students;
 > 
@@ -410,15 +410,15 @@ SELECT * FROM `students` LIMIT 10 OFFSET 10;
 > ORDER BY enrollment_date DESC;
 > ```
 
-> **重要提示**：**`LIMIT offset, count` 中，offset 是起始位置（从0开始），count 是返回记录数。**
+> **重要提示**：`LIMIT offset, count` 中，offset是起始位置（从0开始），count是返回记录数。
 
-## **MySQL高级特性**
+## MySQL高级特性
 
-### **索引（Index）**
+### 索引（Index）
 
 索引是提高查询性能的重要手段：
 
-```mysql
+```sql
 -- 创建普通索引
 CREATE INDEX idx_student_name ON students(name);
 
@@ -432,13 +432,13 @@ SHOW INDEX FROM students;
 DROP INDEX idx_student_name ON students;
 ```
 
-> **重要提示**：**合理使用索引可以大幅提升查询速度，但过多的索引会影响插入和更新性能。**
+> **重要提示**：合理使用索引可以大幅提升查询速度，但过多的索引会影响插入和更新性能。
 
-### **视图（View）**
+### 视图（View）
 
 视图是虚拟表，可以简化复杂查询：
 
-```mysql
+```sql
 -- 创建视图
 CREATE VIEW active_students AS
 SELECT id, student_id, name, age, gender
@@ -449,32 +449,31 @@ WHERE status = 'active';
 SELECT * FROM active_students WHERE age > 18;
 ```
 
-## **最佳实践与规范**
+## 最佳实践与规范
 
-### **MySQL语法规范建议**
+### MySQL语法规范建议
 
-1. **MySQL 关键字最好全部使用大写**，这是一种通用的规范，有助于提高代码的可读性。
+1. MySQL关键字最好全部使用大写，这是一种通用的规范，有助于提高代码的可读性。
 2. 对于生产环境的数据库，建议建立专门的只读账户，以防止误操作带来的风险。
-3. **必须设置一个主键**，用于唯一标识每条记录
-4. 字段定义之间必须用逗号`,`分隔，而不是分号`;`
-5. 最后一个字段定义后不能有逗号
-6. 需要设置默认的编码方式以支持中文（推荐使用 utf8 或 utf8mb4）
-7. **表名和字段名建议使用小写字母和下划线组合**，如 `student_info`
-8. **为每个表添加注释**，说明表的用途
-9. **为每个字段添加注释**，说明字段的含义
+3. 必须设置一个主键，用于唯一标识每条记录。
+4. 字段定义之间必须用逗号 `,` 分隔，而不是分号 `;`。
+5. 最后一个字段定义后不能有逗号。
+6. 应设置默认字符集以支持中文（推荐使用 utf8mb4）。
+7. 表名和字段名建议使用小写字母和下划线组合，如 `student_info`。
+8. 为每个表和字段添加注释，说明其用途和含义。
 
-### **MySQL中的注释**
+### MySQL中的注释
 
-在 MySQL 中可以使用以下方式添加注释：
+在MySQL中可以使用以下方式添加注释：
 
-```MySQL
+```sql
 -- 这是一个单行注释
 /* 这是一个多行注释 */
 # 这也是单行注释（MySQL特有）
 ```
 
 > **实例讲解**：在创建表时添加注释说明：
-> ```MySQL
+> ```sql
 > -- 创建学生信息表
 > CREATE TABLE `students`(
 >   `id` INT NOT NULL AUTO_INCREMENT COMMENT '学生ID，主键',
@@ -485,11 +484,11 @@ SELECT * FROM active_students WHERE age > 18;
 > ) COMMENT='学生信息表';
 > ```
 
-## **总结**
+## 总结
 
 通过本文的学习，我们系统地掌握了MySQL的基础语法知识，涵盖了从入门到进阶的各个重要方面：
 
-### **核心知识点回顾**
+### 核心知识点回顾
 
 1. **基础概念理解**：深入理解了数据库、表、字段、记录、主键等核心概念，为后续学习打下了坚实基础。
 
@@ -503,7 +502,7 @@ SELECT * FROM active_students WHERE age > 18;
 
 6. **规范与最佳实践**：遵循了MySQL的语法规范和最佳实践，培养了良好的编码习惯。
 
-### **学习意义与价值**
+### 学习意义与价值
 
 掌握MySQL基础语法不仅能够帮助我们：
 - 构建和维护各种应用程序的后台数据库
@@ -511,7 +510,7 @@ SELECT * FROM active_students WHERE age > 18;
 - 实现高效的用户数据管理
 - 为进一步学习数据库优化、集群部署等高级主题奠定基础
 
-### **下一步学习建议**
+### 下一步学习建议
 
 在掌握了这些基础知识后，建议继续深入学习：
 - **事务处理**：了解ACID特性，掌握事务的使用方法

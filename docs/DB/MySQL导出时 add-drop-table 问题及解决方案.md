@@ -2,19 +2,20 @@
 
 ## 问题描述
 
-在使用 mysqldump 导出数据库某表后，直接使用导入该 sql 文件时，该表内的原有数据会被删除。
+在使用 mysqldump 导出数据库中的某张表后，直接使用该 SQL 文件导入时，会导致该表的原有数据被清除。
 
 <!-- more -->
 
-原来是通过 mysqldump 工具导出时，默认情况下会在 CREATE TABLE 语句前添加 `DROP TABLE` 语句，导致每个导出文件内都有删除表的命令。
+原因是 mysqldump 工具在导出时，默认情况下会在 `CREATE TABLE` 语句前添加 `DROP TABLE` 语句，导致每个导出文件内都有删除表的命令。
 
 ## 问题原因
 
-**mysqldump 默认行为**：为了确保在导入时能够正确重建表结构，mysqldump 工具默认会在每个 CREATE TABLE 语句之前添加 DROP TABLE IF EXISTS 语句。这样的设计目的是为了避免在导入数据时出现表已存在的错误。
+**mysqldump 默认行为**：为了确保在导入时正确重建表结构，mysqldump 工具默认会在每个 `CREATE TABLE` 语句之前添加 `DROP TABLE IF EXISTS` 语句。这样的设计目的是为了避免在导入数据时出现表已存在的错误。
 
 **DROP TABLE IF EXISTS 的作用机制**：
+
 ```sql
--- 执行 mysqldump 默认导出的 SQL 文件时的操作流程
+-- 执行mysqldump默认导出的SQL文件时的操作流程
 -- 1. 首先检查表是否存在，如果存在则删除
 DROP TABLE IF EXISTS `users`;
 -- 2. 然后重新创建表结构
@@ -33,7 +34,7 @@ INSERT INTO `users` VALUES (1,'Alice'),(2,'Bob');
 
 ### 方案一：使用 --skip-add-drop-table 参数
 
-在导出时加入 `--skip-add-drop-table` 参数，这样就可以在导入时避免删除掉原有数据。
+在导出时加入 `--skip-add-drop-table` 参数，这样就可以在导入时避免删除原有数据。
 
 ```bash
 # 使用 --skip-add-drop-table 参数导出数据库
@@ -41,9 +42,10 @@ mysqldump -u username -p --skip-add-drop-table database_name table_name > backup
 ```
 
 **参数说明**：
-- `--skip-add-drop-table`：阻止 mysqldump 在输出中生成 DROP TABLE 语句
+- `--skip-add-drop-table`：阻止 mysqldump 在输出中生成 `DROP TABLE` 语句
 
 **使用示例**：
+
 ```bash
 # 导出特定表时不包含 DROP TABLE 语句
 mysqldump -u root -p --skip-add-drop-table mydb users > users_backup.sql
@@ -54,25 +56,28 @@ mysqldump -u root -p --skip-add-drop-table mydb > db_backup.sql
 
 **注意事项**：
 - 使用此参数时，目标数据库中的表必须已经存在且结构兼容
-- 如果目标表不存在，则会报错 "Table 'xxx' doesn't exist"
+- 如果目标表不存在，则会报错 `Table 'xxx' doesn't exist`
 
 ### 方案二：结合其他参数使用
 
 除了单独使用 `--skip-add-drop-table` 外，还可以与其他参数组合使用以满足不同需求：
 
 **1. 与 --add-drop-database 组合使用**：
+
 ```bash
 # 导出整个数据库并跳过删除表语句，但保留数据库级别的 DROP 语句
 mysqldump -u username -p --add-drop-database --skip-add-drop-table database_name > backup.sql
 ```
 
 **2. 仅导出数据不导出表结构**：
+
 ```bash
 # 只导出数据，不包含任何表结构定义
 mysqldump -u username -p --skip-add-drop-table --no-create-info database_name table_name > data_only.sql
 ```
 
 **3. 导出特定条件的数据**：
+
 ```bash
 # 导出满足特定条件的数据
 mysqldump -u username -p --skip-add-drop-table --where="status='active'" database_name users > active_users.sql
@@ -83,12 +88,14 @@ mysqldump -u username -p --skip-add-drop-table --where="status='active'" databas
 ### 1. 根据需求选择合适的参数
 
 **数据追加场景**：
+
 ```bash
 # 当需要向现有表追加数据而不删除现有数据时
 mysqldump -u username -p --skip-add-drop-table database_name table_name > append_backup.sql
 ```
 
 **完整备份与恢复场景**：
+
 ```bash
 # 当需要完整的备份与恢复时（默认行为）
 mysqldump -u username -p database_name table_name > full_backup.sql
@@ -96,9 +103,10 @@ mysqldump -u username -p database_name table_name > full_backup.sql
 
 ### 2. 确保数据一致性和兼容性
 
-在使用 `--skip-add-drop-table` 参数前，需要确保源表和目标表的结构兼容：
+- 使用此参数前，请确保源表和目标表的结构兼容：
 
 **表结构检查方法**：
+
 ```sql
 -- 检查表结构是否一致
 SHOW CREATE TABLE source_table;
@@ -110,6 +118,7 @@ DESCRIBE target_table;
 ```
 
 **使用 Python 脚本检查表结构兼容性**：
+
 ```python
 def check_table_compatibility(source_schema, target_schema):
     """
@@ -171,7 +180,7 @@ mysqldump -u username -p \
 - `--triggers`：导出触发器
 - `--events`：导出事件调度器
 - `--hex-blob`：以十六进制格式导出二进制字段
-- `--opt`：启用一组优化选项的快捷方式
+- `--opt`：启用一组优化选项（等价于 `--add-drop-table --add-locks --create-options --disable-keys --extended-insert --lock-tables --quick --set-charset`）
 
 ### 4. 导入数据时的注意事项
 
@@ -183,13 +192,14 @@ mysql -u username -p database_name < backup.sql
 **重要提示**：
 - 在导入前确保目标数据库已存在
 - 如果使用了 `--skip-add-drop-table`，确保目标表结构兼容
-- 对于大文件导入，可以考虑临时调整 MySQL 的配置参数以提升性能
+- 对于大文件导入，可考虑临时调整 MySQL 配置参数以加快导入速度
 
 ### 5. 性能优化建议
 
 对于大型数据库的备份和恢复操作，还需要考虑以下性能优化措施：
 
 **备份性能优化**：
+
 ```bash
 # 使用压缩减少备份文件大小
 mysqldump -u username -p --compress database_name > backup.sql
@@ -200,6 +210,7 @@ mydumper -u username -p --database=database_name --threads=4 --compress
 ```
 
 **恢复性能优化**：
+
 ```bash
 # 禁用自动提交以提高导入速度
 mysql -u username -p database_name --init-command="SET autocommit=0" < backup.sql
@@ -214,7 +225,7 @@ mysql -u username -p database_name --init-command="
 
 ## 总结
 
-**`--skip-add-drop-table` 参数的核心作用**是防止在数据导入过程中意外删除现有表结构和数据。这个参数在以下场景特别有用：
+`--skip-add-drop-table` 参数的核心作用是防止在数据导入过程中意外删除现有表结构和数据。这个参数在以下场景特别有用：
 
 1. **数据合并**：当需要将新数据追加到现有表中时
 2. **结构保护**：当希望保留现有表结构不变时
@@ -222,7 +233,7 @@ mysql -u username -p database_name --init-command="
 
 ### 关键要点回顾
 
-- **参数功能**：`--skip-add-drop-table` 阻止 mysqldump 在输出中生成 DROP TABLE 语句
+- **参数功能**：`--skip-add-drop-table` 阻止 mysqldump 在输出中生成 `DROP TABLE` 语句
 - **使用前提**：目标表必须已存在且结构兼容
 - **适用场景**：数据追加、增量备份、表结构保护等场景
 - **风险控制**：使用前务必检查表结构兼容性，避免导入失败

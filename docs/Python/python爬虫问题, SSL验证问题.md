@@ -4,7 +4,7 @@
 
 在使用Python进行网络爬虫开发时，经常会遇到SSL证书验证失败的错误：
 
-```python
+```text
 urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed
 ```
 
@@ -12,7 +12,7 @@ urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed
 
 ## 原因分析
 
-Python从2.7.9版本开始引入了一个重要的安全特性：当使用`urllib.urlopen`打开HTTPS链接时，会自动验证SSL证书。如果出现以下情况，就会抛出证书验证失败的错误：
+Python 从 2.7.9 版本开始引入了一项重要的安全特性：当使用 `urllib.urlopen` 打开 HTTPS 链接时，会自动验证 SSL 证书。如果出现以下任一情况，就会抛出证书验证失败的错误：
 
 1. 目标网站使用自签名证书
 2. 证书已过期
@@ -22,11 +22,11 @@ Python从2.7.9版本开始引入了一个重要的安全特性：当使用`urlli
 
 ## 解决方案
 
-针对SSL证书验证问题，我们提供以下几种解决方案，按照安全性和推荐程度排序：
+针对 SSL 证书验证问题，以下提供几种解决方案，按安全性和推荐程度从高到低排列：
 
 ### 方案一：更新CA证书（推荐）
 
-确保系统拥有最新的受信任CA证书是解决SSL验证问题的最佳做法：
+确保系统拥有最新的受信任 CA 证书，是解决 SSL 验证问题的最佳做法：
 
 ```python
 # 使用certifi包更新CA证书
@@ -43,7 +43,8 @@ response = urllib.request.urlopen('https://example.com', context=ssl_context)
 print(response.read().decode('utf-8'))
 ```
 
-对于使用requests库的情况：
+对于使用 requests 库的情况：
+
 ```python
 import requests
 import certifi
@@ -55,7 +56,7 @@ print(response.text)
 
 ### 方案二：手动指定CA证书
 
-如果是自签名证书或者企业内部CA签发的证书，可以手动指定证书路径：
+如果是自签名证书或企业内部 CA 签发的证书，可以手动指定证书路径：
 
 ```python
 import urllib.request
@@ -101,6 +102,7 @@ print(response.read().decode('utf-8'))
 ```
 
 对于requests库：
+
 ```python
 import requests
 import urllib3
@@ -129,4 +131,4 @@ print(response.text)
 
 ## 总结
 
-SSL证书验证失败是爬虫开发中常见的问题，虽然可以通过禁用验证来快速解决问题，但这会带来安全风险。建议优先采用更新证书、使用可信CA等安全方式来解决。只有在开发和测试环境中才可以考虑临时禁用SSL验证。
+SSL证书验证失败是爬虫开发中的常见问题，虽然可以通过禁用验证来快速解决，但这会带来安全风险。建议优先采用更新证书、使用可信CA等安全方式来解决。只有在开发和测试环境中才可以考虑临时禁用SSL验证。

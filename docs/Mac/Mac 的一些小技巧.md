@@ -1,11 +1,19 @@
-* 通过Command+点击在新窗口中打开Finder侧边栏上的项目
+# macOS 使用小技巧
 
-* Command+鼠标拖拽可以移动后方的窗口，同时不影响前端窗口
+以下是 macOS 日常使用中一些实用的快捷键和技巧：
 
-* Command+点击Dock上的图标可以打开应用在Finder中的位置
+## Finder 相关
 
-* Command+回车Spotlight中的搜索结果可以直接在Finder中查看
+* `Command` + 点击 Finder 侧边栏中的项目，可在新窗口中打开
 
-* Command+回车Spotlight中的搜索结果可以直接在Finder中查看
+* `Command` + 回车，可直接在 Finder 中打开 Spotlight 搜索的结果
+
+## 窗口管理
+
+* `Command` + 拖拽窗口标题栏，可移动非活动窗口而不影响当前窗口
+
+## Dock 栏
+
+* `Command` + 点击 Dock 栏中的应用图标，可在 Finder 中定位该应用
 
 
