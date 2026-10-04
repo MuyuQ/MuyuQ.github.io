@@ -1,16 +1,10 @@
-# MySQL mysqldump --skip-add-drop-table 参数
+# MySQL导出时 add-drop-table 问题及解决方案
 
 ## 问题描述
 
 在使用 mysqldump 导出数据库中的某张表后，直接使用该 SQL 文件导入时，会导致该表的原有数据被清除。
 
-<!-- more -->
-
-原因是 mysqldump 工具在导出时，默认情况下会在 `CREATE TABLE` 语句前添加 `DROP TABLE` 语句，导致每个导出文件内都有删除表的命令。
-
-## 问题原因
-
-**mysqldump 默认行为**：为了确保在导入时正确重建表结构，mysqldump 工具默认会在每个 `CREATE TABLE` 语句之前添加 `DROP TABLE IF EXISTS` 语句。这样的设计目的是为了避免在导入数据时出现表已存在的错误。
+原因是 mysqldump 工具在导出时，默认情况下会在每个 `CREATE TABLE` 语句之前添加 `DROP TABLE IF EXISTS` 语句，导致每个导出文件内都有删除表的命令。这样做的目的是在导入时正确重建表结构，避免出现表已存在的错误。
 
 **DROP TABLE IF EXISTS 的作用机制**：
 
@@ -55,8 +49,9 @@ mysqldump -u root -p --skip-add-drop-table mydb > db_backup.sql
 ```
 
 **注意事项**：
-- 使用此参数时，目标数据库中的表必须已经存在且结构兼容
-- 如果目标表不存在，则会报错 `Table 'xxx' doesn't exist`
+- 如果目标表已存在，导入时会在 `CREATE TABLE` 语句处报错 `Table 'xxx' already exists`
+- 如果目标表不存在，导入时会直接建表并导入数据，不会报错
+- 要向已存在的表追加数据，需配合 `--no-create-info` 参数（见方案二）
 
 ### 方案二：结合其他参数使用
 
@@ -66,7 +61,8 @@ mysqldump -u root -p --skip-add-drop-table mydb > db_backup.sql
 
 ```bash
 # 导出整个数据库并跳过删除表语句，但保留数据库级别的 DROP 语句
-mysqldump -u username -p --add-drop-database --skip-add-drop-table database_name > backup.sql
+# 注意：--add-drop-database 需配合 --databases（或 --all-databases）使用，否则导出文件不含 CREATE DATABASE 语句，也就不会输出 DROP DATABASE
+mysqldump -u username -p --add-drop-database --skip-add-drop-table --databases database_name > backup.sql
 ```
 
 **2. 仅导出数据不导出表结构**：
@@ -91,7 +87,8 @@ mysqldump -u username -p --skip-add-drop-table --where="status='active'" databas
 
 ```bash
 # 当需要向现有表追加数据而不删除现有数据时
-mysqldump -u username -p --skip-add-drop-table database_name table_name > append_backup.sql
+# 注意：必须加 --no-create-info，否则导出文件仍含 CREATE TABLE，导入到已存在的同名表时会在建表语句处报 already exists 错误
+mysqldump -u username -p --no-create-info database_name table_name > append_backup.sql
 ```
 
 **完整备份与恢复场景**：
@@ -201,8 +198,10 @@ mysql -u username -p database_name < backup.sql
 **备份性能优化**：
 
 ```bash
-# 使用压缩减少备份文件大小
-mysqldump -u username -p --compress database_name > backup.sql
+# 通过管道压缩减小备份文件大小
+mysqldump -u username -p database_name | gzip > backup.sql.gz
+
+# 注意：--compress 只压缩客户端与服务器之间传输的数据，写盘的导出文件仍是未压缩的，且该选项自 MySQL 8.0.18 起已废弃
 
 # 并行处理多个表（需要配合其他工具）
 # 使用 mydumper 替代 mysqldump 进行并行备份
@@ -212,37 +211,21 @@ mydumper -u username -p --database=database_name --threads=4 --compress
 **恢复性能优化**：
 
 ```bash
-# 禁用自动提交以提高导入速度
-mysql -u username -p database_name --init-command="SET autocommit=0" < backup.sql
+# 导出时加 --no-autocommit：导出文件会用 SET autocommit=0 和 COMMIT 包裹每张表的数据，导入时批量提交更快，也不会丢数据
+mysqldump -u username -p --no-autocommit database_name > backup.sql
 
 # 临时调整 MySQL 参数以加快导入速度
+# 注意：不要在导入时单独用 --init-command="SET autocommit=0" 提速，导入结束会话断开时未提交的事务会被回滚，导致导入的数据丢失
 mysql -u username -p database_name --init-command="
   SET foreign_key_checks=0;
   SET unique_checks=0;
-  SET autocommit=0;
 " < backup.sql
 ```
 
 ## 总结
 
-`--skip-add-drop-table` 参数的核心作用是防止在数据导入过程中意外删除现有表结构和数据。这个参数在以下场景特别有用：
+`--skip-add-drop-table` 适用于以下场景：
 
-1. **数据合并**：当需要将新数据追加到现有表中时
+1. **数据合并**：当需要将新数据追加到现有表中时（需配合 `--no-create-info`，见方案二）
 2. **结构保护**：当希望保留现有表结构不变时
 3. **安全操作**：当不确定导入文件内容，希望避免误删数据时
-
-### 关键要点回顾
-
-- **参数功能**：`--skip-add-drop-table` 阻止 mysqldump 在输出中生成 `DROP TABLE` 语句
-- **使用前提**：目标表必须已存在且结构兼容
-- **适用场景**：数据追加、增量备份、表结构保护等场景
-- **风险控制**：使用前务必检查表结构兼容性，避免导入失败
-
-### 最佳实践建议
-
-1. **备份策略**：根据业务需求选择合适的备份参数组合
-2. **兼容性检查**：在使用前验证源表和目标表的结构一致性
-3. **性能优化**：对于大型数据库，考虑使用并行备份工具如 mydumper
-4. **安全性保障**：定期测试备份和恢复流程，确保数据安全
-
-合理使用 mysqldump 的各种参数，能够帮助我们更好地管理数据库备份与恢复工作，提升数据操作的安全性和效率。

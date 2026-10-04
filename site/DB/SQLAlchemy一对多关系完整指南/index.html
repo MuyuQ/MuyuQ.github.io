@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -16,7 +16,7 @@
         <link rel="prev" href="../SELECT%20DISTINCT%20%E8%AF%AD%E5%8F%A5/">
       
       
-        <link rel="next" href="../SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E8%AF%A6%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/">
+        <link rel="next" href="../../Mac/Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>SQLAlchemy一对多关系完整指南：模型定义、关系建立与数据操作 - Mcode</title>
+        <title>SQLAlchemy 一对多关系完整指南：模型定义、关系建立与数据操作 - Mcode</title>
       
     
     
@@ -113,7 +113,7 @@
       
         
         <a href="#sqlalchemy" class="md-skip">
-          Skip to content
+          跳转至
         </a>
       
     </div>
@@ -125,7 +125,7 @@
       
 
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Mcode" class="md-header__button md-logo" aria-label="Mcode" data-md-component="logo">
       
   
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SQLAlchemy一对多关系完整指南：模型定义、关系建立与数据操作
+              SQLAlchemy 一对多关系完整指南：模型定义、关系建立与数据操作
             
           </span>
         </div>
@@ -190,9 +190,9 @@
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="查找">
   <button type="button" class="md-search__button">
-    Search
+    查找
   </button>
 </div>
       
@@ -210,7 +210,7 @@
         
           
             
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -366,7 +366,7 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Mcode" class="md-nav__button md-logo" aria-label="Mcode" data-md-component="logo">
       
@@ -507,8 +507,6 @@
   
     
     
-      
-        
       
         
       
@@ -668,7 +666,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL mysqldump --skip-add-drop-table 参数
+    MySQL导出时 add-drop-table 问题及解决方案
   
 
     
@@ -696,7 +694,7 @@
   <span class="md-ellipsis">
     
   
-    SQL学习：掌握INNER JOIN、DISTINCT和HAVING关键字
+    SELECT DISTINCT 语句
   
 
     
@@ -733,7 +731,7 @@
   <span class="md-ellipsis">
     
   
-    SQLAlchemy一对多关系完整指南：模型定义、关系建立与数据操作
+    SQLAlchemy 一对多关系完整指南：模型定义、关系建立与数据操作
   
 
     
@@ -751,7 +749,7 @@
   <span class="md-ellipsis">
     
   
-    SQLAlchemy一对多关系完整指南：模型定义、关系建立与数据操作
+    SQLAlchemy 一对多关系完整指南：模型定义、关系建立与数据操作
   
 
     
@@ -764,7 +762,7 @@
         
 
 
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -773,7 +771,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      On this page
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -781,7 +779,201 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
+        定义基础模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         建立一对多关系
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="建立一对多关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：在“多”的一侧创建外键
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：在“一”的一侧定义关系属性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一对多关系结构图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        relationship 函数常用参数说明
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="relationship 函数常用参数说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-backref" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. backref 参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lazy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. lazy 参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cascade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. cascade 参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        创建和使用对象
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查询关系数据
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        建立关系的三种方式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="建立关系的三种方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方式一：直接赋值外键字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方式二：通过关系属性的 append 方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方式三：直接赋值对象列表
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        建立双向关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心要点总结
       
     </span>
   </a>
@@ -792,34 +984,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E8%AF%A6%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQLAlchemy一对多关系详解与实现
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -904,7 +1068,7 @@
   <span class="md-ellipsis">
     
   
-    Mac 的一些小技巧
+    macOS 使用小技巧
   
 
     
@@ -932,7 +1096,7 @@
   <span class="md-ellipsis">
     
   
-    Youtube下载
+    YouTube 视频下载
   
 
     
@@ -961,10 +1125,6 @@
   
     
     
-      
-        
-      
-        
       
         
       
@@ -1069,7 +1229,7 @@
   <span class="md-ellipsis">
     
   
-    list,tuple,dict,set 四种数据类型的定义和异同.
+    list、tuple、dict、set 四种数据类型的定义与异同
   
 
     
@@ -1209,7 +1369,7 @@
   <span class="md-ellipsis">
     
   
-    Nginx 基础&amp;常用模块
+    Nginx 基础与常用模块
   
 
     
@@ -1258,7 +1418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Python/Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../Python/Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
         
   
   
@@ -1293,7 +1453,7 @@
   <span class="md-ellipsis">
     
   
-    Python __future__模块详解：实现新旧版本兼容的关键技术
+    Python __future__ 模块详解：实现新旧版本兼容的关键技术
   
 
     
@@ -1349,7 +1509,7 @@
   <span class="md-ellipsis">
     
   
-    协程详解：从yield到yield from
+    协程详解：从 yield 到 yield from
   
 
     
@@ -1405,35 +1565,7 @@
   <span class="md-ellipsis">
     
   
-    Python容器、可迭代对象、迭代器与生成器
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Python/Python%E5%AE%B9%E5%99%A8%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    容器可迭代对象迭代器与生成器详解
+    Python 容器、可迭代对象、迭代器与生成器
   
 
     
@@ -1489,35 +1621,7 @@
   <span class="md-ellipsis">
     
   
-    Python进阶-数据结构与算法进阶训练
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Python/SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQLAlchemy一对多关系
+    Python进阶：数据结构与算法进阶训练
   
 
     
@@ -1629,7 +1733,7 @@
   <span class="md-ellipsis">
     
   
-    数据挖掘—将数据转换成知识
+    数据挖掘——将数据转换成知识
   
 
     
@@ -1685,7 +1789,7 @@
   <span class="md-ellipsis">
     
   
-    理解Python中None、布尔值和空值的对应关系
+    理解 Python 中 None、布尔值和空值的对应关系
   
 
     
@@ -1810,7 +1914,7 @@
   <span class="md-ellipsis">
     
   
-    GitHub也是有离线版的
+    GitHub 离线版安装包
   
 
     
@@ -1896,7 +2000,7 @@
   <span class="md-ellipsis">
     
   
-    Markdown in 5min
+    Markdown 五分钟入门
   
 
     
@@ -2022,7 +2126,7 @@
                     
 
 
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -2031,7 +2135,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      On this page
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -2039,7 +2143,201 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
+        定义基础模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         建立一对多关系
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="建立一对多关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：在“多”的一侧创建外键
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：在“一”的一侧定义关系属性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一对多关系结构图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        relationship 函数常用参数说明
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="relationship 函数常用参数说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-backref" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. backref 参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lazy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. lazy 参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cascade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. cascade 参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        创建和使用对象
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查询关系数据
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        建立关系的三种方式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="建立关系的三种方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方式一：直接赋值外键字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方式二：通过关系属性的 append 方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方式三：直接赋值对象列表
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        建立双向关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心要点总结
       
     </span>
   </a>
@@ -2064,7 +2362,7 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
+  <nav class="md-path" aria-label="导航栏" >
     <ol class="md-path__list">
       
         
@@ -2109,321 +2407,203 @@
                 
                   
 
-<h1 id="sqlalchemy">SQLAlchemy一对多关系完整指南：模型定义、关系建立与数据操作<a class="headerlink" href="#sqlalchemy" title="Permanent link">&para;</a></h1>
-<p>在数据库设计中，<strong>一对多关系</strong>是一种常见的关系类型。在这种关系中，"一"的一方可以关联到"多"的一方的多个记录，但"多"的一方只能关联到"一"的一方的一个记录。</p>
-<p>例如，在城市和国家的模型中，一个国家可以有多个城市，但一个城市只能属于一个国家。在这种情况下，国家是"一"的一方，城市是"多"的一方。</p>
-<p>在"一"类中添加一个关系属性作为<strong>集合属性</strong>。当调用这个属性时返回所有相关的对象。</p>
-<p>比如城市和国家模型。</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 定义City模型类，继承自db.Model</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 这个类映射到数据库中的city表</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 每个城市都属于一个国家，通过外键nation_id关联</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">City</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;城市模型&quot;&quot;&quot;</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="c1"># 指定表名为&#39;city&#39;</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;city&#39;</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="c1"># 定义id字段，整数类型，设为主键</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="c1"># 主键用于唯一标识每一条记录</span>
+<h1 id="sqlalchemy">SQLAlchemy 一对多关系完整指南：模型定义、关系建立与数据操作<a class="headerlink" href="#sqlalchemy" title="Permanent link">&para;</a></h1>
+<p>在数据库设计中，<strong>一对多关系</strong>是最常见的关系类型之一。在这种关系中，“一”的一方可以关联“多”的一方的多条记录，而“多”的一方只能关联“一”的一方的单条记录。</p>
+<p>以城市与国家为例：一个国家可以拥有多个城市，但每个城市只能属于一个国家。其中国家是“一”的一方，城市是“多”的一方。</p>
+<p>在 SQLAlchemy 中，实现一对多关系需要在“一”的一方添加一个<strong>集合关系属性</strong>，访问该属性时将返回所有关联对象的列表。</p>
+<p>下面以城市和国家模型为例，介绍完整的一对多关系实现。本文代码基于 Flask-SQLAlchemy 扩展（<code>db.Model</code>、<code>db.session</code> 等用法均来自该扩展），纯 SQLAlchemy 环境下无法直接运行。</p>
+<h2 id="_1">定义基础模型<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>首先定义两个基础模型类 <code>City</code> 和 <code>Nation</code>，此时尚未建立关联关系：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">City</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;城市模型&quot;&quot;&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;city&#39;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">Nation</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;国家模型&quot;&quot;&quot;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;nation&#39;</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="c1"># 定义name字段，字符串类型，最大长度50，设置唯一约束</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="c1"># unique=True表示城市名称在数据库中不能重复</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># 定义Nation模型类，继承自db.Model</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># 这个类映射到数据库中的nation表</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1"># 每个国家可以拥有多个城市</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">class</span><span class="w"> </span><span class="nc">Nation</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;国家模型&quot;&quot;&quot;</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="c1"># 指定表名为&#39;nation&#39;</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;nation&#39;</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="c1"># 定义id字段，整数类型，设为主键</span>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="c1"># 主键用于唯一标识每一个国家</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="c1"># 定义nation_name字段，字符串类型，最大长度50，设置唯一约束</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="c1"># unique=True表示国家名称在数据库中不能重复</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="n">nation_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">nation_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span></code></pre></div>
-<p>需要实现一个国家对应多个城市。</p>
-<h4 id="_1">建立一对多关系<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
-<p>第一步: </p>
-<p>在"多"的一侧创建<strong>外键</strong>。</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 定义City模型类，继承自db.Model</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># 这个类映射到数据库中的city表</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># 每个城市都属于一个国家，通过外键nation_id关联</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">City</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;城市模型&quot;&quot;&quot;</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="c1"># 指定表名为&#39;city&#39;</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;city&#39;</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="c1"># 定义id字段，整数类型，设为主键</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="c1"># 主键用于唯一标识每一条记录</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="c1"># 定义name字段，字符串类型，最大长度50，设置唯一约束</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="c1"># unique=True表示城市名称在数据库中不能重复</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="c1"># 外键指向nation表的id字段</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="c1"># db.ForeignKey(&#39;nation.id&#39;)指定外键约束，关联到nation表的id字段</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="c1"># 通过这个外键，建立了城市到国家的多对一关系</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    <span class="n">nation_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;nation.id&#39;</span><span class="p">))</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    <span class="c1"># 需要注意的是nation.id,表名是小写(因为SQLAlchemy生成的表默认为类名称的小写形式)</span>
+<p>目标：实现一个国家对应多个城市的一对多关系。</p>
+<h2 id="_2">建立一对多关系<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>建立一对多关系分为两步：在“多”的一侧添加外键，在“一”的一侧定义关系属性。</p>
+<h3 id="_3">第一步：在“多”的一侧创建外键<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">City</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;城市模型&quot;&quot;&quot;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;city&#39;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="c1"># 外键指向 nation 表的 id 字段，建立城市到国家的多对一关系</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">nation_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;nation.id&#39;</span><span class="p">))</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="c1"># 注意：按类名自动生成默认表名是 Flask-SQLAlchemy 的约定；本例已显式指定 __tablename__ = &#39;nation&#39;，ForeignKey 引用的就是该表名</span>
 </span></code></pre></div>
-<p>第二步:</p>
-<p>在"一"的一侧定义关系属性。(集合关系属性,列表)</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 定义Nation模型类，继承自db.Model</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># 这个类映射到数据库中的nation表</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># 每个国家可以拥有多个城市</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Nation</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;国家模型&quot;&quot;&quot;</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="c1"># 指定表名为&#39;nation&#39;</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;nation&#39;</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="c1"># 定义id字段，整数类型，设为主键</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="c1"># 主键用于唯一标识每一个国家</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="c1"># 定义nation_name字段，字符串类型，最大长度50，设置唯一约束</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="c1"># unique=True表示国家名称在数据库中不能重复</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">nation_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="c1"># 定义一对多关系，一个国家可以有多个城市</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="c1"># &#39;City&#39;指定关联的模型类</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="c1"># backref=&#39;nation&#39;在City模型中自动创建nation属性，实现反向引用</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="c1"># 通过cities属性可以访问该国家的所有城市</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="n">cities</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s1">&#39;nation&#39;</span><span class="p">)</span>
+<h3 id="_4">第二步：在“一”的一侧定义关系属性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Nation</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;国家模型&quot;&quot;&quot;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;nation&#39;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">nation_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="c1"># 定义一对多关系：一个国家可以拥有多个城市</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="c1"># backref=&#39;nation&#39; 在 City 模型中自动创建 nation 反向引用属性</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">cities</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s1">&#39;nation&#39;</span><span class="p">)</span>
 </span></code></pre></div>
-<h1 id="nationcitiessqlalchemycitynation_idcitynation_idnationid">当关系属性<code>nation.cities</code>被调用时,<strong>SQLAlchemy</strong>会找到<code>city表</code>的<strong>外键</strong>字段(<code>nation_id</code>)。然后查询<code>city表</code>中<code>nation_id</code>为当前主键值(<code>nation.id</code>)的记录,返回包含这些记录的列表。<a class="headerlink" href="#nationcitiessqlalchemycitynation_idcitynation_idnationid" title="Permanent link">&para;</a></h1>
-<p><strong>需要注意的是</strong>,使用关系函数定义的集合关系属性不是数据库字段,而是一个查询函数。所以返回值并不固定,而是根据查询结果动态变化。</p>
-<h4 id="relationship"><strong>relationship</strong>函数常用参数说明<a class="headerlink" href="#relationship" title="Permanent link">&para;</a></h4>
-<p><code>relationship</code>函数有许多参数可以用来定制关系的行为，以下是几个常用的参数：</p>
-<ol>
-<li><strong><code>backref</code>参数</strong>：在一对多关系中，可以在"一"的一侧使用<code>backref</code>参数自动在"多"的一侧创建反向引用。</li>
-</ol>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 定义Nation模型类，继承自db.Model</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># 这个类映射到数据库中的nation表</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">Nation</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;国家模型&quot;&quot;&quot;</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="c1"># 指定表名为&#39;nation&#39;</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;nation&#39;</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="c1"># 定义id字段，整数类型，设为主键</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="c1"># 主键用于唯一标识每一个国家</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="c1"># 定义nation_name字段，字符串类型，最大长度50，设置唯一约束</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="c1"># unique=True表示国家名称在数据库中不能重复</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="n">nation_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="c1"># 使用backref参数创建双向关系</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="c1"># &#39;City&#39;指定关联的模型类</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="c1"># backref=&#39;nation&#39;在City模型中自动创建nation属性，实现反向引用</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="c1"># 通过cities属性可以访问该国家的所有城市</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    <span class="n">cities</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s1">&#39;nation&#39;</span><span class="p">)</span>
+<p>当访问 <code>nation.cities</code> 属性时，SQLAlchemy 会自动查找 <code>city</code> 表中的外键字段 <code>nation_id</code>，筛选出 <code>nation_id</code> 等于当前 <code>nation.id</code> 的所有记录，并以列表形式返回。</p>
+<blockquote>
+<p><strong>注意</strong>：由 <code>relationship</code> 定义的关系属性并非数据库字段，而是一个动态查询函数，其返回值随数据库状态变化而更新。</p>
+</blockquote>
+<h2 id="_5">一对多关系结构图<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph LR
+    A[Nation&lt;br/&gt;国家表] -- 一对多 --&gt; B[City&lt;br/&gt;城市表]
+    A -- 主键 --&gt; A1[id]
+    B -- 外键 --&gt; B1[nation_id]
+    B -- 主键 --&gt; B2[id]
+    A1 -.-&gt;|关联| B1</code></pre>
+<h2 id="relationship">relationship 函数常用参数说明<a class="headerlink" href="#relationship" title="Permanent link">&para;</a></h2>
+<p><code>relationship</code> 函数提供了丰富的参数来定制关系行为，以下介绍最常用的几个。</p>
+<h3 id="1-backref">1. backref 参数<a class="headerlink" href="#1-backref" title="Permanent link">&para;</a></h3>
+<p><code>backref</code> 用于在“多”的一侧自动创建反向引用属性，从而实现双向关系访问。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Nation</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;国家模型&quot;&quot;&quot;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;nation&#39;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">nation_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="c1"># backref=&#39;nation&#39; 在 City 模型中自动创建 nation 属性，实现反向引用</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="n">cities</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s1">&#39;nation&#39;</span><span class="p">)</span>
 </span></code></pre></div>
-<p>这样，在<code>City</code>模型中就自动有了一个<code>nation</code>属性，可以直接访问该城市的所属国家。</p>
-<ol>
-<li><strong><code>lazy</code>参数</strong>：控制关联对象的加载方式。</li>
-</ol>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 定义Nation模型类，继承自db.Model</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># 这个类映射到数据库中的nation表</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">Nation</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;国家模型&quot;&quot;&quot;</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="c1"># 指定表名为&#39;nation&#39;</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;nation&#39;</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="c1"># 定义id字段，整数类型，设为主键</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="c1"># 主键用于唯一标识每一个国家</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="c1"># 定义nation_name字段，字符串类型，最大长度50，设置唯一约束</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="c1"># unique=True表示国家名称在数据库中不能重复</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">nation_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="c1"># 使用lazy参数控制加载方式</span>
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="c1"># &#39;City&#39;指定关联的模型类</span>
-</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="c1"># backref=&#39;nation&#39;在City模型中自动创建nation属性，实现反向引用</span>
-</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    <span class="c1"># lazy=&#39;select&#39;指定加载方式为select模式（默认）</span>
-</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    <span class="c1"># select模式会在访问cities属性时发出新的SELECT语句加载数据</span>
-</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    <span class="n">cities</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s1">&#39;nation&#39;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="s1">&#39;select&#39;</span><span class="p">)</span>
+<p>设置后，<code>City</code> 模型会自动获得 <code>nation</code> 属性，可直接访问该城市所属的国家对象。</p>
+<h3 id="2-lazy">2. lazy 参数<a class="headerlink" href="#2-lazy" title="Permanent link">&para;</a></h3>
+<p><code>lazy</code> 控制关联对象的加载策略，常用选项如下：</p>
+<ul>
+<li><code>select</code>（默认）：访问属性时发出独立的 SELECT 语句加载数据</li>
+<li><code>joined</code>：使用 JOIN 语句在查询父对象时一并加载关联数据</li>
+<li><code>subquery</code>：使用子查询加载关联数据</li>
+<li><code>dynamic</code>：返回查询对象而非结果列表，允许进一步过滤</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Nation</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;国家模型&quot;&quot;&quot;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;nation&#39;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">nation_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="c1"># lazy=&#39;select&#39; 表示访问 cities 时才发出查询（默认行为）</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">cities</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s1">&#39;nation&#39;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="s1">&#39;select&#39;</span><span class="p">)</span>
 </span></code></pre></div>
-<ol>
-<li><strong><code>cascade</code>参数</strong>：控制级联操作行为。</li>
-</ol>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 定义Nation模型类，继承自db.Model</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># 这个类映射到数据库中的nation表</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">Nation</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;国家模型&quot;&quot;&quot;</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="c1"># 指定表名为&#39;nation&#39;</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;nation&#39;</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="c1"># 定义id字段，整数类型，设为主键</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="c1"># 主键用于唯一标识每一个国家</span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="c1"># 定义nation_name字段，字符串类型，最大长度50，设置唯一约束</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="c1"># unique=True表示国家名称在数据库中不能重复</span>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="n">nation_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="c1"># 使用cascade参数控制级联操作</span>
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="c1"># &#39;City&#39;指定关联的模型类</span>
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="c1"># backref=&#39;nation&#39;在City模型中自动创建nation属性，实现反向引用</span>
-</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="c1"># cascade=&#39;all, delete-orphan&#39;指定级联操作为全部操作，并删除孤儿对象</span>
-</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="c1"># 当删除国家时，所有关联的城市也会被删除</span>
-</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="c1"># 当城市不再关联到任何国家时，城市记录也会被删除</span>
-</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="n">cities</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s1">&#39;nation&#39;</span><span class="p">,</span> <span class="n">cascade</span><span class="o">=</span><span class="s1">&#39;all, delete-orphan&#39;</span><span class="p">)</span>
+<h3 id="3-cascade">3. cascade 参数<a class="headerlink" href="#3-cascade" title="Permanent link">&para;</a></h3>
+<p><code>cascade</code> 控制级联操作行为，常用选项如下：</p>
+<ul>
+<li><code>save-update</code>（默认）：保存或更新父对象时，同步保存或更新子对象</li>
+<li><code>delete</code>：删除父对象时同时删除子对象</li>
+<li><code>all</code>：<code>save-update</code>、<code>merge</code>、<code>refresh-expire</code>、<code>expunge</code>、<code>delete</code> 的同义词，不包含 <code>delete-orphan</code>；若需要在子对象脱离父对象时将其删除，须显式加上 <code>delete-orphan</code></li>
+<li><code>delete-orphan</code>：当子对象与父对象解除关联时，自动删除该子对象</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Nation</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;国家模型&quot;&quot;&quot;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;nation&#39;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">nation_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="c1"># 删除国家时级联删除所有关联城市；城市若不再关联任何国家也会被删除</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">cities</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s1">&#39;nation&#39;</span><span class="p">,</span> <span class="n">cascade</span><span class="o">=</span><span class="s1">&#39;all, delete-orphan&#39;</span><span class="p">)</span>
 </span></code></pre></div>
-<h4 id="_2">创建和使用对象<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>创建国家和城市对象：</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># 创建国家对象，nation_name属性设置为&#39;中国&#39;</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># 这会创建一个新的Nation实例，但尚未保存到数据库</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">china</span> <span class="o">=</span> <span class="n">Nation</span><span class="p">(</span><span class="n">nation_name</span><span class="o">=</span><span class="s1">&#39;中国&#39;</span><span class="p">)</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># 创建国家对象，nation_name属性设置为&#39;美国&#39;</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># 这会创建另一个Nation实例，同样尚未保存到数据库</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">usa</span> <span class="o">=</span> <span class="n">Nation</span><span class="p">(</span><span class="n">nation_name</span><span class="o">=</span><span class="s1">&#39;美国&#39;</span><span class="p">)</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># 将china对象添加到数据库会话中</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># db.session.add()将对象标记为待插入状态</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># 此时对象还未真正写入数据库</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># 只有在commit()之后才会真正保存到数据库</span>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">china</span><span class="p">)</span>
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="c1"># 将usa对象添加到数据库会话中</span>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">usa</span><span class="p">)</span>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="c1"># 提交会话，将国家对象保存到数据库</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="c1"># db.session.commit()会执行所有待处理的数据库操作</span>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
-</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="c1"># 创建城市对象，name属性设置为&#39;北京&#39;，通过nation参数直接关联到china对象</span>
-</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="c1"># 在创建时直接建立与国家的关联关系</span>
-</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="n">beijing</span> <span class="o">=</span> <span class="n">City</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;北京&#39;</span><span class="p">,</span> <span class="n">nation</span><span class="o">=</span><span class="n">china</span><span class="p">)</span>
-</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="c1"># 创建城市对象，name属性设置为&#39;上海&#39;，通过nation参数直接关联到china对象</span>
-</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="n">shanghai</span> <span class="o">=</span> <span class="n">City</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;上海&#39;</span><span class="p">,</span> <span class="n">nation</span><span class="o">=</span><span class="n">china</span><span class="p">)</span>
-</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="c1"># 创建城市对象，name属性设置为&#39;纽约&#39;，通过nation参数直接关联到usa对象</span>
-</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="n">new_york</span> <span class="o">=</span> <span class="n">City</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;纽约&#39;</span><span class="p">,</span> <span class="n">nation</span><span class="o">=</span><span class="n">usa</span><span class="p">)</span>
-</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>
-</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="c1"># 将beijing对象添加到数据库会话中</span>
-</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">beijing</span><span class="p">)</span>
-</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="c1"># 将shanghai对象添加到数据库会话中</span>
-</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">shanghai</span><span class="p">)</span>
-</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="c1"># 将new_york对象添加到数据库会话中</span>
-</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_york</span><span class="p">)</span>
-</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="c1"># 提交会话，将城市对象保存到数据库</span>
-</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<h2 id="_6">创建和使用对象<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>以下演示如何创建国家和城市对象并建立关联关系：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># 创建国家对象</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">china</span> <span class="o">=</span> <span class="n">Nation</span><span class="p">(</span><span class="n">nation_name</span><span class="o">=</span><span class="s1">&#39;中国&#39;</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">usa</span> <span class="o">=</span> <span class="n">Nation</span><span class="p">(</span><span class="n">nation_name</span><span class="o">=</span><span class="s1">&#39;美国&#39;</span><span class="p">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># 将国家对象添加到数据库会话并提交</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">china</span><span class="p">)</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">usa</span><span class="p">)</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># 创建城市对象，通过 nation 参数直接关联到对应的国家对象</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="n">beijing</span> <span class="o">=</span> <span class="n">City</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;北京&#39;</span><span class="p">,</span> <span class="n">nation</span><span class="o">=</span><span class="n">china</span><span class="p">)</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="n">shanghai</span> <span class="o">=</span> <span class="n">City</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;上海&#39;</span><span class="p">,</span> <span class="n">nation</span><span class="o">=</span><span class="n">china</span><span class="p">)</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="n">new_york</span> <span class="o">=</span> <span class="n">City</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;纽约&#39;</span><span class="p">,</span> <span class="n">nation</span><span class="o">=</span><span class="n">usa</span><span class="p">)</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="c1"># 将城市对象添加到会话并提交</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">beijing</span><span class="p">)</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">shanghai</span><span class="p">)</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_york</span><span class="p">)</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </span></code></pre></div>
-<h4 id="_3">查询关系数据<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>通过关系属性查询数据：</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># 通过Nation模型查询nation_name为&#39;中国&#39;的国家对象，返回第一个匹配的结果</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># filter_by()方法用于筛选符合条件的记录</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># first()方法返回查询结果的第一条记录，如果没有则返回None</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">china</span> <span class="o">=</span> <span class="n">Nation</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">nation_name</span><span class="o">=</span><span class="s1">&#39;中国&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># 打印国家名称</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">china</span><span class="o">.</span><span class="n">nation_name</span><span class="si">}</span><span class="s2">的城市有:&quot;</span><span class="p">)</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># 遍历china对象的cities关系属性，获取所有关联的城市对象</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># cities是由relationship定义的关系属性，返回一个城市对象列表</span>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="k">for</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">china</span><span class="o">.</span><span class="n">cities</span><span class="p">:</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="c1"># 打印城市名称</span>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">city</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="c1"># 通过City模型查询name为&#39;北京&#39;的城市对象，返回第一个匹配的结果</span>
-</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="n">beijing</span> <span class="o">=</span> <span class="n">City</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;北京&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="c1"># 通过beijing对象的nation属性（由backref自动创建）获取关联的国家对象，并打印信息</span>
-</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="c1"># nation属性是由backref=&#39;nation&#39;自动创建的反向引用属性</span>
-</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">beijing</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">属于</span><span class="si">{</span><span class="n">beijing</span><span class="o">.</span><span class="n">nation</span><span class="o">.</span><span class="n">nation_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<h2 id="_7">查询关系数据<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>通过关系属性可以方便地查询关联数据：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># 正向查询：从&quot;一&quot;到&quot;多&quot;——获取国家的所有城市</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">china</span> <span class="o">=</span> <span class="n">Nation</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">nation_name</span><span class="o">=</span><span class="s1">&#39;中国&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">china</span><span class="o">.</span><span class="n">nation_name</span><span class="si">}</span><span class="s2">的城市有:&quot;</span><span class="p">)</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">for</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">china</span><span class="o">.</span><span class="n">cities</span><span class="p">:</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">city</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># 反向查询：从&quot;多&quot;到&quot;一&quot;——获取城市所属的国家</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">beijing</span> <span class="o">=</span> <span class="n">City</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;北京&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">beijing</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">属于</span><span class="si">{</span><span class="n">beijing</span><span class="o">.</span><span class="n">nation</span><span class="o">.</span><span class="n">nation_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<h4 id="_4">建立关系<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>1.直接通过<strong>外键</strong>字段赋值。</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># 直接为city对象的nation_id外键字段赋值，关联到ID为1的国家</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># 这是最直接的方式，通过设置外键字段的值来建立关系</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">city</span><span class="o">.</span><span class="n">nation_id</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># 提交会话，保存更改到数据库</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<h2 id="_8">建立关系的三种方式<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>除了创建对象时通过构造函数参数建立关系外，还有以下三种方式：</p>
+<h3 id="_9">方式一：直接赋值外键字段<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>最直接的方式，手动设置外键字段的值：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">city</span><span class="o">.</span><span class="n">nation_id</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </span></code></pre></div>
-<p>2.通过关系属性添加</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 通过nation对象的cities关系属性添加beijing城市对象到城市列表中</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># append()方法会将beijing对象添加到关联的城市列表中</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># 同时会自动设置beijing对象的nation_id外键字段</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">nation</span><span class="o">.</span><span class="n">cities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">beijing</span><span class="p">)</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># beijing为City对象</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="c1"># 提交会话，保存更改到数据库</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<h3 id="append">方式二：通过关系属性的 append 方法<a class="headerlink" href="#append" title="Permanent link">&para;</a></h3>
+<p>将一个对象添加到关系列表中，SQLAlchemy 会自动设置外键：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">nation</span><span class="o">.</span><span class="n">cities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">beijing</span><span class="p">)</span>  <span class="c1"># beijing 为 City 实例</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </span></code></pre></div>
-<p>3.直接将一个<strong>对象列表</strong>赋值给关系属性</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># 直接将包含beijing和shanghai对象的列表赋值给nation对象的cities关系属性</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># 这种方式会替换原有的所有关联关系</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># 如果原来有关联的城市，会被移除；如果beijing或shanghai原来关联到其他国家，也会被断开</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">nation</span><span class="o">.</span><span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="n">beijing</span><span class="p">,</span> <span class="n">shanghai</span><span class="p">]</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># beijing和shanghai均为对象</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># 提交会话，保存更改到数据库</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<h3 id="_10">方式三：直接赋值对象列表<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>将整个对象列表赋值给关系属性，<strong>替换</strong>原有的全部关联关系：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># 注意：这会替换 nation 原有的所有关联城市</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">nation</span><span class="o">.</span><span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="n">beijing</span><span class="p">,</span> <span class="n">shanghai</span><span class="p">]</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </span></code></pre></div>
-<hr />
-<h4 id="_5">建立双向关系<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>通过在<code>relationship</code>中使用<code>backref</code>参数，我们已经建立了双向关系：</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># 定义Nation模型类，继承自db.Model</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># 这个类映射到数据库中的nation表</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">Nation</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;国家模型&quot;&quot;&quot;</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="c1"># 指定表名为&#39;nation&#39;</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;nation&#39;</span>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="c1"># 定义id字段，整数类型，设为主键</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="c1"># 定义nation_name字段，字符串类型，最大长度50，设置唯一约束</span>
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    <span class="n">nation_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>    <span class="c1"># 定义一对多关系，backref参数自动在City模型中创建nation属性</span>
-</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="c1"># &#39;City&#39;指定关联的模型类</span>
-</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>    <span class="c1"># backref=&#39;nation&#39;在City模型中自动创建nation属性，实现反向引用</span>
-</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>    <span class="c1"># 通过cities属性可以访问该国家的所有城市</span>
-</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="n">cities</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s1">&#39;nation&#39;</span><span class="p">)</span>
-</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>
-</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="c1"># 定义City模型类，继承自db.Model</span>
-</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="c1"># 这个类映射到数据库中的city表</span>
-</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="k">class</span><span class="w"> </span><span class="nc">City</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;城市模型&quot;&quot;&quot;</span>
-</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>    <span class="c1"># 指定表名为&#39;city&#39;</span>
-</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;city&#39;</span>
-</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>    <span class="c1"># 定义id字段，整数类型，设为主键</span>
-</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>    <span class="c1"># 定义name字段，字符串类型，最大长度50，设置唯一约束</span>
-</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>    <span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a>    <span class="c1"># 外键指向nation表的id字段</span>
-</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>    <span class="c1"># db.ForeignKey(&#39;nation.id&#39;)指定外键约束，关联到nation表的id字段</span>
-</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>    <span class="c1"># 通过这个外键，建立了城市到国家的多对一关系</span>
-</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>    <span class="n">nation_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;nation.id&#39;</span><span class="p">))</span>
+<h2 id="_11">建立双向关系<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>通过 <code>backref</code> 参数，只需在一侧声明关系即可自动建立双向访问：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Nation</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;国家模型&quot;&quot;&quot;</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;nation&#39;</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="n">nation_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="n">cities</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s1">&#39;nation&#39;</span><span class="p">)</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">City</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;城市模型&quot;&quot;&quot;</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;city&#39;</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>    <span class="n">nation_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;nation.id&#39;</span><span class="p">))</span>
 </span></code></pre></div>
-<p>这样就建立了双向关系：
-- 通过<code>nation.cities</code>可以获取该国家的所有城市
-- 通过<code>city.nation</code>可以获取该城市所属的国家</p>
-<p>下面是一对多关系操作的流程图：</p>
+<p>上述代码建立了完整的双向关系：
+- 通过 <code>nation.cities</code> 可以获取该国家的所有城市（正向访问）
+- 通过 <code>city.nation</code> 可以获取该城市所属的国家（反向访问）</p>
+<p>下面是一对多关系操作的完整流程图：</p>
 <pre class="mermaid"><code>graph LR
     A[定义模型类] --&gt; B{是否包含外键}
     B --&gt;|是| C[多的一方]
     B --&gt;|否| D[一的一方]
-    C --&gt; E[添加nation_id外键字段]
-    D --&gt; F[添加relationship关系属性]
+    C --&gt; E[添加 nation_id 外键字段]
+    D --&gt; F[添加 relationship 关系属性]
     E --&gt; G[创建对象实例]
     F --&gt; G
     G --&gt; H{如何建立关系}
     H --&gt; I[直接赋值外键]
-    H --&gt; J[通过关系属性append]
+    H --&gt; J[通过关系属性 append]
     H --&gt; K[直接赋值对象列表]
     I --&gt; L[查询数据]
     J --&gt; L
     K --&gt; L
-    L --&gt; M[通过cities访问城市]
-    L --&gt; N[通过nation访问国家]</code></pre>
-<p>使用示例：</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># 通过Nation模型查询nation_name为&#39;中国&#39;的国家对象，返回第一个匹配的结果</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># filter_by()方法用于筛选符合条件的记录</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># first()方法返回查询结果的第一条记录，如果没有则返回None</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">china</span> <span class="o">=</span> <span class="n">Nation</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">nation_name</span><span class="o">=</span><span class="s1">&#39;中国&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># 打印国家名称</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">china</span><span class="o">.</span><span class="n">nation_name</span><span class="si">}</span><span class="s2">的城市有:&quot;</span><span class="p">)</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># 遍历china对象的cities关系属性，获取所有关联的城市对象</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c1"># cities是由relationship定义的关系属性，返回一个城市对象列表</span>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="k">for</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">china</span><span class="o">.</span><span class="n">cities</span><span class="p">:</span>
-</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>    <span class="c1"># 打印城市名称</span>
-</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">city</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
-</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="c1"># 通过City模型查询name为&#39;北京&#39;的城市对象，返回第一个匹配的结果</span>
-</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="n">beijing</span> <span class="o">=</span> <span class="n">City</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;北京&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="c1"># 通过beijing对象的nation属性（由backref自动创建）获取关联的国家对象，并打印信息</span>
-</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="c1"># nation属性是由backref=&#39;nation&#39;自动创建的反向引用属性</span>
-</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">beijing</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">属于</span><span class="si">{</span><span class="n">beijing</span><span class="o">.</span><span class="n">nation</span><span class="o">.</span><span class="n">nation_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span></code></pre></div>
-<h2 id="_6">核心要点总结<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+    L --&gt; M[通过 cities 访问城市]
+    L --&gt; N[通过 nation 访问国家]</code></pre>
+<h2 id="_12">核心要点总结<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>一对多关系</strong>："一"的一方可以关联"多"的一方的多个记录，"多"的一方只能关联"一"的一方的一个记录，这是数据库设计中最常见的关系类型之一</li>
-<li><strong>外键</strong>：在"多"的一侧创建，指向"一"的一侧的主键，通过外键约束建立数据关联，确保数据完整性</li>
-<li><strong>relationship函数</strong>：在"一"的一侧定义，用于建立对象间的关系，这是一个查询函数而非数据库字段，返回值根据查询结果动态变化</li>
-<li><strong>backref参数</strong>：<strong>最佳实践</strong>，自动在"多"的一侧创建反向引用，实现双向关系访问，简化代码编写</li>
-<li><strong>lazy参数</strong>：<strong>最佳实践</strong>，控制关联对象加载方式，包括select、joined、subquery、dynamic等模式，可根据性能需求选择合适的加载策略</li>
-<li><strong>cascade参数</strong>：<strong>最佳实践</strong>，控制级联操作行为，如save-update、delete、all、delete-orphan等，确保数据一致性和完整性</li>
-<li><strong>关系建立方式</strong>：可以通过直接赋值外键字段、通过关系属性append方法、或直接赋值对象列表三种方式建立一对多关系</li>
-<li><strong>数据查询</strong>：通过关系属性可以方便地访问关联数据，支持正向查询（从一到多）和反向查询（从多到一）</li>
+<li><strong>一对多关系</strong>：“一”的一方可以关联“多”的一方的多条记录，“多”的一方只能关联“一”的一方的单条记录。这是数据库设计中最常见的关系类型。</li>
+<li><strong>外键</strong>：在“多”的一侧创建，指向“一”的一侧的主键，用于建立数据关联并确保数据完整性。</li>
+<li><strong>relationship 函数</strong>：在“一”的一侧定义，用于建立 Python 对象间的关系。它不是数据库字段，而是动态查询函数，返回值随查询结果变化。</li>
+<li><strong>backref 参数</strong>：自动在“多”的一侧创建反向引用，实现双向关系访问，减少重复代码。</li>
+<li><strong>lazy 参数</strong>：控制关联对象的加载策略，支持 select、joined、subquery、dynamic 等模式，可根据性能需求选择合适的加载方式。</li>
+<li><strong>cascade 参数</strong>：控制级联操作行为，支持 save-update、delete、all、delete-orphan 等选项，确保数据一致性和完整性。注意：<code>delete-orphan</code> 会在城市与国家解除关联（例如从 <code>nation.cities</code> 中移除该城市）时自动删除该城市，需留意误删风险。</li>
+<li><strong>关系建立方式</strong>：可通过直接赋值外键字段、关系属性的 append 方法、或直接赋值对象列表三种方式建立关联。</li>
+<li><strong>数据查询</strong>：通过关系属性可以方便地进行正向查询（从“一”到“多”）和反向查询（从“多”到“一”）。</li>
 </ul>
 
 
@@ -2452,7 +2632,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
-  Back to top
+  回到页面顶部
 </button>
         
       </main>
@@ -2461,33 +2641,33 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../SELECT%20DISTINCT%20%E8%AF%AD%E5%8F%A5/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SQL学习：掌握INNER JOIN、DISTINCT和HAVING关键字">
+          <a href="../SELECT%20DISTINCT%20%E8%AF%AD%E5%8F%A5/" class="md-footer__link md-footer__link--prev" aria-label="上一页: SELECT DISTINCT 语句">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Previous
+                上一页
               </span>
               <div class="md-ellipsis">
-                SQL学习：掌握INNER JOIN、DISTINCT和HAVING关键字
+                SELECT DISTINCT 语句
               </div>
             </div>
           </a>
         
         
           
-          <a href="../SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E8%AF%A6%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/" class="md-footer__link md-footer__link--next" aria-label="Next: SQLAlchemy一对多关系详解与实现">
+          <a href="../../Mac/Mac%20%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="md-footer__link md-footer__link--next" aria-label="下一页: macOS 使用小技巧">
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Next
+                下一页
               </span>
               <div class="md-ellipsis">
-                SQLAlchemy一对多关系详解与实现
+                macOS 使用小技巧
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2530,7 +2710,7 @@
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
     
     
       <script src="../../assets/javascripts/bundle.00c35305.min.js"></script>

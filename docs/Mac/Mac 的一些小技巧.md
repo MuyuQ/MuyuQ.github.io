@@ -1,7 +1,5 @@
 # macOS 使用小技巧
 
-以下是 macOS 日常使用中一些实用的快捷键和技巧：
-
 ## Finder 相关
 
 * `Command` + 点击 Finder 侧边栏中的项目，可在新窗口中打开

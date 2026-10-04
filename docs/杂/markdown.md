@@ -7,7 +7,7 @@ icon: simple/markdown
 > 一份简明的 Markdown 语法速查手册，帮助你快速掌握常用语法。
 
 ## 标题（Headers）
-```
+```markdown
 # H1 Header
 ## H2 Header
 ### H3 Header
@@ -17,7 +17,7 @@ icon: simple/markdown
 ```
 
 ## 文本格式（Text formatting）
-```
+```markdown
 **bold text**
 *italic text*
 ***bold and italic***
@@ -26,7 +26,7 @@ icon: simple/markdown
 ```
 
 ## 链接和图片（Links and images）
-```
+```markdown
 [Link text](https://example.com)
 [Link with title](https://example.com "Hover title")
 ![Alt text](image.jpg)
@@ -34,7 +34,7 @@ icon: simple/markdown
 ```
 
 ## 列表（Lists）
-```
+```markdown
 Unordered:
 - Item 1
 - Item 2
@@ -47,14 +47,14 @@ Ordered:
 ```
 
 ## 引用（Blockquotes）
-```
+```markdown
 > This is a blockquote
 > Multiple lines
 >> Nested quote
 ```
 
 ## 代码块（Code blocks）
-````
+````markdown
 ```javascript
 function hello() {
   console.log("Hello, world!");
@@ -63,7 +63,7 @@ function hello() {
 ````
 
 ## 表格（Tables）
-```
+```markdown
 | Header 1 | Header 2 | Header 3 |
 |----------|----------|----------|
 | Row 1    | Data     | Data     |
@@ -71,7 +71,7 @@ function hello() {
 ```
 
 ## 分隔线（Horizontal rule）
-```
+```markdown
 ---
 or
 ***
@@ -80,19 +80,19 @@ ___
 ```
 
 ## 任务列表（Task lists）
-```
+```markdown
 - [x] Completed task
 - [ ] Incomplete task
 - [ ] Another task
 ```
 
 ## 转义字符（Escaping characters）
-```
+```markdown
 Use backslash to escape: \* \_ \# \`
 ```
 
 ## 换行（Line breaks）
-```
+```markdown
 End a line with two spaces  
 to create a line break.
 

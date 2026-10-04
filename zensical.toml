@@ -108,7 +108,7 @@ Copyright &copy; 2025 The authors
 # Read more:
 # - https://zensical.org/docs/setup/language/
 #
-language = "en"
+language = "zh"
 
 # Zensical provides a number of feature toggles that change the behavior
 # of the documentation site.
