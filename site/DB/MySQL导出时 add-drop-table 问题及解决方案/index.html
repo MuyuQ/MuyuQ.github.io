@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -23,54 +23,25 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.15">
+      <meta name="generator" content="zensical-0.0.67">
     
     
       
-        <title>MySQL mysqldump --skip-add-drop-table 参数 - Mcode</title>
+        <title>MySQL导出时 add-drop-table 问题及解决方案 - Mcode</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.f1b6466b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ae390e2.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.96d1a7e4.min.css">
       
       
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-  <style>:root{}</style>
-
 
 
     
@@ -82,12 +53,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -108,12 +79,12 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="导航栏"></label>
     <div data-md-component="skip">
       
         
-        <a href="#mysql-mysqldump-skip-add-drop-table" class="md-skip">
-          Skip to content
+        <a href="#mysql-add-drop-table" class="md-skip">
+          跳转至
         </a>
       
     </div>
@@ -125,14 +96,14 @@
       
 
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Mcode" class="md-header__button md-logo" aria-label="Mcode" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="导航栏">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
@@ -146,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MySQL mysqldump --skip-add-drop-table 参数
+              MySQL导出时 add-drop-table 问题及解决方案
             
           </span>
         </div>
@@ -186,13 +157,13 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="查找">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="查找">
   <button type="button" class="md-search__button">
-    Search
+    查找
   </button>
 </div>
       
@@ -210,7 +181,7 @@
         
           
             
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -236,6 +207,13 @@
   
   
     
+      
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../C/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/" class="md-tabs__link">
@@ -257,6 +235,23 @@
   
   
     
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item md-tabs__item--active">
         <a href="../MySQL%E4%B8%ADCHAR%E4%B8%8EVARCHAR%E7%9A%84%E5%8C%BA%E5%88%AB/" class="md-tabs__link">
@@ -275,6 +270,15 @@
   
   
   
+    
+      
+      
+        
+      
+        
+      
+    
+    
     
     
       <li class="md-tabs__item">
@@ -295,6 +299,55 @@
   
   
     
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../Python/4%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AF%B9%E6%AF%94/" class="md-tabs__link">
@@ -314,6 +367,19 @@
   
   
     
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../%E6%9D%82/GitHub%E4%B9%9F%E6%98%AF%E6%9C%89%E7%A6%BB%E7%BA%BF%E7%89%88%E7%9A%84/" class="md-tabs__link">
@@ -332,6 +398,13 @@
   
   
   
+    
+      
+      
+        
+      
+    
+    
     
     
       <li class="md-tabs__item">
@@ -366,12 +439,12 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Mcode" class="md-nav__button md-logo" aria-label="Mcode" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
     Mcode
@@ -393,8 +466,7 @@
   <span class="md-ellipsis">
     
   
-    Welcome to Mcode
-  
+  Welcome to Mcode
 
     
   </span>
@@ -440,8 +512,7 @@
   <span class="md-ellipsis">
     
   
-    C
-  
+  C
 
     
   </span>
@@ -451,19 +522,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    C
-  
+  C
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -476,8 +547,7 @@
   <span class="md-ellipsis">
     
   
-    汉诺塔问题详解
-  
+  汉诺塔问题详解
 
     
   </span>
@@ -488,10 +558,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -507,8 +578,6 @@
   
     
     
-      
-        
       
         
       
@@ -548,8 +617,7 @@
   <span class="md-ellipsis">
     
   
-    DB
-  
+  DB
 
     
   </span>
@@ -559,19 +627,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    DB
-  
+  DB
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -584,8 +652,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL中CHAR与VARCHAR的区别详解
-  
+  MySQL中CHAR与VARCHAR的区别详解
 
     
   </span>
@@ -596,10 +663,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -612,8 +679,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL基础语法
-  
+  MySQL基础语法
 
     
   </span>
@@ -624,10 +690,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -640,8 +706,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL多表查询
-  
+  MySQL多表查询
 
     
   </span>
@@ -652,10 +717,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -664,7 +729,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
       
       
         
@@ -677,8 +742,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL mysqldump --skip-add-drop-table 参数
-  
+  MySQL导出时 add-drop-table 问题及解决方案
 
     
   </span>
@@ -688,15 +752,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    MySQL mysqldump --skip-add-drop-table 参数
-  
+  MySQL导出时 add-drop-table 问题及解决方案
 
     
   </span>
@@ -708,7 +771,7 @@
         
 
 
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -717,16 +780,16 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      On this page
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         问题描述
-      
+      </span>
     </span>
   </a>
   
@@ -735,20 +798,9 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        问题原因
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         解决方案
-      
+      </span>
     </span>
   </a>
   
@@ -758,20 +810,92 @@
           <li class="md-nav__item">
   <a href="#-skip-add-drop-table" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         方案一：使用 --skip-add-drop-table 参数
-      
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        方案二：结合其他参数使用
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        方案二：结合其他参数使用
-      
+      <span class="md-typeset">
+        最佳实践
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最佳实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. 根据需求选择合适的参数
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. 确保数据一致性和兼容性
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mysqldump" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. 其他常用的 mysqldump 参数
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. 导入数据时的注意事项
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. 性能优化建议
+      </span>
     </span>
   </a>
   
@@ -785,111 +909,11 @@
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        最佳实践
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="最佳实践">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 根据需求选择合适的参数
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 确保数据一致性和兼容性
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-mysqldump" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 其他常用的 mysqldump 参数
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 导入数据时的注意事项
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 性能优化建议
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         总结
-      
+      </span>
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="总结">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        关键要点回顾
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        最佳实践建议
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -900,10 +924,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -916,8 +940,7 @@
   <span class="md-ellipsis">
     
   
-    SQL学习：掌握INNER JOIN、DISTINCT和HAVING关键字
-  
+  SELECT DISTINCT 语句
 
     
   </span>
@@ -928,10 +951,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -944,8 +967,7 @@
   <span class="md-ellipsis">
     
   
-    SQLAlchemy一对多关系完整指南：模型定义、关系建立与数据操作
-  
+  SQLAlchemy 一对多关系完整指南：模型定义、关系建立与数据操作
 
     
   </span>
@@ -956,38 +978,11 @@
     </li>
   
 
-              
-            
-              
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E8%AF%A6%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQLAlchemy一对多关系详解与实现
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1029,8 +1024,7 @@
   <span class="md-ellipsis">
     
   
-    Mac
-  
+  Mac
 
     
   </span>
@@ -1040,19 +1034,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Mac
-  
+  Mac
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1065,8 +1059,7 @@
   <span class="md-ellipsis">
     
   
-    Mac 的一些小技巧
-  
+  macOS 使用小技巧
 
     
   </span>
@@ -1077,10 +1070,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1093,8 +1086,7 @@
   <span class="md-ellipsis">
     
   
-    Youtube下载
-  
+  YouTube 视频下载
 
     
   </span>
@@ -1105,10 +1097,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1122,10 +1115,6 @@
   
     
     
-      
-        
-      
-        
       
         
       
@@ -1194,8 +1183,7 @@
   <span class="md-ellipsis">
     
   
-    Python
-  
+  Python
 
     
   </span>
@@ -1205,19 +1193,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Python
-  
+  Python
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1230,8 +1218,7 @@
   <span class="md-ellipsis">
     
   
-    list,tuple,dict,set 四种数据类型的定义和异同.
-  
+  list、tuple、dict、set 四种数据类型的定义与异同
 
     
   </span>
@@ -1242,10 +1229,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1258,8 +1245,7 @@
   <span class="md-ellipsis">
     
   
-    Flask配置管理基础
-  
+  Flask配置管理基础
 
     
   </span>
@@ -1270,10 +1256,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1286,8 +1272,7 @@
   <span class="md-ellipsis">
     
   
-    Flask端点与蓝图详解
-  
+  Flask端点与蓝图详解
 
     
   </span>
@@ -1298,10 +1283,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1314,8 +1299,7 @@
   <span class="md-ellipsis">
     
   
-    Flask装饰器执行顺序
-  
+  Flask装饰器执行顺序
 
     
   </span>
@@ -1326,10 +1310,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1342,8 +1326,7 @@
   <span class="md-ellipsis">
     
   
-    Flask请求钩子
-  
+  Flask请求钩子
 
     
   </span>
@@ -1354,24 +1337,23 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../Python/Nginx%E5%9F%BA%E7%A1%80&%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+      <a href="../../Python/Nginx%E5%9F%BA%E7%A1%80%26%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Nginx 基础&amp;常用模块
-  
+  Nginx 基础与常用模块
 
     
   </span>
@@ -1382,10 +1364,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1398,8 +1380,7 @@
   <span class="md-ellipsis">
     
   
-    Python 列表推导式
-  
+  Python 列表推导式
 
     
   </span>
@@ -1410,24 +1391,23 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../Python/Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../Python/Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python 拷贝机制详解：直接赋值、浅拷贝与深拷贝的原理与应用
-  
+  Python 拷贝机制详解：直接赋值、浅拷贝与深拷贝的原理与应用
 
     
   </span>
@@ -1438,10 +1418,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1454,8 +1434,7 @@
   <span class="md-ellipsis">
     
   
-    Python __future__模块详解：实现新旧版本兼容的关键技术
-  
+  Python __future__ 模块详解：实现新旧版本兼容的关键技术
 
     
   </span>
@@ -1466,10 +1445,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1482,8 +1461,7 @@
   <span class="md-ellipsis">
     
   
-    函数参数详解：默认参数、可变参数与关键字参数
-  
+  函数参数详解：默认参数、可变参数与关键字参数
 
     
   </span>
@@ -1494,10 +1472,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1510,8 +1488,7 @@
   <span class="md-ellipsis">
     
   
-    协程详解：从yield到yield from
-  
+  协程详解：从 yield 到 yield from
 
     
   </span>
@@ -1522,10 +1499,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1538,8 +1515,7 @@
   <span class="md-ellipsis">
     
   
-    Python字典详解：dict、defaultdict与OrderedDict
-  
+  Python字典详解：dict、defaultdict与OrderedDict
 
     
   </span>
@@ -1550,10 +1526,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1566,8 +1542,7 @@
   <span class="md-ellipsis">
     
   
-    Python容器、可迭代对象、迭代器与生成器
-  
+  Python 容器、可迭代对象、迭代器与生成器
 
     
   </span>
@@ -1578,38 +1553,10 @@
     </li>
   
 
-              
-            
+                
               
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Python/Python%E5%AE%B9%E5%99%A8%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    容器可迭代对象迭代器与生成器详解
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
+                  
   
   
   
@@ -1622,8 +1569,7 @@
   <span class="md-ellipsis">
     
   
-    Python虚拟环境演进历程
-  
+  Python虚拟环境演进历程
 
     
   </span>
@@ -1634,10 +1580,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1650,8 +1596,7 @@
   <span class="md-ellipsis">
     
   
-    Python进阶-数据结构与算法进阶训练
-  
+  Python进阶：数据结构与算法进阶训练
 
     
   </span>
@@ -1662,38 +1607,10 @@
     </li>
   
 
-              
-            
+                
               
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Python/SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQLAlchemy一对多关系
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
+                  
   
   
   
@@ -1706,8 +1623,7 @@
   <span class="md-ellipsis">
     
   
-    Python爬虫中的SSL证书验证问题及解决方案
-  
+  Python爬虫中的SSL证书验证问题及解决方案
 
     
   </span>
@@ -1718,10 +1634,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1734,8 +1650,7 @@
   <span class="md-ellipsis">
     
   
-    一些需要注意的地方
-  
+  一些需要注意的地方
 
     
   </span>
@@ -1746,10 +1661,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1762,8 +1677,7 @@
   <span class="md-ellipsis">
     
   
-    哈希冲突
-  
+  哈希冲突
 
     
   </span>
@@ -1774,10 +1688,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1790,8 +1704,7 @@
   <span class="md-ellipsis">
     
   
-    数据挖掘—将数据转换成知识
-  
+  数据挖掘——将数据转换成知识
 
     
   </span>
@@ -1802,10 +1715,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1818,8 +1731,7 @@
   <span class="md-ellipsis">
     
   
-    深入理解Python生成器：高效内存管理的利器
-  
+  深入理解Python生成器：高效内存管理的利器
 
     
   </span>
@@ -1830,10 +1742,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1846,8 +1758,7 @@
   <span class="md-ellipsis">
     
   
-    理解Python中None、布尔值和空值的对应关系
-  
+  理解 Python 中 None、布尔值和空值的对应关系
 
     
   </span>
@@ -1858,10 +1769,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1874,8 +1785,7 @@
   <span class="md-ellipsis">
     
   
-    装饰器
-  
+  装饰器
 
     
   </span>
@@ -1886,10 +1796,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1935,8 +1846,7 @@
   <span class="md-ellipsis">
     
   
-    杂
-  
+  杂
 
     
   </span>
@@ -1946,19 +1856,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    杂
-  
+  杂
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1971,8 +1881,7 @@
   <span class="md-ellipsis">
     
   
-    GitHub也是有离线版的
-  
+  GitHub 离线版安装包
 
     
   </span>
@@ -1983,10 +1892,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1999,8 +1908,7 @@
   <span class="md-ellipsis">
     
   
-    Markdown 语法和 MWeb 写作使用说明
-  
+  Markdown 语法和 MWeb 写作使用说明
 
     
   </span>
@@ -2011,10 +1919,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2027,8 +1935,7 @@
   <span class="md-ellipsis">
     
   
-    Nginx 高级配置与性能优化完全指南
-  
+  Nginx 高级配置与性能优化完全指南
 
     
   </span>
@@ -2039,10 +1946,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2052,13 +1959,12 @@
         
   
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Markdown</title><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
   
   <span class="md-ellipsis">
     
   
-    Markdown in 5min
-  
+  Markdown 五分钟入门
 
     
   </span>
@@ -2069,10 +1975,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2112,8 +2019,7 @@
   <span class="md-ellipsis">
     
   
-    生活
-  
+  生活
 
     
   </span>
@@ -2123,19 +2029,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    生活
-  
+  生活
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2148,8 +2054,7 @@
   <span class="md-ellipsis">
     
   
-    琥珀的猫粮选定
-  
+  琥珀的猫粮选定
 
     
   </span>
@@ -2160,10 +2065,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2179,11 +2085,24 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
                   <div class="md-sidebar__inner">
                     
 
 
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -2192,16 +2111,16 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      On this page
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         问题描述
-      
+      </span>
     </span>
   </a>
   
@@ -2210,20 +2129,9 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        问题原因
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         解决方案
-      
+      </span>
     </span>
   </a>
   
@@ -2233,20 +2141,92 @@
           <li class="md-nav__item">
   <a href="#-skip-add-drop-table" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         方案一：使用 --skip-add-drop-table 参数
-      
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        方案二：结合其他参数使用
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        方案二：结合其他参数使用
-      
+      <span class="md-typeset">
+        最佳实践
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最佳实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. 根据需求选择合适的参数
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. 确保数据一致性和兼容性
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mysqldump" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. 其他常用的 mysqldump 参数
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. 导入数据时的注意事项
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. 性能优化建议
+      </span>
     </span>
   </a>
   
@@ -2260,111 +2240,11 @@
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        最佳实践
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="最佳实践">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 根据需求选择合适的参数
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 确保数据一致性和兼容性
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-mysqldump" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 其他常用的 mysqldump 参数
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 导入数据时的注意事项
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 性能优化建议
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         总结
-      
+      </span>
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="总结">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        关键要点回顾
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        最佳实践建议
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2386,7 +2266,7 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
+  <nav class="md-path" aria-label="导航栏" >
     <ol class="md-path__list">
       
         
@@ -2395,6 +2275,7 @@
     <li class="md-path__item">
       <a href="../.." class="md-path__link">
         
+  
   <span class="md-ellipsis">
     Welcome to Mcode
   </span>
@@ -2410,9 +2291,27 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
       <li class="md-path__item">
         <a href="../MySQL%E4%B8%ADCHAR%E4%B8%8EVARCHAR%E7%9A%84%E5%8C%BA%E5%88%AB/" class="md-path__link">
           
+  
   <span class="md-ellipsis">
     DB
   </span>
@@ -2431,16 +2330,13 @@
                 
                   
 
-<h1 id="mysql-mysqldump-skip-add-drop-table">MySQL mysqldump --skip-add-drop-table 参数<a class="headerlink" href="#mysql-mysqldump-skip-add-drop-table" title="Permanent link">&para;</a></h1>
-<h2 id="_1">问题描述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>在使用 mysqldump 导出数据库某表后，直接使用导入该 sql 文件时，该表内的原有数据会被删除。</p>
-<!-- more -->
 
-<p>原来是通过 mysqldump 工具导出时，默认情况下会在 CREATE TABLE 语句前添加 <code>DROP TABLE</code> 语句，导致每个导出文件内都有删除表的命令。</p>
-<h2 id="_2">问题原因<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p><strong>mysqldump 默认行为</strong>：为了确保在导入时能够正确重建表结构，mysqldump 工具默认会在每个 CREATE TABLE 语句之前添加 DROP TABLE IF EXISTS 语句。这样的设计目的是为了避免在导入数据时出现表已存在的错误。</p>
-<p><strong>DROP TABLE IF EXISTS 的作用机制</strong>：
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">-- 执行 mysqldump 默认导出的 SQL 文件时的操作流程</span>
+<h1 id="mysql-add-drop-table">MySQL导出时 add-drop-table 问题及解决方案<a class="headerlink" href="#mysql-add-drop-table" title="Permanent link">&para;</a></h1>
+<h2 id="_1">问题描述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>在使用 mysqldump 导出数据库中的某张表后，直接使用该 SQL 文件导入时，会导致该表的原有数据被清除。</p>
+<p>原因是 mysqldump 工具在导出时，默认情况下会在每个 <code>CREATE TABLE</code> 语句之前添加 <code>DROP TABLE IF EXISTS</code> 语句，导致每个导出文件内都有删除表的命令。这样做的目的是在导入时正确重建表结构，避免出现表已存在的错误。</p>
+<p><strong>DROP TABLE IF EXISTS 的作用机制</strong>：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">-- 执行mysqldump默认导出的SQL文件时的操作流程</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">-- 1. 首先检查表是否存在，如果存在则删除</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="o">`</span><span class="n">users</span><span class="o">`</span><span class="p">;</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">-- 2. 然后重新创建表结构</span>
@@ -2450,54 +2346,59 @@
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="p">;</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1">-- 3. 最后插入数据</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">users</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Alice&#39;</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;Bob&#39;</span><span class="p">);</span>
-</span></code></pre></div></p>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">users</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">'Alice'</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="s1">'Bob'</span><span class="p">);</span>
+</span></code></pre></div>
 <p>这种机制虽然保证了表结构的一致性，但在某些场景下可能会导致<strong>意外的数据丢失</strong>。</p>
-<h2 id="_3">解决方案<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_2">解决方案<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h3 id="-skip-add-drop-table">方案一：使用 --skip-add-drop-table 参数<a class="headerlink" href="#-skip-add-drop-table" title="Permanent link">&para;</a></h3>
-<p>在导出时加入 <code>--skip-add-drop-table</code> 参数，这样就可以在导入时避免删除掉原有数据。</p>
+<p>在导出时加入 <code>--skip-add-drop-table</code> 参数，这样就可以在导入时避免删除原有数据。</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 使用 --skip-add-drop-table 参数导出数据库</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--skip-add-drop-table<span class="w"> </span>database_name<span class="w"> </span>table_name<span class="w"> </span>&gt;<span class="w"> </span>backup.sql
 </span></code></pre></div>
 <p><strong>参数说明</strong>：
-- <code>--skip-add-drop-table</code>：阻止 mysqldump 在输出中生成 DROP TABLE 语句</p>
-<p><strong>使用示例</strong>：
+- <code>--skip-add-drop-table</code>：阻止 mysqldump 在输出中生成 <code>DROP TABLE</code> 语句</p>
+<p><strong>使用示例</strong>：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 导出特定表时不包含 DROP TABLE 语句</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="w"> </span>--skip-add-drop-table<span class="w"> </span>mydb<span class="w"> </span>users<span class="w"> </span>&gt;<span class="w"> </span>users_backup.sql
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># 导出整个数据库时不包含 DROP TABLE 语句</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="w"> </span>--skip-add-drop-table<span class="w"> </span>mydb<span class="w"> </span>&gt;<span class="w"> </span>db_backup.sql
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p><strong>注意事项</strong>：
-- 使用此参数时，目标数据库中的表必须已经存在且结构兼容
-- 如果目标表不存在，则会报错 "Table 'xxx' doesn't exist"</p>
-<h3 id="_4">方案二：结合其他参数使用<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+- 如果目标表已存在，导入时会在 <code>CREATE TABLE</code> 语句处报错 <code>Table 'xxx' already exists</code>
+- 如果目标表不存在，导入时会直接建表并导入数据，不会报错
+- 要向已存在的表追加数据，需配合 <code>--no-create-info</code> 参数（见方案二）</p>
+<h3 id="_3">方案二：结合其他参数使用<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>除了单独使用 <code>--skip-add-drop-table</code> 外，还可以与其他参数组合使用以满足不同需求：</p>
-<p><strong>1. 与 --add-drop-database 组合使用</strong>：
+<p><strong>1. 与 --add-drop-database 组合使用</strong>：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 导出整个数据库并跳过删除表语句，但保留数据库级别的 DROP 语句</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--add-drop-database<span class="w"> </span>--skip-add-drop-table<span class="w"> </span>database_name<span class="w"> </span>&gt;<span class="w"> </span>backup.sql
-</span></code></pre></div></p>
-<p><strong>2. 仅导出数据不导出表结构</strong>：
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># 注意：--add-drop-database 需配合 --databases（或 --all-databases）使用，否则导出文件不含 CREATE DATABASE 语句，也就不会输出 DROP DATABASE</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--add-drop-database<span class="w"> </span>--skip-add-drop-table<span class="w"> </span>--databases<span class="w"> </span>database_name<span class="w"> </span>&gt;<span class="w"> </span>backup.sql
+</span></code></pre></div>
+<p><strong>2. 仅导出数据不导出表结构</strong>：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 只导出数据，不包含任何表结构定义</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--skip-add-drop-table<span class="w"> </span>--no-create-info<span class="w"> </span>database_name<span class="w"> </span>table_name<span class="w"> </span>&gt;<span class="w"> </span>data_only.sql
-</span></code></pre></div></p>
-<p><strong>3. 导出特定条件的数据</strong>：
+</span></code></pre></div>
+<p><strong>3. 导出特定条件的数据</strong>：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 导出满足特定条件的数据</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--skip-add-drop-table<span class="w"> </span>--where<span class="o">=</span><span class="s2">&quot;status=&#39;active&#39;&quot;</span><span class="w"> </span>database_name<span class="w"> </span>users<span class="w"> </span>&gt;<span class="w"> </span>active_users.sql
-</span></code></pre></div></p>
-<h2 id="_5">最佳实践<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--skip-add-drop-table<span class="w"> </span>--where<span class="o">=</span><span class="s2">"status='active'"</span><span class="w"> </span>database_name<span class="w"> </span>users<span class="w"> </span>&gt;<span class="w"> </span>active_users.sql
+</span></code></pre></div>
+<h2 id="_4">最佳实践<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="1">1. 根据需求选择合适的参数<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p><strong>数据追加场景</strong>：
+<p><strong>数据追加场景</strong>：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># 当需要向现有表追加数据而不删除现有数据时</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--skip-add-drop-table<span class="w"> </span>database_name<span class="w"> </span>table_name<span class="w"> </span>&gt;<span class="w"> </span>append_backup.sql
-</span></code></pre></div></p>
-<p><strong>完整备份与恢复场景</strong>：
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># 注意：必须加 --no-create-info，否则导出文件仍含 CREATE TABLE，导入到已存在的同名表时会在建表语句处报 already exists 错误</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--no-create-info<span class="w"> </span>database_name<span class="w"> </span>table_name<span class="w"> </span>&gt;<span class="w"> </span>append_backup.sql
+</span></code></pre></div>
+<p><strong>完整备份与恢复场景</strong>：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># 当需要完整的备份与恢复时（默认行为）</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>database_name<span class="w"> </span>table_name<span class="w"> </span>&gt;<span class="w"> </span>full_backup.sql
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="2">2. 确保数据一致性和兼容性<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p>在使用 <code>--skip-add-drop-table</code> 参数前，需要确保源表和目标表的结构兼容：</p>
-<p><strong>表结构检查方法</strong>：
+<ul>
+<li>使用此参数前，请确保源表和目标表的结构兼容：</li>
+</ul>
+<p><strong>表结构检查方法</strong>：</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">-- 检查表结构是否一致</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">SHOW</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">source_table</span><span class="p">;</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">SHOW</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">target_table</span><span class="p">;</span>
@@ -2505,47 +2406,47 @@
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1">-- 或者使用 DESCRIBE 查看列信息</span>
 </span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">DESCRIBE</span><span class="w"> </span><span class="n">source_table</span><span class="p">;</span>
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="k">DESCRIBE</span><span class="w"> </span><span class="n">target_table</span><span class="p">;</span>
-</span></code></pre></div></p>
-<p><strong>使用 Python 脚本检查表结构兼容性</strong>：
+</span></code></pre></div>
+<p><strong>使用 Python 脚本检查表结构兼容性</strong>：</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">check_table_compatibility</span><span class="p">(</span><span class="n">source_schema</span><span class="p">,</span> <span class="n">target_schema</span><span class="p">):</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="sd">"""</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="sd">    检查源表和目标表结构是否兼容</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="sd">    Args:</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="sd">        source_schema (dict): 源表结构 {&#39;column_name&#39;: &#39;data_type&#39;}</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="sd">        target_schema (dict): 目标表结构 {&#39;column_name&#39;: &#39;data_type&#39;}</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="sd">        source_schema (dict): 源表结构 {'column_name': 'data_type'}</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="sd">        target_schema (dict): 目标表结构 {'column_name': 'data_type'}</span>
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
 </span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="sd">    Returns:</span>
 </span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="sd">        bool: 表结构是否兼容</span>
-</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="sd">    """</span>
 </span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="c1"># 检查列名和数据类型是否匹配</span>
 </span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>    <span class="k">for</span> <span class="n">col_name</span><span class="p">,</span> <span class="n">col_type</span> <span class="ow">in</span> <span class="n">source_schema</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 </span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>        <span class="k">if</span> <span class="n">col_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">target_schema</span><span class="p">:</span>
-</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;警告: 目标表缺少列 </span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"警告: 目标表缺少列 </span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>            <span class="k">return</span> <span class="kc">False</span>
 </span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>        <span class="k">if</span> <span class="n">col_type</span> <span class="o">!=</span> <span class="n">target_schema</span><span class="p">[</span><span class="n">col_name</span><span class="p">]:</span>
-</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;警告: 列 </span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2"> 数据类型不匹配&quot;</span><span class="p">)</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"警告: 列 </span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2"> 数据类型不匹配"</span><span class="p">)</span>
 </span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>            <span class="k">return</span> <span class="kc">False</span>
 </span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>    <span class="k">return</span> <span class="kc">True</span>
 </span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>
 </span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="c1"># 示例使用</span>
 </span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="n">source_table</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;int(11)&#39;</span><span class="p">,</span>
-</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;varchar(255)&#39;</span><span class="p">,</span>
-</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>    <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;varchar(255)&#39;</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>    <span class="s1">'id'</span><span class="p">:</span> <span class="s1">'int(11)'</span><span class="p">,</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>    <span class="s1">'name'</span><span class="p">:</span> <span class="s1">'varchar(255)'</span><span class="p">,</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>    <span class="s1">'email'</span><span class="p">:</span> <span class="s1">'varchar(255)'</span>
 </span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="p">}</span>
 </span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a>
 </span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="n">target_table</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;int(11)&#39;</span><span class="p">,</span>
-</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;varchar(255)&#39;</span><span class="p">,</span>
-</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>    <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;varchar(255)&#39;</span>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>    <span class="s1">'id'</span><span class="p">:</span> <span class="s1">'int(11)'</span><span class="p">,</span>
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>    <span class="s1">'name'</span><span class="p">:</span> <span class="s1">'varchar(255)'</span><span class="p">,</span>
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>    <span class="s1">'email'</span><span class="p">:</span> <span class="s1">'varchar(255)'</span>
 </span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="p">}</span>
 </span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a>
 </span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="k">if</span> <span class="n">check_table_compatibility</span><span class="p">(</span><span class="n">source_table</span><span class="p">,</span> <span class="n">target_table</span><span class="p">):</span>
-</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;表结构兼容，可以安全使用 --skip-add-drop-table 参数&quot;</span><span class="p">)</span>
+</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"表结构兼容，可以安全使用 --skip-add-drop-table 参数"</span><span class="p">)</span>
 </span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a><span class="k">else</span><span class="p">:</span>
-</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;表结构不兼容，请先调整表结构&quot;</span><span class="p">)</span>
-</span></code></pre></div></p>
+</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"表结构不兼容，请先调整表结构"</span><span class="p">)</span>
+</span></code></pre></div>
 <h3 id="3-mysqldump">3. 其他常用的 mysqldump 参数<a class="headerlink" href="#3-mysqldump" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># 推荐的完整备份命令</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span><span class="se">\</span>
@@ -2563,7 +2464,7 @@
 - <code>--triggers</code>：导出触发器
 - <code>--events</code>：导出事件调度器
 - <code>--hex-blob</code>：以十六进制格式导出二进制字段
-- <code>--opt</code>：启用一组优化选项的快捷方式</p>
+- <code>--opt</code>：启用一组优化选项（等价于 <code>--add-drop-table --add-locks --create-options --disable-keys --extended-insert --lock-tables --quick --set-charset</code>）</p>
 <h3 id="4">4. 导入数据时的注意事项<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># 导入数据的标准命令</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>mysql<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>database_name<span class="w"> </span>&lt;<span class="w"> </span>backup.sql
@@ -2571,50 +2472,37 @@
 <p><strong>重要提示</strong>：
 - 在导入前确保目标数据库已存在
 - 如果使用了 <code>--skip-add-drop-table</code>，确保目标表结构兼容
-- 对于大文件导入，可以考虑临时调整 MySQL 的配置参数以提升性能</p>
+- 对于大文件导入，可考虑临时调整 MySQL 配置参数以加快导入速度</p>
 <h3 id="5">5. 性能优化建议<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
 <p>对于大型数据库的备份和恢复操作，还需要考虑以下性能优化措施：</p>
-<p><strong>备份性能优化</strong>：
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># 使用压缩减少备份文件大小</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--compress<span class="w"> </span>database_name<span class="w"> </span>&gt;<span class="w"> </span>backup.sql
+<p><strong>备份性能优化</strong>：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># 通过管道压缩减小备份文件大小</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>database_name<span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span>backup.sql.gz
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># 并行处理多个表（需要配合其他工具）</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># 使用 mydumper 替代 mysqldump 进行并行备份</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>mydumper<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--database<span class="o">=</span>database_name<span class="w"> </span>--threads<span class="o">=</span><span class="m">4</span><span class="w"> </span>--compress
-</span></code></pre></div></p>
-<p><strong>恢复性能优化</strong>：
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># 禁用自动提交以提高导入速度</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>mysql<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>database_name<span class="w"> </span>--init-command<span class="o">=</span><span class="s2">&quot;SET autocommit=0&quot;</span><span class="w"> </span>&lt;<span class="w"> </span>backup.sql
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># 注意：--compress 只压缩客户端与服务器之间传输的数据，写盘的导出文件仍是未压缩的，且该选项自 MySQL 8.0.18 起已废弃</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1"># 并行处理多个表（需要配合其他工具）</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># 使用 mydumper 替代 mysqldump 进行并行备份</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>mydumper<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--database<span class="o">=</span>database_name<span class="w"> </span>--threads<span class="o">=</span><span class="m">4</span><span class="w"> </span>--compress
+</span></code></pre></div>
+<p><strong>恢复性能优化</strong>：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># 导出时加 --no-autocommit：导出文件会用 SET autocommit=0 和 COMMIT 包裹每张表的数据，导入时批量提交更快，也不会丢数据</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>--no-autocommit<span class="w"> </span>database_name<span class="w"> </span>&gt;<span class="w"> </span>backup.sql
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># 临时调整 MySQL 参数以加快导入速度</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>mysql<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>database_name<span class="w"> </span>--init-command<span class="o">=</span><span class="s2">&quot;</span>
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="s2">  SET foreign_key_checks=0;</span>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="s2">  SET unique_checks=0;</span>
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="s2">  SET autocommit=0;</span>
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="s2">&quot;</span><span class="w"> </span>&lt;<span class="w"> </span>backup.sql
-</span></code></pre></div></p>
-<h2 id="_6">总结<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p><strong><code>--skip-add-drop-table</code> 参数的核心作用</strong>是防止在数据导入过程中意外删除现有表结构和数据。这个参数在以下场景特别有用：</p>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># 注意：不要在导入时单独用 --init-command="SET autocommit=0" 提速，导入结束会话断开时未提交的事务会被回滚，导致导入的数据丢失</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>mysql<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>database_name<span class="w"> </span>--init-command<span class="o">=</span><span class="s2">"</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="s2">  SET foreign_key_checks=0;</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="s2">  SET unique_checks=0;</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="s2">"</span><span class="w"> </span>&lt;<span class="w"> </span>backup.sql
+</span></code></pre></div>
+<h2 id="_5">总结<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><code>--skip-add-drop-table</code> 适用于以下场景：</p>
 <ol>
-<li><strong>数据合并</strong>：当需要将新数据追加到现有表中时</li>
+<li><strong>数据合并</strong>：当需要将新数据追加到现有表中时（需配合 <code>--no-create-info</code>，见方案二）</li>
 <li><strong>结构保护</strong>：当希望保留现有表结构不变时</li>
 <li><strong>安全操作</strong>：当不确定导入文件内容，希望避免误删数据时</li>
 </ol>
-<h3 id="_7">关键要点回顾<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>参数功能</strong>：<code>--skip-add-drop-table</code> 阻止 mysqldump 在输出中生成 DROP TABLE 语句</li>
-<li><strong>使用前提</strong>：目标表必须已存在且结构兼容</li>
-<li><strong>适用场景</strong>：数据追加、增量备份、表结构保护等场景</li>
-<li><strong>风险控制</strong>：使用前务必检查表结构兼容性，避免导入失败</li>
-</ul>
-<h3 id="_8">最佳实践建议<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>备份策略</strong>：根据业务需求选择合适的备份参数组合</li>
-<li><strong>兼容性检查</strong>：在使用前验证源表和目标表的结构一致性</li>
-<li><strong>性能优化</strong>：对于大型数据库，考虑使用并行备份工具如 mydumper</li>
-<li><strong>安全性保障</strong>：定期测试备份和恢复流程，确保数据安全</li>
-</ol>
-<p>合理使用 mysqldump 的各种参数，能够帮助我们更好地管理数据库备份与恢复工作，提升数据操作的安全性和效率。</p>
 
 
 
@@ -2642,7 +2530,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
-  Back to top
+  回到页面顶部
 </button>
         
       </main>
@@ -2651,17 +2539,17 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../MySQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MySQL多表查询">
+          <a href="../MySQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" class="md-footer__link md-footer__link--prev" aria-label="上一页: MySQL多表查询">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Previous
+                上一页
               </span>
               <div class="md-ellipsis">
                 MySQL多表查询
@@ -2671,13 +2559,13 @@
         
         
           
-          <a href="../SELECT%20DISTINCT%20%E8%AF%AD%E5%8F%A5/" class="md-footer__link md-footer__link--next" aria-label="Next: SQL学习：掌握INNER JOIN、DISTINCT和HAVING关键字">
+          <a href="../SELECT%20DISTINCT%20%E8%AF%AD%E5%8F%A5/" class="md-footer__link md-footer__link--next" aria-label="下一页: SELECT DISTINCT 语句">
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Next
+                下一页
               </span>
               <div class="md-ellipsis">
-                SQL学习：掌握INNER JOIN、DISTINCT和HAVING关键字
+                SELECT DISTINCT 语句
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2711,7 +2599,7 @@
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -2720,10 +2608,13 @@
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","clipboard.error":"Could not copy to clipboard","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.00c35305.min.js"></script>
+      <script src="../../assets/javascripts/bundle.67a597eb.min.js"></script>
       
     
   </body>

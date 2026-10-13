@@ -1,11 +1,11 @@
-# SQL 学习：掌握 INNER JOIN、DISTINCT 和 HAVING 关键字
+# SELECT DISTINCT 语句
 
-在数据库查询中，掌握各种SQL关键字对于高效检索和处理数据至关重要。本文将详细介绍INNER JOIN、DISTINCT和HAVING这三个常用的SQL关键字，帮助你更好地理解和应用它们。
+本文介绍 INNER JOIN、DISTINCT 和 HAVING 三个 SQL 关键字的用法。
 
 
 ## INNER JOIN 关键字
 
-INNER JOIN 关键字用于返回两个表中满足连接条件的匹配记录。它仅返回两个表中联结字段相等的记录。
+INNER JOIN 关键字用于返回两个表中满足连接条件的匹配记录。
 
 ### 基本语法
 
@@ -18,7 +18,7 @@ ON table1.column_name = table2.column_name;
 
 ### 实例说明
 
-以下示例展示了如何使用INNER JOIN获取网站名称及其访问日志：
+以下示例展示了如何使用 INNER JOIN 获取网站名称及其访问日志：
 
 ```sql
 SELECT Websites.name, access_log.count, access_log.date
@@ -35,12 +35,12 @@ ORDER BY access_log.count;
 
 ## ON 与 WHERE 的区别
 
-在SQL查询中，ON和WHERE子句都用于过滤数据，但它们的作用时机和目的不同：
+在 SQL 查询中，ON 和 WHERE 子句都用于过滤数据，但它们的作用时机和目的不同：
 
 - **ON子句**：在生成临时表时就会进行条件对比，用于确定哪些记录应该被连接
 - **WHERE子句**：在临时表生成之后再进行过滤，用于进一步筛选结果
 
-理解这个区别有助于优化查询性能和获得预期的结果。
+理解这个区别有助于优化查询性能和获得预期的结果。对 INNER JOIN 而言，条件写在 ON 还是 WHERE 中，查询结果相同；这一时机差异主要体现在 LEFT JOIN、RIGHT JOIN 等外连接上。
 
 ## SELECT DISTINCT 语句
 
@@ -55,7 +55,7 @@ FROM table_name;
 
 ### 实例说明
 
-以下示例展示了如何使用DISTINCT获取不重复的部门名称：
+以下示例展示了如何使用 DISTINCT 获取不重复的部门名称：
 
 ```sql
 SELECT DISTINCT adep
@@ -65,12 +65,14 @@ FROM ATHLETE;
 如果需要与聚合函数结合使用 DISTINCT，可以参考以下示例：
 
 ```sql
-SELECT adep, SUM(score) 
+SELECT adep, SUM(DISTINCT score)
 FROM ATHLETE
 INNER JOIN SCORE
 ON ATHLETE.Aneo = SCORE.Aneo
 GROUP BY adep;
 ```
+
+`SUM(DISTINCT score)` 会对每个部门内不同的 `score` 值求和，重复的成绩只计一次。
 
 ## HAVING 关键字
 
@@ -88,7 +90,7 @@ HAVING aggregate_function(column_name) operator value;
 
 ### 实例说明
 
-以下示例展示了如何使用HAVING筛选总访问量超过200的网站：
+以下示例展示了如何使用 HAVING 筛选总访问量超过200的网站：
 
 ```sql
 SELECT Websites.name, SUM(access_log.count) AS total_access
@@ -107,10 +109,8 @@ ORDER BY total_access DESC;
 
 ## 总结
 
-通过掌握INNER JOIN、DISTINCT和HAVING这些关键字，我们可以更灵活地处理数据库查询需求：
+这三个关键字的用法如下：
 
-- 使用 **INNER JOIN** 连接多个表获取关联数据
-- 使用 **DISTINCT** 去除重复记录，获取唯一值
-- 使用 **HAVING** 对分组后的数据进行筛选
-
-合理运用这些关键字能够显著提升SQL查询的效率和准确性。
+- 使用 INNER JOIN 连接多个表获取关联数据
+- 使用 DISTINCT 去除重复记录，获取唯一值
+- 使用 HAVING 对分组后的数据进行筛选

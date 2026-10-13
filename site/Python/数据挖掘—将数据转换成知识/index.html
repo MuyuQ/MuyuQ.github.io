@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -23,54 +23,25 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.15">
+      <meta name="generator" content="zensical-0.0.67">
     
     
       
-        <title>数据挖掘—将数据转换成知识 - Mcode</title>
+        <title>数据挖掘——将数据转换成知识 - Mcode</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.f1b6466b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ae390e2.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.96d1a7e4.min.css">
       
       
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-  <style>:root{}</style>
-
 
 
     
@@ -82,12 +53,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -108,12 +79,12 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="导航栏"></label>
     <div data-md-component="skip">
       
         
         <a href="#_1" class="md-skip">
-          Skip to content
+          跳转至
         </a>
       
     </div>
@@ -125,14 +96,14 @@
       
 
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Mcode" class="md-header__button md-logo" aria-label="Mcode" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="导航栏">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
@@ -146,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              数据挖掘—将数据转换成知识
+              数据挖掘——将数据转换成知识
             
           </span>
         </div>
@@ -186,13 +157,13 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="查找">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="查找">
   <button type="button" class="md-search__button">
-    Search
+    查找
   </button>
 </div>
       
@@ -210,7 +181,7 @@
         
           
             
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -236,6 +207,13 @@
   
   
     
+      
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../C/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/" class="md-tabs__link">
@@ -255,6 +233,23 @@
   
   
     
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../DB/MySQL%E4%B8%ADCHAR%E4%B8%8EVARCHAR%E7%9A%84%E5%8C%BA%E5%88%AB/" class="md-tabs__link">
@@ -273,6 +268,15 @@
   
   
   
+    
+      
+      
+        
+      
+        
+      
+    
+    
     
     
       <li class="md-tabs__item">
@@ -295,6 +299,55 @@
   
   
     
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item md-tabs__item--active">
         <a href="../4%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AF%B9%E6%AF%94/" class="md-tabs__link">
@@ -314,6 +367,19 @@
   
   
     
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../%E6%9D%82/GitHub%E4%B9%9F%E6%98%AF%E6%9C%89%E7%A6%BB%E7%BA%BF%E7%89%88%E7%9A%84/" class="md-tabs__link">
@@ -332,6 +398,13 @@
   
   
   
+    
+      
+      
+        
+      
+    
+    
     
     
       <li class="md-tabs__item">
@@ -366,12 +439,12 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Mcode" class="md-nav__button md-logo" aria-label="Mcode" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
     Mcode
@@ -393,8 +466,7 @@
   <span class="md-ellipsis">
     
   
-    Welcome to Mcode
-  
+  Welcome to Mcode
 
     
   </span>
@@ -440,8 +512,7 @@
   <span class="md-ellipsis">
     
   
-    C
-  
+  C
 
     
   </span>
@@ -451,19 +522,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    C
-  
+  C
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -476,8 +547,7 @@
   <span class="md-ellipsis">
     
   
-    汉诺塔问题详解
-  
+  汉诺塔问题详解
 
     
   </span>
@@ -488,10 +558,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -505,8 +576,6 @@
   
     
     
-      
-        
       
         
       
@@ -543,8 +612,7 @@
   <span class="md-ellipsis">
     
   
-    DB
-  
+  DB
 
     
   </span>
@@ -554,19 +622,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    DB
-  
+  DB
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -579,8 +647,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL中CHAR与VARCHAR的区别详解
-  
+  MySQL中CHAR与VARCHAR的区别详解
 
     
   </span>
@@ -591,10 +658,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -607,8 +674,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL基础语法
-  
+  MySQL基础语法
 
     
   </span>
@@ -619,10 +685,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -635,8 +701,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL多表查询
-  
+  MySQL多表查询
 
     
   </span>
@@ -647,10 +712,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -663,8 +728,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL mysqldump --skip-add-drop-table 参数
-  
+  MySQL导出时 add-drop-table 问题及解决方案
 
     
   </span>
@@ -675,10 +739,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -691,8 +755,7 @@
   <span class="md-ellipsis">
     
   
-    SQL学习：掌握INNER JOIN、DISTINCT和HAVING关键字
-  
+  SELECT DISTINCT 语句
 
     
   </span>
@@ -703,10 +766,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -719,8 +782,7 @@
   <span class="md-ellipsis">
     
   
-    SQLAlchemy一对多关系完整指南：模型定义、关系建立与数据操作
-  
+  SQLAlchemy 一对多关系完整指南：模型定义、关系建立与数据操作
 
     
   </span>
@@ -731,38 +793,11 @@
     </li>
   
 
-              
-            
-              
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../DB/SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E8%AF%A6%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQLAlchemy一对多关系详解与实现
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -804,8 +839,7 @@
   <span class="md-ellipsis">
     
   
-    Mac
-  
+  Mac
 
     
   </span>
@@ -815,19 +849,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Mac
-  
+  Mac
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -840,8 +874,7 @@
   <span class="md-ellipsis">
     
   
-    Mac 的一些小技巧
-  
+  macOS 使用小技巧
 
     
   </span>
@@ -852,10 +885,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -868,8 +901,7 @@
   <span class="md-ellipsis">
     
   
-    Youtube下载
-  
+  YouTube 视频下载
 
     
   </span>
@@ -880,10 +912,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -899,10 +932,6 @@
   
     
     
-      
-        
-      
-        
       
         
       
@@ -974,8 +1003,7 @@
   <span class="md-ellipsis">
     
   
-    Python
-  
+  Python
 
     
   </span>
@@ -985,19 +1013,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Python
-  
+  Python
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1010,8 +1038,7 @@
   <span class="md-ellipsis">
     
   
-    list,tuple,dict,set 四种数据类型的定义和异同.
-  
+  list、tuple、dict、set 四种数据类型的定义与异同
 
     
   </span>
@@ -1022,10 +1049,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1038,8 +1065,7 @@
   <span class="md-ellipsis">
     
   
-    Flask配置管理基础
-  
+  Flask配置管理基础
 
     
   </span>
@@ -1050,10 +1076,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1066,8 +1092,7 @@
   <span class="md-ellipsis">
     
   
-    Flask端点与蓝图详解
-  
+  Flask端点与蓝图详解
 
     
   </span>
@@ -1078,10 +1103,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1094,8 +1119,7 @@
   <span class="md-ellipsis">
     
   
-    Flask装饰器执行顺序
-  
+  Flask装饰器执行顺序
 
     
   </span>
@@ -1106,10 +1130,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1122,8 +1146,7 @@
   <span class="md-ellipsis">
     
   
-    Flask请求钩子
-  
+  Flask请求钩子
 
     
   </span>
@@ -1134,24 +1157,23 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
   
     <li class="md-nav__item">
-      <a href="../Nginx%E5%9F%BA%E7%A1%80&%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+      <a href="../Nginx%E5%9F%BA%E7%A1%80%26%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Nginx 基础&amp;常用模块
-  
+  Nginx 基础与常用模块
 
     
   </span>
@@ -1162,10 +1184,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1178,8 +1200,7 @@
   <span class="md-ellipsis">
     
   
-    Python 列表推导式
-  
+  Python 列表推导式
 
     
   </span>
@@ -1190,24 +1211,23 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
   
     <li class="md-nav__item">
-      <a href="../Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python 拷贝机制详解：直接赋值、浅拷贝与深拷贝的原理与应用
-  
+  Python 拷贝机制详解：直接赋值、浅拷贝与深拷贝的原理与应用
 
     
   </span>
@@ -1218,10 +1238,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1234,8 +1254,7 @@
   <span class="md-ellipsis">
     
   
-    Python __future__模块详解：实现新旧版本兼容的关键技术
-  
+  Python __future__ 模块详解：实现新旧版本兼容的关键技术
 
     
   </span>
@@ -1246,10 +1265,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1262,8 +1281,7 @@
   <span class="md-ellipsis">
     
   
-    函数参数详解：默认参数、可变参数与关键字参数
-  
+  函数参数详解：默认参数、可变参数与关键字参数
 
     
   </span>
@@ -1274,10 +1292,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1290,8 +1308,7 @@
   <span class="md-ellipsis">
     
   
-    协程详解：从yield到yield from
-  
+  协程详解：从 yield 到 yield from
 
     
   </span>
@@ -1302,10 +1319,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1318,8 +1335,7 @@
   <span class="md-ellipsis">
     
   
-    Python字典详解：dict、defaultdict与OrderedDict
-  
+  Python字典详解：dict、defaultdict与OrderedDict
 
     
   </span>
@@ -1330,10 +1346,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1346,8 +1362,7 @@
   <span class="md-ellipsis">
     
   
-    Python容器、可迭代对象、迭代器与生成器
-  
+  Python 容器、可迭代对象、迭代器与生成器
 
     
   </span>
@@ -1358,38 +1373,10 @@
     </li>
   
 
-              
-            
+                
               
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Python%E5%AE%B9%E5%99%A8%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    容器可迭代对象迭代器与生成器详解
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
+                  
   
   
   
@@ -1402,8 +1389,7 @@
   <span class="md-ellipsis">
     
   
-    Python虚拟环境演进历程
-  
+  Python虚拟环境演进历程
 
     
   </span>
@@ -1414,10 +1400,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1430,8 +1416,7 @@
   <span class="md-ellipsis">
     
   
-    Python进阶-数据结构与算法进阶训练
-  
+  Python进阶：数据结构与算法进阶训练
 
     
   </span>
@@ -1442,38 +1427,10 @@
     </li>
   
 
-              
-            
+                
               
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQLAlchemy一对多关系
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
+                  
   
   
   
@@ -1486,8 +1443,7 @@
   <span class="md-ellipsis">
     
   
-    Python爬虫中的SSL证书验证问题及解决方案
-  
+  Python爬虫中的SSL证书验证问题及解决方案
 
     
   </span>
@@ -1498,10 +1454,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1514,8 +1470,7 @@
   <span class="md-ellipsis">
     
   
-    一些需要注意的地方
-  
+  一些需要注意的地方
 
     
   </span>
@@ -1526,10 +1481,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1542,8 +1497,7 @@
   <span class="md-ellipsis">
     
   
-    哈希冲突
-  
+  哈希冲突
 
     
   </span>
@@ -1554,10 +1508,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -1566,7 +1520,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
       
       
         
@@ -1579,8 +1533,7 @@
   <span class="md-ellipsis">
     
   
-    数据挖掘—将数据转换成知识
-  
+  数据挖掘——将数据转换成知识
 
     
   </span>
@@ -1590,15 +1543,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    数据挖掘—将数据转换成知识
-  
+  数据挖掘——将数据转换成知识
 
     
   </span>
@@ -1610,7 +1562,7 @@
         
 
 
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -1619,16 +1571,16 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      On this page
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        什么是数据挖掘？
-      
+      <span class="md-typeset">
+        什么是数据挖掘
+      </span>
     </span>
   </a>
   
@@ -1637,9 +1589,9 @@
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         数据挖掘的特点
-      
+      </span>
     </span>
   </a>
   
@@ -1648,9 +1600,9 @@
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         数据挖掘的核心功能（六大类）
-      
+      </span>
     </span>
   </a>
   
@@ -1659,9 +1611,9 @@
         <li class="md-nav__item">
   <a href="#interesting" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         如何判断发现的模式是否有趣（Interesting）
-      
+      </span>
     </span>
   </a>
   
@@ -1670,9 +1622,9 @@
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         数据挖掘框架
-      
+      </span>
     </span>
   </a>
   
@@ -1681,9 +1633,9 @@
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         数据挖掘的分类
-      
+      </span>
     </span>
   </a>
   
@@ -1692,9 +1644,9 @@
         <li class="md-nav__item">
   <a href="#imp" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         数据挖掘算法的组件化思想（IMP）
-      
+      </span>
     </span>
   </a>
   
@@ -1704,9 +1656,9 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         五个标准组件
-      
+      </span>
     </span>
   </a>
   
@@ -1715,9 +1667,9 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         组件化思想的核心理念
-      
+      </span>
     </span>
   </a>
   
@@ -1731,9 +1683,9 @@
         <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         总结
-      
+      </span>
     </span>
   </a>
   
@@ -1746,10 +1698,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1762,8 +1714,7 @@
   <span class="md-ellipsis">
     
   
-    深入理解Python生成器：高效内存管理的利器
-  
+  深入理解Python生成器：高效内存管理的利器
 
     
   </span>
@@ -1774,10 +1725,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1790,8 +1741,7 @@
   <span class="md-ellipsis">
     
   
-    理解Python中None、布尔值和空值的对应关系
-  
+  理解 Python 中 None、布尔值和空值的对应关系
 
     
   </span>
@@ -1802,10 +1752,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1818,8 +1768,7 @@
   <span class="md-ellipsis">
     
   
-    装饰器
-  
+  装饰器
 
     
   </span>
@@ -1830,10 +1779,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1879,8 +1829,7 @@
   <span class="md-ellipsis">
     
   
-    杂
-  
+  杂
 
     
   </span>
@@ -1890,19 +1839,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    杂
-  
+  杂
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1915,8 +1864,7 @@
   <span class="md-ellipsis">
     
   
-    GitHub也是有离线版的
-  
+  GitHub 离线版安装包
 
     
   </span>
@@ -1927,10 +1875,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1943,8 +1891,7 @@
   <span class="md-ellipsis">
     
   
-    Markdown 语法和 MWeb 写作使用说明
-  
+  Markdown 语法和 MWeb 写作使用说明
 
     
   </span>
@@ -1955,10 +1902,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1971,8 +1918,7 @@
   <span class="md-ellipsis">
     
   
-    Nginx 高级配置与性能优化完全指南
-  
+  Nginx 高级配置与性能优化完全指南
 
     
   </span>
@@ -1983,10 +1929,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1996,13 +1942,12 @@
         
   
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Markdown</title><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
   
   <span class="md-ellipsis">
     
   
-    Markdown in 5min
-  
+  Markdown 五分钟入门
 
     
   </span>
@@ -2013,10 +1958,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2056,8 +2002,7 @@
   <span class="md-ellipsis">
     
   
-    生活
-  
+  生活
 
     
   </span>
@@ -2067,19 +2012,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    生活
-  
+  生活
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2092,8 +2037,7 @@
   <span class="md-ellipsis">
     
   
-    琥珀的猫粮选定
-  
+  琥珀的猫粮选定
 
     
   </span>
@@ -2104,10 +2048,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2123,11 +2068,24 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
                   <div class="md-sidebar__inner">
                     
 
 
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -2136,16 +2094,16 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      On this page
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        什么是数据挖掘？
-      
+      <span class="md-typeset">
+        什么是数据挖掘
+      </span>
     </span>
   </a>
   
@@ -2154,9 +2112,9 @@
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         数据挖掘的特点
-      
+      </span>
     </span>
   </a>
   
@@ -2165,9 +2123,9 @@
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         数据挖掘的核心功能（六大类）
-      
+      </span>
     </span>
   </a>
   
@@ -2176,9 +2134,9 @@
         <li class="md-nav__item">
   <a href="#interesting" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         如何判断发现的模式是否有趣（Interesting）
-      
+      </span>
     </span>
   </a>
   
@@ -2187,9 +2145,9 @@
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         数据挖掘框架
-      
+      </span>
     </span>
   </a>
   
@@ -2198,9 +2156,9 @@
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         数据挖掘的分类
-      
+      </span>
     </span>
   </a>
   
@@ -2209,9 +2167,9 @@
         <li class="md-nav__item">
   <a href="#imp" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         数据挖掘算法的组件化思想（IMP）
-      
+      </span>
     </span>
   </a>
   
@@ -2221,9 +2179,9 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         五个标准组件
-      
+      </span>
     </span>
   </a>
   
@@ -2232,9 +2190,9 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         组件化思想的核心理念
-      
+      </span>
     </span>
   </a>
   
@@ -2248,9 +2206,9 @@
         <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         总结
-      
+      </span>
     </span>
   </a>
   
@@ -2274,7 +2232,7 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
+  <nav class="md-path" aria-label="导航栏" >
     <ol class="md-path__list">
       
         
@@ -2283,6 +2241,7 @@
     <li class="md-path__item">
       <a href="../.." class="md-path__link">
         
+  
   <span class="md-ellipsis">
     Welcome to Mcode
   </span>
@@ -2298,9 +2257,59 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
       <li class="md-path__item">
         <a href="../4%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AF%B9%E6%AF%94/" class="md-path__link">
           
+  
   <span class="md-ellipsis">
     Python
   </span>
@@ -2319,15 +2328,19 @@
                 
                   
 
-<h1 id="_1">数据挖掘—将数据转换成知识<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>数据 未处理的原始事实和数字。</p>
-<p>知识 经过处理、分析和解释后的信息，具有实际意义和价值。</p>
-<p>模式 数据中存在的规律性和重复性结构。</p>
-<p>信息 含义广泛，既包含未经处理的原始数据，也包含经过处理的知识。</p>
-<h3 id="_2">什么是数据挖掘？<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+
+<h1 id="_1">数据挖掘——将数据转换成知识<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>先明确几个基本概念：</p>
+<ul>
+<li><strong>数据</strong>：未处理的原始事实和数字。</li>
+<li><strong>知识</strong>：经过处理、分析和解释后的信息，具有实际意义和价值。</li>
+<li><strong>模式</strong>：数据中存在的规律性和重复性结构。</li>
+<li><strong>信息</strong>：含义广泛，既包含未经处理的原始数据，也包含经过处理的知识。</li>
+</ul>
+<h2 id="_2">什么是数据挖掘<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>KDD（Knowledge Discovery in Databases，数据库中的知识发现）与数据挖掘基本等同。数据挖掘是KDD过程中的一个核心步骤，指的是从大量数据中自动或半自动地发现有用信息和知识的过程。</p>
-<p>在各个行业，对数据挖掘的认识有所不同，这是因为他们所受的教育背景、工作环境以及基础知识存在差异，导致在理解和应用上会有细微差别。</p>
-<h3 id="_3">数据挖掘的特点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>在各个行业中，对数据挖掘的认识有所不同。这是因为从业者所受的教育背景、工作环境以及基础知识存在差异，导致在理解和应用上会有细微差别。</p>
+<h2 id="_3">数据挖掘的特点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>数据挖掘具有以下几个显著特点：</p>
 <ul>
 <li><strong>数据真实性</strong>：处理的是现实世界中真实存在的数据</li>
@@ -2335,17 +2348,17 @@
 <li><strong>决策支持性</strong>：满足决策者的多样化查询需求</li>
 <li><strong>知识新颖性</strong>：挖掘出的知识通常是事先未知的、潜在的、有价值的新知识</li>
 </ul>
-<h3 id="_4">数据挖掘的核心功能（六大类）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h2 id="_4">数据挖掘的核心功能（六大类）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>数据挖掘的主要功能可以分为以下六类：</p>
 <ol>
 <li>
 <p><strong>概念描述（Concept Description）</strong>：对数据的特征和特性进行概括性描述，帮助理解数据的整体情况</p>
 </li>
 <li>
-<p><strong>关联关系分析（Association）</strong>：发现数据项之间的关联规则，例如购物篮分析中"购买面包的顾客通常也会购买牛奶"</p>
+<p><strong>关联关系分析（Association）</strong>：发现数据项之间的关联规则，例如购物篮分析中“购买面包的顾客通常也会购买牛奶”</p>
 </li>
 <li>
-<p><strong>分类和预测（Classification and Prediction）</strong></p>
+<p><strong>分类和预测（Classification and Prediction）</strong>：</p>
 </li>
 <li>分类：针对离散的数据，将数据划分到预定义的类别中</li>
 <li>
@@ -2361,20 +2374,20 @@
 <p><strong>趋势和演化分析（Trend and Evolution Analysis）</strong>：分析数据随时间变化的规律和趋势</p>
 </li>
 </ol>
-<h3 id="interesting">如何判断发现的模式是否有趣（Interesting）<a class="headerlink" href="#interesting" title="Permanent link">&para;</a></h3>
+<h2 id="interesting">如何判断发现的模式是否有趣（Interesting）<a class="headerlink" href="#interesting" title="Permanent link">&para;</a></h2>
 <p>判断数据挖掘发现的模式是否有价值，主要从主观和客观两个维度来评估：</p>
 <ul>
 <li><strong>主观方面</strong>：基于用户的领域知识、兴趣和需求来判断模式是否有意义</li>
 <li><strong>客观方面</strong>：通过统计学指标和数学方法来量化模式的有趣程度</li>
 </ul>
-<h3 id="_5">数据挖掘框架<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h2 id="_5">数据挖掘框架<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>一个完整的数据挖掘系统通常包含以下三个核心组成部分：</p>
 <ul>
 <li><strong>技术（Techniques）</strong>：各种数据挖掘算法和技术方法</li>
 <li><strong>应用（Applications）</strong>：数据挖掘在具体领域的实际应用场景</li>
 <li><strong>原理（Principles）</strong>：指导数据挖掘实践的理论基础和原则</li>
 </ul>
-<h3 id="_6">数据挖掘的分类<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h2 id="_6">数据挖掘的分类<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>数据挖掘可以从多个角度进行分类：</p>
 <ol>
 <li><strong>按学习方式分类</strong>：</li>
@@ -2389,9 +2402,9 @@
 <li>描述性数据挖掘：描述数据的特征和模式</li>
 <li>预测性数据挖掘：基于历史数据预测未来趋势</li>
 </ol>
-<h3 id="imp">数据挖掘算法的组件化思想（IMP）<a class="headerlink" href="#imp" title="Permanent link">&para;</a></h3>
+<h2 id="imp">数据挖掘算法的组件化思想（IMP）<a class="headerlink" href="#imp" title="Permanent link">&para;</a></h2>
 <p>现代数据挖掘算法设计趋向于组件化，这种思想将复杂的算法分解为标准化的组件，提高复用性和灵活性。</p>
-<h4 id="_7">五个标准组件<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h3 id="_7">五个标准组件<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>模型和模式结构（Model and Pattern Structure）</strong>：定义数据的表示方式和模式的形式</li>
 <li><strong>数据挖掘任务（Data Mining Task）</strong>：明确要解决的具体问题类型</li>
@@ -2399,10 +2412,10 @@
 <li><strong>搜索和优化方法（Search and Optimization Method）</strong>：寻找最优解的策略，影响算法的效果</li>
 <li><strong>数据管理策略（Data Management Strategy）</strong>：高效处理和存储数据的方法，影响算法的效率</li>
 </ol>
-<h4 id="_8">组件化思想的核心理念<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h3 id="_8">组件化思想的核心理念<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>模型是全局的，模式是局部的。两者相互联系，共同构成完整的数据挖掘解决方案。</p>
-<p>当面对一个新的应用需求时，数据挖掘人员应该从组件的角度出发，根据具体应用需求，考虑应该选取哪些组件来组合成新的算法，而不是局限于现有的成熟算法。这种思维方式提高了算法设计的灵活性和针对性。</p>
-<h3 id="_9">总结<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>当面对一个新的应用需求时，数据挖掘人员应该从组件的角度出发，根据具体应用需求考虑应该选取哪些组件来组合成新的算法，而不是局限于现有的成熟算法。这种思维方式提高了算法设计的灵活性和针对性。</p>
+<h2 id="_9">总结<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <p>数据挖掘作为从海量数据中提取有价值知识的重要技术，在商业智能、科学研究、社会管理等各个领域发挥着越来越重要的作用。理解数据挖掘的基本概念、核心功能和实现方法，有助于我们更好地利用这一技术解决实际问题。</p>
 
 
@@ -2431,7 +2444,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
-  Back to top
+  回到页面顶部
 </button>
         
       </main>
@@ -2440,17 +2453,17 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 哈希冲突">
+          <a href="../%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 哈希冲突">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Previous
+                上一页
               </span>
               <div class="md-ellipsis">
                 哈希冲突
@@ -2460,10 +2473,10 @@
         
         
           
-          <a href="../%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Python%E7%94%9F%E6%88%90%E5%99%A8-%E9%AB%98%E6%95%88%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%9A%84%E5%88%A9%E5%99%A8/" class="md-footer__link md-footer__link--next" aria-label="Next: 深入理解Python生成器：高效内存管理的利器">
+          <a href="../%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Python%E7%94%9F%E6%88%90%E5%99%A8-%E9%AB%98%E6%95%88%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%9A%84%E5%88%A9%E5%99%A8/" class="md-footer__link md-footer__link--next" aria-label="下一页: 深入理解Python生成器：高效内存管理的利器">
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Next
+                下一页
               </span>
               <div class="md-ellipsis">
                 深入理解Python生成器：高效内存管理的利器
@@ -2500,7 +2513,7 @@
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -2509,10 +2522,13 @@
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","clipboard.error":"Could not copy to clipboard","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.00c35305.min.js"></script>
+      <script src="../../assets/javascripts/bundle.67a597eb.min.js"></script>
       
     
   </body>

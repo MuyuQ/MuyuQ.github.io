@@ -48,7 +48,7 @@ sendfile 是一种零拷贝传输机制，允许数据直接从内核空间的�
 | /etc/nginx/koi-win | 配置文件 | 编码转换映射文件 |
 | /etc/nginx/win-utf | 配置文件 | 编码转换映射文件 |
 | /etc/nginx/mime.types | 配置文件 | 设置 HTTP 协议的 Content-Type 与扩展名对应关系 |
-| /usr/lib/systemd/system/nginx-debug.service | 配置文件 | CentOS 7 中，用于配置系统守护进程管理器 |
+| /usr/lib/systemd/system/nginx-debug.service | 配置文件 | CentOS 7 中，nginx 调试模式的 systemd 服务单元文件 |
 | /usr/lib/systemd/system/nginx.service | 配置文件 | Nginx 系统服务配置 |
 | /etc/sysconfig/nginx | 配置文件 | Nginx 系统配置 |
 | /etc/sysconfig/nginx-debug | 配置文件 | Nginx 调试模式配置 |
@@ -62,11 +62,11 @@ sendfile 是一种零拷贝传输机制，允许数据直接从内核空间的�
 - **请求报文（Request）**：包括请求行、请求头部、请求体
 - **响应报文（Response）**：包括状态行、响应头部、响应体
 
-**curl** —— CommandLine Uniform Resource Locator
+**curl** —— Client URL Request Library
 
 curl 是一款利用 URL 语法在命令行环境下工作的开源文件传输工具，支持多种协议（如 HTTP、HTTPS、FTP 等）。
 
-通过修改 Nginx 配置文件中的 `error_log` 和 `access_log` 指令，可以自定义错误日志和访问日志的记录路径与格式。更多可配置参数请参阅 [Nginx 官方文档](http://nginx.org/en/docs/)。
+通过修改 Nginx 配置文件中的 `error_log` 指令，可以设定错误日志的路径与级别；`access_log` 指令配合 `log_format` 指令，可以自定义访问日志的路径与格式。更多可配置参数请参阅 [Nginx 官方文档](http://nginx.org/en/docs/)。
 
 ### Nginx 变量
 
@@ -80,7 +80,7 @@ curl 是一款利用 URL 语法在命令行环境下工作的开源文件传输�
 nginx -t -c /etc/nginx/nginx.conf
 ```
 
-### stub_status_module 模块
+### ngx_http_stub_status_module 模块
 
 用于展示 Nginx 当前的连接处理状态，包括活跃连接数、已接受连接数、已处理请求数等信息，适用于运维监控场景。
 
@@ -92,7 +92,7 @@ location /mystatus {
 }
 ```
 
-### http_random_index_module 模块
+### ngx_http_random_index_module 模块
 
 随机首页模块，用于从目录中随机选择一个文件作为首页返回。
 
@@ -100,11 +100,11 @@ location /mystatus {
 
 通过 `sub_filter`、`sub_filter_last_modified`、`sub_filter_once`、`sub_filter_types` 等指令替换 HTTP 页面内容。
 
-### limit_conn_module 连接频率限制
+### ngx_http_limit_conn_module 连接频率限制
 
 用于限制同一客户端在同一时间的并发连接数，防止单个客户端占用过多服务器资源。
 
-### limit_req_module 请求频率限制
+### ngx_http_limit_req_module 请求频率限制
 
 用于限制单位时间内的请求速率，有效防御 CC 攻击和恶意刷请求等行为。
 
@@ -114,7 +114,7 @@ location /mystatus {
 | --- | --- |
 | HTTP 1.0 | TCP 不能复用 |
 | HTTP 1.1 | 有序 TCP 复用（管线化） |
-| HTTP 2.0 | 多路复用 TCP 复用（流式传输） |
+| HTTP 2.0 | 多路复用（流式传输） |
 
 - HTTP 请求建立在一次 TCP 连接基础上
 - 一次 TCP 连接至少产生一次 HTTP 请求
@@ -128,18 +128,18 @@ ab -n 50 -c 20 http://www.qq.com
 
 ## Nginx 访问控制
 
-### http_access_module 基于 IP 的访问控制
+### ngx_http_access_module 基于 IP 的访问控制
 
 ```nginx
 location / {
-    allow all;
     deny 10.211.55.2;
+    allow all;
 }
 # 注意：Nginx 按顺序匹配规则，首个匹配生效后即停止。
 # 若 allow all 置于 deny 之前，则后续所有 deny 规则均不会生效
 ```
 
-`http_access_module` 的局限性：在存在七层负载均衡或 CDN 的场景下，Nginx 获取到的 `remote_addr` 往往是中间节点的 IP 而非客户端真实 IP，因此无法准确基于 `remote_addr` 进行访问控制。
+`ngx_http_access_module` 的局限性：在存在七层负载均衡或 CDN 的场景下，Nginx 获取到的 `remote_addr` 往往是中间节点的 IP 而非客户端真实 IP，因此无法准确基于 `remote_addr` 进行访问控制。
 
 **进阶方法：**
 
@@ -157,7 +157,7 @@ http_x_forwarded_for = Client IP, Proxy(1) IP, Proxy(2) IP...
 
 **方案3：** 通过 HTTP 自定义变量传递
 
-### http_auth_basic_module 基于用户的身份认证
+### ngx_http_auth_basic_module 基于用户的身份认证
 
 通过 HTTP Basic Authentication 实现简单的用户名密码验证。
 

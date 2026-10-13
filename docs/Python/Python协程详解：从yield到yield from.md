@@ -24,7 +24,7 @@
 1. 产出一个值，并暂停函数的执行（保存现场）
 2. 接收调用者通过 `send()` 方法传入的参数
 
-这使得 **yield** 实现的生成器具有`中断等待`的功能，从而实现协程。
+这使得 **yield** 实现的生成器具有中断等待的功能，从而实现协程。
 
 ### yield 实现协程的例子
 
@@ -53,15 +53,6 @@ c = consumer()  # 构造一个消费者生成器
 produce(c)  # 启动生产者
 ```
 
-## 协程的状态查看
-
-- **GEN_CREATED**：等待执行，还没有进入协程
-- **GEN_RUNNING**：解释器正在执行
-- **GEN_SUSPENDED**：阻塞状态，在 yield 处暂停
-- **GEN_CLOSED**：执行结束
-
-可以通过 `inspect.getgeneratorstate()` 函数来查看。
-
 为了更直观地理解 yield 实现的协程工作原理，我们可以用下面的流程图来表示生产者-消费者模型的执行过程：
 
 ```mermaid
@@ -80,6 +71,15 @@ graph LR
 
 每次只能向直接调用者返回一个值，导致无法分离到一个单独的函数中，**复用性差**。
 
+## 协程的状态查看
+
+- **GEN_CREATED**：等待执行，还没有进入协程
+- **GEN_RUNNING**：解释器正在执行
+- **GEN_SUSPENDED**：阻塞状态，在 yield 处暂停
+- **GEN_CLOSED**：执行结束
+
+可以通过 `inspect.getgeneratorstate()` 函数来查看。
+
 ---
 
 ## yield from
@@ -93,7 +93,7 @@ graph LR
 
 - **委派生成器**：包含 `yield from <iterable>` 表达式的生成器函数
 - **子生成器**：从 `yield from` 表达式中 `<iterable>` 部分获取的生成器
-- **调用方**：调用委派生成器的客户端代码，即上文示例中的 main 生成器函数
+- **调用方**：调用委派生成器的客户端代码
 
 ![img](https://mcode-1253212768.cos.ap-beijing.myqcloud.com/20181226144528648.png)
 

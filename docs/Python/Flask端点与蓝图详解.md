@@ -2,7 +2,7 @@
 
 ## 端点（Endpoint）
 
-端点(<font color=red>**Endpoint**</font>)是<font color=blue>**URL 规则**</font>(rule)和<font color=blue>**视图函数**</font>(view_func)之间的中间媒介。它是 Flask 路由系统的核心概念，用于解耦 URL 与视图函数之间的直接绑定关系，提供更大的灵活性和可扩展性。
+端点（**Endpoint**）是URL规则（rule）和视图函数（view_func）之间的中间媒介。它是Flask路由系统的核心概念，用于解耦URL与视图函数之间的直接绑定关系，提供更大的灵活性和可扩展性。
 
 ```mermaid
 graph LR
@@ -35,7 +35,7 @@ def index():
 app.add_url_rule('/index', 'index', index)
 ```
 
-默认情况下，<font color=red>**端点（Endpoint）**</font>就是<font color=blue>**视图函数（View Function）**</font>的名称。这种设计使得 Flask 可以通过端点名称唯一标识每个视图函数，无论它们位于哪个模块或蓝图中。
+默认情况下，端点（Endpoint）就是视图函数（View Function）的名称。这种设计使得Flask可以通过端点名称唯一标识每个视图函数，无论它们位于哪个模块或蓝图中。
 
 开发者也可以显式地指定端点名称，以满足特定的命名需求或避免命名冲突：
 
@@ -52,13 +52,13 @@ def index():
 
 ## 端点、view_functions 与 url_map
 
-在每个 Flask 应用对象（app）中，有两个重要的属性与端点机制相关：
+在每个Flask应用对象（app）中，有两个重要的属性与端点机制相关：
 
-<font color=red>**view_functions**</font> 存储了 `端点名称（endpoint）→ 视图函数（view_func）` 的键值对映射关系。
+`view_functions` 存储了端点名称（endpoint）→ 视图函数（view_func）的键值对映射关系。
 
-<font color=red>**url_map**</font> 存储了<font color=blue>**URL 规则**</font>与<font color=red>**端点名称**</font>之间的映射关系。
+`url_map` 存储了URL规则与端点名称之间的映射关系。
 
-这两个核心数据结构均由 `add_url_rule` 方法进行维护和更新，构成了 Flask 路由系统的基础。
+这两个核心数据结构均由 `add_url_rule` 方法进行维护和更新，构成了Flask路由系统的基础。
 
 ```python
 # 导入Flask类
@@ -107,13 +107,11 @@ Map([<Rule '/hello' (HEAD, GET, OPTIONS) -> hello>,
  <Rule '/static/<filename>' (HEAD, GET, OPTIONS) -> static>])
 ```
 
-当一个 HTTP 请求进入 Flask 应用时，会按照以下流程处理：
+当一个HTTP请求进入Flask应用时，会按照以下流程处理：
 
-1. 首先通过 URL 规则（Rule）在<font color=red>**url_map**</font>中查找对应的端点名称（endpoint）
-2. 然后根据端点名称在<font color=red>**view_functions**</font>中查找对应的视图函数（view_func）
+1. 首先通过URL规则（Rule）在 `url_map` 中查找对应的端点名称（endpoint）
+2. 然后根据端点名称在 `view_functions` 中查找对应的视图函数（view_func）
 3. 最终执行找到的视图函数并返回响应结果
-
-这种两阶段的查找机制解耦了 URL 与视图函数之间的直接绑定，提供了更大的灵活性。
 
 ```mermaid
 graph TD
@@ -128,29 +126,23 @@ style D fill:#98FB98,stroke:#333
 style E fill:#98FB98,stroke:#333
 ```
 
-这个图表清晰地展示了Flask路由系统的核心工作机制：
-
-1. <font color=red>**url_map**</font> 负责维护 URL 规则与端点名称之间的映射关系
-2. <font color=red>**view_functions**</font> 负责维护端点名称与视图函数之间的映射关系
-3. 通过这两层映射，实现了 URL 与视图函数的解耦
-
 ---
 
 ## 蓝图和端点
 
-当使用<font color=red>**蓝图**</font>时，<font color=blue>**端点**</font>会变成 `'<font color=orange>**蓝图名.视图函数名**</font>'`。
+当使用蓝图时，端点会变成 `蓝图名.视图函数名`。
 
-<font color=red>**蓝图（Blueprint）**</font>是Flask提供的一个重要特性，它可以将一系列相关的操作组织成一个集合，实现应用的模块化设计。通过蓝图，我们可以将大型应用拆分成多个小的、可重用的组件。<font color=orange>**建议在命名蓝图时添加 `_bp` 后缀**</font>，以提高代码可读性和维护性。
+**蓝图（Blueprint）**是Flask提供的一个重要特性，它可以将一系列相关的操作组织成一个集合，实现应用的模块化设计。通过蓝图，我们可以将大型应用拆分成多个小的、可重用的组件。
 
-<font color=orange>**最佳实践**</font>：一般情况下，建议在蓝图对象名称后添加 `_bp` 后缀，例如 `user_bp`、`admin_bp`，这样可以在代码中快速识别出哪些是蓝图对象，提高代码可读性和维护性。
+最佳实践：一般情况下，建议在蓝图对象名称后添加 `_bp` 后缀，例如 `user_bp`、`admin_bp`，这样可以在代码中快速识别出哪些是蓝图对象，提高代码可读性和维护性。
 
-蓝图搭配端点的设计，解释了<font color=blue>为什么Flask要引入端点机制，而不是直接将URL规则映射到视图函数。</font>
+蓝图搭配端点的设计，解释了为什么Flask要引入端点机制，而不是直接将URL规则映射到视图函数。
 
-蓝图搭配端点，可以实现蓝图的视图函数命名空间（namespace），有效解决不同模块间视图函数名称冲突的问题。<font color=orange>**这是Flask模块化设计的重要最佳实践**</font>。
+蓝图搭配端点，可以实现蓝图的视图函数命名空间（namespace），有效解决不同模块间视图函数名称冲突的问题。
 
-比如在 `author_bp` 蓝图和 `post_bp` 蓝图中都注册了一个名为 `index` 的视图函数。当在模板中使用 `url_for('index')` 获取URL时会产生命名冲突，因为Flask无法确定应该使用哪个蓝图下的 `index` 视图函数。<font color=orange>**使用完整的端点名称可以解决这个问题**</font>。
+比如在 `author_bp` 蓝图和 `post_bp` 蓝图中都注册了一个名为 `index` 的视图函数。此时端点 `index` 并不存在，模板中的 `url_for('index')` 会抛出 `BuildError`，必须使用带蓝图前缀的完整端点名。
 
-而通过 `url_for('author_bp.index')` 和 `url_for('post_bp.index')` 这种方式，能够明确指定使用哪个蓝图下的视图函数，有效避免冲突并解决视图函数的重名问题。<font color=orange>**这是处理蓝图中同名视图函数的标准方法**</font>。
+而通过 `url_for('author_bp.index')` 和 `url_for('post_bp.index')` 这种方式，能够明确指定使用哪个蓝图下的视图函数，有效避免冲突并解决视图函数的重名问题。
 
 ```mermaid
 graph TD
@@ -165,16 +157,11 @@ style D fill:#98FB98,stroke:#333
 style E fill:#98FB98,stroke:#333
 ```
 
-这个图表展示了蓝图如何通过命名空间机制解决视图函数重名问题：
-
-1. <font color=red>**命名空间隔离**</font>：不同蓝图下的同名视图函数通过 `蓝图名.视图函数名` 的方式获得唯一的端点名称
-2. <font color=red>**明确引用**</font>：在使用 `url_for()` 函数时，可以通过完整的端点名称明确指定要引用的视图函数
-
 ---
 
 ## 蓝图和 url_prefix
 
-通过上一小节的蓝图端点命名机制，可以有效避免因视图函数名称重复而导致的端点名称冲突问题。<font color=orange>**但在实际应用中还需要考虑URL路径冲突的情况**</font>。
+通过上一小节的蓝图端点命名机制，可以有效避免因视图函数名称重复而导致的端点名称冲突问题。
 
 但是如果URL也一样该怎么办呢？
 
@@ -197,9 +184,9 @@ def index():
     return 'post'
 ```
 
-如上所示，当两个蓝图都注册了相同的URL路径时，会出现URL冲突问题。虽然端点名称通过蓝图前缀避免了重名，但URL路径本身仍然会发生冲突。<font color=orange>**使用 url_prefix 是解决这一问题的标准方案**</font>。
+如上所示，两个蓝图的端点名称不会重名，但URL路径发生了冲突。这种冲突在注册时不会报错：相同路径的请求永远会路由到先注册的蓝图，冲突路径上后注册的视图无法被访问。
 
-为了避免这种情况，<font color=orange>**最佳实践是在注册蓝图时填入 url_prefix 参数**</font>：
+为了避免这种情况，最佳实践是在注册蓝图时填入 `url_prefix` 参数：
 
 ```python
 # 创建Flask应用实例
@@ -216,46 +203,42 @@ app.register_blueprint(author_bp, url_prefix='/author')
 app.register_blueprint(post_bp, url_prefix='/post')
 ```
 
-通过添加URL前缀后，两者的实际访问URL变成了：
+添加URL前缀后，两者的实际访问URL变成了：
 
 ```text
 /author/   # author蓝图的根路径URL
 /post/     # post蓝图的根路径URL
 ```
 
-这样就成功解决了URL路径冲突的问题，同时保持了端点命名的清晰性。<font color=orange>**这是Flask蓝图设计中处理URL冲突的标准方法**</font>。
+这样就成功解决了URL路径冲突的问题，同时保持了端点命名的清晰性。
 
 ---
 
 ## 核心要点总结
 
-1. <font color=red>**端点（Endpoint）机制**</font>：<font color=blue>端点是连接URL规则和视图函数的桥梁，默认情况下端点名就是视图函数名</font>。<font color=orange>这种设计解耦了URL与视图函数的直接绑定关系</font>。
+1. 端点（Endpoint）机制：端点是连接URL规则和视图函数的桥梁，默认情况下端点名就是视图函数名。
 
-2. <font color=red>**Flask路由核心数据结构**</font>：<font color=blue>Flask应用通过 url_map 存储URL规则与端点的映射关系，通过 view_functions 存储端点与视图函数的对应关系</font>。
+2. Flask路由核心数据结构：Flask应用通过 `url_map` 存储URL规则与端点的映射关系，通过 `view_functions` 存储端点与视图函数的对应关系。
 
-3. <font color=red>**蓝图端点命名空间**</font>：<font color=blue>使用蓝图（Blueprint）时，端点会自动加上蓝图名前缀（`蓝图名.视图函数名`）</font>，<font color=orange>有效避免不同蓝图间视图函数重名问题</font>。
+3. 蓝图端点命名空间：使用蓝图（Blueprint）时，端点会自动加上蓝图名前缀（`蓝图名.视图函数名`），有效避免不同蓝图间视图函数重名问题。
 
-4. <font color=red>**URL前缀管理**</font>：<font color=orange>注册蓝图时使用 url_prefix 参数可以解决不同蓝图间URL路径冲突的问题，实现URL的层次化管理</font>。
+4. URL前缀管理：注册蓝图时使用 `url_prefix` 参数可以解决不同蓝图间URL路径冲突的问题，实现URL的层次化管理。
 
-5. <font color=red>**请求处理完整流程**</font>：<font color=blue>HTTP请求进入 → url_map匹配（URL规则与端点映射）→ view_functions查找（端点与视图函数对应）→ 执行视图函数并返回响应</font>。
+5. 请求处理完整流程：HTTP请求进入 → `url_map` 匹配（URL规则与端点映射）→ `view_functions` 查找（端点与视图函数对应）→ 执行视图函数并返回响应。
 
-6. <font color=red>**蓝图命名规范**</font>：<font color=orange>推荐为蓝图对象命名时添加 `_bp` 后缀（如 `user_bp`），提高代码可读性和识别度</font>。
+6. 蓝图命名规范：推荐为蓝图对象命名时添加 `_bp` 后缀（如 `user_bp`），提高代码可读性和识别度。
 
-7. <font color=red>**URL规则添加方式**</font>：<font color=blue>可以通过 `app.add_url_rule(rule, endpoint, view_func)` 显式地添加URL规则，这是装饰器 `@app.route()` 的底层实现方式</font>。
+7. URL规则添加方式：可以通过 `app.add_url_rule(rule, endpoint, view_func)` 显式地添加URL规则，这是装饰器 `@app.route()` 的底层实现方式。
 
 ```mermaid
 graph TD
 A[HTTP请求] --> B[url_map匹配]
 B --> C[查找view_functions]
 C --> D[执行视图函数]
-A --> E[蓝图端点解析]
-E --> F[URL前缀处理]
 style A fill:#FFE4C4,stroke:#333
 style B fill:#DDA0DD,stroke:#333
 style C fill:#DDA0DD,stroke:#333
 style D fill:#98FB98,stroke:#333
-style E fill:#87CEEB,stroke:#333
-style F fill:#87CEEB,stroke:#333
 ```
 
-这个流程图展示了Flask处理HTTP请求的完整过程，包括蓝图端点解析和URL前缀处理等关键步骤。
+蓝图的端点命名和 `url_prefix` 在注册蓝图时就已经并入URL规则，请求处理阶段不需要再单独解析。

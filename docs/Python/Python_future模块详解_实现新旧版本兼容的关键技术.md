@@ -1,12 +1,12 @@
 # Python `__future__` 模块详解：实现新旧版本兼容的关键技术
 
-当需要在旧版本 Python 中使用新版本的某些特性时，例如需要同时兼容 Python 2 和 Python 3，就需要使用 `__future__` **模块**。
+当需要在旧版本 Python 中使用新版本的某些特性时，例如需要同时兼容 Python 2 和 Python 3，就需要使用 `__future__` 模块。
 
-该**模块**于 Python 2.1 版本中被引入。
+该模块于 Python 2.1 版本中被引入。
 
 官方文档链接：[`__future__` 模块官方文档](https://docs.python.org/3.9/library/__future__.html?highlight=__future__#module-__future__)
 
-在官方文档里提到引入这个**模块**的三个**核心目的**：
+在官方文档里提到引入这个模块的三个核心目的：
 
 > [`__future__`](https://docs.python.org/3.9/library/__future__.html?highlight=__future__#module-__future__) is a real module, and serves three purposes:
 >
@@ -35,7 +35,7 @@ graph LR
 
 ---
 
-在使用 `__future__` **模块**后，即可在旧版本中使用新版本的**特性**。例如在 Python 2 环境中导入 `print_function`，就可以使用 Python 3 的 `print()` 函数语法。
+在使用 `__future__` 模块后，即可在旧版本中使用新版本的特性。例如在 Python 2 环境中导入 `print_function`，就可以使用 Python 3 的 `print()` 函数语法。
 
 ```python
 # 导入 __future__ 模块中的 print_function 特性
@@ -50,19 +50,21 @@ print('hello, world')
 
 | feature | optional in | mandatory in | effect | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| nested_scopes | 2.1.0b1 | 2.2 | [**PEP 227**](https://www.python.org/dev/peps/pep-0227): *Statically Nested Scopes* | 静态嵌套作用域 |
-| generators | 2.2.0a1 | 2.3 | [**PEP 255**](https://www.python.org/dev/peps/pep-0255): *Simple Generators* | 生成器 |
-| division | 2.2.0a2 | 3.0 | [**PEP 238**](https://www.python.org/dev/peps/pep-0238): *Changing the Division Operator* | 精确除法（3/4 = 0.75） |
-| absolute_import | 2.5.0a1 | 3.0 | [**PEP 328**](https://www.python.org/dev/peps/pep-0328): *Imports: Multi-Line and Absolute/Relative* | 绝对路径引用 |
-| with_statement | 2.5.0a1 | 2.6 | [**PEP 343**](https://www.python.org/dev/peps/pep-0343): *The "with" Statement* | with 语句 |
-| print_function | 2.6.0a2 | 3.0 | [**PEP 3105**](https://www.python.org/dev/peps/pep-3105): *Make print a function* | print() 函数 |
-| unicode_literals | 2.6.0a2 | 3.0 | [**PEP 3112**](https://www.python.org/dev/peps/pep-3112): *Bytes literals in Python 3000* | Unicode 字面量 |
-| generator_stop | 3.5.0b1 | 3.7 | [**PEP 479**](https://www.python.org/dev/peps/pep-0479): *StopIteration handling inside generators* | 生成器中 StopIteration 处理 |
-| annotations | 3.7.0b1 | 3.10 | [**PEP 563**](https://www.python.org/dev/peps/pep-0563): *Postponed evaluation of annotations* | 延迟注解求值 |
+| nested_scopes | 2.1.0b1 | 2.2 | [PEP 227](https://www.python.org/dev/peps/pep-0227): *Statically Nested Scopes* | 静态嵌套作用域 |
+| generators | 2.2.0a1 | 2.3 | [PEP 255](https://www.python.org/dev/peps/pep-0255): *Simple Generators* | 生成器 |
+| division | 2.2.0a2 | 3.0 | [PEP 238](https://www.python.org/dev/peps/pep-0238): *Changing the Division Operator* | 精确除法（3/4 = 0.75） |
+| absolute_import | 2.5.0a1 | 3.0 | [PEP 328](https://www.python.org/dev/peps/pep-0328): *Imports: Multi-Line and Absolute/Relative* | 绝对导入 |
+| with_statement | 2.5.0a1 | 2.6 | [PEP 343](https://www.python.org/dev/peps/pep-0343): *The "with" Statement* | with 语句 |
+| print_function | 2.6.0a2 | 3.0 | [PEP 3105](https://www.python.org/dev/peps/pep-3105): *Make print a function* | print() 函数 |
+| unicode_literals | 2.6.0a2 | 3.0 | [PEP 3112](https://www.python.org/dev/peps/pep-3112): *Bytes literals in Python 3000* | Unicode 字面量 |
+| generator_stop | 3.5.0b1 | 3.7 | [PEP 479](https://www.python.org/dev/peps/pep-0479): *StopIteration handling inside generators* | 生成器中 StopIteration 处理 |
+| annotations | 3.7.0b1 | 3.10 | [PEP 563](https://www.python.org/dev/peps/pep-0563): *Postponed evaluation of annotations* | 延迟注解求值 |
+
+注：表中 annotations 一行的 mandatory in “3.10” 取自 Python 3.9 文档的旧版数据。实际上 PEP 563 的强制生效计划被推迟并最终取消——现行 Python 文档已把该值改为 “Never”，并注明这一特性将来会废弃移除（参见 PEP 649/749）。`from __future__ import annotations` 至今仍是可选特性。
 
 ## 核心要点总结
 
-1. **`__future__` 模块的作用**：允许在旧版本 Python 中使用新版本的特性，实现向后兼容。
+1. **`__future__` 模块的作用**：允许在旧版本 Python 中使用新版本的特性，让同一份代码在新旧两个版本上都能运行。
 
 2. **引入目的**：避免影响现有导入工具、确保低版本报错以及记录不兼容更改的引入和强制时间。
 

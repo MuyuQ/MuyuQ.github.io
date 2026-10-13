@@ -8,10 +8,7 @@
 # sendfile 配置语法
 # Syntax: sendfile on | off;  # 是否启用 sendfile
 # Default: sendfile off;      # 默认关闭
-# Context: server, location, if in location  # 可配置上下文
-Syntax: sendfile on | off;
-Default: sendfile off;
-Context: server, location, if in location
+# Context: http, server, location, if in location  # 可配置上下文
 ```
 
 ### tcp_nopush 配置语法
@@ -22,9 +19,6 @@ Context: server, location, if in location
 # Default: tcp_nopush off;      # 默认关闭
 # Context: http, server, location  # 可配置上下文
 # 在 sendfile 开启的情况下，提高网络包的传递效率
-Syntax: tcp_nopush on | off;
-Default: tcp_nopush off;
-Context: http, server, location
 ```
 
 不急于推送，而是将多个 TCP 包集中发送，以提升效率。适合大文件传输。
@@ -37,9 +31,6 @@ Context: http, server, location
 # Default: tcp_nodelay on;       # 默认开启
 # Context: http, server, location  # 可配置上下文
 # 在 keepalive 连接下，提高网络包的传递实时性
-Syntax: tcp_nodelay on | off;
-Default: tcp_nodelay on;
-Context: http, server, location
 ```
 
 ### gzip 压缩配置语法
@@ -49,15 +40,12 @@ Context: http, server, location
 # Syntax: gzip_comp_level level;  # 设置压缩级别 (1-9)
 # Default: gzip_comp_level 1;     # 默认压缩级别为1
 # Context: http, server, location  # 可配置上下文
-Syntax: gzip_comp_level level;
-Default: gzip_comp_level 1;
-Context: http, server, location
 ```
 
 扩展 Nginx 压缩模块：
 
-- `http_gzip_static_module`：预读 gzip 功能
-- `http_gunzip_module`：应用支持 gunzip 的压缩功能（很少用到）
+- `ngx_http_gzip_static_module`：读取预先压缩好的 .gz 文件直接返回
+- `ngx_http_gunzip_module`：对不支持 gzip 的客户端，将 gzip 压缩的响应解压后返回
 
 gzip 对文本的压缩效果很好，对图片的压缩效果一般。
 
@@ -69,8 +57,8 @@ gzip 对文本的压缩效果很好，对图片的压缩效果一般。
 
 | 校验方式 | 说明 |
 | --- | --- |
-| Expires（HTTP/1.0） / Cache-Control（HTTP/1.1） | 通过 max-age 定义缓存周期，判断是否过期 |
-| ETag 头信息校验 | 保存一个字符串来识别缓存，类似"别名"。如果 max-age 已过期，则检查 ETag |
+| Expires（HTTP/1.0） / Cache-Control（HTTP/1.1） | Expires 指定绝对过期时间；Cache-Control 通过 max-age 定义缓存周期，判断是否过期 |
+| ETag 头信息校验 | 保存一个字符串来识别缓存，类似“别名”。如果 max-age 已过期，则检查 ETag |
 | Last-Modified 头信息校验 | 保存一个精确到秒的时间戳，如果时间不一致，服务器会传递一份新的资源 |
 
 当 max-age <= 0 时，就要求每次请求都需要服务器检查是否过期。即使服务器端设置了 max-age，浏览器为了实时更新，可能会将 request 里的 max-age 设置为 0。
@@ -91,7 +79,7 @@ location / {
 
 ### 为什么浏览器禁止跨域访问？
 
-不安全，容易出现 CSRF 攻击。
+同源策略防止恶意站点读取其他域名的响应内容。
 
 ### Nginx 如何实现跨域
 
@@ -100,9 +88,6 @@ location / {
 # Syntax: add_header name value [always];  # 添加响应头
 # Default: -                               # 默认无
 # Context: http, server, location, if in location  # 可配置上下文
-Syntax: add_header name value [always];
-Default: - 
-Context: http, server, location, if in location
 ```
 
 如果服务器允许跨域访问，则浏览器不会禁止。通过检查`Access-Control-Allow-Origin`头来确定是否允许。
@@ -117,7 +102,7 @@ location ~ .*\.(htm|html)$ {
 }
 ```
 
-如果将域名替换成 `*`，则会对 CSRF 攻击完全开放。
+如果将域名替换成 `*`，则任意站点都可以跨域读取本站的响应内容。
 
 ## 防盗链
 
@@ -125,7 +110,7 @@ location ~ .*\.(htm|html)$ {
 
 **防盗链设计思路**：首要方式是区别哪些请求是非正常的用户请求。
 
-基于 `http_referer` 防盗链配置模块：
+基于 `ngx_http_referer_module` 防盗链配置模块：
 
 ```nginx
 # 防盗链配置示例
@@ -142,7 +127,7 @@ if ($invalid_referer) {
 
 `referer` 是告诉服务器这个请求是从哪个页面链接过来的。
 
-如果直接访问页面，则在 access.log 里面为 `-`。
+如果直接访问页面，referer 在 access.log 里显示为 `-`。
 
 进阶解决方案：后期补充。
 
@@ -169,9 +154,6 @@ if ($invalid_referer) {
 # Default: -             # 默认无
 # Context: location, if in location, limit_except  # 可配置上下文
 # 示例: http://ip:80/url/
-Syntax: proxy_pass URL;
-Default: -
-Context: location, if in location, limit_except
 ```
 
 服务器 A（10.211.55.15），服务器 B（10.211.55.16）
@@ -193,21 +175,21 @@ location / {
 **服务器 B 配置**：
 
 ```nginx
-# 反向代理配置示例
+# 正向代理配置示例
 location / {
     # 将请求转发到目标服务器
-    proxy_pass $http_host$request_uri;
+    proxy_pass http://$http_host$request_uri;
 }
 ```
 
-注意 URI 和 URL 是不同的：URI 是统一资源标志符，URL 是统一资源定位符。一个用于解析，一个用于直接传递路径。
+注意 URI 和 URL 是不同的：URI 是统一资源标识符，URL 是其子集，用于直接定位资源。
 
 ### 其他代理配置
 
-- **proxy_buffering**：缓冲区
-- **proxy_redirect**：跳转重定向
-- **proxy_set_header**：头信息（扩展 `proxy_hide_header`、`proxy_set_body`）
-- **proxy_connect_timeout**：超时（扩展 `proxy_read_timeout`、`proxy_send_timeout`）
+- `proxy_buffering`：缓冲区
+- `proxy_redirect`：跳转重定向
+- `proxy_set_header`：头信息（扩展 `proxy_hide_header`、`proxy_set_body`）
+- `proxy_connect_timeout`：超时（扩展 `proxy_read_timeout`、`proxy_send_timeout`）
 
 ### proxy 常用配置
 
@@ -259,13 +241,13 @@ location / {
 
 - **静态资源配置优化**：通过 sendfile、tcp_nopush 和 tcp_nodelay 等配置提升文件传输效率，其中 sendfile 用于零拷贝传输，tcp_nopush 用于打包发送，tcp_nodelay 用于提高实时性
 
-- **HTTP缓存机制**：利用 Expires 和 Cache-Control 控制缓存周期，结合 ETag 和 Last-Modified 进行缓存校验，实现高效的浏览器缓存策略
+- **HTTP缓存机制**：利用 Cache-Control 的 max-age 与 Expires 控制缓存，结合 ETag 和 Last-Modified 进行缓存校验，实现高效的浏览器缓存策略
 
 - **跨域访问控制**：通过 add_header 指令设置 Access-Control-Allow-Origin 等响应头，实现安全的跨域资源共享（CORS）机制
 
-- **防盗链机制**：基于 http_referer 配置 valid_referers 指令，有效防止其他网站盗用本站资源，保护服务器带宽
+- **防盗链机制**：基于 ngx_http_referer_module 配置 valid_referers 指令，有效防止其他网站盗用本站资源，保护服务器带宽
 
-- **代理服务配置**：区分正向代理和反向代理的应用场景，通过 proxy_pass 等指令实现请求转发和负载均衡
+- **代理服务配置**：区分正向代理和反向代理的应用场景，通过 proxy_pass 等指令实现请求转发
 
 - **代理参数调优**：合理配置 proxy_buffering、proxy_connect_timeout 等参数，优化代理服务的性能和稳定性
 

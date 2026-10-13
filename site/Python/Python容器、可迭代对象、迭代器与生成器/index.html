@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -16,61 +16,32 @@
         <link rel="prev" href="../Python%E5%AD%97%E5%85%B8%E8%AF%A6%E8%A7%A3%EF%BC%9Adict%E3%80%81defaultdict%E4%B8%8EOrderedDict/">
       
       
-        <link rel="next" href="../Python%E5%AE%B9%E5%99%A8%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8%E8%AF%A6%E8%A7%A3/">
+        <link rel="next" href="../Python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%BC%94%E8%BF%9B%E5%8E%86%E7%A8%8B/">
       
       
         
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.15">
+      <meta name="generator" content="zensical-0.0.67">
     
     
       
-        <title>Python容器、可迭代对象、迭代器与生成器 - Mcode</title>
+        <title>Python 容器、可迭代对象、迭代器与生成器 - Mcode</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.f1b6466b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ae390e2.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.96d1a7e4.min.css">
       
       
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-  <style>:root{}</style>
-
 
 
     
@@ -82,12 +53,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -108,12 +79,12 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="导航栏"></label>
     <div data-md-component="skip">
       
         
         <a href="#python" class="md-skip">
-          Skip to content
+          跳转至
         </a>
       
     </div>
@@ -125,14 +96,14 @@
       
 
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Mcode" class="md-header__button md-logo" aria-label="Mcode" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="导航栏">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
@@ -146,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Python容器、可迭代对象、迭代器与生成器
+              Python 容器、可迭代对象、迭代器与生成器
             
           </span>
         </div>
@@ -186,13 +157,13 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="查找">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="查找">
   <button type="button" class="md-search__button">
-    Search
+    查找
   </button>
 </div>
       
@@ -210,7 +181,7 @@
         
           
             
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -236,6 +207,13 @@
   
   
     
+      
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../C/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/" class="md-tabs__link">
@@ -255,6 +233,23 @@
   
   
     
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../DB/MySQL%E4%B8%ADCHAR%E4%B8%8EVARCHAR%E7%9A%84%E5%8C%BA%E5%88%AB/" class="md-tabs__link">
@@ -273,6 +268,15 @@
   
   
   
+    
+      
+      
+        
+      
+        
+      
+    
+    
     
     
       <li class="md-tabs__item">
@@ -295,6 +299,55 @@
   
   
     
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item md-tabs__item--active">
         <a href="../4%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AF%B9%E6%AF%94/" class="md-tabs__link">
@@ -314,6 +367,19 @@
   
   
     
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../%E6%9D%82/GitHub%E4%B9%9F%E6%98%AF%E6%9C%89%E7%A6%BB%E7%BA%BF%E7%89%88%E7%9A%84/" class="md-tabs__link">
@@ -332,6 +398,13 @@
   
   
   
+    
+      
+      
+        
+      
+    
+    
     
     
       <li class="md-tabs__item">
@@ -366,12 +439,12 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Mcode" class="md-nav__button md-logo" aria-label="Mcode" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
     Mcode
@@ -393,8 +466,7 @@
   <span class="md-ellipsis">
     
   
-    Welcome to Mcode
-  
+  Welcome to Mcode
 
     
   </span>
@@ -440,8 +512,7 @@
   <span class="md-ellipsis">
     
   
-    C
-  
+  C
 
     
   </span>
@@ -451,19 +522,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    C
-  
+  C
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -476,8 +547,7 @@
   <span class="md-ellipsis">
     
   
-    汉诺塔问题详解
-  
+  汉诺塔问题详解
 
     
   </span>
@@ -488,10 +558,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -505,8 +576,6 @@
   
     
     
-      
-        
       
         
       
@@ -543,8 +612,7 @@
   <span class="md-ellipsis">
     
   
-    DB
-  
+  DB
 
     
   </span>
@@ -554,19 +622,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    DB
-  
+  DB
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -579,8 +647,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL中CHAR与VARCHAR的区别详解
-  
+  MySQL中CHAR与VARCHAR的区别详解
 
     
   </span>
@@ -591,10 +658,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -607,8 +674,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL基础语法
-  
+  MySQL基础语法
 
     
   </span>
@@ -619,10 +685,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -635,8 +701,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL多表查询
-  
+  MySQL多表查询
 
     
   </span>
@@ -647,10 +712,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -663,8 +728,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL mysqldump --skip-add-drop-table 参数
-  
+  MySQL导出时 add-drop-table 问题及解决方案
 
     
   </span>
@@ -675,10 +739,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -691,8 +755,7 @@
   <span class="md-ellipsis">
     
   
-    SQL学习：掌握INNER JOIN、DISTINCT和HAVING关键字
-  
+  SELECT DISTINCT 语句
 
     
   </span>
@@ -703,10 +766,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -719,8 +782,7 @@
   <span class="md-ellipsis">
     
   
-    SQLAlchemy一对多关系完整指南：模型定义、关系建立与数据操作
-  
+  SQLAlchemy 一对多关系完整指南：模型定义、关系建立与数据操作
 
     
   </span>
@@ -731,38 +793,11 @@
     </li>
   
 
-              
-            
-              
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../DB/SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E8%AF%A6%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQLAlchemy一对多关系详解与实现
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -804,8 +839,7 @@
   <span class="md-ellipsis">
     
   
-    Mac
-  
+  Mac
 
     
   </span>
@@ -815,19 +849,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Mac
-  
+  Mac
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -840,8 +874,7 @@
   <span class="md-ellipsis">
     
   
-    Mac 的一些小技巧
-  
+  macOS 使用小技巧
 
     
   </span>
@@ -852,10 +885,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -868,8 +901,7 @@
   <span class="md-ellipsis">
     
   
-    Youtube下载
-  
+  YouTube 视频下载
 
     
   </span>
@@ -880,10 +912,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -899,10 +932,6 @@
   
     
     
-      
-        
-      
-        
       
         
       
@@ -974,8 +1003,7 @@
   <span class="md-ellipsis">
     
   
-    Python
-  
+  Python
 
     
   </span>
@@ -985,19 +1013,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Python
-  
+  Python
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1010,8 +1038,7 @@
   <span class="md-ellipsis">
     
   
-    list,tuple,dict,set 四种数据类型的定义和异同.
-  
+  list、tuple、dict、set 四种数据类型的定义与异同
 
     
   </span>
@@ -1022,10 +1049,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1038,8 +1065,7 @@
   <span class="md-ellipsis">
     
   
-    Flask配置管理基础
-  
+  Flask配置管理基础
 
     
   </span>
@@ -1050,10 +1076,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1066,8 +1092,7 @@
   <span class="md-ellipsis">
     
   
-    Flask端点与蓝图详解
-  
+  Flask端点与蓝图详解
 
     
   </span>
@@ -1078,10 +1103,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1094,8 +1119,7 @@
   <span class="md-ellipsis">
     
   
-    Flask装饰器执行顺序
-  
+  Flask装饰器执行顺序
 
     
   </span>
@@ -1106,10 +1130,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1122,8 +1146,7 @@
   <span class="md-ellipsis">
     
   
-    Flask请求钩子
-  
+  Flask请求钩子
 
     
   </span>
@@ -1134,24 +1157,23 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
   
     <li class="md-nav__item">
-      <a href="../Nginx%E5%9F%BA%E7%A1%80&%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+      <a href="../Nginx%E5%9F%BA%E7%A1%80%26%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Nginx 基础&amp;常用模块
-  
+  Nginx 基础与常用模块
 
     
   </span>
@@ -1162,10 +1184,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1178,8 +1200,7 @@
   <span class="md-ellipsis">
     
   
-    Python 列表推导式
-  
+  Python 列表推导式
 
     
   </span>
@@ -1190,24 +1211,23 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
   
     <li class="md-nav__item">
-      <a href="../Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python 拷贝机制详解：直接赋值、浅拷贝与深拷贝的原理与应用
-  
+  Python 拷贝机制详解：直接赋值、浅拷贝与深拷贝的原理与应用
 
     
   </span>
@@ -1218,10 +1238,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1234,8 +1254,7 @@
   <span class="md-ellipsis">
     
   
-    Python __future__模块详解：实现新旧版本兼容的关键技术
-  
+  Python __future__ 模块详解：实现新旧版本兼容的关键技术
 
     
   </span>
@@ -1246,10 +1265,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1262,8 +1281,7 @@
   <span class="md-ellipsis">
     
   
-    函数参数详解：默认参数、可变参数与关键字参数
-  
+  函数参数详解：默认参数、可变参数与关键字参数
 
     
   </span>
@@ -1274,10 +1292,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1290,8 +1308,7 @@
   <span class="md-ellipsis">
     
   
-    协程详解：从yield到yield from
-  
+  协程详解：从 yield 到 yield from
 
     
   </span>
@@ -1302,10 +1319,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1318,8 +1335,7 @@
   <span class="md-ellipsis">
     
   
-    Python字典详解：dict、defaultdict与OrderedDict
-  
+  Python字典详解：dict、defaultdict与OrderedDict
 
     
   </span>
@@ -1330,10 +1346,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -1342,7 +1358,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
       
       
         
@@ -1355,8 +1371,7 @@
   <span class="md-ellipsis">
     
   
-    Python容器、可迭代对象、迭代器与生成器
-  
+  Python 容器、可迭代对象、迭代器与生成器
 
     
   </span>
@@ -1366,15 +1381,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python容器、可迭代对象、迭代器与生成器
-  
+  Python 容器、可迭代对象、迭代器与生成器
 
     
   </span>
@@ -1386,7 +1400,7 @@
         
 
 
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -1395,16 +1409,16 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      On this page
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         概念关系图
-      
+      </span>
     </span>
   </a>
   
@@ -1413,9 +1427,9 @@
         <li class="md-nav__item">
   <a href="#container" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        容器Container
-      
+      <span class="md-typeset">
+        容器（Container）
+      </span>
     </span>
   </a>
   
@@ -1424,9 +1438,9 @@
         <li class="md-nav__item">
   <a href="#iterable" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        可迭代对象Iterable
-      
+      <span class="md-typeset">
+        可迭代对象（Iterable）
+      </span>
     </span>
   </a>
   
@@ -1435,9 +1449,9 @@
         <li class="md-nav__item">
   <a href="#iterator" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        迭代器Iterator
-      
+      <span class="md-typeset">
+        迭代器（Iterator）
+      </span>
     </span>
   </a>
   
@@ -1446,21 +1460,21 @@
         <li class="md-nav__item">
   <a href="#generator" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        生成器generator
-      
+      <span class="md-typeset">
+        生成器（Generator）
+      </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="生成器generator">
+    <nav class="md-nav" aria-label="生成器（Generator）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#generator-func" class="md-nav__link">
+  <a href="#generator-function" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        生成器函数generator func
-      
+      <span class="md-typeset">
+        生成器函数（Generator Function）
+      </span>
     </span>
   </a>
   
@@ -1469,9 +1483,9 @@
           <li class="md-nav__item">
   <a href="#generator-expression" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        生成器表达式generator expression
-      
+      <span class="md-typeset">
+        生成器表达式（Generator Expression）
+      </span>
     </span>
   </a>
   
@@ -1480,9 +1494,9 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         生成器的优势
-      
+      </span>
     </span>
   </a>
   
@@ -1491,9 +1505,9 @@
           <li class="md-nav__item">
   <a href="#send" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        send()方法是交互的
-      
+      <span class="md-typeset">
+        send() 方法的交互
+      </span>
     </span>
   </a>
   
@@ -1507,9 +1521,20 @@
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
+      <span class="md-typeset">
+        总结
+      </span>
+    </span>
+  </a>
+  
+</li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
         核心要点总结
-      
+      </span>
     </span>
   </a>
   
@@ -1522,38 +1547,10 @@
     </li>
   
 
-              
-            
+                
               
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Python%E5%AE%B9%E5%99%A8%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    容器可迭代对象迭代器与生成器详解
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
+                  
   
   
   
@@ -1566,8 +1563,7 @@
   <span class="md-ellipsis">
     
   
-    Python虚拟环境演进历程
-  
+  Python虚拟环境演进历程
 
     
   </span>
@@ -1578,10 +1574,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1594,8 +1590,7 @@
   <span class="md-ellipsis">
     
   
-    Python进阶-数据结构与算法进阶训练
-  
+  Python进阶：数据结构与算法进阶训练
 
     
   </span>
@@ -1606,38 +1601,10 @@
     </li>
   
 
-              
-            
+                
               
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQLAlchemy一对多关系
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
+                  
   
   
   
@@ -1650,8 +1617,7 @@
   <span class="md-ellipsis">
     
   
-    Python爬虫中的SSL证书验证问题及解决方案
-  
+  Python爬虫中的SSL证书验证问题及解决方案
 
     
   </span>
@@ -1662,10 +1628,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1678,8 +1644,7 @@
   <span class="md-ellipsis">
     
   
-    一些需要注意的地方
-  
+  一些需要注意的地方
 
     
   </span>
@@ -1690,10 +1655,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1706,8 +1671,7 @@
   <span class="md-ellipsis">
     
   
-    哈希冲突
-  
+  哈希冲突
 
     
   </span>
@@ -1718,10 +1682,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1734,8 +1698,7 @@
   <span class="md-ellipsis">
     
   
-    数据挖掘—将数据转换成知识
-  
+  数据挖掘——将数据转换成知识
 
     
   </span>
@@ -1746,10 +1709,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1762,8 +1725,7 @@
   <span class="md-ellipsis">
     
   
-    深入理解Python生成器：高效内存管理的利器
-  
+  深入理解Python生成器：高效内存管理的利器
 
     
   </span>
@@ -1774,10 +1736,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1790,8 +1752,7 @@
   <span class="md-ellipsis">
     
   
-    理解Python中None、布尔值和空值的对应关系
-  
+  理解 Python 中 None、布尔值和空值的对应关系
 
     
   </span>
@@ -1802,10 +1763,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1818,8 +1779,7 @@
   <span class="md-ellipsis">
     
   
-    装饰器
-  
+  装饰器
 
     
   </span>
@@ -1830,10 +1790,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1879,8 +1840,7 @@
   <span class="md-ellipsis">
     
   
-    杂
-  
+  杂
 
     
   </span>
@@ -1890,19 +1850,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    杂
-  
+  杂
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1915,8 +1875,7 @@
   <span class="md-ellipsis">
     
   
-    GitHub也是有离线版的
-  
+  GitHub 离线版安装包
 
     
   </span>
@@ -1927,10 +1886,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1943,8 +1902,7 @@
   <span class="md-ellipsis">
     
   
-    Markdown 语法和 MWeb 写作使用说明
-  
+  Markdown 语法和 MWeb 写作使用说明
 
     
   </span>
@@ -1955,10 +1913,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1971,8 +1929,7 @@
   <span class="md-ellipsis">
     
   
-    Nginx 高级配置与性能优化完全指南
-  
+  Nginx 高级配置与性能优化完全指南
 
     
   </span>
@@ -1983,10 +1940,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1996,13 +1953,12 @@
         
   
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Markdown</title><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
   
   <span class="md-ellipsis">
     
   
-    Markdown in 5min
-  
+  Markdown 五分钟入门
 
     
   </span>
@@ -2013,10 +1969,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2056,8 +2013,7 @@
   <span class="md-ellipsis">
     
   
-    生活
-  
+  生活
 
     
   </span>
@@ -2067,19 +2023,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    生活
-  
+  生活
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2092,8 +2048,7 @@
   <span class="md-ellipsis">
     
   
-    琥珀的猫粮选定
-  
+  琥珀的猫粮选定
 
     
   </span>
@@ -2104,10 +2059,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2123,11 +2079,24 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
                   <div class="md-sidebar__inner">
                     
 
 
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -2136,16 +2105,16 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      On this page
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         概念关系图
-      
+      </span>
     </span>
   </a>
   
@@ -2154,9 +2123,9 @@
         <li class="md-nav__item">
   <a href="#container" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        容器Container
-      
+      <span class="md-typeset">
+        容器（Container）
+      </span>
     </span>
   </a>
   
@@ -2165,9 +2134,9 @@
         <li class="md-nav__item">
   <a href="#iterable" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        可迭代对象Iterable
-      
+      <span class="md-typeset">
+        可迭代对象（Iterable）
+      </span>
     </span>
   </a>
   
@@ -2176,9 +2145,9 @@
         <li class="md-nav__item">
   <a href="#iterator" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        迭代器Iterator
-      
+      <span class="md-typeset">
+        迭代器（Iterator）
+      </span>
     </span>
   </a>
   
@@ -2187,21 +2156,21 @@
         <li class="md-nav__item">
   <a href="#generator" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        生成器generator
-      
+      <span class="md-typeset">
+        生成器（Generator）
+      </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="生成器generator">
+    <nav class="md-nav" aria-label="生成器（Generator）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#generator-func" class="md-nav__link">
+  <a href="#generator-function" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        生成器函数generator func
-      
+      <span class="md-typeset">
+        生成器函数（Generator Function）
+      </span>
     </span>
   </a>
   
@@ -2210,9 +2179,9 @@
           <li class="md-nav__item">
   <a href="#generator-expression" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        生成器表达式generator expression
-      
+      <span class="md-typeset">
+        生成器表达式（Generator Expression）
+      </span>
     </span>
   </a>
   
@@ -2221,9 +2190,9 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         生成器的优势
-      
+      </span>
     </span>
   </a>
   
@@ -2232,9 +2201,9 @@
           <li class="md-nav__item">
   <a href="#send" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        send()方法是交互的
-      
+      <span class="md-typeset">
+        send() 方法的交互
+      </span>
     </span>
   </a>
   
@@ -2248,9 +2217,20 @@
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
+      <span class="md-typeset">
+        总结
+      </span>
+    </span>
+  </a>
+  
+</li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
         核心要点总结
-      
+      </span>
     </span>
   </a>
   
@@ -2274,7 +2254,7 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
+  <nav class="md-path" aria-label="导航栏" >
     <ol class="md-path__list">
       
         
@@ -2283,6 +2263,7 @@
     <li class="md-path__item">
       <a href="../.." class="md-path__link">
         
+  
   <span class="md-ellipsis">
     Welcome to Mcode
   </span>
@@ -2298,9 +2279,59 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
       <li class="md-path__item">
         <a href="../4%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AF%B9%E6%AF%94/" class="md-path__link">
           
+  
   <span class="md-ellipsis">
     Python
   </span>
@@ -2319,94 +2350,92 @@
                 
                   
 
-<h1 id="python">Python容器、可迭代对象、迭代器与生成器<a class="headerlink" href="#python" title="Permanent link">&para;</a></h1>
-<p>理一理可迭代对象,迭代器,生成器之间的联系.</p>
-<p><img alt="在这里插入图片描述" src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NMX1dvcmxk,size_16,color_FFFFFF,t_70.png" /></p>
+
+<h1 id="python">Python 容器、可迭代对象、迭代器与生成器<a class="headerlink" href="#python" title="Permanent link">&para;</a></h1>
+<p>梳理可迭代对象、迭代器、生成器之间的联系。</p>
+<p><img alt="容器、可迭代对象、迭代器与生成器关系图" src="https://mcode-1253212768.cos.ap-beijing.myqcloud.com/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NMX1dvcmxk,size_16,color_FFFFFF,t_70.png" /></p>
 <hr />
 <h2 id="_1">概念关系图<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph LR
-    A[容器Container] --&gt; B[可迭代对象Iterable]
-    B --&gt; C[迭代器Iterator]
-    C --&gt; D[生成器Generator]
-
-    A -- "存储在内存中" --&gt; B
-    B -- "实现__iter__方法" --&gt; C
-    C -- "实现__next__方法" --&gt; D
-    D -- "使用yield关键字" --&gt; D</code></pre>
-<h2 id="container">容器Container<a class="headerlink" href="#container" title="Permanent link">&para;</a></h2>
-<p>1.<strong>容器</strong>是一个存储多个元素的数据结构.</p>
-<p>2.容器中的元素可以通过迭代获取.</p>
-<p>3.所有容器中的元素被存放在内存中.</p>
-<p>4.常见的容器比如 list,tuple,dict,set,str.也都是<strong>可迭代对象</strong>(Iterable)</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterable</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="s1">&#39;test2&#39;</span><span class="p">]</span>  <span class="c1"># 创建一个包含两个字符串元素的列表</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span> <span class="c1"># 通过for循环迭代获取列表中的每个元素</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  <span class="c1"># 打印当前元素</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">Iterable</span><span class="p">)</span> <span class="c1"># 检查列表a是否为可迭代对象，返回True</span>
+    A["容器Container：元素存储在内存中"] --&gt;|"是典型的"| B["可迭代对象Iterable：实现__iter__方法"]
+    C["生成器Generator：使用yield关键字"] --&gt;|"是一种"| D["迭代器Iterator：实现__iter__和__next__方法"]
+    D --&gt;|"是一种"| B</code></pre>
+<h2 id="container">容器（Container）<a class="headerlink" href="#container" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>容器</strong>是一个存储多个元素的数据结构。</li>
+<li>容器中的元素可以通过迭代获取。</li>
+<li>所有容器中的元素被存放在内存中。</li>
+<li>常见的容器如 list、tuple、dict、set、str，也都是<strong>可迭代对象</strong>（Iterable）。</li>
+</ol>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterable</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'test'</span><span class="p">,</span> <span class="s1">'test2'</span><span class="p">]</span>  <span class="c1"># 创建一个包含两个字符串元素的列表</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>  <span class="c1"># 通过 for 循环迭代获取列表中的每个元素</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  <span class="c1"># 打印当前元素</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">))</span>  <span class="c1"># 检查列表 a 是否为可迭代对象，返回 True</span>
 </span></code></pre></div>
 <hr />
-<h2 id="iterable">可迭代对象Iterable<a class="headerlink" href="#iterable" title="Permanent link">&para;</a></h2>
-<p><strong>可迭代对象</strong>是可以通过被迭代获取的对象.</p>
-<p>内部定义了可返回迭代器的_<em>iter_</em>()方法.</p>
-<p>比如:</p>
+<h2 id="iterable">可迭代对象（Iterable）<a class="headerlink" href="#iterable" title="Permanent link">&para;</a></h2>
+<p><strong>可迭代对象</strong>是可以被迭代获取的对象。</p>
+<p>内部定义了可返回迭代器的 <code>__iter__()</code> 方法。</p>
+<p>例如：</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># 创建一个包含三个整数的列表</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>  <span class="c1"># 遍历列表中的每个元素</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  <span class="nb">print</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>   <span class="c1"># 打印当前元素</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>  <span class="c1"># 打印当前元素</span>
 </span></code></pre></div>
-<p>x列表是一个可迭代对象,在for循环中调用iter()方法变成迭代器,遍历x实际上是调用elem=next(x).</p>
+<p><code>x</code> 列表是一个可迭代对象，for 循环先调用 <code>iter(x)</code> 获得迭代器，再反复对迭代器调用 <code>next()</code> 取出元素，即 <code>it = iter(x); elem = next(it)</code>。</p>
 <hr />
-<h2 id="iterator">迭代器Iterator<a class="headerlink" href="#iterator" title="Permanent link">&para;</a></h2>
-<p><strong>迭代器</strong>是一个<strong>带状态</strong>的对象,该状态用于记录当前迭代所在位置,以方便下次迭代的时候获取正确的元素.</p>
-<p>Iterator实现了<code>__iter__</code>和<code>__next__</code>方法.</p>
-<p>迭代器不会一次性把所有的元素都加载到内存,而是<strong>在需要的时候才会生成返回结果</strong>.</p>
-<p>1.可迭代对象!=迭代器.</p>
-<p>2.迭代器带状态.</p>
-<p>3.迭代器不会直接加载到内存.</p>
+<h2 id="iterator">迭代器（Iterator）<a class="headerlink" href="#iterator" title="Permanent link">&para;</a></h2>
+<p><strong>迭代器</strong>是一个<strong>带状态</strong>的对象，该状态用于记录当前迭代所在位置，以方便下次迭代的时候获取正确的元素。</p>
+<p>Iterator 实现了 <code>__iter__</code> 和 <code>__next__</code> 方法。</p>
+<p>迭代器不会一次性把所有的元素都加载到内存，而是<strong>在需要的时候才会生成返回结果</strong>。</p>
+<ol>
+<li>可迭代对象 != 迭代器</li>
+<li>迭代器带状态</li>
+<li>迭代器不会直接加载所有数据到内存</li>
+</ol>
 <hr />
-<h2 id="generator">生成器generator<a class="headerlink" href="#generator" title="Permanent link">&para;</a></h2>
-<p><strong>生成器</strong>是一种特殊的迭代器.</p>
-<p>生成器可以<strong>传入数据</strong>进行计算,并根据变量内容计算结果后返回.</p>
-<p>使用send方法传入数据.</p>
-<h3 id="generator-func">生成器函数generator func<a class="headerlink" href="#generator-func" title="Permanent link">&para;</a></h3>
-<p>含有yield关键字的函数就是生成器函数.</p>
+<h2 id="generator">生成器（Generator）<a class="headerlink" href="#generator" title="Permanent link">&para;</a></h2>
+<p><strong>生成器</strong>是一种特殊的迭代器。</p>
+<p>调用方可以通过 <code>send()</code> 方法向生成器传入数据，生成器根据传入的值计算并返回结果。</p>
+<h3 id="generator-function">生成器函数（Generator Function）<a class="headerlink" href="#generator-function" title="Permanent link">&para;</a></h3>
+<p>含有 <code>yield</code> 关键字的函数就是生成器函数。</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">d</span><span class="p">():</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;第一次调用&#39;</span><span class="p">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">'第一次调用'</span><span class="p">)</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="c1"># 第一次c.send(None)只执行到 yield sum</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="c1"># 再次进入时执行 value = yield sum,将yield 赋值给sum,然后赋值给value</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="c1"># 第一次 c.send(None) 只执行到 yield sum</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="c1"># 再次进入时，send() 传入的值作为 yield 表达式的结果赋给 value</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">value</span> <span class="o">=</span> <span class="k">yield</span> <span class="nb">sum</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="nb">sum</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="nb">sum</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sum的值为:</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="nb">sum</span><span class="p">)</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;value</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="n">value</span><span class="p">)</span> <span class="c1"># 输出value1</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="c1"># c.send(1)只执行到yield sum, 再次进入时执行 value = 2</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">'sum的值为:</span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="nb">sum</span><span class="p">)</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">'value:</span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>  <span class="c1"># 输出 value:1</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="c1"># c.send(1) 只执行到 yield sum，再次进入时执行 value = 2</span>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="n">value</span> <span class="o">=</span> <span class="k">yield</span> <span class="nb">sum</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;value</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="n">value</span><span class="p">)</span> <span class="c1"># 输出value2</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">'value:</span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>  <span class="c1"># 输出 value:2</span>
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="k">yield</span> <span class="nb">sum</span>
 </span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
 </span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="n">c</span> <span class="o">=</span> <span class="n">d</span><span class="p">()</span>  <span class="c1"># 创建生成器对象，此时函数并未执行</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="n">d</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># 启动生成器，执行到第一个yield，返回sum的值并赋值给d</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;生成器传出的值为</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">d</span><span class="p">)</span>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="n">d</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 传入数值1，通过yield传递给value，继续执行到第二个yield</span>
-</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;第二次调用返回值为</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">d</span><span class="p">)</span>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="n">d</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 传入数值2，继续执行到第三个yield</span>
-</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;第三次调用返回值为</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">d</span><span class="p">)</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="n">d</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># 启动生成器，执行到第一个 yield，返回 sum 的值并赋值给 d</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="nb">print</span><span class="p">(</span><span class="s1">'生成器传出的值为</span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">d</span><span class="p">)</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="n">d</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 传入数值1，通过 yield 传递给 value，继续执行到第二个 yield</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="nb">print</span><span class="p">(</span><span class="s1">'第二次调用返回值为</span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">d</span><span class="p">)</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="n">d</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 传入数值2，继续执行到第三个 yield</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="nb">print</span><span class="p">(</span><span class="s1">'第三次调用返回值为</span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">d</span><span class="p">)</span>
 </span></code></pre></div>
-<p>可以看到,yield将sum的值传递给了<code>调用方</code>,将send()方法递进来的<code>1</code>传递给了<code>value</code>.</p>
-<p>保存了迭代器的状态.</p>
-<h3 id="generator-expression">生成器表达式generator expression<a class="headerlink" href="#generator-expression" title="Permanent link">&para;</a></h3>
-<p>生成器表达式是列表生成式的生成器版本.返回一个生成器对象.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterator</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1"># 创建一个生成器表达式，计算0-9的平方</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">Iterator</span><span class="p">))</span>   <span class="c1"># 检查a是否为迭代器对象，返回True</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>                    <span class="c1"># 遍历生成器中的每个值</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                     <span class="c1"># 打印当前值</span>
+<p>可以看到，<code>yield</code> 将 <code>sum</code> 的值传递给了调用方，将 <code>send()</code> 方法递进来的 <code>1</code> 传递给了 <code>value</code>。生成器在 <code>yield</code> 处中断并保存状态，恢复时从中断处继续。</p>
+<h3 id="generator-expression">生成器表达式（Generator Expression）<a class="headerlink" href="#generator-expression" title="Permanent link">&para;</a></h3>
+<p>生成器表达式是列表推导式的生成器版本，返回一个生成器对象。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterator</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1"># 创建一个生成器表达式，计算 0-9 的平方</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">))</span>   <span class="c1"># 检查 a 是否为迭代器对象，返回 True</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>                     <span class="c1"># 遍历生成器中的每个值</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                     <span class="c1"># 打印当前值</span>
 </span></code></pre></div>
 <h3 id="_2">生成器的优势<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>延迟加载:在处理长序列问题时,更加节省存储空间.</p>
-<p>比如打印一个斐波那契数列,原始方法如下:</p>
+<p><strong>延迟加载</strong>：在处理长序列问题时，更加节省存储空间。</p>
+<p>比如打印一个斐波那契数列，原始方法如下：</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">fab</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>   <span class="c1"># 初始化计数器n和斐波那契数列的前两个数a,b</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>   <span class="c1"># 初始化计数器 n 和斐波那契数列的前两个数 a, b</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>               <span class="c1"># 创建空列表存储斐波那契数列</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>       <span class="c1"># 当计数器小于最大值时继续循环</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>      <span class="c1"># 将当前斐波那契数添加到列表中</span>
@@ -2415,34 +2444,36 @@
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="k">return</span> <span class="n">L</span>             <span class="c1"># 返回完整的斐波那契数列</span>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">fab</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>          <span class="c1"># 打印前20个斐波那契数</span>
 </span></code></pre></div>
-<p>所有元素都存放在列表L里,空间开销较大.</p>
-<p>使用生成器的方法如下:</p>
+<p>所有元素都存放在列表 L 里，空间开销较大。</p>
+<p>使用生成器的方法如下：</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">fab</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>     <span class="c1"># 初始化计数器n和斐波那契数列的前两个数a,b</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>     <span class="c1"># 初始化计数器 n 和斐波那契数列的前两个数 a, b</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>         <span class="c1"># 当计数器小于最大值时继续循环</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>        <span class="k">yield</span> <span class="n">b</span>            <span class="c1"># 每次在这里中断, 把b的值传递给i, 同时保存中断时的状态</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>        <span class="k">yield</span> <span class="n">b</span>            <span class="c1"># 每次在这里中断，把 b 的值传递给 i，同时保存中断时的状态</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>    <span class="c1"># 计算下一个斐波那契数</span>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>             <span class="c1"># 计数器加1</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fab</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>          <span class="c1"># 使用生成器遍历前20个斐波那契数</span>
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>               <span class="c1"># 打印当前斐波那契数</span>
 </span></code></pre></div>
-<p>这种方法不需要额外的列表空间开销.</p>
-<h3 id="send">send()方法是交互的<a class="headerlink" href="#send" title="Permanent link">&para;</a></h3>
+<p>这种方法不需要额外的列表空间开销。</p>
+<h3 id="send">send() 方法的交互<a class="headerlink" href="#send" title="Permanent link">&para;</a></h3>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_generator</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>     <span class="c1"># 循环n次</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        <span class="k">yield</span> <span class="n">i</span>            <span class="c1"># 依次产出0到n-1的数字</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">g</span> <span class="o">=</span> <span class="n">my_generator</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>        <span class="c1"># 创建生成器对象，可产出0-4的数字</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>     <span class="c1"># 循环 n 次</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        <span class="k">yield</span> <span class="n">i</span>            <span class="c1"># 依次产出 0 到 n-1 的数字</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">g</span> <span class="o">=</span> <span class="n">my_generator</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>        <span class="c1"># 创建生成器对象，可产出 0-4 的数字</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>             <span class="c1"># 获取下一个值，输出0</span>
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>             <span class="c1"># 获取下一个值，输出1</span>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>         <span class="c1"># 发送数据100，但仍然返回下一个值2</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>             <span class="c1"># 获取下一个值，输出3</span>
 </span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>             <span class="c1"># 获取下一个值，输出4</span>
 </span></code></pre></div>
-<p>可以看到第7行的g.send()方法输出了本来next()方法应该输出2.</p>
-<p>1.send()的主要作用是当需要手动更改生成器里面的某一个值并且使用它，则发送进去一个数据保存到yield语句的返回值，以提供后续使用.</p>
-<p>2.send()的返回值就是那个本来应该被迭代出来的那个值。这样既可以保证能够传入新的值，原来的值也不会弄丢.</p>
+<p>可以看到第7行的 <code>g.send()</code> 方法输出了本来 <code>next()</code> 方法应该输出的 2。</p>
+<ol>
+<li><code>send()</code> 的主要作用是当需要手动更改生成器里面的某一个值并且使用它时，把数据交给 <code>yield</code> 表达式（即赋给 <code>value = yield ...</code> 中的 <code>value</code>），以供后续使用。</li>
+<li><code>send()</code> 的返回值就是本来应该被迭代出来的值。这样既可以保证能够传入新的值，原来的值也不会丢失。</li>
+</ol>
 <hr />
-<p>总结</p>
+<h2 id="_3">总结<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2453,49 +2484,49 @@
 </thead>
 <tbody>
 <tr>
-<td>iterable</td>
-<td>实现了<code>__iter__()</code>方法</td>
-<td>返回一个iterator</td>
+<td>Iterable</td>
+<td>实现了 <code>__iter__()</code> 方法</td>
+<td>返回一个 Iterator</td>
 </tr>
 <tr>
-<td>iterator</td>
-<td>实现了<code>__iter__()</code>和<code>__next__()</code>方法.<br />数据需要时才会存储到内存中</td>
+<td>Iterator</td>
+<td>实现了 <code>__iter__()</code> 和 <code>__next__()</code> 方法，按需逐个产出元素</td>
 <td>逐个传出数据</td>
 </tr>
 <tr>
-<td>generator</td>
-<td>yield替换了<code>__next__()</code>方法,可以中断,<br />保存了<code>状态</code>的迭代器</td>
+<td>Generator</td>
+<td><code>yield</code> 替换了 <code>__next__()</code> 方法，可以中断，保存了状态的迭代器</td>
 <td>逐个传入/传出数据</td>
 </tr>
 <tr>
-<td>container</td>
-<td>元素都存储在内存中<br />元素可以通过迭代获取</td>
-<td></td>
+<td>Container</td>
+<td>元素都存储在内存中，元素可以通过迭代获取</td>
+<td>存储数据</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_3">核心要点总结<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_4">核心要点总结<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p><strong>容器(Container)</strong>：存储多个元素的数据结构，所有元素都被存放在内存中，常见的容器包括list、tuple、dict、set、str等。</p>
+<p><strong>容器（Container）</strong>：存储多个元素的数据结构，所有元素都被存放在内存中，常见的容器包括 list、tuple、dict、set、str 等。</p>
 </li>
 <li>
-<p><strong>可迭代对象(Iterable)</strong>：可通过迭代获取的对象，内部定义了可返回迭代器的<code>__iter__()</code>方法。</p>
+<p><strong>可迭代对象（Iterable）</strong>：可通过迭代获取的对象，内部定义了可返回迭代器的 <code>__iter__()</code> 方法。</p>
 </li>
 <li>
-<p><strong>迭代器(Iterator)</strong>：带状态的对象，实现了<code>__iter__()</code>和<code>__next__()</code>方法，不会一次性加载所有元素到内存，在需要时才会生成返回结果。</p>
+<p><strong>迭代器（Iterator）</strong>：带状态的对象，实现了 <code>__iter__()</code> 和 <code>__next__()</code> 方法，不会一次性加载所有元素到内存，在需要时才会生成返回结果。</p>
 </li>
 <li>
-<p><strong>生成器(Generator)</strong>：一种特殊的迭代器，使用yield关键字，可以中断并保存状态，支持传入数据进行计算。</p>
+<p><strong>生成器（Generator）</strong>：一种特殊的迭代器，使用 <code>yield</code> 关键字，可以中断并保存状态，支持传入数据进行计算。</p>
 </li>
 <li>
-<p><strong>生成器函数</strong>：包含yield关键字的函数，每次调用会返回一个生成器对象。</p>
+<p><strong>生成器函数</strong>：包含 <code>yield</code> 关键字的函数，每次调用会返回一个生成器对象。</p>
 </li>
 <li>
-<p><strong>生成器表达式</strong>：列表生成式的生成器版本，返回一个生成器对象，具有延迟加载的特性。</p>
+<p><strong>生成器表达式</strong>：列表推导式的生成器版本，返回一个生成器对象，具有延迟加载的特性。</p>
 </li>
 <li>
-<p><strong>send()方法</strong>：用于向生成器传入数据并获取下一个值，实现生成器与调用方的数据交互。                   |</p>
+<p><strong>send() 方法</strong>：用于向生成器传入数据并获取下一个值，实现生成器与调用方的数据交互。</p>
 </li>
 </ol>
 
@@ -2525,7 +2556,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
-  Back to top
+  回到页面顶部
 </button>
         
       </main>
@@ -2534,17 +2565,17 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../Python%E5%AD%97%E5%85%B8%E8%AF%A6%E8%A7%A3%EF%BC%9Adict%E3%80%81defaultdict%E4%B8%8EOrderedDict/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Python字典详解：dict、defaultdict与OrderedDict">
+          <a href="../Python%E5%AD%97%E5%85%B8%E8%AF%A6%E8%A7%A3%EF%BC%9Adict%E3%80%81defaultdict%E4%B8%8EOrderedDict/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Python字典详解：dict、defaultdict与OrderedDict">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Previous
+                上一页
               </span>
               <div class="md-ellipsis">
                 Python字典详解：dict、defaultdict与OrderedDict
@@ -2554,13 +2585,13 @@
         
         
           
-          <a href="../Python%E5%AE%B9%E5%99%A8%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8%E8%AF%A6%E8%A7%A3/" class="md-footer__link md-footer__link--next" aria-label="Next: 容器可迭代对象迭代器与生成器详解">
+          <a href="../Python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%BC%94%E8%BF%9B%E5%8E%86%E7%A8%8B/" class="md-footer__link md-footer__link--next" aria-label="下一页: Python虚拟环境演进历程">
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Next
+                下一页
               </span>
               <div class="md-ellipsis">
-                容器可迭代对象迭代器与生成器详解
+                Python虚拟环境演进历程
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2594,7 +2625,7 @@
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -2603,10 +2634,13 @@
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","clipboard.error":"Could not copy to clipboard","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.00c35305.min.js"></script>
+      <script src="../../assets/javascripts/bundle.67a597eb.min.js"></script>
       
     
   </body>

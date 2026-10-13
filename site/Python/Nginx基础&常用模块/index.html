@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -23,54 +23,25 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.15">
+      <meta name="generator" content="zensical-0.0.67">
     
     
       
-        <title>Nginx 基础&常用模块 - Mcode</title>
+        <title>Nginx 基础与常用模块 - Mcode</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.f1b6466b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ae390e2.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.96d1a7e4.min.css">
       
       
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-  <style>:root{}</style>
-
 
 
     
@@ -82,12 +53,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -108,12 +79,12 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="导航栏"></label>
     <div data-md-component="skip">
       
         
         <a href="#nginx" class="md-skip">
-          Skip to content
+          跳转至
         </a>
       
     </div>
@@ -125,14 +96,14 @@
       
 
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Mcode" class="md-header__button md-logo" aria-label="Mcode" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="导航栏">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
@@ -146,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Nginx 基础&amp;常用模块
+              Nginx 基础与常用模块
             
           </span>
         </div>
@@ -186,13 +157,13 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="查找">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="查找">
   <button type="button" class="md-search__button">
-    Search
+    查找
   </button>
 </div>
       
@@ -210,7 +181,7 @@
         
           
             
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -236,6 +207,13 @@
   
   
     
+      
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../C/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/" class="md-tabs__link">
@@ -255,6 +233,23 @@
   
   
     
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../DB/MySQL%E4%B8%ADCHAR%E4%B8%8EVARCHAR%E7%9A%84%E5%8C%BA%E5%88%AB/" class="md-tabs__link">
@@ -273,6 +268,15 @@
   
   
   
+    
+      
+      
+        
+      
+        
+      
+    
+    
     
     
       <li class="md-tabs__item">
@@ -295,6 +299,55 @@
   
   
     
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item md-tabs__item--active">
         <a href="../4%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AF%B9%E6%AF%94/" class="md-tabs__link">
@@ -314,6 +367,19 @@
   
   
     
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../%E6%9D%82/GitHub%E4%B9%9F%E6%98%AF%E6%9C%89%E7%A6%BB%E7%BA%BF%E7%89%88%E7%9A%84/" class="md-tabs__link">
@@ -332,6 +398,13 @@
   
   
   
+    
+      
+      
+        
+      
+    
+    
     
     
       <li class="md-tabs__item">
@@ -366,12 +439,12 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Mcode" class="md-nav__button md-logo" aria-label="Mcode" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
     Mcode
@@ -393,8 +466,7 @@
   <span class="md-ellipsis">
     
   
-    Welcome to Mcode
-  
+  Welcome to Mcode
 
     
   </span>
@@ -440,8 +512,7 @@
   <span class="md-ellipsis">
     
   
-    C
-  
+  C
 
     
   </span>
@@ -451,19 +522,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    C
-  
+  C
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -476,8 +547,7 @@
   <span class="md-ellipsis">
     
   
-    汉诺塔问题详解
-  
+  汉诺塔问题详解
 
     
   </span>
@@ -488,10 +558,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -505,8 +576,6 @@
   
     
     
-      
-        
       
         
       
@@ -543,8 +612,7 @@
   <span class="md-ellipsis">
     
   
-    DB
-  
+  DB
 
     
   </span>
@@ -554,19 +622,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    DB
-  
+  DB
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -579,8 +647,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL中CHAR与VARCHAR的区别详解
-  
+  MySQL中CHAR与VARCHAR的区别详解
 
     
   </span>
@@ -591,10 +658,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -607,8 +674,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL基础语法
-  
+  MySQL基础语法
 
     
   </span>
@@ -619,10 +685,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -635,8 +701,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL多表查询
-  
+  MySQL多表查询
 
     
   </span>
@@ -647,10 +712,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -663,8 +728,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL mysqldump --skip-add-drop-table 参数
-  
+  MySQL导出时 add-drop-table 问题及解决方案
 
     
   </span>
@@ -675,10 +739,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -691,8 +755,7 @@
   <span class="md-ellipsis">
     
   
-    SQL学习：掌握INNER JOIN、DISTINCT和HAVING关键字
-  
+  SELECT DISTINCT 语句
 
     
   </span>
@@ -703,10 +766,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -719,8 +782,7 @@
   <span class="md-ellipsis">
     
   
-    SQLAlchemy一对多关系完整指南：模型定义、关系建立与数据操作
-  
+  SQLAlchemy 一对多关系完整指南：模型定义、关系建立与数据操作
 
     
   </span>
@@ -731,38 +793,11 @@
     </li>
   
 
-              
-            
-              
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../DB/SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E8%AF%A6%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQLAlchemy一对多关系详解与实现
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -804,8 +839,7 @@
   <span class="md-ellipsis">
     
   
-    Mac
-  
+  Mac
 
     
   </span>
@@ -815,19 +849,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Mac
-  
+  Mac
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -840,8 +874,7 @@
   <span class="md-ellipsis">
     
   
-    Mac 的一些小技巧
-  
+  macOS 使用小技巧
 
     
   </span>
@@ -852,10 +885,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -868,8 +901,7 @@
   <span class="md-ellipsis">
     
   
-    Youtube下载
-  
+  YouTube 视频下载
 
     
   </span>
@@ -880,10 +912,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -899,10 +932,6 @@
   
     
     
-      
-        
-      
-        
       
         
       
@@ -974,8 +1003,7 @@
   <span class="md-ellipsis">
     
   
-    Python
-  
+  Python
 
     
   </span>
@@ -985,19 +1013,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Python
-  
+  Python
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1010,8 +1038,7 @@
   <span class="md-ellipsis">
     
   
-    list,tuple,dict,set 四种数据类型的定义和异同.
-  
+  list、tuple、dict、set 四种数据类型的定义与异同
 
     
   </span>
@@ -1022,10 +1049,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1038,8 +1065,7 @@
   <span class="md-ellipsis">
     
   
-    Flask配置管理基础
-  
+  Flask配置管理基础
 
     
   </span>
@@ -1050,10 +1076,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1066,8 +1092,7 @@
   <span class="md-ellipsis">
     
   
-    Flask端点与蓝图详解
-  
+  Flask端点与蓝图详解
 
     
   </span>
@@ -1078,10 +1103,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1094,8 +1119,7 @@
   <span class="md-ellipsis">
     
   
-    Flask装饰器执行顺序
-  
+  Flask装饰器执行顺序
 
     
   </span>
@@ -1106,10 +1130,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1122,8 +1146,7 @@
   <span class="md-ellipsis">
     
   
-    Flask请求钩子
-  
+  Flask请求钩子
 
     
   </span>
@@ -1134,10 +1157,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -1146,7 +1169,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
       
       
         
@@ -1159,8 +1182,7 @@
   <span class="md-ellipsis">
     
   
-    Nginx 基础&amp;常用模块
-  
+  Nginx 基础与常用模块
 
     
   </span>
@@ -1170,15 +1192,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Nginx 基础&amp;常用模块
-  
+  Nginx 基础与常用模块
 
     
   </span>
@@ -1190,7 +1211,7 @@
         
 
 
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -1199,16 +1220,16 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      On this page
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#nginx_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Nginx 的中间件架构
-      
+      </span>
     </span>
   </a>
   
@@ -1217,9 +1238,9 @@
         <li class="md-nav__item">
   <a href="#nginx_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        为什么选择 Nginx?
-      
+      <span class="md-typeset">
+        为什么选择 Nginx
+      </span>
     </span>
   </a>
   
@@ -1228,9 +1249,9 @@
         <li class="md-nav__item">
   <a href="#nginx_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Nginx 目录讲解
-      
+      </span>
     </span>
   </a>
   
@@ -1239,21 +1260,21 @@
         <li class="md-nav__item">
   <a href="#http" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        HTTP请求
-      
+      <span class="md-typeset">
+        HTTP 请求
+      </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="HTTP请求">
+    <nav class="md-nav" aria-label="HTTP 请求">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#nginx_4" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Nginx 变量
-      
+      </span>
     </span>
   </a>
   
@@ -1267,9 +1288,9 @@
         <li class="md-nav__item">
   <a href="#nginx_5" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Nginx 模块讲解
-      
+      </span>
     </span>
   </a>
   
@@ -1277,78 +1298,55 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#___stub_status_moule__" class="md-nav__link">
+  <a href="#ngx_http_stub_status_module" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        ___stub_status_moule__模块,
-      
+      <span class="md-typeset">
+        ngx_http_stub_status_module 模块
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#-with-http_random_index_module" class="md-nav__link">
+  <a href="#ngx_http_random_index_module" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        --with-http_random_index_module
-      
+      <span class="md-typeset">
+        ngx_http_random_index_module 模块
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#gx_http_sub_module" class="md-nav__link">
+  <a href="#ngx_http_sub_module" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        gx_http_sub_module
-      
+      <span class="md-typeset">
+        ngx_http_sub_module 模块
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#__limit_conn_module__" class="md-nav__link">
+  <a href="#ngx_http_limit_conn_module" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        __limit_conn_module__连接频率限制
-      
+      <span class="md-typeset">
+        ngx_http_limit_conn_module 连接频率限制
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#__limit_req_module__" class="md-nav__link">
+  <a href="#ngx_http_limit_req_module" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        __limit_req_module__请求频率限制
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nginx_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nginx 访问控制
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Nginx 访问控制">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#__http_auth_basic_module__" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        __http_auth_basic_module__基于用户的信任登录
-      
+      <span class="md-typeset">
+        ngx_http_limit_req_module 请求频率限制
+      </span>
     </span>
   </a>
   
@@ -1356,6 +1354,40 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Nginx 访问控制
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nginx 访问控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ngx_http_access_module-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ngx_http_access_module 基于 IP 的访问控制
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ngx_http_auth_basic_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ngx_http_auth_basic_module 基于用户的身份认证
+      </span>
+    </span>
+  </a>
   
 </li>
         
@@ -1371,10 +1403,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1387,8 +1419,7 @@
   <span class="md-ellipsis">
     
   
-    Python 列表推导式
-  
+  Python 列表推导式
 
     
   </span>
@@ -1399,24 +1430,23 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
   
     <li class="md-nav__item">
-      <a href="../Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python 拷贝机制详解：直接赋值、浅拷贝与深拷贝的原理与应用
-  
+  Python 拷贝机制详解：直接赋值、浅拷贝与深拷贝的原理与应用
 
     
   </span>
@@ -1427,10 +1457,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1443,8 +1473,7 @@
   <span class="md-ellipsis">
     
   
-    Python __future__模块详解：实现新旧版本兼容的关键技术
-  
+  Python __future__ 模块详解：实现新旧版本兼容的关键技术
 
     
   </span>
@@ -1455,10 +1484,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1471,8 +1500,7 @@
   <span class="md-ellipsis">
     
   
-    函数参数详解：默认参数、可变参数与关键字参数
-  
+  函数参数详解：默认参数、可变参数与关键字参数
 
     
   </span>
@@ -1483,10 +1511,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1499,8 +1527,7 @@
   <span class="md-ellipsis">
     
   
-    协程详解：从yield到yield from
-  
+  协程详解：从 yield 到 yield from
 
     
   </span>
@@ -1511,10 +1538,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1527,8 +1554,7 @@
   <span class="md-ellipsis">
     
   
-    Python字典详解：dict、defaultdict与OrderedDict
-  
+  Python字典详解：dict、defaultdict与OrderedDict
 
     
   </span>
@@ -1539,10 +1565,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1555,8 +1581,7 @@
   <span class="md-ellipsis">
     
   
-    Python容器、可迭代对象、迭代器与生成器
-  
+  Python 容器、可迭代对象、迭代器与生成器
 
     
   </span>
@@ -1567,38 +1592,10 @@
     </li>
   
 
-              
-            
+                
               
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Python%E5%AE%B9%E5%99%A8%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    容器可迭代对象迭代器与生成器详解
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
+                  
   
   
   
@@ -1611,8 +1608,7 @@
   <span class="md-ellipsis">
     
   
-    Python虚拟环境演进历程
-  
+  Python虚拟环境演进历程
 
     
   </span>
@@ -1623,10 +1619,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1639,8 +1635,7 @@
   <span class="md-ellipsis">
     
   
-    Python进阶-数据结构与算法进阶训练
-  
+  Python进阶：数据结构与算法进阶训练
 
     
   </span>
@@ -1651,38 +1646,10 @@
     </li>
   
 
-              
-            
+                
               
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQLAlchemy一对多关系
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
+                  
   
   
   
@@ -1695,8 +1662,7 @@
   <span class="md-ellipsis">
     
   
-    Python爬虫中的SSL证书验证问题及解决方案
-  
+  Python爬虫中的SSL证书验证问题及解决方案
 
     
   </span>
@@ -1707,10 +1673,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1723,8 +1689,7 @@
   <span class="md-ellipsis">
     
   
-    一些需要注意的地方
-  
+  一些需要注意的地方
 
     
   </span>
@@ -1735,10 +1700,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1751,8 +1716,7 @@
   <span class="md-ellipsis">
     
   
-    哈希冲突
-  
+  哈希冲突
 
     
   </span>
@@ -1763,10 +1727,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1779,8 +1743,7 @@
   <span class="md-ellipsis">
     
   
-    数据挖掘—将数据转换成知识
-  
+  数据挖掘——将数据转换成知识
 
     
   </span>
@@ -1791,10 +1754,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1807,8 +1770,7 @@
   <span class="md-ellipsis">
     
   
-    深入理解Python生成器：高效内存管理的利器
-  
+  深入理解Python生成器：高效内存管理的利器
 
     
   </span>
@@ -1819,10 +1781,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1835,8 +1797,7 @@
   <span class="md-ellipsis">
     
   
-    理解Python中None、布尔值和空值的对应关系
-  
+  理解 Python 中 None、布尔值和空值的对应关系
 
     
   </span>
@@ -1847,10 +1808,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1863,8 +1824,7 @@
   <span class="md-ellipsis">
     
   
-    装饰器
-  
+  装饰器
 
     
   </span>
@@ -1875,10 +1835,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1924,8 +1885,7 @@
   <span class="md-ellipsis">
     
   
-    杂
-  
+  杂
 
     
   </span>
@@ -1935,19 +1895,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    杂
-  
+  杂
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1960,8 +1920,7 @@
   <span class="md-ellipsis">
     
   
-    GitHub也是有离线版的
-  
+  GitHub 离线版安装包
 
     
   </span>
@@ -1972,10 +1931,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1988,8 +1947,7 @@
   <span class="md-ellipsis">
     
   
-    Markdown 语法和 MWeb 写作使用说明
-  
+  Markdown 语法和 MWeb 写作使用说明
 
     
   </span>
@@ -2000,10 +1958,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2016,8 +1974,7 @@
   <span class="md-ellipsis">
     
   
-    Nginx 高级配置与性能优化完全指南
-  
+  Nginx 高级配置与性能优化完全指南
 
     
   </span>
@@ -2028,10 +1985,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2041,13 +1998,12 @@
         
   
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Markdown</title><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
   
   <span class="md-ellipsis">
     
   
-    Markdown in 5min
-  
+  Markdown 五分钟入门
 
     
   </span>
@@ -2058,10 +2014,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2101,8 +2058,7 @@
   <span class="md-ellipsis">
     
   
-    生活
-  
+  生活
 
     
   </span>
@@ -2112,19 +2068,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    生活
-  
+  生活
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2137,8 +2093,7 @@
   <span class="md-ellipsis">
     
   
-    琥珀的猫粮选定
-  
+  琥珀的猫粮选定
 
     
   </span>
@@ -2149,10 +2104,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2168,11 +2124,24 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
                   <div class="md-sidebar__inner">
                     
 
 
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -2181,16 +2150,16 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      On this page
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#nginx_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Nginx 的中间件架构
-      
+      </span>
     </span>
   </a>
   
@@ -2199,9 +2168,9 @@
         <li class="md-nav__item">
   <a href="#nginx_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        为什么选择 Nginx?
-      
+      <span class="md-typeset">
+        为什么选择 Nginx
+      </span>
     </span>
   </a>
   
@@ -2210,9 +2179,9 @@
         <li class="md-nav__item">
   <a href="#nginx_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Nginx 目录讲解
-      
+      </span>
     </span>
   </a>
   
@@ -2221,21 +2190,21 @@
         <li class="md-nav__item">
   <a href="#http" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        HTTP请求
-      
+      <span class="md-typeset">
+        HTTP 请求
+      </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="HTTP请求">
+    <nav class="md-nav" aria-label="HTTP 请求">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#nginx_4" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Nginx 变量
-      
+      </span>
     </span>
   </a>
   
@@ -2249,9 +2218,9 @@
         <li class="md-nav__item">
   <a href="#nginx_5" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Nginx 模块讲解
-      
+      </span>
     </span>
   </a>
   
@@ -2259,78 +2228,55 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#___stub_status_moule__" class="md-nav__link">
+  <a href="#ngx_http_stub_status_module" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        ___stub_status_moule__模块,
-      
+      <span class="md-typeset">
+        ngx_http_stub_status_module 模块
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#-with-http_random_index_module" class="md-nav__link">
+  <a href="#ngx_http_random_index_module" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        --with-http_random_index_module
-      
+      <span class="md-typeset">
+        ngx_http_random_index_module 模块
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#gx_http_sub_module" class="md-nav__link">
+  <a href="#ngx_http_sub_module" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        gx_http_sub_module
-      
+      <span class="md-typeset">
+        ngx_http_sub_module 模块
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#__limit_conn_module__" class="md-nav__link">
+  <a href="#ngx_http_limit_conn_module" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        __limit_conn_module__连接频率限制
-      
+      <span class="md-typeset">
+        ngx_http_limit_conn_module 连接频率限制
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#__limit_req_module__" class="md-nav__link">
+  <a href="#ngx_http_limit_req_module" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        __limit_req_module__请求频率限制
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nginx_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nginx 访问控制
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Nginx 访问控制">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#__http_auth_basic_module__" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        __http_auth_basic_module__基于用户的信任登录
-      
+      <span class="md-typeset">
+        ngx_http_limit_req_module 请求频率限制
+      </span>
     </span>
   </a>
   
@@ -2338,6 +2284,40 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Nginx 访问控制
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nginx 访问控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ngx_http_access_module-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ngx_http_access_module 基于 IP 的访问控制
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ngx_http_auth_basic_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ngx_http_auth_basic_module 基于用户的身份认证
+      </span>
+    </span>
+  </a>
   
 </li>
         
@@ -2364,7 +2344,7 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
+  <nav class="md-path" aria-label="导航栏" >
     <ol class="md-path__list">
       
         
@@ -2373,6 +2353,7 @@
     <li class="md-path__item">
       <a href="../.." class="md-path__link">
         
+  
   <span class="md-ellipsis">
     Welcome to Mcode
   </span>
@@ -2388,9 +2369,59 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
       <li class="md-path__item">
         <a href="../4%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AF%B9%E6%AF%94/" class="md-path__link">
           
+  
   <span class="md-ellipsis">
     Python
   </span>
@@ -2409,27 +2440,29 @@
                 
                   
 
-<h1 id="nginx">Nginx 基础&amp;常用模块<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h1>
+
+<h1 id="nginx">Nginx 基础与常用模块<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h1>
 <h2 id="nginx_1">Nginx 的中间件架构<a class="headerlink" href="#nginx_1" title="Permanent link">&para;</a></h2>
-<p>简介<br />
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>nginx<span class="w"> </span>-v<span class="w"> </span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">#查看 nginx 编译参数</span>
+<p>Nginx 是一个开源且高性能的 HTTP 中间件和代理服务。</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>nginx<span class="w"> </span>-v
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 查看 Nginx 编译参数</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>nginx<span class="w"> </span>-V
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">#检查 nginx 配置文件语法是否正确</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>nginx<span class="w"> </span>-t<span class="w"> </span>-c<span class="w"> </span>/etc/nginx/nginx.conf<span class="w">  </span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1">#重新载入配置文件</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 检查 Nginx 配置文件语法是否正确</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>nginx<span class="w"> </span>-t<span class="w"> </span>-c<span class="w"> </span>/etc/nginx/nginx.conf
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># 重新载入配置文件</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>nginx<span class="w"> </span>-s<span class="w"> </span>reload
-</span></code></pre></div></p>
-<p>Nginx 是一个开源且高性能可靠的 HTTP 中间件,代理服务.</p>
-<h2 id="nginx_2">为什么选择 Nginx?<a class="headerlink" href="#nginx_2" title="Permanent link">&para;</a></h2>
-<p>原因1,IO 多路复用 epoll.</p>
+</span></code></pre></div>
+<h2 id="nginx_2">为什么选择 Nginx<a class="headerlink" href="#nginx_2" title="Permanent link">&para;</a></h2>
+<p><strong>原因1：IO 多路复用 epoll</strong></p>
 <blockquote>
-<p>IO 复用就是将多个 IO 流使用一个 socket 来传递.</p>
+<p>IO 多路复用是指通过一个线程同时监听多个文件描述符（socket），当某个描述符就绪时立即处理，从而以较少的线程资源高效管理大量并发连接。epoll 是 Linux 下高效的 IO 多路复用实现。</p>
 </blockquote>
-<p>原因2,轻量级</p>
-<p>原因3,CPU 亲和(affinity)</p>
-<p><code>CPU 亲和是一种把 CPU 核心和 Nginx 工作进程绑定方式,把每个 worker 进程固定在一个 CPU 上执行,减少切换 CPU 的 cache miss, 获得更好的性能.</code></p>
-<p>原因4,sendfile</p>
+<p><strong>原因2：轻量级</strong></p>
+<p>Nginx 采用模块化设计，核心功能占用资源极少。相比 Apache 等传统 Web 服务器，Nginx 在高并发场景下内存和 CPU 消耗更低，启动速度更快。</p>
+<p><strong>原因3：CPU 亲和（affinity）</strong></p>
+<p>CPU 亲和是一种将 CPU 核心与 Nginx 工作进程绑定的机制，使每个 worker 进程固定在一个 CPU 核心上执行，从而减少 CPU 切换带来的缓存未命中（cache miss），获得更好的性能。</p>
+<p><strong>原因4：sendfile</strong></p>
+<p>sendfile 是一种零拷贝传输机制，允许数据直接从内核空间的文件描述符传输到 socket，无需在用户空间和内核空间之间反复拷贝，显著提升了静态文件的传输效率。</p>
 <h2 id="nginx_3">Nginx 目录讲解<a class="headerlink" href="#nginx_3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2443,138 +2476,120 @@
 <tr>
 <td>/etc/logrotate.d/nginx</td>
 <td>配置文件</td>
-<td>Nginx 日志轮转,用于 logrotate 服务的日志切割</td>
+<td>Nginx 日志轮转，用于 logrotate 服务的日志切割</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>/etc/nginx</td>
+<td>目录/配置文件</td>
+<td>Nginx 主配置文件目录</td>
 </tr>
 <tr>
-<td>/ etc/nginx</td>
-<td>目录,配置文件</td>
-<td>Nginx 主配置文件</td>
-</tr>
-<tr>
-<td>/ etc/nginx/nginx.conf</td>
-<td></td>
+<td>/etc/nginx/nginx.conf</td>
+<td>配置文件</td>
 <td>主要配置文件</td>
 </tr>
 <tr>
-<td>/etc/nginx/nginx/conf.d</td>
-<td></td>
-<td></td>
+<td>/etc/nginx/conf.d</td>
+<td>目录</td>
+<td>子配置目录</td>
 </tr>
 <tr>
 <td>/etc/nginx/conf.d/default.conf</td>
-<td></td>
+<td>配置文件</td>
 <td>默认配置文件</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>/etc/nginx/fastcgi_params</td>
 <td>配置文件</td>
-<td>fastcgi 配置</td>
+<td>FastCGI 配置参数</td>
 </tr>
 <tr>
 <td>/etc/nginx/uwsgi_params</td>
-<td></td>
-<td>param(参数)</td>
+<td>配置文件</td>
+<td>uWSGI 配置参数</td>
 </tr>
 <tr>
 <td>/etc/nginx/scgi_params</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
+<td>配置文件</td>
+<td>SCGI 配置参数</td>
 </tr>
 <tr>
 <td>/etc/nginx/koi-utf</td>
 <td>配置文件</td>
-<td>编码转换映射转化文件</td>
+<td>编码转换映射文件</td>
 </tr>
 <tr>
 <td>/etc/nginx/koi-win</td>
-<td></td>
-<td></td>
+<td>配置文件</td>
+<td>编码转换映射文件</td>
 </tr>
 <tr>
 <td>/etc/nginx/win-utf</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
+<td>配置文件</td>
+<td>编码转换映射文件</td>
 </tr>
 <tr>
 <td>/etc/nginx/mime.types</td>
 <td>配置文件</td>
-<td>设置 http 协议的 Content-Type 与扩展名对应关系</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
+<td>设置 HTTP 协议的 Content-Type 与扩展名对应关系</td>
 </tr>
 <tr>
 <td>/usr/lib/systemd/system/nginx-debug.service</td>
 <td>配置文件</td>
-<td>centos7中,用于配置出系统守护进程管理器管理方式</td>
+<td>CentOS 7 中，nginx 调试模式的 systemd 服务单元文件</td>
 </tr>
 <tr>
 <td>/usr/lib/systemd/system/nginx.service</td>
-<td></td>
-<td></td>
+<td>配置文件</td>
+<td>Nginx 系统服务配置</td>
 </tr>
 <tr>
 <td>/etc/sysconfig/nginx</td>
-<td></td>
-<td></td>
+<td>配置文件</td>
+<td>Nginx 系统配置</td>
 </tr>
 <tr>
 <td>/etc/sysconfig/nginx-debug</td>
-<td></td>
-<td></td>
+<td>配置文件</td>
+<td>Nginx 调试模式配置</td>
 </tr>
 </tbody>
 </table>
-<p>看/ etc/nginx/conf.d</p>
-<p>看/ etc/nginx/nginx.conf</p>
-<h2 id="http">HTTP请求<a class="headerlink" href="#http" title="Permanent link">&para;</a></h2>
-<p>request-包括请求行,请求头部,请求数据</p>
-<p>response-包括状态行,消息报头,响应正文</p>
-<p>Curl -CommandLine Uniform Resource Locator</p>
-<p>curl是利用URL语法在命令行方式下工作的开源文件传输工具.</p>
-<p>通过编辑配置文件,可以更改 error.log和 access.log 的记录,  具体哪些参数可以添加,可以参考 Nginx.org 上面的文档.</p>
+<p>主配置文件路径：<code>/etc/nginx/nginx.conf</code></p>
+<p>子配置目录：<code>/etc/nginx/conf.d</code></p>
+<h2 id="http">HTTP 请求<a class="headerlink" href="#http" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>请求报文（Request）</strong>：包括请求行、请求头部、请求体</li>
+<li><strong>响应报文（Response）</strong>：包括状态行、响应头部、响应体</li>
+</ul>
+<p><strong>curl</strong> —— Client URL Request Library</p>
+<p>curl 是一款利用 URL 语法在命令行环境下工作的开源文件传输工具，支持多种协议（如 HTTP、HTTPS、FTP 等）。</p>
+<p>通过修改 Nginx 配置文件中的 <code>error_log</code> 指令，可以设定错误日志的路径与级别；<code>access_log</code> 指令配合 <code>log_format</code> 指令，可以自定义访问日志的路径与格式。更多可配置参数请参阅 <a href="http://nginx.org/en/docs/">Nginx 官方文档</a>。</p>
 <h3 id="nginx_4">Nginx 变量<a class="headerlink" href="#nginx_4" title="Permanent link">&para;</a></h3>
-<p>1.http请求变量</p>
-<p>2.Nginx 内置变量</p>
-<p>3.自定义变量</p>
+<ol>
+<li>HTTP 请求变量</li>
+<li>Nginx 内置变量</li>
+<li>自定义变量</li>
+</ol>
 <h2 id="nginx_5">Nginx 模块讲解<a class="headerlink" href="#nginx_5" title="Permanent link">&para;</a></h2>
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>nginx<span class="w"> </span>-t<span class="w"> </span>-c<span class="w"> </span>/etc/nginx/nginx.conf
 </span></code></pre></div>
-<h4 id="___stub_status_moule__">__<code>_stub_status_moule</code>__模块,<a class="headerlink" href="#___stub_status_moule__" title="Permanent link">&para;</a></h4>
-<p>显示 Nginx 当前处理链接的状态,用于监控 Nginx 当前连接的信息</p>
-<p>需要在<code>/etc/nginx/conf.d/default.conf</code>添加</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>location<span class="w"> </span>/mystatus<span class="w"> </span><span class="o">{</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>stub_status<span class="p">;</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="o">}</span>
+<h3 id="ngx_http_stub_status_module">ngx_http_stub_status_module 模块<a class="headerlink" href="#ngx_http_stub_status_module" title="Permanent link">&para;</a></h3>
+<p>用于展示 Nginx 当前的连接处理状态，包括活跃连接数、已接受连接数、已处理请求数等信息，适用于运维监控场景。</p>
+<p>需要在 <code>/etc/nginx/conf.d/default.conf</code> 中添加：</p>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">location</span><span class="w"> </span><span class="s">/mystatus</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kn">stub_status</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
 </span></code></pre></div>
-<h4 id="-with-http_random_index_module"><strong><code>--with-http_random_index_module</code></strong><a class="headerlink" href="#-with-http_random_index_module" title="Permanent link">&para;</a></h4>
-<h4 id="gx_http_sub_module"><strong><code>gx_http_sub_module</code></strong><a class="headerlink" href="#gx_http_sub_module" title="Permanent link">&para;</a></h4>
-<p><code>sub_filter</code>,<code>sub_filter_last_modified</code>,<code>sub_filter_once</code>,<code>sub_filter_types</code>替换 HTTP 页面 </p>
-<h4 id="__limit_conn_module__">__<code>limit_conn_module</code>__连接频率限制<a class="headerlink" href="#__limit_conn_module__" title="Permanent link">&para;</a></h4>
-<h4 id="__limit_req_module__">__<code>limit_req_module</code>__请求频率限制<a class="headerlink" href="#__limit_req_module__" title="Permanent link">&para;</a></h4>
-<p>HTTP协议的连接与请求</p>
+<h3 id="ngx_http_random_index_module">ngx_http_random_index_module 模块<a class="headerlink" href="#ngx_http_random_index_module" title="Permanent link">&para;</a></h3>
+<p>随机首页模块，用于从目录中随机选择一个文件作为首页返回。</p>
+<h3 id="ngx_http_sub_module">ngx_http_sub_module 模块<a class="headerlink" href="#ngx_http_sub_module" title="Permanent link">&para;</a></h3>
+<p>通过 <code>sub_filter</code>、<code>sub_filter_last_modified</code>、<code>sub_filter_once</code>、<code>sub_filter_types</code> 等指令替换 HTTP 页面内容。</p>
+<h3 id="ngx_http_limit_conn_module">ngx_http_limit_conn_module 连接频率限制<a class="headerlink" href="#ngx_http_limit_conn_module" title="Permanent link">&para;</a></h3>
+<p>用于限制同一客户端在同一时间的并发连接数，防止单个客户端占用过多服务器资源。</p>
+<h3 id="ngx_http_limit_req_module">ngx_http_limit_req_module 请求频率限制<a class="headerlink" href="#ngx_http_limit_req_module" title="Permanent link">&para;</a></h3>
+<p>用于限制单位时间内的请求速率，有效防御 CC 攻击和恶意刷请求等行为。</p>
+<p><strong>HTTP 协议的连接与请求：</strong></p>
 <table>
 <thead>
 <tr>
@@ -2584,57 +2599,64 @@
 </thead>
 <tbody>
 <tr>
-<td>HTTP1.0</td>
+<td>HTTP 1.0</td>
 <td>TCP 不能复用</td>
 </tr>
 <tr>
-<td>HTTP1.1</td>
-<td>顺序性 TCP 复用</td>
+<td>HTTP 1.1</td>
+<td>有序 TCP 复用（管线化）</td>
 </tr>
 <tr>
-<td>HTTP2.0</td>
-<td>多路复用 TCP 复用</td>
+<td>HTTP 2.0</td>
+<td>多路复用（流式传输）</td>
 </tr>
 </tbody>
 </table>
-<p>HTTP 请求建立在一次 TCP 连接基础上</p>
-<p>一次 TCP 连接至少产生一次 HTTP 请求</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ab -n 50 -c 20 http://www.qq.com
+<ul>
+<li>HTTP 请求建立在一次 TCP 连接基础上</li>
+<li>一次 TCP 连接至少产生一次 HTTP 请求</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ab<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span><span class="w"> </span>-c<span class="w"> </span><span class="m">20</span><span class="w"> </span>http://www.qq.com
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>-n 表示请求数为50 , -c 20是同时并发请求数
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>ab 是 Apache 自带的压力测试工具,是一个很实用的测试工具.
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># -n 表示总请求数为 50，-c 20 表示同时并发请求数为 20</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># ab（Apache Bench）是 Apache 自带的压力测试工具</span>
 </span></code></pre></div>
-<h3 id="nginx_6">Nginx 访问控制<a class="headerlink" href="#nginx_6" title="Permanent link">&para;</a></h3>
-<p>__<code>http_access_module</code>__基于 ip 的访问控制.</p>
-<p>如果要写</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>location<span class="w"> </span>/<span class="w"> </span><span class="o">{</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span>allow<span class="w"> </span>all<span class="p">;</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>deny<span class="w"> </span><span class="m">10</span>.211.55.2<span class="p">;</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="o">}</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1">##需要注意 allow all的位置, 如果 allow all 在前面,则后面所有的 deny 都会无效.</span>
+<h2 id="nginx_6">Nginx 访问控制<a class="headerlink" href="#nginx_6" title="Permanent link">&para;</a></h2>
+<h3 id="ngx_http_access_module-ip">ngx_http_access_module 基于 IP 的访问控制<a class="headerlink" href="#ngx_http_access_module-ip" title="Permanent link">&para;</a></h3>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kn">deny</span><span class="w"> </span><span class="mi">10</span><span class="s">.211.55.2</span><span class="p">;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kn">allow</span><span class="w"> </span><span class="s">all</span><span class="p">;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">}</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># 注意：Nginx 按顺序匹配规则，首个匹配生效后即停止。</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># 若 allow all 置于 deny 之前，则后续所有 deny 规则均不会生效</span>
 </span></code></pre></div>
-<p><code>access_module</code>的局限性:因为存在7lay LSB和 CDN 等,所以 remote_addr 不一定是需要进行限制的 ip 地址. 无法保证 remote_addr 的准确性</p>
-<p><strong>进阶方法</strong></p>
-<p>方案1.采用别的 HTTP 头信息控制访问, <strong><code>http_x_forwarded_for</code></strong></p>
+<p><code>ngx_http_access_module</code> 的局限性：在存在七层负载均衡或 CDN 的场景下，Nginx 获取到的 <code>remote_addr</code> 往往是中间节点的 IP 而非客户端真实 IP，因此无法准确基于 <code>remote_addr</code> 进行访问控制。</p>
+<p><strong>进阶方法：</strong></p>
+<p><strong>方案1：</strong> 采用其他 HTTP 头信息控制访问 —— <code>http_x_forwarded_for</code></p>
 <p><img alt="" src="http://ojho2g8px.bkt.clouddn.com/WX20180312-111918@2x.png" /></p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">http_x_forwarded_for</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Client<span class="w"> </span>IP,<span class="w"> </span>Proxy<span class="o">(</span><span class="m">1</span><span class="o">)</span>IP,Proxy<span class="o">(</span><span class="m">2</span><span class="o">)</span>IP...
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">http_x_forwarded_for</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Client<span class="w"> </span>IP,<span class="w"> </span>Proxy<span class="o">(</span><span class="m">1</span><span class="o">)</span><span class="w"> </span>IP,<span class="w"> </span>Proxy<span class="o">(</span><span class="m">2</span><span class="o">)</span><span class="w"> </span>IP...
 </span></code></pre></div>
-<p>但是 x_forwarded_for 只是一个协议,并没有强制要求对方遵守,故是可以被篡改的,安全性并不高.</p>
-<p>方案2.结合 geo 模块</p>
-<p>方案3.通过 HTTP 自定义变量传递</p>
-<h4 id="__http_auth_basic_module__">__<code>http_auth_basic_module</code>__基于用户的信任登录<a class="headerlink" href="#__http_auth_basic_module__" title="Permanent link">&para;</a></h4>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>location / {
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    auth_basic &#39;this is a test&#39;;
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    auth_basic_user_file /path;
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>}
+<p>然而 <code>X-Forwarded-For</code> 仅为事实标准而非正式协议，代理服务器可以随意修改甚至伪造该字段，因此安全性较低，不宜作为唯一的访问控制依据。</p>
+<p><strong>方案2：</strong> 结合 geo 模块</p>
+<p><strong>方案3：</strong> 通过 HTTP 自定义变量传递</p>
+<h3 id="ngx_http_auth_basic_module">ngx_http_auth_basic_module 基于用户的身份认证<a class="headerlink" href="#ngx_http_auth_basic_module" title="Permanent link">&para;</a></h3>
+<p>通过 HTTP Basic Authentication 实现简单的用户名密码验证。</p>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kn">auth_basic</span><span class="w"> </span><span class="s">'this</span><span class="w"> </span><span class="s">is</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="s">test'</span><span class="p">;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="kn">auth_basic_user_file</span><span class="w"> </span><span class="s">/path</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>可以使用 htpasswd来进行加密.  该工具集成在 httpd-tools 里面.</p>
-<p>局限性</p>
-<p>1.用户信息依赖文件方式</p>
-<p>2.操作机械,效率低下</p>
-<p>解决方案:</p>
-<p>1.Nginx 结合 LUA 实现高效验证</p>
-<p>2.Nginx 和 LDAP 大同,利用 Nginx-auth-ldap 模块.</p>
+<p>可使用 <code>htpasswd</code> 工具生成加密密码文件，该工具包含在 <code>httpd-tools</code> 软件包中。</p>
+<p><strong>局限性：</strong></p>
+<ol>
+<li>用户信息依赖本地文件存储，难以规模化管理</li>
+<li>每次修改用户信息均需手动操作，效率低下且不易自动化</li>
+</ol>
+<p><strong>解决方案：</strong></p>
+<ol>
+<li>Nginx 结合 Lua 实现高效验证</li>
+<li>Nginx 和 LDAP 打通，利用 nginx-auth-ldap 模块</li>
+</ol>
 
 
 
@@ -2662,7 +2684,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
-  Back to top
+  回到页面顶部
 </button>
         
       </main>
@@ -2671,17 +2693,17 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../Flask%E8%AF%B7%E6%B1%82%E9%92%A9%E5%AD%90%E6%8C%87%E5%8D%97/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Flask请求钩子">
+          <a href="../Flask%E8%AF%B7%E6%B1%82%E9%92%A9%E5%AD%90%E6%8C%87%E5%8D%97/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Flask请求钩子">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Previous
+                上一页
               </span>
               <div class="md-ellipsis">
                 Flask请求钩子
@@ -2691,10 +2713,10 @@
         
         
           
-          <a href="../Python%20%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-footer__link md-footer__link--next" aria-label="Next: Python 列表推导式">
+          <a href="../Python%20%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F/" class="md-footer__link md-footer__link--next" aria-label="下一页: Python 列表推导式">
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Next
+                下一页
               </span>
               <div class="md-ellipsis">
                 Python 列表推导式
@@ -2731,7 +2753,7 @@
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -2740,10 +2762,13 @@
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","clipboard.error":"Could not copy to clipboard","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.00c35305.min.js"></script>
+      <script src="../../assets/javascripts/bundle.67a597eb.min.js"></script>
       
     
   </body>

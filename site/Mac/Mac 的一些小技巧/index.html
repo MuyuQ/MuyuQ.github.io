@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -13,7 +13,7 @@
       
       
       
-        <link rel="prev" href="../../DB/SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E8%AF%A6%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/">
+        <link rel="prev" href="../../DB/SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/">
       
       
         <link rel="next" href="../youtube%E4%B8%8B%E8%BD%BD/">
@@ -23,54 +23,25 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.15">
+      <meta name="generator" content="zensical-0.0.67">
     
     
       
-        <title>Mac 的一些小技巧 - Mcode</title>
+        <title>macOS 使用小技巧 - Mcode</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.f1b6466b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ae390e2.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.96d1a7e4.min.css">
       
       
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-  <style>:root{}</style>
-
 
 
     
@@ -82,12 +53,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -108,8 +79,13 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="导航栏"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#macos" class="md-skip">
+          跳转至
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -120,14 +96,14 @@
       
 
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Mcode" class="md-header__button md-logo" aria-label="Mcode" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="导航栏">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
@@ -141,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Mac 的一些小技巧
+              macOS 使用小技巧
             
           </span>
         </div>
@@ -181,13 +157,13 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="查找">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="查找">
   <button type="button" class="md-search__button">
-    Search
+    查找
   </button>
 </div>
       
@@ -205,7 +181,7 @@
         
           
             
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -231,6 +207,13 @@
   
   
     
+      
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../C/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/" class="md-tabs__link">
@@ -249,6 +232,23 @@
   
   
   
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
     
     
       <li class="md-tabs__item">
@@ -271,9 +271,18 @@
   
   
     
+      
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="././" class="md-tabs__link">
           
   
   Mac
@@ -289,6 +298,55 @@
   
   
   
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
     
     
       <li class="md-tabs__item">
@@ -309,6 +367,19 @@
   
   
     
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../%E6%9D%82/GitHub%E4%B9%9F%E6%98%AF%E6%9C%89%E7%A6%BB%E7%BA%BF%E7%89%88%E7%9A%84/" class="md-tabs__link">
@@ -327,6 +398,13 @@
   
   
   
+    
+      
+      
+        
+      
+    
+    
     
     
       <li class="md-tabs__item">
@@ -361,12 +439,12 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Mcode" class="md-nav__button md-logo" aria-label="Mcode" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
     Mcode
@@ -388,8 +466,7 @@
   <span class="md-ellipsis">
     
   
-    Welcome to Mcode
-  
+  Welcome to Mcode
 
     
   </span>
@@ -435,8 +512,7 @@
   <span class="md-ellipsis">
     
   
-    C
-  
+  C
 
     
   </span>
@@ -446,19 +522,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    C
-  
+  C
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -471,8 +547,7 @@
   <span class="md-ellipsis">
     
   
-    汉诺塔问题详解
-  
+  汉诺塔问题详解
 
     
   </span>
@@ -483,10 +558,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -500,8 +576,6 @@
   
     
     
-      
-        
       
         
       
@@ -538,8 +612,7 @@
   <span class="md-ellipsis">
     
   
-    DB
-  
+  DB
 
     
   </span>
@@ -549,19 +622,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    DB
-  
+  DB
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -574,8 +647,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL中CHAR与VARCHAR的区别详解
-  
+  MySQL中CHAR与VARCHAR的区别详解
 
     
   </span>
@@ -586,10 +658,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -602,8 +674,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL基础语法
-  
+  MySQL基础语法
 
     
   </span>
@@ -614,10 +685,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -630,8 +701,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL多表查询
-  
+  MySQL多表查询
 
     
   </span>
@@ -642,10 +712,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -658,8 +728,7 @@
   <span class="md-ellipsis">
     
   
-    MySQL mysqldump --skip-add-drop-table 参数
-  
+  MySQL导出时 add-drop-table 问题及解决方案
 
     
   </span>
@@ -670,10 +739,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -686,8 +755,7 @@
   <span class="md-ellipsis">
     
   
-    SQL学习：掌握INNER JOIN、DISTINCT和HAVING关键字
-  
+  SELECT DISTINCT 语句
 
     
   </span>
@@ -698,10 +766,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -714,8 +782,7 @@
   <span class="md-ellipsis">
     
   
-    SQLAlchemy一对多关系完整指南：模型定义、关系建立与数据操作
-  
+  SQLAlchemy 一对多关系完整指南：模型定义、关系建立与数据操作
 
     
   </span>
@@ -726,38 +793,11 @@
     </li>
   
 
-              
-            
-              
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../DB/SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E8%AF%A6%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQLAlchemy一对多关系详解与实现
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -804,8 +844,7 @@
   <span class="md-ellipsis">
     
   
-    Mac
-  
+  Mac
 
     
   </span>
@@ -815,19 +854,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Mac
-  
+  Mac
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
     
@@ -836,19 +875,37 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  macOS 使用小技巧
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Mac 的一些小技巧
-  
+  macOS 使用小技巧
 
     
   </span>
@@ -857,13 +914,66 @@
 
       </a>
       
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#finder" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Finder 相关
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        窗口管理
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dock" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Dock 栏
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -876,8 +986,7 @@
   <span class="md-ellipsis">
     
   
-    Youtube下载
-  
+  YouTube 视频下载
 
     
   </span>
@@ -888,10 +997,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -905,10 +1015,6 @@
   
     
     
-      
-        
-      
-        
       
         
       
@@ -977,8 +1083,7 @@
   <span class="md-ellipsis">
     
   
-    Python
-  
+  Python
 
     
   </span>
@@ -988,19 +1093,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Python
-  
+  Python
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1013,8 +1118,7 @@
   <span class="md-ellipsis">
     
   
-    list,tuple,dict,set 四种数据类型的定义和异同.
-  
+  list、tuple、dict、set 四种数据类型的定义与异同
 
     
   </span>
@@ -1025,10 +1129,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1041,8 +1145,7 @@
   <span class="md-ellipsis">
     
   
-    Flask配置管理基础
-  
+  Flask配置管理基础
 
     
   </span>
@@ -1053,10 +1156,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1069,8 +1172,7 @@
   <span class="md-ellipsis">
     
   
-    Flask端点与蓝图详解
-  
+  Flask端点与蓝图详解
 
     
   </span>
@@ -1081,10 +1183,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1097,8 +1199,7 @@
   <span class="md-ellipsis">
     
   
-    Flask装饰器执行顺序
-  
+  Flask装饰器执行顺序
 
     
   </span>
@@ -1109,10 +1210,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1125,8 +1226,7 @@
   <span class="md-ellipsis">
     
   
-    Flask请求钩子
-  
+  Flask请求钩子
 
     
   </span>
@@ -1137,24 +1237,23 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../Python/Nginx%E5%9F%BA%E7%A1%80&%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+      <a href="../../Python/Nginx%E5%9F%BA%E7%A1%80%26%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Nginx 基础&amp;常用模块
-  
+  Nginx 基础与常用模块
 
     
   </span>
@@ -1165,10 +1264,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1181,8 +1280,7 @@
   <span class="md-ellipsis">
     
   
-    Python 列表推导式
-  
+  Python 列表推导式
 
     
   </span>
@@ -1193,24 +1291,23 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../Python/Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../Python/Python%20%E6%8B%B7%E8%B4%9D%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python 拷贝机制详解：直接赋值、浅拷贝与深拷贝的原理与应用
-  
+  Python 拷贝机制详解：直接赋值、浅拷贝与深拷贝的原理与应用
 
     
   </span>
@@ -1221,10 +1318,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1237,8 +1334,7 @@
   <span class="md-ellipsis">
     
   
-    Python __future__模块详解：实现新旧版本兼容的关键技术
-  
+  Python __future__ 模块详解：实现新旧版本兼容的关键技术
 
     
   </span>
@@ -1249,10 +1345,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1265,8 +1361,7 @@
   <span class="md-ellipsis">
     
   
-    函数参数详解：默认参数、可变参数与关键字参数
-  
+  函数参数详解：默认参数、可变参数与关键字参数
 
     
   </span>
@@ -1277,10 +1372,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1293,8 +1388,7 @@
   <span class="md-ellipsis">
     
   
-    协程详解：从yield到yield from
-  
+  协程详解：从 yield 到 yield from
 
     
   </span>
@@ -1305,10 +1399,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1321,8 +1415,7 @@
   <span class="md-ellipsis">
     
   
-    Python字典详解：dict、defaultdict与OrderedDict
-  
+  Python字典详解：dict、defaultdict与OrderedDict
 
     
   </span>
@@ -1333,10 +1426,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1349,8 +1442,7 @@
   <span class="md-ellipsis">
     
   
-    Python容器、可迭代对象、迭代器与生成器
-  
+  Python 容器、可迭代对象、迭代器与生成器
 
     
   </span>
@@ -1361,38 +1453,10 @@
     </li>
   
 
-              
-            
+                
               
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Python/Python%E5%AE%B9%E5%99%A8%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    容器可迭代对象迭代器与生成器详解
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
+                  
   
   
   
@@ -1405,8 +1469,7 @@
   <span class="md-ellipsis">
     
   
-    Python虚拟环境演进历程
-  
+  Python虚拟环境演进历程
 
     
   </span>
@@ -1417,10 +1480,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1433,8 +1496,7 @@
   <span class="md-ellipsis">
     
   
-    Python进阶-数据结构与算法进阶训练
-  
+  Python进阶：数据结构与算法进阶训练
 
     
   </span>
@@ -1445,38 +1507,10 @@
     </li>
   
 
-              
-            
+                
               
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Python/SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQLAlchemy一对多关系
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
+                  
   
   
   
@@ -1489,8 +1523,7 @@
   <span class="md-ellipsis">
     
   
-    Python爬虫中的SSL证书验证问题及解决方案
-  
+  Python爬虫中的SSL证书验证问题及解决方案
 
     
   </span>
@@ -1501,10 +1534,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1517,8 +1550,7 @@
   <span class="md-ellipsis">
     
   
-    一些需要注意的地方
-  
+  一些需要注意的地方
 
     
   </span>
@@ -1529,10 +1561,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1545,8 +1577,7 @@
   <span class="md-ellipsis">
     
   
-    哈希冲突
-  
+  哈希冲突
 
     
   </span>
@@ -1557,10 +1588,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1573,8 +1604,7 @@
   <span class="md-ellipsis">
     
   
-    数据挖掘—将数据转换成知识
-  
+  数据挖掘——将数据转换成知识
 
     
   </span>
@@ -1585,10 +1615,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1601,8 +1631,7 @@
   <span class="md-ellipsis">
     
   
-    深入理解Python生成器：高效内存管理的利器
-  
+  深入理解Python生成器：高效内存管理的利器
 
     
   </span>
@@ -1613,10 +1642,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1629,8 +1658,7 @@
   <span class="md-ellipsis">
     
   
-    理解Python中None、布尔值和空值的对应关系
-  
+  理解 Python 中 None、布尔值和空值的对应关系
 
     
   </span>
@@ -1641,10 +1669,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1657,8 +1685,7 @@
   <span class="md-ellipsis">
     
   
-    装饰器
-  
+  装饰器
 
     
   </span>
@@ -1669,10 +1696,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1718,8 +1746,7 @@
   <span class="md-ellipsis">
     
   
-    杂
-  
+  杂
 
     
   </span>
@@ -1729,19 +1756,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    杂
-  
+  杂
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1754,8 +1781,7 @@
   <span class="md-ellipsis">
     
   
-    GitHub也是有离线版的
-  
+  GitHub 离线版安装包
 
     
   </span>
@@ -1766,10 +1792,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1782,8 +1808,7 @@
   <span class="md-ellipsis">
     
   
-    Markdown 语法和 MWeb 写作使用说明
-  
+  Markdown 语法和 MWeb 写作使用说明
 
     
   </span>
@@ -1794,10 +1819,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1810,8 +1835,7 @@
   <span class="md-ellipsis">
     
   
-    Nginx 高级配置与性能优化完全指南
-  
+  Nginx 高级配置与性能优化完全指南
 
     
   </span>
@@ -1822,10 +1846,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1835,13 +1859,12 @@
         
   
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Markdown</title><path d="M22.27 19.385H1.73A1.73 1.73 0 0 1 0 17.655V6.345a1.73 1.73 0 0 1 1.73-1.73h20.54A1.73 1.73 0 0 1 24 6.345v11.308a1.73 1.73 0 0 1-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></svg>
   
   <span class="md-ellipsis">
     
   
-    Markdown in 5min
-  
+  Markdown 五分钟入门
 
     
   </span>
@@ -1852,10 +1875,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1895,8 +1919,7 @@
   <span class="md-ellipsis">
     
   
-    生活
-  
+  生活
 
     
   </span>
@@ -1906,19 +1929,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    生活
-  
+  生活
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1931,8 +1954,7 @@
   <span class="md-ellipsis">
     
   
-    琥珀的猫粮选定
-  
+  琥珀的猫粮选定
 
     
   </span>
@@ -1943,10 +1965,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1962,14 +1985,70 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
                   <div class="md-sidebar__inner">
                     
 
 
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#finder" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Finder 相关
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        窗口管理
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dock" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Dock 栏
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1987,7 +2066,7 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
+  <nav class="md-path" aria-label="导航栏" >
     <ol class="md-path__list">
       
         
@@ -1996,6 +2075,7 @@
     <li class="md-path__item">
       <a href="../.." class="md-path__link">
         
+  
   <span class="md-ellipsis">
     Welcome to Mcode
   </span>
@@ -2011,9 +2091,19 @@
   
     
     
+      
+        
+      
+        
+      
+    
+    
+    
+    
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="././" class="md-path__link">
           
+  
   <span class="md-ellipsis">
     Mac
   </span>
@@ -2032,24 +2122,24 @@
                 
                   
 
-  <h1>Mac 的一些小技巧</h1>
 
+<h1 id="macos">macOS 使用小技巧<a class="headerlink" href="#macos" title="Permanent link">&para;</a></h1>
+<h2 id="finder">Finder 相关<a class="headerlink" href="#finder" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>通过Command+点击在新窗口中打开Finder侧边栏上的项目</p>
+<p><code>Command</code> + 点击 Finder 侧边栏中的项目，可在新窗口中打开</p>
 </li>
 <li>
-<p>Command+鼠标拖拽可以移动后方的窗口，同时不影响前端窗口</p>
+<p><code>Command</code> + 回车，可直接在 Finder 中打开 Spotlight 搜索的结果</p>
 </li>
-<li>
-<p>Command+点击Dock上的图标可以打开应用在Finder中的位置</p>
-</li>
-<li>
-<p>Command+回车Spotlight中的搜索结果可以直接在Finder中查看</p>
-</li>
-<li>
-<p>Command+回车Spotlight中的搜索结果可以直接在Finder中查看</p>
-</li>
+</ul>
+<h2 id="_1">窗口管理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>Command</code> + 拖拽窗口标题栏，可移动非活动窗口而不影响当前窗口</li>
+</ul>
+<h2 id="dock">Dock 栏<a class="headerlink" href="#dock" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>Command</code> + 点击 Dock 栏中的应用图标，可在 Finder 中定位该应用</li>
 </ul>
 
 
@@ -2078,7 +2168,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
-  Back to top
+  回到页面顶部
 </button>
         
       </main>
@@ -2087,33 +2177,33 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../../DB/SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E8%AF%A6%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SQLAlchemy一对多关系详解与实现">
+          <a href="../../DB/SQLAlchemy%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97/" class="md-footer__link md-footer__link--prev" aria-label="上一页: SQLAlchemy 一对多关系完整指南：模型定义、关系建立与数据操作">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Previous
+                上一页
               </span>
               <div class="md-ellipsis">
-                SQLAlchemy一对多关系详解与实现
+                SQLAlchemy 一对多关系完整指南：模型定义、关系建立与数据操作
               </div>
             </div>
           </a>
         
         
           
-          <a href="../youtube%E4%B8%8B%E8%BD%BD/" class="md-footer__link md-footer__link--next" aria-label="Next: Youtube下载">
+          <a href="../youtube%E4%B8%8B%E8%BD%BD/" class="md-footer__link md-footer__link--next" aria-label="下一页: YouTube 视频下载">
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Next
+                下一页
               </span>
               <div class="md-ellipsis">
-                Youtube下载
+                YouTube 视频下载
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2147,7 +2237,7 @@
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -2156,10 +2246,13 @@
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","clipboard.error":"Could not copy to clipboard","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.00c35305.min.js"></script>
+      <script src="../../assets/javascripts/bundle.67a597eb.min.js"></script>
       
     
   </body>

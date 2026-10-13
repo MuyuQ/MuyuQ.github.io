@@ -28,7 +28,7 @@ app.config.update(
 
 ### 1. 使用配置类和继承模式
 
-现代 Flask 应用推荐使用类和继承的方式来组织配置，以便更好地管理不同环境的配置：
+用类和继承的方式组织配置，便于管理不同环境的配置：
 
 ```python
 import os
@@ -93,7 +93,7 @@ pip install python-dotenv
 
 创建 `.env` 文件来存储环境变量（注意：该文件不应提交到版本控制系统中）：
 
-```env
+```ini
 SECRET_KEY=your-secret-key-here
 DATABASE_URL=postgresql://user:password@localhost/dbname
 MAIL_SERVER=smtp.googlemail.com
@@ -103,7 +103,7 @@ MAIL_USERNAME=your-email@gmail.com
 MAIL_PASSWORD=your-password
 ```
 
-在应用中加载环境变量：
+在应用中加载环境变量。这里的 `Config` 类是简化示例，只包含 `SECRET_KEY` 和 `SQLALCHEMY_DATABASE_URI` 两项，完整配置类见第 1 节：
 
 ```python
 # 在应用初始化时加载环境变量
@@ -113,6 +113,8 @@ import os
 # 加载.env文件中的环境变量
 load_dotenv()
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard-to-guess-string'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
@@ -121,7 +123,7 @@ class Config:
 
 ### 3. 应用工厂模式
 
-现代 Flask 应用推荐使用应用工厂模式来创建应用实例，使配置管理更加灵活：
+应用工厂模式把创建应用实例的过程封装在 `create_app()` 函数中，使配置管理更加灵活：
 
 ```python
 from flask import Flask
@@ -198,7 +200,7 @@ flask --app hello run --debug
 4. **在生产环境中禁用调试模式**
 5. **定期轮换密钥**
 
-### 7. 配置管理的最佳实践
+### 7. 通用原则
 
 1. **分离关注点**：将配置与应用程序逻辑分开
 2. **环境适配**：为不同环境（开发、测试、生产）轻松切换配置

@@ -82,7 +82,7 @@ dic.update({'key': 'value'})
 dic2 = dic.copy()  # 创建字典的一个浅拷贝副本
 
 # 设置默认值
-dic.setdefault('key', default=None)
+dic.setdefault('key', None)  # default 参数默认为 None
 # setdefault方法可以设置默认值，但每次只能为一个键设置默认值，
 # 对于需要频繁设置默认值的场景，defaultdict 是更好的选择
 strings = ('puppy', 'kitten', 'puppy', 'puppy',
@@ -102,7 +102,7 @@ a = {'a': 3, 'b': 4}  # 定义第一个字典
 b = {'c': 5}          # 定义第二个字典
 
 # 方法1：使用dict构造函数和关键字参数展开
-# 注意：这种方法只适用于字符串键且是有效的Python标识符
+# 注意：**b 展开的字典的键必须是字符串（不必是合法标识符），a 的键不受此限
 result1 = dict(a, **b)  # 将字典a和字典b合并为新字典
 
 # 方法2：使用update方法（会修改原字典，相同键会被覆盖）
@@ -222,7 +222,7 @@ defaultdict(<class 'set'>, {'red': {1, 3}, 'blue': {2, 4}})
 
 ### 4. 使用自定义函数作为默认值工厂
 
-我们可以使用不带参数的可调用对象，它会返回该函数的返回值作为默认值。
+defaultdict 的工厂是不带参数的可调用对象，其返回值即缺失键的默认值。
 
 ```python
 from collections import defaultdict
@@ -249,7 +249,7 @@ print(ds['2'])   # 输出：apple，访问不存在的键'2'，返回默认值'a
 
 **dict** 和 **defaultdict** 在 Python 3.6 之前是无序的，而 **OrderedDict** 始终保持插入顺序。需要注意的是，从 Python 3.7 开始，普通 `dict` 也保证了插入顺序，但 `OrderedDict` 仍然有其独特的方法（如 `move_to_end`）和语义上的优势。
 
-在 **OrderedDict** 内部维护着一个根据键插入顺序排列的双向链表，每当有新元素插入时，会被放到链表的尾部。
+**OrderedDict** 内部维护着一个根据键插入顺序排列的双向链表，每当有新元素插入时，会被放到链表的尾部。
 
 **OrderedDict** 的大小是普通 dict 的两倍，所以需要权衡顺序和额外的内存消耗。
 
@@ -257,6 +257,8 @@ print(ds['2'])   # 输出：apple，访问不存在的键'2'，返回默认值'a
 from collections import OrderedDict
 
 d = OrderedDict()  # 创建一个有序字典
+d['key'] = 1       # 先填充示例元素
+d['other'] = 2
 
 # move_to_end 方法
 d.move_to_end('key')           # 将键为'key'的元素移到末尾
@@ -282,7 +284,7 @@ sorted_items = sorted(d.items(), key=lambda i: i[1])  # 按值进行排序
 | `d.default_factory` | | √ | | 在 `__missing__` 函数中被调用，用来给未找到的元素初始化默认值 |
 | `d.__missing__` | | √ | | 当 `__getitem__` 找不到对应键时，该方法会被调用 |
 | `d.move_to_end(k, last=True)` | | | √ | 把键为 k 的元素移动到最后或最前 |
-| `d.__reversed__()` | | | √ | 返回倒序的键的迭代器 |
+| `d.__reversed__()` | √ | √ | √ | 返回倒序的键的迭代器（dict 自 Python 3.8 起支持，defaultdict 继承自 dict） |
 | `d.popitem()` | √ | √ | √ | dict 和 defaultdict 移除最后插入的元素（LIFO），OrderedDict 可指定从头部或尾部移除 |
 
 ## 核心要点总结
